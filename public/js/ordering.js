@@ -9,6 +9,7 @@ Vue.component('ingredient', {
                     <button v-on:click="incrementCounter">{{ counter }}</button>\
                     {{item["ingredient_"+ lang]}} ({{ (type=="smoothie") ? item.vol_smoothie:item.vol_juice }} ml), {{item.selling_price}}:-, {{item.stock}} pcs\
                   </label>\
+                    <img v-bind:src ="item.image">\
               </div>',
   data: function () {
     return {
@@ -51,6 +52,7 @@ var vm = new Vue({
     addToOrder: function (item, type) {
       this.chosenIngredients.push(item);
       this.type = type;
+    this.chosenIngredients.push(document.createElement('br'));
       if (type === "smoothie") {
         this.volume += +item.vol_smoothie;
       } else if (type === "juice") {
@@ -58,6 +60,7 @@ var vm = new Vue({
       }
       this.price += +item.selling_price;
     },
+      
     placeOrder: function () {
       var i,
       //Wrap the order in an object
@@ -78,5 +81,6 @@ var vm = new Vue({
       this.type = '';
       this.chosenIngredients = [];
     }
+     
   }
 });

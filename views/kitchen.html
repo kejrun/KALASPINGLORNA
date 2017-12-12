@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Juicifers kitchen</title>
+   
   <link rel="stylesheet" href="css/juicifer.css">
   <script src="/vue/vue.js" defer></script>
   <script src="/socket.io/socket.io.js" defer></script>
@@ -11,38 +12,44 @@
   <script src="js/kitchen.js" defer></script>
 </head>
 <body>
-  <div id="orders">
-    <h1>{{ uiLabels.ordersInQueue }}</h1>
+    <div id="orders">
+    <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+    <div id ="start_page"> 
+    <h1>{{ uiLabels.ordersInQueue }}</h1> 
     <h2>{{ uiLabels.smoothie }}</h2>
-    <div>
-      <order-item-to-prepare
+       
+      <order-item-to-prepare 
         v-for="(order, key) in orders"
         v-if="!order.done && order.type == 'smoothie'"
         v-on:done="markDone(key)"
+        v-on:cancel= "sendCancel(key)"
         :order-id="key"
         :order="order" 
         :ui-labels="uiLabels"
         :lang="lang"
         :key="key">
       </order-item-to-prepare>
+    
     </div>
-    <h2>{{ uiLabels.juice }}</h2>
+    <!--<h2>{{ uiLabels.juice }}</h2>
     <div>
       <order-item-to-prepare
         v-for="(order, key) in orders"
         v-if="!order.done && order.type == 'juice'"
         v-on:done="markDone(key)"
+        v-on:cancel= "sendCancel(key)"
         :order-id="key"
         :order="order"
         :ui-labels="uiLabels"
         :lang="lang"
         :key="key">
       </order-item-to-prepare>
-    </div>
-
+    </div>-->
+    <div id = "finishedOrder">
+    <button v-on:click="ShowStartpage()" class=backBtn ><img src = http://simpleicon.com/wp-content/uploads/arrow-17.png width = 100% ></button>
+    <br>
     <h1>{{ uiLabels.ordersFinished }}</h1>
     <h2>{{ uiLabels.smoothie }}</h2>
-    <div>
       <order-item
         v-for="(order, key) in orders"
         v-if="order.done && order.type == 'smoothie'"
@@ -53,7 +60,12 @@
         :key="key">
       </order-item>
     </div>
-    <h2>{{ uiLabels.juice }}</h2>
+    
+    <div id = IngredientsPage>
+    <button v-on:click="ShowStartpage()" class = backBtn><img src = http://simpleicon.com/wp-content/uploads/arrow-17.png width = 100%></button>
+    <br>
+    <h1>Hej</h1>   
+    <!--<h2>{{ uiLabels.juice }}</h2>
     <div>
       <order-item
         v-for="(order, key) in orders"
@@ -64,8 +76,14 @@
         :ui-labels="uiLabels"
         :key="key">
       </order-item>
+    </div>-->
     </div>
-
-  </div>
+    <div id = Hist_Ingred>
+    <button v-on:click="ShowHistory()">{{ uiLabels.ordersFinished }}</button>
+    <button v-on:click="ShowIngredients()">{{ uiLabels.ingredients }}</button>
+        </div>
+    </div>
+    
+    
 </body>
 </html>
