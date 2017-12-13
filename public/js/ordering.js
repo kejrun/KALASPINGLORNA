@@ -7,7 +7,7 @@ Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
   template: '<div class="ingredient">\
   <label>\
-  <button v-on:click="minusIngredient" id="ingredientsMinusButton" name="ingredientsMinusButton" disabled>-</button>\
+  <button v-on:click="minusIngredient" id="ingredientsMinusButton" name="ingredientsMinusButton">-</button>\
   <button disabled>{{ counter }}</button>\
   <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
   {{item["ingredient_"+ lang]}} ({{ (type=="medium") ? item.vol_m:item.vol_m }} ml), {{item.price_m}}:-\
@@ -19,6 +19,8 @@ Vue.component('ingredient', {
     };
   },
   methods: {
+    
+    /*återuppta den här versionen när vi vet hur vi kommer åt en specifik knapp att disable
     plusIngredient: function(){
         this.counter +=1;
         totalIngredientsCounter ++;
@@ -33,6 +35,18 @@ Vue.component('ingredient', {
             }
         }
     },
+    */
+    
+    plusIngredient: function(){
+        if (totalIngredientsCounter > -1 && totalIngredientsCounter < 5){
+            this.counter +=1;
+            totalIngredientsCounter ++;
+            this.$emit('increment');
+            increaseBar();
+        }
+    },
+    
+    /*återuppta den här versionen när vi vet hur vi kommer åt en specifik knapp att disable
     minusIngredient: function(){
         this.counter -=1;
         totalIngredientsCounter --;
@@ -40,25 +54,31 @@ Vue.component('ingredient', {
         decreaseBar();
         document.getElementById("ingredientsPlusButton").disabled = false;
         if (totalIngredientsCounter == 0){
-            if (this.counter == 0){
-                document.getElementById("ingredientsMinusButton").disabled = true;
-            }
-            else{
-                var x = document.getElementsByName("ingredientsMinusButton");
-                var i;
-                for (i = 0; i < x.length; i++) {
-                   x[i].disabled = true;
-                }
+            var x = document.getElementsByName("ingredientsMinusButton");
+            var i;
+            for (i = 0; i < x.length; i++) {
+               x[i].disabled = true;
             }
         }
     },
+    */
+        
+    minusIngredient: function(){
+        if (totalIngredientsCounter > 0 && totalIngredientsCounter <= 5){
+            this.counter -=1;
+            totalIngredientsCounter --;
+            this.$emit('increment');
+            decreaseBar();
+        }
+    },
     
-//incrementCounter används inte i nuläget
+//incrementCounter används inte i nuläget, tror jag..
     incrementCounter: function () {
       this.counter += item.vol_m;
     console.log(item.vol_m)
       this.$emit('increment');
     },
+        
     resetCounter: function () {
       this.counter = 0;
     }
@@ -111,6 +131,14 @@ function textOnBar(newLength, fullSize){
   else{
     ingredientsBarText.innerHTML = 'Your drink is done!';
   }
+}
+
+//resets the ingredientsBar and the ingredientsCounter
+function resetIngredientsForNewOrder(){
+    totalIngredientsCounter = 0;
+    var curSize = $("#ingredientsBarProgress").width();
+    $("#ingredientsBarProgress").css('width', '-=' + curSize);
+    ingredientsBarText.innerHTML = 'Choose 5 ingredients';
 }
 
 function getRandomInt(min, max) {
@@ -167,6 +195,8 @@ var vm = new Vue({
       this.price = 0;
       this.type = '';
       this.chosenIngredients = [];
+      resetIngredientsForNewOrder();
+        
     },
     getIngredientById: function (id) {
       for (var i =0; i < this.ingredients.length; i += 1) {
