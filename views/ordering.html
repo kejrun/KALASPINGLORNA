@@ -9,14 +9,13 @@
   <script src="/socket.io/socket.io.js" defer></script>
   <script src="js/juicifer-main.js" defer></script>
   <script src="js/ordering.js" defer></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <div id="ordering">
 
 <header>
-
 </header>
-    
+
 <body>
 
   <div id="home-page">
@@ -30,36 +29,61 @@
   <div id="chooseYourOwn-page">
   <h1>{{ uiLabels.chooseYourOwn }}</h1>
   <p> here you can decide for your self :)</p>
-    <h1>{{ uiLabels.smoothie }}</h1>
+    <h1>{{ uiLabels.fruit }}</h1>
       <!--Ingredients bar at the top of only this page-->
         <div id="ingredientsBar" class="ingredientsBar">
-          <div id="ingredientsBarText">Choose 5 ingredients</div>   
+          <div id="ingredientsBarText">Choose 5 ingredients</div>
           <div id="ingredientsBarProgress"></div>
         </div>
         <button id="minusBtn" onclick="decreaseBar()">-</button> <!--this button currently represents all future 'minus buttons' to the ingredients-->
       <!--*-->
     <ingredient
       ref="ingredient"
-      type="smoothie"
+      type="medium"
       v-for="item in ingredients"
-      v-if="item.vol_m > 0"
-      v-on:increment="addToOrder(item, 'smoothie')"
+      v-if="item.category == 'fruit'"
+      v-on:increment="addToOrder(item, 'medium')"
       :item="item"
       :lang="lang"
       :key="item.ingredient_id">
     </ingredient>
 
-    <h1>{{ uiLabels.juice }}</h1>
-    <ingredient
+    <h1>{{ uiLabels.vegetable }}</h1>
+       <ingredient
       ref="ingredient"
-      type="juice"
+      type="medium"
       v-for="item in ingredients"
-      v-if="item.vol_juice > 0"
-      v-on:increment="addToOrder(item, 'juice')"
+      v-if="item.category == 'vegetable'"
+      v-on:increment="addToOrder(item, 'medium')"
       :item="item"
       :lang="lang"
       :key="item.ingredient_id">
     </ingredient>
+      
+    <h1> {{uiLabels.berry}} </h1>
+      <ingredient
+        ref = "ingredient"
+        type="medium"
+        v-for = "item in ingredients"
+        v-if = "item.category == 'berry'"
+        v-on:increment="addToOrder(item, 'medium')"
+        :item="item"
+        :lang="lang"
+        :key="item.ingredient_id">
+        </ingredient>
+      
+      <h1> {{uiLabels.liquid}} </h1>
+      <ingredient
+        ref = "ingredient"
+        type="medium"
+        v-for = "item in ingredients"
+        v-if = "item.category == 'liquid'"
+        v-on:increment="addToOrder(item, 'medium')"
+        :item="item"
+        :lang="lang"
+        :key="item.ingredient_id">
+        </ingredient>
+                  
 
     <h1>{{ uiLabels.order }}</h1>
     {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }} {{ volume }} ml, {{ price }} kr
@@ -70,7 +94,7 @@
     <div>
       <order-item
         v-for="(order, key) in orders"
-        v-if="!order.done && order.type == 'smoothie'"
+        v-if="!order.done && order.type == 'medium'"
         :order-id="key"
         :order="order"
         :ui-labels="uiLabels"
@@ -95,7 +119,11 @@
 
   <div id="preMade-page">
   <h1>{{ uiLabels.preMade }}</h1>
-  <p>fucking premade!</p>
+  <div v-for="preparedDrink in premade">
+      <h2>{{preparedDrink.pm_name}}</h2>
+      <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
+      <button v-on:click="orderPremade(preparedDrink)">{{ uiLabels.placeOrder }}</button>
+    </div>
   </div>
 
   <div id="myOrder-page">

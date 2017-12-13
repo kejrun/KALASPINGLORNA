@@ -20,4 +20,8 @@
   "extras" : "Extras",
     "stockList": "Stock List",
     "refill": "Refill"
+  "fruit" : "Fruits",
+  "vegetable" : "Vegetables",
+  "berry" : "Berries",
+  "liquid" : "Liquids"
 }
