@@ -87,6 +87,9 @@
   <div id="preMade-page">
   <h1>{{ uiLabels.preMade }}</h1>
   <p>fucking premade!</p>
+  <div v-for="preparedDrink in premade">
+      {{preparedDrink.pm_name}} {{preparedDrink.pm_ingredients}} <button v-on:click="orderPremade(preparedDrink)">BUY</button>
+    </div>
   </div>
 
   <div id="myOrder-page">
@@ -113,6 +116,6 @@
 <button v-on:click="myOrder()">{{ uiLabels.myOrder }}</button>
 <button v-on:click="checkOut()">{{ uiLabels.checkOut }}</button>
 </footer>
-</div>
 </body>
+</div>
 </html>
