@@ -17,6 +17,9 @@
   "preMade" : "Färdiga drycker",
   "myOrder" : "Min order",
   "checkOut" : "Till betalning",
-  "extras" : "Extra"
-
+  "extras" : "Extra",
+  "fruit" : "Frukter",
+  "vegetable" : "Grönsaker",
+  "berry" : "Bär",
+  "liquid" : "Vätskor"
 }
