@@ -133,6 +133,14 @@ function textOnBar(newLength, fullSize){
   }
 }
 
+//resets the ingredientsBar and the ingredientsCounter
+function resetIngredientsForNewOrder(){
+    totalIngredientsCounter = 0;
+    var curSize = $("#ingredientsBarProgress").width();
+    $("#ingredientsBarProgress").css('width', '-=' + curSize);
+    ingredientsBarText.innerHTML = 'Choose 5 ingredients';
+}
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -187,6 +195,8 @@ var vm = new Vue({
       this.price = 0;
       this.type = '';
       this.chosenIngredients = [];
+      resetIngredientsForNewOrder();
+        
     },
     getIngredientById: function (id) {
       for (var i =0; i < this.ingredients.length; i += 1) {
