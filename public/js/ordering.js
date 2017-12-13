@@ -154,8 +154,12 @@ var vm = new Vue({
       document.getElementById("home-page").style.display = "none";
       document.getElementById("myOrder-page").style.display = "block";
       document.getElementById("checkOut-page").style.display = "none";
-      document.getElementById("ProgressBarPreMade").style.display = "block";
-      document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
+      if (document.getElementById("ProgressBarPreMade").style.display = "block"){
+        document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
+        }
+        else {
+        document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
+      };
     },
     checkOut: function () {
       document.getElementById("chooseYourOwn-page").style.display = "none";
@@ -163,8 +167,12 @@ var vm = new Vue({
       document.getElementById("home-page").style.display = "none";
       document.getElementById("myOrder-page").style.display = "none";
       document.getElementById("checkOut-page").style.display = "block";
-      document.getElementById("ProgressBarPreMade").style.display = "block";
-      document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
+      if (document.getElementById("ProgressBarPreMade").style.display = "block"){
+        document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
+        }
+        else {
+        document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
+      };
     },
     HomePage: function () {
       document.getElementById("chooseYourOwn-page").style.display = "none";
