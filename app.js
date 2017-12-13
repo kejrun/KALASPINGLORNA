@@ -12,7 +12,7 @@ var csv = require("csvtojson");
 
 var ingredientsDataName = "ingredients";
 var transactionsDataName = "transactions";
-var readymadeDataName = "readymeade";
+var readymadeDataName = "readymade";
 var defaultLanguage = "en";
 var premadeDataName = "premade";
 
@@ -33,6 +33,10 @@ app.get('/', function (req, res) {
 // Serve kitchen.html as subpage
 app.get('/kitchen', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/kitchen.html'));
+});
+
+app.get('/ingredients', function(req, res){
+    res.sendFile(path.join(__dirname, 'views/ingredients.html'));
 });
 
 
