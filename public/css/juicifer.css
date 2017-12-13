@@ -5,7 +5,7 @@ body {
 	background:  #f4f4f4;
 	color: #808080;
     height: 220mm;
-    width: 165mm;
+    width: 200mm;
     /*border: 2px solid black;*/
     font-family: 'Encode Sans Semi Condensed';
 }
@@ -96,7 +96,7 @@ h1 {
 	display: none;
 	/*padding: 1em;*/
     width: 20em;
-    
+
 }
 
 #Drink_items{
@@ -166,7 +166,7 @@ h1 {
     transform: translate(-50%,-50%);
     font-size: 25px;
     z-index: 20;
-    
+
 }
 
 #minusBtn{

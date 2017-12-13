@@ -9,14 +9,13 @@
   <script src="/socket.io/socket.io.js" defer></script>
   <script src="js/juicifer-main.js" defer></script>
   <script src="js/ordering.js" defer></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <div id="ordering">
 
 <header>
-
 </header>
-    
+
 <body>
 
   <div id="home-page">
@@ -33,7 +32,7 @@
     <h1>{{ uiLabels.smoothie }}</h1>
       <!--Ingredients bar at the top of only this page-->
         <div id="ingredientsBar" class="ingredientsBar">
-          <div id="ingredientsBarText">Choose 5 ingredients</div>   
+          <div id="ingredientsBarText">Choose 5 ingredients</div>
           <div id="ingredientsBarProgress"></div>
         </div>
         <button id="minusBtn" onclick="decreaseBar()">-</button> <!--this button currently represents all future 'minus buttons' to the ingredients-->
@@ -95,9 +94,10 @@
 
   <div id="preMade-page">
   <h1>{{ uiLabels.preMade }}</h1>
-  <p>fucking premade!</p>
   <div v-for="preparedDrink in premade">
-      {{preparedDrink.pm_name}} {{preparedDrink.pm_ingredients}} <button v-on:click="orderPremade(preparedDrink)">BUY</button>
+      <h2>{{preparedDrink.pm_name}}</h2>
+      <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
+      <button v-on:click="orderPremade(preparedDrink)">{{ uiLabels.placeOrder }}</button>
     </div>
   </div>
 
@@ -127,8 +127,4 @@
 </footer>
 </body>
 </div>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> c57f2c9b50a7fe618f58965c41abb9a25f7c5308
