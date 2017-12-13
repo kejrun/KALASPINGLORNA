@@ -64,11 +64,22 @@ h1 {
 #ordering{
 }
 
+/*Creating a grid containing one grid with the categories in one column, and "My drink" in the other column */ 
+.categories-drink{
+    display: grid;
+    width 100%;
+    grid-template-columns: repeat(2, auto);
+    grid-gap:1em;
+}
 .category-list {
     display: grid;
     width: 100%;
     grid-template-columns: repeat(4, 23%);
     grid-gap: 1em;
+}
+
+#showDrink{
+    width: 100%;
 }
 .ingredients-list{
 
@@ -77,7 +88,7 @@ h1 {
 .ingredient {
 	border: 1px solid #cdc;
 	padding: 1em;
-    width: auto;
+    
 }
 
 #chooseYourOwn-page {
