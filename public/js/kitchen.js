@@ -4,12 +4,12 @@
 
 Vue.component('order-item-to-prepare', {
   props: ['uiLabels', 'order', 'orderId', 'lang'],
-  template: '<div>\
-           <button v-on:click="orderDone" class = ArrowImg>\
+  template: '<div id>\
+           <button v-on:click="cancelOrder" class = ArrowImg>\
             <img src="https://abcdefghijklmn-pqrstuvwxyz.com/wp-content/themes/o/img/prev.svg" width="30">\
-            <br>{{uiLabels.ready}}\
+            <br>{{uiLabels.cancel}}\
           </button>\
-            <button v-on:click="orderInMade" id="Drink_items">\
+            <button v-on:click="orderInMade(orderId)" id="Drink_items" >\
           <order-item\
             :ui-labels="uiLabels"\
             :lang="lang"\
@@ -17,17 +17,18 @@ Vue.component('order-item-to-prepare', {
             :order="order">\
           </order-item>\
             </button>\
-            <button v-on:click="cancelOrder" class = ArrowImg>\
+            <button v-on:click="orderDone" class = ArrowImg>\
             <img src="https://abcdefghijklmn-pqrstuvwxyz.com/wp-content/themes/o/img/next.svg" width="30">\
-            <br>{{uiLabels.cancel}}\
+            <br>{{uiLabels.ready}}\
           </button>\
          </div>',
     methods: {
     orderDone: function () {
     this.$emit('done');
     },
-    orderInMade: function(){
+    orderInMade: function(orderId){
     if (document.getElementById("Drink_items")){
+    console.log(orderId)
     document.getElementById("Drink_items").id='changeButton';
     }
     else{
@@ -37,9 +38,9 @@ Vue.component('order-item-to-prepare', {
     cancelOrder: function () {
     this.$emit('cancel');
     }, 
+    }
  
-  }
-});
+  });
 
 
 var vm = new Vue({
@@ -73,3 +74,9 @@ var vm = new Vue({
     }
     }
 });
+
+ (function(){
+    ('#OrdersQueue').slimScroll({
+        height: '250px'
+    });
+    });

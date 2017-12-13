@@ -7,7 +7,6 @@ Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
   template: '<div class="ingredient">\
   <label>\
-<<<<<<< HEAD
   <button v-on:click="minusIngredient" id="ingredientsMinusButton" name="ingredientsMinusButton" disabled>-</button>\
   <button disabled>{{ counter }}</button>\
   <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
@@ -27,15 +26,10 @@ Vue.component('ingredient', {
         increaseBar();
         document.getElementById("ingredientsMinusButton").disabled = false;
         if (totalIngredientsCounter == 5){
-            if (this.counter == 5){
-                document.getElementById("ingredientsPlusButton").disabled = true;
-            }
-            else{
-                var x = document.getElementsByName("ingredientsPlusButton");
-                var i;
-                for (i = 0; i < x.length; i++) {
-                   x[i].disabled = true;
-                }
+            var x = document.getElementsByName("ingredientsPlusButton");
+            var i;
+            for (i = 0; i < x.length; i++) {
+               x[i].disabled = true;
             }
         }
     },
