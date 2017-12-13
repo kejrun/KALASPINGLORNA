@@ -1,26 +1,75 @@
+@import url(https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Condensed);
+
+
 body {
-	background: #efe;
-	color: #353;
+	background:  #f4f4f4;
+	color: #808080;
+    height: 220mm;
+    width: 165mm;
+    /*border: 2px solid black;*/
+    font-family: 'Encode Sans Semi Condensed';
+
 }
 
 h1 {
-	color: #670;
+	color: black;
 	text-transform: uppercase;
 	letter-spacing: 2pt;
+    text-align: center;
+    position: relative;
 }
 
-#ordering {
-	margin:auto;
-	width: 40em;
+#finishedOrder{
+    display: none;
+}
+
+.backBtn {
+    position:absolute;
+    left: 3%;
+    transition: .5s ease;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline:none;
+    width: 70px;
+}
+
+#IngredientsPage{
+    display: none;
 }
 
 #orders {
+    text-align: center;
 	margin:auto;
 	width: 40em;
+    font-family: 'Encode Sans Semi Condensed';
 }
+
+.ArrowImg {
+    text-align: center;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+
+
+#ingredients-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 20em);
+    grid-gap: 1em;
+
+}
+
 
 .ingredient {
 	border: 1px solid #cdc;
+<<<<<<< HEAD
 	padding: 1em;
 }
 
@@ -50,4 +99,46 @@ h1 {
 
 #ProgressBarChooseYourOwn{
 	display: none;
+=======
+	/*padding: 1em;*/
+    width: 20em;
+    
+}
+
+#Drink_items{
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background-color:#F0E6F0;
+    border: 2px solid black;
+    width: 400px;
+    height: 130px;
+
+
+}
+
+
+#changeButton{
+    background-color: #eda6a6;
+    border: 2px solid black;
+    width: 400px;
+    height: 130px;
+
+}
+
+
+
+@media(max-width: 480px){
+    #ingredients-list{
+    display: block;
+    }
+    .ingredient {
+	border: 1px solid #cdc;
+	/*padding: 1em;*/
+    width: calc(100% - 2em);
+    }
+    .ingredient img {
+        max-width: 4em;
+        max-height: 4em;
+    }
 }

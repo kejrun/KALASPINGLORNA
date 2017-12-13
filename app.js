@@ -12,6 +12,7 @@ var csv = require("csvtojson");
  
 var ingredientsDataName = "ingredients";
 var transactionsDataName = "transactions";
+var readymadeDataName = "readymeade";
 var defaultLanguage = "en";
 
 // Pick arbitrary port for server
@@ -21,8 +22,10 @@ app.set('port', (process.env.PORT || port));
 // Serve static assets from public/
 app.use(express.static(path.join(__dirname, 'public/')));
 // Serve vue from node_modules as vue/
+
 app.use('/vue', express.static(path.join(__dirname, '/node_modules/vue/dist/')));
 // Serve diner.html as root page
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/ordering.html'));
 });
@@ -30,6 +33,7 @@ app.get('/', function (req, res) {
 app.get('/kitchen', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/kitchen.html'));
 });
+
 
 // Store data in an object to keep the global namespace clean
 function Data() {
@@ -61,6 +65,11 @@ Data.prototype.getIngredients = function () {
   });
 };
 
+Data.prototype.getReadymade = function () {
+  var d = this.data;
+  return d[readymadeDataName]
+};
+
 /* 
   Function to load initial data from CSV files into the object
 */
@@ -78,6 +87,20 @@ Data.prototype.initializeData = function (table) {
     });
 };
 
+Data.prototype.makeTransaction = function(order, changeUnit){
+      var transactions = this.data[transactionsDataName],
+    //find out the currently highest transaction id
+    transId =  transactions[transactions.length - 1].transaction_id,
+    i = order.ingredients,
+    k;
+    
+  for (k = 0; k < i.length; k += 1) {
+    transId += 1;
+    transactions.push({transaction_id: transId,
+                       ingredient_id: i[k].ingredient_id,
+                       change: changeUnit});
+  }
+};
 /*
   Adds an order to to the queue and makes an withdrawal from the
   stock. If you have time, you should think a bit about whether
@@ -86,18 +109,7 @@ Data.prototype.initializeData = function (table) {
 Data.prototype.addOrder = function (order) {
   this.orders[order.orderId] = order.order;
   this.orders[order.orderId].done = false;
-  var transactions = this.data[transactionsDataName],
-    //find out the currently highest transaction id
-    transId =  transactions[transactions.length - 1].transaction_id,
-    i = order.order.ingredients,
-    k;
-    
-  for (k = 0; k < i.length; k += 1) {
-    transId += 1;
-    transactions.push({transaction_id: transId,
-                       ingredient_id: i[k].ingredient_id,
-                       change: -1});
-  }
+  this.makeTransaction(order.order, -1)
 };
 
 Data.prototype.getAllOrders = function () {
@@ -108,17 +120,25 @@ Data.prototype.markOrderDone = function (orderId) {
   this.orders[orderId].done = true;
 };
 
+Data.prototype.cancelOrder = function(orderId){
+    this.orders[orderId].done = true;
+    this.makeTransaction(this.orders[orderId], 1);
+};
+
 var data = new Data();
 // Load initial ingredients. If you want to add columns, do it in the CSV file.
 data.initializeData(ingredientsDataName);
 // Load initial stock. Make alterations in the CSV file.
 data.initializeData(transactionsDataName);
 
+data.initializeData(readymadeDataName);
+
 io.on('connection', function (socket) {
   // Send list of orders and text labels when a client connects
   socket.emit('initialize', { orders: data.getAllOrders(),
                           uiLabels: data.getUILabels(),
-                          ingredients: data.getIngredients() });
+                          ingredients: data.getIngredients(),
+                            readymade: data.getReadymade()});
 
   // When someone orders something
   socket.on('order', function (order) {
@@ -131,12 +151,26 @@ io.on('connection', function (socket) {
   socket.on('switchLang', function (lang) {
     socket.emit('switchLang', data.getUILabels(lang));
   });
-  // when order is marked as done, send updated queue to all connected clients
+  // when order is marked as done, send updated queue to all connected clients Here it recives order done.
   socket.on('orderDone', function (orderId) {
     data.markOrderDone(orderId);
+
+      //emitting to all concected client to were the que is. Wha to happen when an order i cancelled
     io.emit('currentQueue', {orders: data.getAllOrders() });
   });
+    
+socket.on('cancelOrder', function (orderId){
+    data.cancelOrder(orderId);
+    io.emit('currentQueue', {orders: data.getAllOrders(), ingredients: data.getIngredients() });
+    
 });
+});
+//socket.on('History', function()){
+//          socket.emit('History', data)
+//          }
+
+    
+    
 
 var server = http.listen(app.get('port'), function () {
   console.log('Server listening on port ' + app.get('port'));

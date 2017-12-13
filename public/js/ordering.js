@@ -51,6 +51,7 @@ var vm = new Vue({
     addToOrder: function (item, type) {
       this.chosenIngredients.push(item);
       this.type = type;
+    this.chosenIngredients.push(document.createElement('br'));
       if (type === "smoothie") {
         this.volume += +item.vol_smoothie;
       } else if (type === "juice") {
@@ -58,6 +59,7 @@ var vm = new Vue({
       }
       this.price += +item.selling_price;
     },
+
     placeOrder: function () {
       var i,
       //Wrap the order in an object
@@ -121,5 +123,6 @@ var vm = new Vue({
       document.getElementById("myOrder-page").style.display = "none";
       document.getElementById("checkOut-page").style.display = "none";
     }
+
   }
 });
