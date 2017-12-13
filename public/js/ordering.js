@@ -6,10 +6,10 @@ var totalIngredientsCounter = 0;
 Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
   template: '<div class="ingredient">\
-  <label>\
   <button v-on:click="minusIngredient" id="ingredientsMinusButton" name="ingredientsMinusButton">-</button>\
-  <button disabled>{{ counter }}</button>\
+  <label>{{ counter }}</label>\
   <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
+  <label>\
   {{item["ingredient_"+ lang]}} ({{ (type=="medium") ? item.vol_m:item.vol_m }} ml), {{item.price_m}}:-\
   </label>\
   </div>',
@@ -84,8 +84,6 @@ Vue.component('ingredient', {
     }
   }
 });
-
-document.getElementsByName
 
 //ökar progress i ingredientsBar
 function increaseBar() {

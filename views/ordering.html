@@ -25,17 +25,23 @@
   <button v-on:click="preMade()">{{ uiLabels.preMade }}</button>
   </div>
 
-
   <div id="chooseYourOwn-page">
   <h1>{{ uiLabels.chooseYourOwn }}</h1>
-  <p> here you can decide for your self :)</p>
-    <h1>{{ uiLabels.fruit }}</h1>
+
       <!--Ingredients bar at the top of only this page-->
         <div id="ingredientsBar" class="ingredientsBar">
-          <div id="ingredientsBarText">Choose 5 ingredients</div>
-          <div id="ingredientsBarProgress"></div>
+        <div id="ingredientsBarText">Choose 5 ingredients</div>
+        <div id="ingredientsBarProgress"></div>
         </div>
       <!--*-->
+    
+    <p> here you can decide for yourself :)</p>
+
+<!-- Category-list and ingredient-list created to be able to get a grid layout -->
+   
+    <div class = "category-list"> 
+    <div class ="ingredients-list">
+    <h1>{{ uiLabels.fruit }}</h1>
     <ingredient
       ref="ingredient"
       type="medium"
@@ -46,7 +52,9 @@
       :lang="lang"
       :key="item.ingredient_id">
     </ingredient>
+    </div>
 
+    <div class = "ingredients-list">  
     <h1>{{ uiLabels.vegetable }}</h1>
        <ingredient
       ref="ingredient"
@@ -58,7 +66,9 @@
       :lang="lang"
       :key="item.ingredient_id">
     </ingredient>
-      
+    </div> 
+    
+    <div class = "ingredients-list">     
     <h1> {{uiLabels.berry}} </h1>
       <ingredient
         ref = "ingredient"
@@ -70,7 +80,9 @@
         :lang="lang"
         :key="item.ingredient_id">
         </ingredient>
+    </div>
       
+    <div class = "ingredients-list"> 
       <h1> {{uiLabels.liquid}} </h1>
       <ingredient
         ref = "ingredient"
@@ -82,14 +94,17 @@
         :lang="lang"
         :key="item.ingredient_id">
         </ingredient>
-                  
+    </div>
+    
+    </div>   
+    
+        
 
     <h1>{{ uiLabels.order }}</h1>
     {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }} {{ volume }} ml, {{ price }} kr
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
 
-    <h1>{{ uiLabels.ordersInQueue }}</h1>
-    <h2>{{ uiLabels.smoothie }}</h2>
+   <h1>{{ uiLabels.ordersInQueue }}</h1>
     <div>
       <order-item
         v-for="(order, key) in orders"
@@ -101,19 +116,8 @@
         :key="key">
       </order-item>
     </div>
-    <h2>{{ uiLabels.juice }}</h2>
-    <div>
-      <order-item
-        v-for="(order, key) in orders"
-        v-if="!order.done && order.type == 'juice'"
-        :order-id="key"
-        :order="order"
-        :ui-labels="uiLabels"
-        :lang="lang"
-        :key="key">
-      </order-item>
-    </div>
-  </div>
+
+  </div> 
 
 
   <div id="preMade-page">
