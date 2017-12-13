@@ -4,7 +4,7 @@
 body {
 	background:  #f4f4f4;
 	color: #808080;
-    height: 220mm;
+    height: 800px;
     width: 165mm;
     /*border: 2px solid black;*/
     font-family: 'Encode Sans Semi Condensed';
@@ -44,8 +44,13 @@ h1 {
 	margin:auto;
 	width: 40em;
     font-family: 'Encode Sans Semi Condensed';
+    height: 800px;
 }
 
+#OrdersQueue{
+    height: 400px;
+    overflow-y: scroll;
+}
 .ArrowImg {
     text-align: center;
     background-color: Transparent;
@@ -95,12 +100,11 @@ h1 {
 #ProgressBarChooseYourOwn{
 	display: none;
 	/*padding: 1em;*/
-    width: 20em;
-    
+    width: 20em;   
 }
 
+/* Code for Ingredients and history buttons on staff view */
 #Drink_items{
-    align-items: center;
     text-align: center;
     position: relative;
     background-color:#F0E6F0;
@@ -116,6 +120,21 @@ h1 {
     height: 130px;
 
 }
+
+#Hist_Ingred{
+    bottom: 0;
+    left: 5%;
+    position: absolute;
+}
+
+.Hist_Ingred_Button{
+    background-color:#F0E6F0;
+    border: 2px solid black;
+    width: 300px;
+    height: 130px;
+}
+
+/* Code for Ingredients and history buttons on staff view ends here */
 
 @media(max-width: 480px){
     #ingredients-list{

@@ -17,7 +17,7 @@
     <div id ="start_page"> 
     <h1>{{ uiLabels.ordersInQueue }}</h1> 
     <h2>{{ uiLabels.smoothie }}</h2>
-       
+    <div id = OrdersQueue> 
       <order-item-to-prepare 
         v-for="(order, key) in orders"
         v-if="!order.done && order.type == 'smoothie'"
@@ -29,7 +29,7 @@
         :lang="lang"
         :key="key">
       </order-item-to-prepare>
-    
+    </div>
     </div>
     <!--<h2>{{ uiLabels.juice }}</h2>
     <div>
@@ -79,9 +79,9 @@
     </div>-->
     </div>
     <div id = Hist_Ingred>
-    <button v-on:click="ShowHistory()">{{ uiLabels.ordersFinished }}</button>
-    <button v-on:click="ShowIngredients()">{{ uiLabels.ingredients }}</button>
-        </div>
+    <button v-on:click="ShowHistory()" class ="Hist_Ingred_Button">{{ uiLabels.ordersFinished }}</button>
+    <button v-on:click="ShowIngredients()" class ="Hist_Ingred_Button">{{ uiLabels.ingredients }}</button>
+    </div>
     </div>
     
     
