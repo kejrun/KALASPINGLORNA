@@ -61,16 +61,22 @@ h1 {
     outline:none;
 }
 
-#ingredients-list{
+#ordering{
+}
+
+.category-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 20em);
+    grid-template-columns: repeat(4, 18em);
     grid-gap: 1em;
+}
+.ingredients-list{
 
 }
 
 .ingredient {
 	border: 1px solid #cdc;
 	padding: 1em;
+    width: 18 em;
 }
 
 #chooseYourOwn-page {
