@@ -61,9 +61,10 @@ var vm = new Vue({
             
     },
     ShowIngredients: function(){
+        window.location = 'http://localhost:3000/ingredients'
         document.getElementById("finishedOrder").style.display ="none";
         document.getElementById("start_page").style.display = "none";
-        document.getElementById("IngredientsPage").style.display ="block";
+        //document.getElementById("IngredientsPage").style.display ="block";
     },
     ShowStartpage: function(){
         document.getElementById("finishedOrder").style.display ="none";

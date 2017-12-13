@@ -34,6 +34,10 @@ app.get('/kitchen', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/kitchen.html'));
 });
 
+app.get('/ingredients', function(req, res){
+    res.sendFile(path.join(__dirname, 'views/ingredients.html'));
+});
+
 
 // Store data in an object to keep the global namespace clean
 function Data() {

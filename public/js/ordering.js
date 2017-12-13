@@ -53,11 +53,11 @@ var vm = new Vue({
       this.type = type;
     this.chosenIngredients.push(document.createElement('br'));
       if (type === "smoothie") {
-        this.volume += +item.vol_smoothie;
+        this.volume += +item.vol_m;
       } else if (type === "juice") {
         this.volume += +item.vol_juice;
       }
-      this.price += +item.selling_price;
+      this.price += +item.price_m;
     },
 
     placeOrder: function () {
