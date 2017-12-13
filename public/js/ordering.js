@@ -7,6 +7,7 @@ Vue.component('ingredient', {
   template: ' <div class="ingredient">\
   <label>\
   <button v-on:click="incrementCounter">{{ counter }}</button>\
+  {{item["ingredient_"+ lang]}} ({{ (type=="smoothie") ? item.vol_m:item.vol_m }} ml), {{item.price_m}}:-\
   {{item["ingredient_"+ lang]}} ({{ (type=="medium") ? item.vol_m:item.vol_m }} ml), {{item.price_m}}:-\
   </label>\
   </div>',
@@ -17,7 +18,8 @@ Vue.component('ingredient', {
   },
   methods: {
     incrementCounter: function () {
-      this.counter += 1;
+      this.counter += item.vol_m;
+    console.log(item.vol_m)
       this.$emit('increment');
       increaseBar();
 

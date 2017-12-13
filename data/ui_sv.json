@@ -18,6 +18,8 @@
   "myOrder" : "Min order",
   "checkOut" : "Till betalning",
   "extras" : "Extra",
+    "stockList": "Lager",
+    "refill": "Fyll på",
   "fruit" : "Frukter",
   "vegetable" : "Grönsaker",
   "berry" : "Bär",
