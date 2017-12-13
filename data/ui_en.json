@@ -17,5 +17,9 @@
   "preMade" : "Premade",
   "myOrder" : "My order",
   "checkOut" : "Checkout",
-  "extras" : "Extras"
+  "extras" : "Extras",
+  "fruit" : "Fruits",
+  "vegetable" : "Vegetables",
+  "berry" : "Berries",
+  "liquid" : "Liquids"
 }
