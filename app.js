@@ -14,6 +14,7 @@ var ingredientsDataName = "ingredients";
 var transactionsDataName = "transactions";
 var readymadeDataName = "readymade";
 var defaultLanguage = "en";
+var premadeDataName = "premade";
 
 // Pick arbitrary port for server
 var port = 3000;
@@ -50,8 +51,8 @@ Data.prototype.getUILabels = function (lang) {
   return ui;
 };
 
-/* 
-  Returns a JSON object array of ingredients with the fields from 
+/*
+  Returns a JSON object array of ingredients with the fields from
   the CSV file, plus a calculated amount in stock, based on
   transactions.
 */
@@ -69,18 +70,18 @@ Data.prototype.getIngredients = function () {
   });
 };
 
-Data.prototype.getReadymade = function () {
+Data.prototype.getPremade = function () {
   var d = this.data;
-  return d[readymadeDataName]
+  return d[premadeDataName]
 };
 
-/* 
+/*
   Function to load initial data from CSV files into the object
 */
 Data.prototype.initializeData = function (table) {
   this.data[table] = [];
   var d = this.data[table];
-  
+
   csv({checkType: true})
     .fromFile("data/" + table + ".csv")
     .on("json", function (jsonObj) {
@@ -97,7 +98,7 @@ Data.prototype.makeTransaction = function(order, changeUnit){
     transId =  transactions[transactions.length - 1].transaction_id,
     i = order.ingredients,
     k;
-    
+
   for (k = 0; k < i.length; k += 1) {
     transId += 1;
     transactions.push({transaction_id: transId,
@@ -134,15 +135,15 @@ var data = new Data();
 data.initializeData(ingredientsDataName);
 // Load initial stock. Make alterations in the CSV file.
 data.initializeData(transactionsDataName);
-
-data.initializeData(readymadeDataName);
+// Load initial stock. Make alterations in the CSV file.
+data.initializeData(premadeDataName);
 
 io.on('connection', function (socket) {
   // Send list of orders and text labels when a client connects
   socket.emit('initialize', { orders: data.getAllOrders(),
                           uiLabels: data.getUILabels(),
                           ingredients: data.getIngredients(),
-                            readymade: data.getReadymade()});
+                            premade: data.getPremade()});
 
   // When someone orders something
   socket.on('order', function (order) {
@@ -162,19 +163,19 @@ io.on('connection', function (socket) {
       //emitting to all concected client to were the que is. Wha to happen when an order i cancelled
     io.emit('currentQueue', {orders: data.getAllOrders() });
   });
-    
+
 socket.on('cancelOrder', function (orderId){
     data.cancelOrder(orderId);
     io.emit('currentQueue', {orders: data.getAllOrders(), ingredients: data.getIngredients() });
-    
+
 });
 });
 //socket.on('History', function()){
 //          socket.emit('History', data)
 //          }
 
-    
-    
+
+
 
 var server = http.listen(app.get('port'), function () {
   console.log('Server listening on port ' + app.get('port'));

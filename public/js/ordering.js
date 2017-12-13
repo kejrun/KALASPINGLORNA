@@ -7,7 +7,7 @@ Vue.component('ingredient', {
   template: ' <div class="ingredient">\
   <label>\
   <button v-on:click="incrementCounter">{{ counter }}</button>\
-  {{item["ingredient_"+ lang]}} ({{ (type=="smoothie") ? item.vol_m:item.vol_m }} ml), {{item.price_m}}:-, {{item.stock}} pcs\
+  {{item["ingredient_"+ lang]}} ({{ (type=="medium") ? item.vol_m:item.vol_m }} ml), {{item.price_m}}:-\
   </label>\
   </div>',
   data: function () {
@@ -20,7 +20,7 @@ Vue.component('ingredient', {
       this.counter += 1;
       this.$emit('increment');
       increaseBar();
-        
+
     },
     resetCounter: function () {
       this.counter = 0;
@@ -30,50 +30,50 @@ Vue.component('ingredient', {
 
 //ökar progress i ingredientsBar
 function increaseBar() {
-    var curSize = $("#ingredientsBarProgress").width();
-    var fullSize = 500;
-    var increment = fullSize/5;
-    if(curSize < fullSize) {
-        var newLength = curSize+increment;
-        $("#ingredientsBarProgress").css('width', '+=' + increment);
-        //console.log(newLength);
-        textOnBar(newLength, fullSize);
-    }
+  var curSize = $("#ingredientsBarProgress").width();
+  var fullSize = 500;
+  var increment = fullSize/5;
+  if(curSize < fullSize) {
+    var newLength = curSize+increment;
+    $("#ingredientsBarProgress").css('width', '+=' + increment);
+    //console.log(newLength);
+    textOnBar(newLength, fullSize);
+  }
 }
 
 //minskar progress i ingredientsBar
 function decreaseBar() {
-    var curSize = $("#ingredientsBarProgress").width();
-    var fullSize = 500;
-    var increment = fullSize/5;
-    if(curSize > 0) {
-        var newLength = curSize-increment;
-        $("#ingredientsBarProgress").css('width', '-=' + increment);
-        //console.log(newLength);
-        textOnBar(newLength, fullSize);
-    }
+  var curSize = $("#ingredientsBarProgress").width();
+  var fullSize = 500;
+  var increment = fullSize/5;
+  if(curSize > 0) {
+    var newLength = curSize-increment;
+    $("#ingredientsBarProgress").css('width', '-=' + increment);
+    //console.log(newLength);
+    textOnBar(newLength, fullSize);
+  }
 }
 
 //skriver ut text på ingredientsBar
 function textOnBar(newLength, fullSize){
-    if (newLength == 0){
-        ingredientsBarText.innerHTML = 'Choose 5 ingredients';
-    }
-    else if (newLength == fullSize/5){
-        ingredientsBarText.innerHTML = 'Choose 4 ingredients';
-    }
-    else if (newLength == 2*fullSize/5){
-        ingredientsBarText.innerHTML = 'Choose 3 ingredients';
-    }
-    else if (newLength == 3*fullSize/5){
-        ingredientsBarText.innerHTML = 'Choose 2 ingredients';
-    }
-    else if (newLength == 4*fullSize/5){
-        ingredientsBarText.innerHTML = 'Choose 1 ingredient';
-    }
-    else{
-       ingredientsBarText.innerHTML = 'Your drink is done!'; 
-    }
+  if (newLength == 0){
+    ingredientsBarText.innerHTML = 'Choose 5 ingredients';
+  }
+  else if (newLength == fullSize/5){
+    ingredientsBarText.innerHTML = 'Choose 4 ingredients';
+  }
+  else if (newLength == 2*fullSize/5){
+    ingredientsBarText.innerHTML = 'Choose 3 ingredients';
+  }
+  else if (newLength == 3*fullSize/5){
+    ingredientsBarText.innerHTML = 'Choose 2 ingredients';
+  }
+  else if (newLength == 4*fullSize/5){
+    ingredientsBarText.innerHTML = 'Choose 1 ingredient';
+  }
+  else{
+    ingredientsBarText.innerHTML = 'Your drink is done!';
+  }
 }
 
 function getRandomInt(min, max) {
@@ -102,8 +102,9 @@ var vm = new Vue({
       this.chosenIngredients.push(item);
       this.type = type;
     this.chosenIngredients.push(document.createElement('br'));
-      if (type === "smoothie") {
+      if (type === "medium") {
         this.volume += +item.vol_m;
+          console.log("vol_m added");
       } else if (type === "juice") {
         this.volume += +item.vol_juice;
       }
@@ -130,6 +131,27 @@ var vm = new Vue({
       this.type = '';
       this.chosenIngredients = [];
     },
+    getIngredientById: function (id) {
+      for (var i =0; i < this.ingredients.length; i += 1) {
+        if (this.ingredients[i].ingredient_id === id){
+          return this.ingredients[i];
+        }
+      }
+    },
+    orderPremade: function(pm) {
+      for (var i = 0; i < pm.pm_ingredients.length; i += 1) {
+        this.addToOrder(this.getIngredientById(pm.pm_ingredients[i]), "smoothie");
+      }
+    },
+    getIngredientNameList: function (idArr) {
+      var ingredientList = "", tempIngredient;
+      for (var i = 0; i < idArr.length ; i += 1) {
+        tempIngredient = this.getIngredientById(idArr[i]);
+        ingredientList += tempIngredient["ingredient_" + this.lang] + ", ";
+      }
+      return ingredientList;
+    },
+
     chooseYourOwn: function () {
       document.getElementById("chooseYourOwn-page").style.display = "block";
       document.getElementById("preMade-page").style.display = "none";
@@ -156,8 +178,8 @@ var vm = new Vue({
       document.getElementById("checkOut-page").style.display = "none";
       if (document.getElementById("ProgressBarPreMade").style.display = "block"){
         document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
-        }
-        else {
+      }
+      else {
         document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
       };
     },
@@ -169,8 +191,8 @@ var vm = new Vue({
       document.getElementById("checkOut-page").style.display = "block";
       if (document.getElementById("ProgressBarPreMade").style.display = "block"){
         document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
-        }
-        else {
+      }
+      else {
         document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
       };
     },
