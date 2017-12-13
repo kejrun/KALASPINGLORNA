@@ -9,10 +9,10 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
 var csv = require("csvtojson");
- 
+
 var ingredientsDataName = "ingredients";
 var transactionsDataName = "transactions";
-var readymadeDataName = "readymeade";
+var readymadeDataName = "readymade";
 var defaultLanguage = "en";
 
 // Pick arbitrary port for server

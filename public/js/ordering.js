@@ -19,12 +19,62 @@ Vue.component('ingredient', {
     incrementCounter: function () {
       this.counter += 1;
       this.$emit('increment');
+      increaseBar();
+        
     },
     resetCounter: function () {
       this.counter = 0;
     }
   }
 });
+
+//ökar progress i ingredientsBar
+function increaseBar() {
+    var curSize = $("#ingredientsBarProgress").width();
+    var fullSize = 500;
+    var increment = fullSize/5;
+    if(curSize < fullSize) {
+        var newLength = curSize+increment;
+        $("#ingredientsBarProgress").css('width', '+=' + increment);
+        //console.log(newLength);
+        textOnBar(newLength, fullSize);
+    }
+}
+
+//minskar progress i ingredientsBar
+function decreaseBar() {
+    var curSize = $("#ingredientsBarProgress").width();
+    var fullSize = 500;
+    var increment = fullSize/5;
+    if(curSize > 0) {
+        var newLength = curSize-increment;
+        $("#ingredientsBarProgress").css('width', '-=' + increment);
+        //console.log(newLength);
+        textOnBar(newLength, fullSize);
+    }
+}
+
+//skriver ut text på ingredientsBar
+function textOnBar(newLength, fullSize){
+    if (newLength == 0){
+        ingredientsBarText.innerHTML = 'Choose 5 ingredients';
+    }
+    else if (newLength == fullSize/5){
+        ingredientsBarText.innerHTML = 'Choose 4 ingredients';
+    }
+    else if (newLength == 2*fullSize/5){
+        ingredientsBarText.innerHTML = 'Choose 3 ingredients';
+    }
+    else if (newLength == 3*fullSize/5){
+        ingredientsBarText.innerHTML = 'Choose 2 ingredients';
+    }
+    else if (newLength == 4*fullSize/5){
+        ingredientsBarText.innerHTML = 'Choose 1 ingredient';
+    }
+    else{
+       ingredientsBarText.innerHTML = 'Your drink is done!'; 
+    }
+}
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
