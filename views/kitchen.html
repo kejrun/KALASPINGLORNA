@@ -52,7 +52,7 @@
     <h2>{{ uiLabels.smoothie }}</h2>
       <order-item
         v-for="(order, key) in orders"
-        v-if="order.done && order.type == 'smoothie'"
+        v-if="order.done && order.type == 'medium'"
         :order-id="key"
         :order="order"
         :lang="lang"

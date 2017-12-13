@@ -29,14 +29,17 @@
   <div id="chooseYourOwn-page">
   <h1>{{ uiLabels.chooseYourOwn }}</h1>
   <p> here you can decide for your self :)</p>
-    <h1>{{ uiLabels.fruit }}</h1>
-      <!--Ingredients bar at the top of only this page-->
+      
+     <!--Ingredients bar at the top of only this page-->
         <div id="ingredientsBar" class="ingredientsBar">
-          <div id="ingredientsBarText">Choose 5 ingredients</div>
-          <div id="ingredientsBarProgress"></div>
+        <div id="ingredientsBarText">Choose 5 ingredients</div>
+        <div id="ingredientsBarProgress"></div>
         </div>
         <button id="minusBtn" onclick="decreaseBar()">-</button> <!--this button currently represents all future 'minus buttons' to the ingredients-->
       <!--*-->
+      
+    <h1>{{ uiLabels.fruit }}</h1>
+
     <ingredient
       ref="ingredient"
       type="medium"
@@ -89,7 +92,7 @@
     {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }} {{ volume }} ml, {{ price }} kr
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
 
-    <h1>{{ uiLabels.ordersInQueue }}</h1>
+   <!-- <h1>{{ uiLabels.ordersInQueue }}</h1>
     <h2>{{ uiLabels.smoothie }}</h2>
     <div>
       <order-item
@@ -114,7 +117,7 @@
         :key="key">
       </order-item>
     </div>
-  </div>
+  </div> -->
 
 
   <div id="preMade-page">
