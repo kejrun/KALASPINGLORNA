@@ -7,7 +7,7 @@ Vue.component('ingredient', {
   template: ' <div class="ingredient">\
   <label>\
   <button v-on:click="incrementCounter">{{ counter }}</button>\
-  {{item["ingredient_"+ lang]}} ({{ (type=="smoothie") ? item.vol_m:item.vol_m }} ml), {{item.price_m}}:-, {{item.stock}} pcs\
+  {{item["ingredient_"+ lang]}} ({{ (type=="medium") ? item.vol_m:item.vol_m }} ml), {{item.price_m}}:-\
   </label>\
   </div>',
   data: function () {
@@ -102,8 +102,9 @@ var vm = new Vue({
       this.chosenIngredients.push(item);
       this.type = type;
     this.chosenIngredients.push(document.createElement('br'));
-      if (type === "smoothie") {
+      if (type === "medium") {
         this.volume += +item.vol_m;
+          console.log("vol_m added");
       } else if (type === "juice") {
         this.volume += +item.vol_juice;
       }
