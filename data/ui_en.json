@@ -10,5 +10,11 @@
   "with" : "with",
   "ready" : "Done",
   "order" : "My order",
-  "language" : "Svenska"
+  "language" : "Svenska",
+  "home" : "Home",
+  "chooseYourOwn" : "Choose Your Own",
+  "preMade" : "Premade",
+  "myOrder" : "My order",
+  "checkOut" : "Checkout",
+  "extras" : "Extras"
 }

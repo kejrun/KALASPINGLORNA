@@ -10,5 +10,12 @@
   "with" : "med",
   "ready" : "Klart",
   "order" : "Min beställning",
-  "language" : "English"
+  "language" : "English",
+  "home" : "Hem",
+  "chooseYourOwn" : "Väl din egen",
+  "preMade" : "Färdiga drycker",
+  "myOrder" : "Min order",
+  "checkOut" : "Till betalning",
+  "extras" : "Extra"
+
 }

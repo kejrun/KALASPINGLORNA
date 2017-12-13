@@ -10,18 +10,32 @@
   <script src="js/juicifer-main.js" defer></script>
   <script src="js/ordering.js" defer></script>
 </head>
-<body>
   <div id="ordering">
-    <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
 
+<header>
+
+</header>
+<body>
+
+  <div id="home-page">
+  <h1>{{ uiLabels.home }}</h1>
+  <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+  <button v-on:click="chooseYourOwn()">{{ uiLabels.chooseYourOwn }}</button>
+  <button v-on:click="preMade()">{{ uiLabels.preMade }}</button>
+  </div>
+
+
+  <div id="chooseYourOwn-page">
+  <h1>{{ uiLabels.chooseYourOwn }}</h1>
+  <p> here you can decide for your self :)</p>
     <h1>{{ uiLabels.smoothie }}</h1>
     <ingredient
       ref="ingredient"
       type="smoothie"
       v-for="item in ingredients"
       v-if="item.vol_smoothie > 0"
-      v-on:increment="addToOrder(item, 'smoothie')"  
-      :item="item" 
+      v-on:increment="addToOrder(item, 'smoothie')"
+      :item="item"
       :lang="lang"
       :key="item.ingredient_id">
     </ingredient>
@@ -45,11 +59,11 @@
     <h1>{{ uiLabels.ordersInQueue }}</h1>
     <h2>{{ uiLabels.smoothie }}</h2>
     <div>
-      <order-item 
+      <order-item
         v-for="(order, key) in orders"
         v-if="!order.done && order.type == 'smoothie'"
         :order-id="key"
-        :order="order" 
+        :order="order"
         :ui-labels="uiLabels"
         :lang="lang"
         :key="key">
@@ -68,5 +82,37 @@
       </order-item>
     </div>
   </div>
+
+
+  <div id="preMade-page">
+  <h1>{{ uiLabels.preMade }}</h1>
+  <p>fucking premade!</p>
+  </div>
+
+  <div id="myOrder-page">
+  <h1>{{ uiLabels.myOrder }}</h1>
+  <p>fucking order!</p>
+  </div>
+
+  <div id="checkOut-page">
+  <h1>{{ uiLabels.checkOut }}</h1>
+  <p>PAAYY!</p>
+
+</div>
+<footer id="ProgressBarPreMade">
+<button v-on:click="HomePage()">{{ uiLabels.home }}</button>
+<button v-on:click="preMade()">{{ uiLabels.preMade }}</button>
+<button v-on:click="myOrder()">{{ uiLabels.myOrder }}</button>
+<button v-on:click="checkOut()">{{ uiLabels.checkOut }}</button>
+</footer>
+
+<footer id="ProgressBarChooseYourOwn">
+<button v-on:click="HomePage()">{{ uiLabels.home }}</button>
+<button v-on:click="Ingredients()">{{ uiLabels.ingredients }}</button>
+<button v-on:click="Extras()">{{ uiLabels.extras }}</button>
+<button v-on:click="myOrder()">{{ uiLabels.myOrder }}</button>
+<button v-on:click="checkOut()">{{ uiLabels.checkOut }}</button>
+</footer>
+</div>
 </body>
 </html>
