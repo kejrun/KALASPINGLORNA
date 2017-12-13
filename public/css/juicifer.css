@@ -166,6 +166,7 @@ h1 {
     background-color: #bbb;
     border-radius: 8px;
     margin: auto;
+    margin-bottom: 20px;
 }
 
 #ingredientsBarProgress{

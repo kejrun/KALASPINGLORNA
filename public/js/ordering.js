@@ -2,12 +2,14 @@
 /*global sharedVueStuff, Vue, socket */
 'use strict';
 
+var totalIngredientsCounter = 0;
 Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
-  template: ' <div class="ingredient">\
+  template: '<div class="ingredient">\
   <label>\
-  <button v-on:click="incrementCounter">{{ counter }}</button>\
-  {{item["ingredient_"+ lang]}} ({{ (type=="smoothie") ? item.vol_m:item.vol_m }} ml), {{item.price_m}}:-\
+  <button v-on:click="minusIngredient" id="ingredientsMinusButton" name="ingredientsMinusButton" disabled>-</button>\
+  <button disabled>{{ counter }}</button>\
+  <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
   {{item["ingredient_"+ lang]}} ({{ (type=="medium") ? item.vol_m:item.vol_m }} ml), {{item.price_m}}:-\
   </label>\
   </div>',
@@ -17,12 +19,45 @@ Vue.component('ingredient', {
     };
   },
   methods: {
+    plusIngredient: function(){
+        this.counter +=1;
+        totalIngredientsCounter ++;
+        this.$emit('increment');
+        increaseBar();
+        document.getElementById("ingredientsMinusButton").disabled = false;
+        if (totalIngredientsCounter == 5){
+            var x = document.getElementsByName("ingredientsPlusButton");
+            var i;
+            for (i = 0; i < x.length; i++) {
+               x[i].disabled = true;
+            }
+        }
+    },
+    minusIngredient: function(){
+        this.counter -=1;
+        totalIngredientsCounter --;
+        this.$emit('increment');
+        decreaseBar();
+        document.getElementById("ingredientsPlusButton").disabled = false;
+        if (totalIngredientsCounter == 0){
+            if (this.counter == 0){
+                document.getElementById("ingredientsMinusButton").disabled = true;
+            }
+            else{
+                var x = document.getElementsByName("ingredientsMinusButton");
+                var i;
+                for (i = 0; i < x.length; i++) {
+                   x[i].disabled = true;
+                }
+            }
+        }
+    },
+    
+//incrementCounter används inte i nuläget
     incrementCounter: function () {
       this.counter += item.vol_m;
     console.log(item.vol_m)
       this.$emit('increment');
-      increaseBar();
-
     },
     resetCounter: function () {
       this.counter = 0;
@@ -30,30 +65,30 @@ Vue.component('ingredient', {
   }
 });
 
+document.getElementsByName
+
 //ökar progress i ingredientsBar
 function increaseBar() {
-  var curSize = $("#ingredientsBarProgress").width();
-  var fullSize = 500;
-  var increment = fullSize/5;
-  if(curSize < fullSize) {
-    var newLength = curSize+increment;
-    $("#ingredientsBarProgress").css('width', '+=' + increment);
-    //console.log(newLength);
-    textOnBar(newLength, fullSize);
-  }
+    var curSize = $("#ingredientsBarProgress").width();
+    var fullSize = 500;
+    var increment = fullSize/5;
+    if(curSize < fullSize) {
+        var newLength = curSize+increment;
+        $("#ingredientsBarProgress").css('width', '+=' + increment);
+        textOnBar(newLength, fullSize);
+    }
 }
 
 //minskar progress i ingredientsBar
 function decreaseBar() {
-  var curSize = $("#ingredientsBarProgress").width();
-  var fullSize = 500;
-  var increment = fullSize/5;
-  if(curSize > 0) {
-    var newLength = curSize-increment;
-    $("#ingredientsBarProgress").css('width', '-=' + increment);
-    //console.log(newLength);
-    textOnBar(newLength, fullSize);
-  }
+    var curSize = $("#ingredientsBarProgress").width();
+    var fullSize = 500;
+    var increment = fullSize/5;
+    if(curSize > 0) {
+        var newLength = curSize-increment;
+        $("#ingredientsBarProgress").css('width', '-=' + increment);
+        textOnBar(newLength, fullSize);
+    }
 }
 
 //skriver ut text på ingredientsBar
