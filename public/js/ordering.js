@@ -7,6 +7,7 @@ Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
   template: '<div class="ingredient">\
   <label>\
+<<<<<<< HEAD
   <button v-on:click="minusIngredient" id="ingredientsMinusButton" name="ingredientsMinusButton" disabled>-</button>\
   <button disabled>{{ counter }}</button>\
   <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
@@ -60,7 +61,8 @@ Vue.component('ingredient', {
     
 //incrementCounter används inte i nuläget
     incrementCounter: function () {
-      this.counter += 1;
+      this.counter += item.vol_m;
+    console.log(item.vol_m)
       this.$emit('increment');
     },
     resetCounter: function () {

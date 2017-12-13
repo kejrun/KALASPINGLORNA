@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ingredients stock </title>
+  <title>Jucifers ingredient stock </title>
   <link rel="stylesheet" href="css/juicifer.css">
   <script src="/vue/vue.js" defer></script>
   <script src="/socket.io/socket.io.js" defer></script>
@@ -12,6 +12,7 @@
 </head>
     <body>
     <div id="ingredients"> 
+    <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
     <h1>{{ uiLabels.stockList }}</h1>
     <ingredient
       ref="ingredient"
@@ -23,6 +24,9 @@
       :lang="lang"
       :key="item.ingredient_id">
     </ingredient>
+        
+    <button v-on:click="placeOrder()">{{ uiLabels.refill }}</button>
+
         </div>
 </body>
     
