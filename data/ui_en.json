@@ -17,5 +17,7 @@
   "preMade" : "Premade",
   "myOrder" : "My order",
   "checkOut" : "Checkout",
-  "extras" : "Extras"
+  "extras" : "Extras",
+    "stockList": "Stock List",
+    "refill": "Refill"
 }

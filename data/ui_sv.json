@@ -17,6 +17,7 @@
   "preMade" : "Färdiga drycker",
   "myOrder" : "Min order",
   "checkOut" : "Till betalning",
-  "extras" : "Extra"
-
+  "extras" : "Extra",
+    "stockList": "Lager",
+    "refill": "Fyll på"
 }

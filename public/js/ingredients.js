@@ -3,7 +3,7 @@ Vue.component('ingredient', {
   template: ' <div class="ingredient">\
   <label>\
   <button v-on:click="incrementCounter">{{ counter }}</button>\
-  {{item["ingredient_"+ lang]}} ({{ (type=="smoothie") ? item.vol_m:item.vol_m }} ml), {{item.price_m}}:-, {{item.stock}} pcs\
+  {{item["ingredient_"+ lang]}} ({{item.vol_m }} ml), {{item.stock}} ml\
   </label>\
   </div>',
   data: function () {
@@ -20,4 +20,9 @@ Vue.component('ingredient', {
       this.counter = 0;
     }
   }
+});
+
+var vm = new Vue({
+  el: '#ingredients',
+  mixins: [sharedVueStuff]
 });
