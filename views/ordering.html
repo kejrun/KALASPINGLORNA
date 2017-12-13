@@ -25,17 +25,16 @@
   <button v-on:click="preMade()">{{ uiLabels.preMade }}</button>
   </div>
 
-
   <div id="chooseYourOwn-page">
   <h1>{{ uiLabels.chooseYourOwn }}</h1>
-  <p> here you can decide for your self :)</p>
-    <h1>{{ uiLabels.fruit }}</h1>
       <!--Ingredients bar at the top of only this page-->
         <div id="ingredientsBar" class="ingredientsBar">
           <div id="ingredientsBarText">Choose 5 ingredients</div>
           <div id="ingredientsBarProgress"></div>
         </div>
       <!--*-->
+    <p> here you can decide for yourself :)</p>
+    <h1>{{ uiLabels.fruit }}</h1>
     <ingredient
       ref="ingredient"
       type="medium"

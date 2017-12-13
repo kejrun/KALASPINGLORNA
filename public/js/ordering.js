@@ -85,8 +85,6 @@ Vue.component('ingredient', {
   }
 });
 
-document.getElementsByName
-
 //ökar progress i ingredientsBar
 function increaseBar() {
     var curSize = $("#ingredientsBarProgress").width();
