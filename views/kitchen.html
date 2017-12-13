@@ -10,6 +10,8 @@
   <script src="/socket.io/socket.io.js" defer></script>
   <script src="js/juicifer-main.js" defer></script>
   <script src="js/kitchen.js" defer></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" defer></script>
+    <script type="text/javascript" src="libs/jquery.slimscroll.min.js"></script>
 </head>
 <body>
     <div id="orders">
@@ -17,10 +19,10 @@
     <div id ="start_page"> 
     <h1>{{ uiLabels.ordersInQueue }}</h1> 
     <h2>{{ uiLabels.smoothie }}</h2>
-       
+    <div id = OrdersQueue>
       <order-item-to-prepare 
         v-for="(order, key) in orders"
-        v-if="!order.done && order.type == 'smoothie'"
+        v-if="!order.done && order.type == 'medium'"
         v-on:done="markDone(key)"
         v-on:cancel= "sendCancel(key)"
         :order-id="key"
@@ -29,7 +31,7 @@
         :lang="lang"
         :key="key">
       </order-item-to-prepare>
-    
+    </div>
     </div>
     <!--<h2>{{ uiLabels.juice }}</h2>
     <div>
@@ -79,9 +81,9 @@
     </div>-->
     </div>
     <div id = Hist_Ingred>
-    <button v-on:click="ShowHistory()">{{ uiLabels.ordersFinished }}</button>
-    <button v-on:click="ShowIngredients()">{{ uiLabels.ingredients }}</button>
-        </div>
+    <button v-on:click="ShowHistory()" class ="Hist_Ingred_Button">{{ uiLabels.ordersFinished }}</button>
+    <button v-on:click="ShowIngredients()" class ="Hist_Ingred_Button">{{ uiLabels.ingredients }}</button>
+    </div>
     </div>
     
     
