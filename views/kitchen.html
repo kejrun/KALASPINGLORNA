@@ -10,6 +10,8 @@
   <script src="/socket.io/socket.io.js" defer></script>
   <script src="js/juicifer-main.js" defer></script>
   <script src="js/kitchen.js" defer></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" defer></script>
+    <script type="text/javascript" src="libs/jquery.slimscroll.min.js"></script>
 </head>
 <body>
     <div id="orders">
@@ -17,10 +19,10 @@
     <div id ="start_page"> 
     <h1>{{ uiLabels.ordersInQueue }}</h1> 
     <h2>{{ uiLabels.smoothie }}</h2>
-    <div id = OrdersQueue> 
+    <div id = OrdersQueue>
       <order-item-to-prepare 
         v-for="(order, key) in orders"
-        v-if="!order.done && order.type == 'smoothie'"
+        v-if="!order.done && order.type == 'medium'"
         v-on:done="markDone(key)"
         v-on:cancel= "sendCancel(key)"
         :order-id="key"
@@ -52,7 +54,7 @@
     <h2>{{ uiLabels.smoothie }}</h2>
       <order-item
         v-for="(order, key) in orders"
-        v-if="order.done && order.type == 'smoothie'"
+        v-if="order.done && order.type == 'medium'"
         :order-id="key"
         :order="order"
         :lang="lang"
