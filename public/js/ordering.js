@@ -19,7 +19,7 @@ Vue.component('ingredient', {
     };
   },
   methods: {
-    
+
     /*återuppta den här versionen när vi vet hur vi kommer åt en specifik knapp att disable
     plusIngredient: function(){
         this.counter +=1;
@@ -36,7 +36,7 @@ Vue.component('ingredient', {
         }
     },
     */
-    
+
     plusIngredient: function(){
         if (totalIngredientsCounter > -1 && totalIngredientsCounter < 5){
             this.counter +=1;
@@ -45,7 +45,7 @@ Vue.component('ingredient', {
             increaseBar();
         }
     },
-    
+
     /*återuppta den här versionen när vi vet hur vi kommer åt en specifik knapp att disable
     minusIngredient: function(){
         this.counter -=1;
@@ -62,7 +62,7 @@ Vue.component('ingredient', {
         }
     },
     */
-        
+
     minusIngredient: function(){
         if (totalIngredientsCounter > 0 && totalIngredientsCounter <= 5){
             this.counter -=1;
@@ -71,14 +71,14 @@ Vue.component('ingredient', {
             decreaseBar();
         }
     },
-    
+
 //incrementCounter används inte i nuläget, tror jag..
     incrementCounter: function () {
       this.counter += item.vol_m;
     console.log(item.vol_m)
       this.$emit('increment');
     },
-        
+
     resetCounter: function () {
       this.counter = 0;
     }
@@ -195,7 +195,7 @@ var vm = new Vue({
       this.type = '';
       this.chosenIngredients = [];
       resetIngredientsForNewOrder();
-        
+
     },
     getIngredientById: function (id) {
       for (var i =0; i < this.ingredients.length; i += 1) {
@@ -206,7 +206,7 @@ var vm = new Vue({
     },
     orderPremade: function(pm) {
       for (var i = 0; i < pm.pm_ingredients.length; i += 1) {
-        this.addToOrder(this.getIngredientById(pm.pm_ingredients[i]), "smoothie");
+        this.placeOrderPremade(this.getIngredientById(pm.pm_ingredients[i]), "medium");
       }
     },
     getIngredientNameList: function (idArr) {
@@ -216,6 +216,31 @@ var vm = new Vue({
         ingredientList += tempIngredient["ingredient_" + this.lang] + ", ";
       }
       return ingredientList;
+    },
+    placeOrderPremade: function (item, type) {
+      this.chosenIngredients.push(item);
+      this.type = type;
+      var i,
+      //Wrap the order in an object
+      order = {
+        ingredients: this.chosenIngredients,
+        volume: this.volume,
+        type: this.type,
+        price: this.price
+      };
+      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+      socket.emit('order', {orderId: getOrderNumber(), order: order});
+      //set all counters to 0. Notice the use of $refs
+      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
+        this.$refs.ingredient[i].resetCounter();
+      }
+      console.log("hejhej");
+      this.volume = 0;
+      this.price = 0;
+      this.type = '';
+      this.chosenIngredients = [];
+      resetIngredientsForNewOrder();
+
     },
 
     chooseYourOwn: function () {

@@ -40,7 +40,7 @@
     <p> here you can decide for yourself :)</p>
 
 <!-- Category-list and ingredient-list created to be able to get a grid layout -->
-   
+   <div class = "categories-drink">
     <div class = "category-list"> 
     <div class ="ingredients-list">
     <h1>{{ uiLabels.fruit }}</h1>
@@ -97,14 +97,17 @@
         :key="item.ingredient_id">
         </ingredient>
     </div>
+</div>  
     
-    </div>   
-    
-        
-
+     
+      
+<div id="showDrink">
     <h1>{{ uiLabels.order }}</h1>
     {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }} {{ volume }} ml, {{ price }} kr
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+</div>
+</div>
+
 
    <h1>{{ uiLabels.ordersInQueue }}</h1>
     <div>

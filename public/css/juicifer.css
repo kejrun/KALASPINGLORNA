@@ -5,7 +5,7 @@ body {
 	background:  #f4f4f4;
 	color: #808080;
     height: 220mm;
-    width: 200mm;
+    /*width: 200mm;*/
     /*border: 2px solid black;*/
     font-family: 'Encode Sans Semi Condensed';
 }
@@ -64,12 +64,24 @@ h1 {
 #ordering{
 }
 
+/*Creating a grid containing one grid with the categories in one column, and "My drink" in the other column */ 
+.categories-drink{
+    display: grid;
+    width 100%;
+    grid-template-columns: repeat(2, auto);
+    grid-gap:1em;
+}
 .category-list {
     display: grid;
-    grid-template-columns: repeat(4, 18em);
+    width: 100%;
+    grid-template-columns: repeat(4, 23%);
     grid-gap: 1em;
     margin-top: 13%;
     z-index: 5;
+}
+
+#showDrink{
+    width: 100%;
 }
 
 .ingredients-list{
@@ -79,7 +91,7 @@ h1 {
 .ingredient {
 	border: 1px solid #cdc;
 	padding: 1em;
-    width: 18 em;
+    
 }
 
 #chooseYourOwn-page {
@@ -145,13 +157,13 @@ h1 {
 
 /* Code for Ingredients and history buttons on staff view ends here */
 
-@media(max-width: 480px){
+/*@media(max-width: 480px){
     #ingredients-list{
     display: block;
     }
     .ingredient {
 	border: 1px solid #cdc;
-	/*padding: 1em;*/
+	/*padding: 1em;
     width: calc(100% - 2em);
     }
     .ingredient img {
@@ -159,6 +171,7 @@ h1 {
         max-height: 4em;
     }
 }
+*/
 
 /*CSS for IngredientsBar*/
 
