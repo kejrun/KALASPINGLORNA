@@ -69,7 +69,6 @@ h1 {
     display: grid;
     width 100%;
     grid-template-columns: repeat(2, auto);
-    grid-gap:1em;
 }
 .category-list {
     display: grid;
@@ -80,6 +79,8 @@ h1 {
 
 #showDrink{
     width: 100%;
+    border: 2px solid #cdc;
+    padding: 1em;
 }
 .ingredients-list{
 
