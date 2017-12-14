@@ -36,10 +36,10 @@ var vm = new Vue({
   mixins: [sharedVueStuff],
     methods:{
     addToRefill: function(item){
-        socket.emit("plusIngredient", item);
-        console.log(item.ingredient_id);
+        socket.emit("plusIngredient", item.ingredient_id);
     },
     unaddToRefill: function(item){
-        socket.emit("minusIngredient", item);
+        socket.emit("minusIngredient", item.ingredient_id);
     }
+    
 }});
