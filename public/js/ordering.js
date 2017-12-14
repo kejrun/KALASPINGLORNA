@@ -104,7 +104,7 @@ function increaseBar() {
     var increment = fullSize/5;
     if(curSize < fullSize) {
         $("#ingredientsBarProgress").css('width', '+=' + increment);
-        var newLength = curSize+20; //20%
+        var newLength = curSize+increment;
         textOnBar(newLength, fullSize);
     }
 }
@@ -116,7 +116,7 @@ function decreaseBar() {
     var increment = fullSize/5;
     if(curSize > 0) {
         $("#ingredientsBarProgress").css('width', '-=' + increment);
-        var newLength = curSize-20; //20%
+        var newLength = curSize-increment;
         textOnBar(newLength, fullSize);
     }
 }
