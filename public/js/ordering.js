@@ -174,6 +174,23 @@ var vm = new Vue({
       }
       this.price += +item.price_m;
     },
+      
+      
+    removeFromOrder: function (item, type) {
+      this.chosenIngredients.remove(item);
+      this.type = type;
+    this.chosenIngredients.push(document.createElement('br'));
+      if (type === "medium") {
+        this.volume += +item.vol_m;
+          console.log("vol_m added");
+      } else if (type === "juice") {
+        this.volume += +item.vol_juice;
+      }
+      this.price += +item.price_m;
+    },
+      
+      
+      
 
     placeOrder: function () {
       var i,
