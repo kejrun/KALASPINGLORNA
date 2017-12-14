@@ -32,28 +32,6 @@ Vue.component('ingredient', {
     }
         }  });
 
-   /* refillCounter: function () {
-      this.counter += 1000;
-      this.$emit('refill');
-    },
-    resetCounter: function () {
-      this.counter = 0;
-    }
-     refillStock: function (){
-          var i,
-      //Wrap the order in an object
-      refill = {
-        ingredients: this.chosenIngredients,
-      };
-      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      socket.emit('refill', {refill: refill});
-      //set all counters to 0. Notice the use of $refs
-      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
-        this.$refs.ingredient[i].resetCounter();
-      }
-      this.chosenIngredients = [];
-     }*/
-
 
 var vm = new Vue({
   el: '#ingredients',
