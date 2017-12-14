@@ -103,12 +103,8 @@
 
 <div id="showDrink">
     <h1>{{ uiLabels.order }}</h1>
-    <div ng-app="" ng-init = chosenIngredients>
-        <ul>
-        <li ng-repeat = "item in chosenIngredients">
-            {{item}}
-            </li></ul>
-    <!--{{ chosenIngredients.map(function(item) {return item["ingredient_"+lang]).join(' ') }} <br> {{ volume }} ml, {{ price }} kr-->
+    <p v-for= "item in chosenIngredients"> {{ item["ingredient_" + lang] }}</p>
+    <br> {{ volume }} ml, {{ price }} kr
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
 </div>
 </div>
@@ -147,6 +143,7 @@
   <div id="checkOut-page" class="tabcontent">
   <h1>{{ uiLabels.checkOut }}</h1>
   <p>PAAYY!</p>
+      </div>
 </div>
 
 </body>
