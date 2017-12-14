@@ -152,6 +152,7 @@ function getOrderNumber() {
   return "#" + getRandomInt(1, 1000000);
 }
 
+
 var vm = new Vue({
   el: '#ordering',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
@@ -174,8 +175,8 @@ var vm = new Vue({
       }
       this.price += +item.price_m;
     },
-      
-      
+
+
     removeFromOrder: function (item, type) {
       this.chosenIngredients.remove(item);
       this.type = type;
@@ -188,9 +189,7 @@ var vm = new Vue({
       }
       this.price += +item.price_m;
     },
-      
-      
-      
+
 
     placeOrder: function () {
       var i,
@@ -260,6 +259,26 @@ var vm = new Vue({
       resetIngredientsForNewOrder();
 
     },
+    openTab: function(tabName, elmnt, color) {
+        // Hide all elements with class="tabcontent" by default */
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Remove the background color of all tablinks/buttons
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+        }
+
+        // Show the specific tab content
+        document.getElementById(tabName).style.display = "block";
+
+        // Add the specific color to the button used to open the tab content
+        elmnt.style.backgroundColor = color;
+    },
 
     chooseYourOwn: function () {
       document.getElementById("chooseYourOwn-page").style.display = "block";
@@ -278,40 +297,6 @@ var vm = new Vue({
       document.getElementById("checkOut-page").style.display = "none";
       document.getElementById("ProgressBarPreMade").style.display = "block";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
-    },
-    myOrder: function () {
-      document.getElementById("chooseYourOwn-page").style.display = "none";
-      document.getElementById("preMade-page").style.display = "none";
-      document.getElementById("home-page").style.display = "none";
-      document.getElementById("myOrder-page").style.display = "block";
-      document.getElementById("checkOut-page").style.display = "none";
-      if (document.getElementById("ProgressBarPreMade").style.display = "block"){
-        document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
-      }
-      else {
-        document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
-      };
-    },
-    checkOut: function () {
-      document.getElementById("chooseYourOwn-page").style.display = "none";
-      document.getElementById("preMade-page").style.display = "none";
-      document.getElementById("home-page").style.display = "none";
-      document.getElementById("myOrder-page").style.display = "none";
-      document.getElementById("checkOut-page").style.display = "block";
-      if (document.getElementById("ProgressBarPreMade").style.display = "block"){
-        document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
-      }
-      else {
-        document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
-      };
-    },
-    HomePage: function () {
-      document.getElementById("chooseYourOwn-page").style.display = "none";
-      document.getElementById("preMade-page").style.display = "none";
-      document.getElementById("home-page").style.display = "block";
-      document.getElementById("myOrder-page").style.display = "none";
-      document.getElementById("checkOut-page").style.display = "none";
     }
-
   }
 });
