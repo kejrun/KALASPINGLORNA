@@ -10,6 +10,12 @@ body {
     font-family: 'Encode Sans Semi Condensed';
 }
 
+/*rätt storlek på kitchen sidan*/
+.kitchen_layout{
+    height: 220mm;
+    width: 165mm;
+}
+
 h1 {
 	color: black;
 	text-transform: uppercase;
