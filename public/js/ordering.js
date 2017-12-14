@@ -36,15 +36,7 @@ Vue.component('ingredient', {
         }
     },
     */
-
-    plusIngredient: function(){
-        if (totalIngredientsCounter > -1 && totalIngredientsCounter < 5){
-            this.counter +=1;
-            totalIngredientsCounter ++;
-            this.$emit('increment');
-            increaseBar();
-        }
-    },
+              
 
     /*återuppta den här versionen när vi vet hur vi kommer åt en specifik knapp att disable
     minusIngredient: function(){
@@ -62,6 +54,15 @@ Vue.component('ingredient', {
         }
     },
     */
+    
+    plusIngredient: function(){
+        if (totalIngredientsCounter > -1 && totalIngredientsCounter < 5){
+            this.counter +=1;
+            totalIngredientsCounter ++;
+            this.$emit('increment');
+            increaseBar();
+        }
+    },
 
     minusIngredient: function(){
         if (totalIngredientsCounter > 0 && totalIngredientsCounter <= 5){
@@ -169,16 +170,21 @@ var vm = new Vue({
   methods: {
     addToOrder: function (item, type) {
       this.chosenIngredients.push(item);
+        console.log(this.chosenIngredients);
       this.type = type;
     this.chosenIngredients.push(document.createElement('br'));
-      if (type === "medium") {
-        this.volume += +item.vol_m;
-          console.log("vol_m added");
-      } else if (type === "juice") {
-        this.volume += +item.vol_juice;
+      if (type === "small"){
+        this.volume += +item.vol_s;
+        this.price += +item.price_s;
       }
-      this.price += +item.price_m;
-        
+      else if (type === "medium") {
+        this.volume += +item.vol_m;
+        this.price += +item.price_m;
+      } 
+      else{
+        this.volume += +item.vol_l;
+        this.price += +item.price_l;
+      } 
     },
 
     placeOrder: function () {
