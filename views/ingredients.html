@@ -19,15 +19,15 @@
       type="smoothie"
       v-for="item in ingredients"
       v-if="item.vol_m > 0"
-      v-on:increment="addToOrder(item, 'smoothie')"
+      v-on:increment="addToRefill(item)"
       :item="item"
       :lang="lang"
       :key="item.ingredient_id">
     </ingredient>
         
-    <button v-on:click="placeOrder()">{{ uiLabels.refill }}</button>
+    <button v-on:click="RefillStock()">{{ uiLabels.refill }}</button>
 
-        </div>
+    </div>
 </body>
     
 </html>
