@@ -37,7 +37,8 @@
         </div>
       <!--*-->
   </div>
-<div class="main">
+<div class="mainHeaderBottom">
+
 
 <!-- Category-list and ingredient-list created to be able to get a grid layout -->
    <div class = "categories-drink">
@@ -149,14 +150,14 @@
 
 
 </body>
-<div id="ProgressBarPreMade">
+<div id="ProgressBarPreMade" class="stickyBottom">
 <button class="tablink" v-on:click="openTab('home-page', this, 'orange')">{{ uiLabels.home }}</button>
 <button class="tablink" v-on:click="openTab('preMade-page', this, 'red')" id="defaultOpen">{{ uiLabels.preMade }}</button>
 <button class="tablink" v-on:click="openTab('myOrder-page', this, 'blue')">{{ uiLabels.myOrder }}</button>
 <button class="tablink" v-on:click="openTab('checkOut-page', this, 'green')">{{ uiLabels.checkOut }}</button>
 </div>
 
-<div id="ProgressBarChooseYourOwn">
+<div id="ProgressBarChooseYourOwn" class="stickyBottom">
 <button class="tablink" v-on:click="openTab('home-page', this, 'orange')">{{ uiLabels.home }}</button>
 <button class="tablink" v-on:click="openTab('chooseYourOwn-page', this, 'green')" id="defaultOpen">{{ uiLabels.ingredients }}</button>
 <button class="tablink" v-on:click="openTab('chooseYourOwn-page', this, 'red')">{{ uiLabels.extras }}</button>

@@ -85,18 +85,6 @@ Vue.component('ingredient', {
   }
 });
 
-//header in choose your own sticks to top of page when scrolling 
-window.onscroll = function() {stickyHeader()};
-var header = document.getElementById("myHeader");
-var sticky = header.offsetTop;
-function stickyHeader() {
-  if (window.pageYOffset >= sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-}
-
 //ökar progress i ingredientsBar
 function increaseBar() {
     var fullSize = $("#ingredientsBar").width()-6; //magic number 6, adds padding 3px on each side
