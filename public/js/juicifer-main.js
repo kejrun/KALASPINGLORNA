@@ -24,7 +24,7 @@ var sharedVueStuff = {
       this.orders = data.orders;
       this.uiLabels = data.uiLabels;
       this.ingredients = data.ingredients;
-     this.premade = data.premade;
+      this.premade = data.premade;
     }.bind(this));
 
     socket.on('switchLang', function (data) {
