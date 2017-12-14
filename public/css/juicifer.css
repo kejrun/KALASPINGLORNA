@@ -11,10 +11,16 @@ body {
 
 /*rätt storlek på kitchen sidan*/
 .kitchen_layout{
-	height: 220mm;
-	width: 165mm;
+    height: 200mm;
+    width: 165mm;
 }
 
+/*Layout och scrollbar for ingredients på ingredientspage, dvs. där man kan se och ändra lagersaldo*/
+#ingredients_layout{
+  height: 160mm;
+  width: 165mm;
+  overflow-y: scroll;
+}
 h1 {
 	color: black;
 	text-transform: uppercase;
