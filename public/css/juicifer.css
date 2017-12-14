@@ -5,7 +5,7 @@ body {
 	background:  #f4f4f4;
 	color: #808080;
     height: 220mm;
-    width: 200mm;
+    /*width: 200mm;*/
     /*border: 2px solid black;*/
     font-family: 'Encode Sans Semi Condensed';
 }
@@ -61,16 +61,37 @@ h1 {
     outline:none;
 }
 
-#ingredients-list{
+#ordering{
+}
+
+/*Creating a grid containing one grid with the categories in one column, and "My drink" in the other column */ 
+.categories-drink{
     display: grid;
-    grid-template-columns: repeat(auto-fit, 20em);
+    width 100%;
+    grid-template-columns: repeat(2, auto);
+    grid-gap:1em;
+    margin-top: 10%;
+}
+.category-list {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, 23%);
     grid-gap: 1em;
+    z-index: 5;
+}
+
+#showDrink{
+    width: 100%;
+}
+
+.ingredients-list{
 
 }
 
 .ingredient {
 	border: 1px solid #cdc;
 	padding: 1em;
+    
 }
 
 #chooseYourOwn-page {
@@ -119,7 +140,6 @@ h1 {
     border: 2px solid black;
     width: 400px;
     height: 130px;
-
 }
 
 #Hist_Ingred{
@@ -137,13 +157,13 @@ h1 {
 
 /* Code for Ingredients and history buttons on staff view ends here */
 
-@media(max-width: 480px){
+/*@media(max-width: 480px){
     #ingredients-list{
     display: block;
     }
     .ingredient {
 	border: 1px solid #cdc;
-	/*padding: 1em;*/
+	/*padding: 1em;
     width: calc(100% - 2em);
     }
     .ingredient img {
@@ -151,8 +171,17 @@ h1 {
         max-height: 4em;
     }
 }
+*/
 
 /*CSS for IngredientsBar*/
+
+#chooseYourOwnHeader{
+    position: fixed;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to bottom right, purple, mediumpurple);
+    z-index: 100;
+}
 
 .ingredientsBar{
     position: relative;
@@ -161,17 +190,17 @@ h1 {
 }
 
 #ingredientsBar{
-    width: 506px;
+    /*width: 506px;*/
+    width: 80%;
     height: 36px;
     background-color: #bbb;
     border-radius: 8px;
     margin: auto;
-    margin-bottom: 20px;
 }
 
 #ingredientsBarProgress{
     position: absolute;
-    width: 0px;
+    width: 0%;
     height: 30px;
     border-radius: 5px;
     margin-left: 3px;

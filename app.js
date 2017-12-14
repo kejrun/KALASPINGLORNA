@@ -12,7 +12,6 @@ var csv = require("csvtojson");
 
 var ingredientsDataName = "ingredients";
 var transactionsDataName = "transactions";
-var readymadeDataName = "readymade";
 var defaultLanguage = "en";
 var premadeDataName = "premade";
 
