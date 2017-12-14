@@ -242,30 +242,7 @@ var vm = new Vue({
       return ingredientList;
     },
       
-      
-      placeOrder: function () {
-      var i,
-      //Wrap the order in an object
-      order = {
-        ingredients: this.chosenIngredients,
-        volume: this.volume,
-        type: this.type,
-        price: this.price
-      };
-      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      socket.emit('order', {order: order});
-      //set all counters to 0. Notice the use of $refs
-      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
-        this.$refs.ingredient[i].resetCounter();
-      }
-      this.volume = 0;
-      this.price = 0;
-      this.type = '';
-      this.chosenIngredients = [];
-      resetIngredientsForNewOrder();
-    },
-      
-    placeOrderPremade: function (item, type) {
+      placeOrderPremade: function (item, type) {
       this.chosenIngredients.push(item);
         console.log(item.ingredient_en);
       this.type = type;
@@ -290,6 +267,7 @@ var vm = new Vue({
       this.type = '';
       this.chosenIngredients = [];
     },
+      
     openTab: function(tabName, elmnt, color) {
         // Hide all elements with class="tabcontent" by default */
         var i, tabcontent, tablinks;
