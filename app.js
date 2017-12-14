@@ -217,7 +217,6 @@ io.on('connection', function (socket) {
 });
 
     socket.on('orderInMade', function(orderId){
-        console.log('hej');
         data.markOrderInMade(orderId);
         io.emit('currentQueue', {orders: data.getAllOrders() });
     });
