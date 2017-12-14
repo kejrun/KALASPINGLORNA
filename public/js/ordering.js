@@ -36,16 +36,7 @@ Vue.component('ingredient', {
         }
     },
     */
-
-    plusIngredient: function(){
-        if (totalIngredientsCounter > -1 && totalIngredientsCounter < 5){
-            this.counter +=1;
-            totalIngredientsCounter ++;
-            this.$emit('increment');
-            increaseBar();
-        }
-    },
-
+              
     /*återuppta den här versionen när vi vet hur vi kommer åt en specifik knapp att disable
     minusIngredient: function(){
         this.counter -=1;
@@ -62,6 +53,15 @@ Vue.component('ingredient', {
         }
     },
     */
+    
+    plusIngredient: function(){
+        if (totalIngredientsCounter > -1 && totalIngredientsCounter < 5){
+            this.counter +=1;
+            totalIngredientsCounter ++;
+            this.$emit('increment');
+            increaseBar();
+        }
+    },
 
     minusIngredient: function(){
         if (totalIngredientsCounter > 0 && totalIngredientsCounter <= 5){
@@ -92,7 +92,7 @@ function increaseBar() {
     var increment = fullSize/5;
     if(curSize < fullSize) {
         $("#ingredientsBarProgress").css('width', '+=' + increment);
-        var newLength = curSize+20; //20%
+        var newLength = curSize+increment;
         textOnBar(newLength, fullSize);
     }
 }
@@ -104,7 +104,7 @@ function decreaseBar() {
     var increment = fullSize/5;
     if(curSize > 0) {
         $("#ingredientsBarProgress").css('width', '-=' + increment);
-        var newLength = curSize-20; //20%
+        var newLength = curSize-increment;
         textOnBar(newLength, fullSize);
     }
 }
@@ -173,14 +173,18 @@ var vm = new Vue({
       this.type = type;
         console.log(this.type);
     this.chosenIngredients.push(document.createElement('br'));
-      if (type === "medium") {
-        this.volume += +item.vol_m;
-          console.log("vol_m added");
-      } else if (type === "juice") {
-        this.volume += +item.vol_juice;
+      if (type === "small"){
+        this.volume += +item.vol_s;
+        this.price += +item.price_s;
       }
-      this.price += +item.price_m;
-
+      else if (type === "medium") {
+        this.volume += +item.vol_m;
+        this.price += +item.price_m;
+      } 
+      else{
+        this.volume += +item.vol_l;
+        this.price += +item.price_l;
+      } 
     },
 
     placeOrder: function () {
@@ -225,8 +229,10 @@ var vm = new Vue({
       }
       return ingredientList;
     },
-    placeOrderPremade: function (item, type) {
+      
+      placeOrderPremade: function (item, type) {
       this.chosenIngredients.push(item);
+        console.log(item.ingredient_en);
       this.type = type;
       var i,
       //Wrap the order in an object
@@ -248,9 +254,8 @@ var vm = new Vue({
       this.price = 0;
       this.type = '';
       this.chosenIngredients = [];
-      resetIngredientsForNewOrder();
-
     },
+      
     openTab: function(tabName, elmnt, color) {
         // Hide all elements with class="tabcontent" by default */
         var i, tabcontent, tablinks;
