@@ -140,13 +140,16 @@ h1 {
     width: 400px;
     height: 130px;
 }
-
-#changeButton{
+#inMade_Drink_items{
+    text-align: center;
+    position: relative;
     background-color: #eda6a6;
     border: 2px solid black;
     width: 400px;
     height: 130px;
+    
 }
+
 
 #Hist_Ingred{
     bottom: 0;
