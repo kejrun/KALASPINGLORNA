@@ -86,7 +86,7 @@ h1 {
     width 100%;
     grid-template-columns: repeat(2, auto);
     grid-gap:1em;
-    margin-top: 10%;
+    margin-top: 3%;
 
 }
 .category-list {
@@ -141,9 +141,7 @@ h1 {
     border: 2px solid black;
     width: 400px;
     height: 130px;
-    
 }
-
 
 #Hist_Ingred{
     bottom: 0;
@@ -176,14 +174,33 @@ h1 {
 }
 */
 
-/*CSS for IngredientsBar*/
 
-#chooseYourOwnHeader{
-    position: fixed;
-    width: 100%;
-    height: 20%;
-    background: linear-gradient(to bottom right, purple, mediumpurple);
+
+/*CSS for IngredientsBar + header*/
+
+.stickyHeader {
+  overflow: hidden;
+  background: linear-gradient(to bottom right, purple, mediumpurple);
+  position: fixed;
+  top: 0;
+  width: 100%;
     z-index: 100;
+}
+
+.stickyHeader a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.main {
+  padding: 16px;
+  margin-top: 30px;
+  height: 1500px; /* Used in this example to enable scrolling */
 }
 
 .ingredientsBar{
@@ -193,12 +210,13 @@ h1 {
 }
 
 #ingredientsBar{
-    /*width: 506px;*/
     width: 80%;
     height: 36px;
     background-color: #bbb;
     border-radius: 8px;
     margin: auto;
+    margin-bottom: 1.5%;
+    margin-top: -1.5%;
 }
 
 #ingredientsBarProgress{
