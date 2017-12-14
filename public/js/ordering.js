@@ -87,11 +87,11 @@ Vue.component('ingredient', {
 
 //ökar progress i ingredientsBar
 function increaseBar() {
+    var fullSize = $("#ingredientsBar").width()-6; //magic number 6, adds padding 3px on each side
     var curSize = $("#ingredientsBarProgress").width();
-    var fullSize = 500;
     var increment = fullSize/5;
     if(curSize < fullSize) {
-        var newLength = curSize+increment;
+        var newLength = curSize+20;
         $("#ingredientsBarProgress").css('width', '+=' + increment);
         textOnBar(newLength, fullSize);
     }
@@ -99,6 +99,7 @@ function increaseBar() {
 
 //minskar progress i ingredientsBar
 function decreaseBar() {
+    var fullSize = $("#ingredientsBar").width();
     var curSize = $("#ingredientsBarProgress").width();
     var fullSize = 500;
     var increment = fullSize/5;
@@ -180,6 +181,23 @@ var vm = new Vue({
       this.price += +item.price_m;
         
     },
+      
+      
+    removeFromOrder: function (item, type) {
+      this.chosenIngredients.remove(item);
+      this.type = type;
+    this.chosenIngredients.push(document.createElement('br'));
+      if (type === "medium") {
+        this.volume += +item.vol_m;
+          console.log("vol_m added");
+      } else if (type === "juice") {
+        this.volume += +item.vol_juice;
+      }
+      this.price += +item.price_m;
+    },
+      
+      
+      
 
     placeOrder: function () {
       var i,
