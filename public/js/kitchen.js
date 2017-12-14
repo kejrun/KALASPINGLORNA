@@ -9,7 +9,7 @@ Vue.component('order-item-to-prepare', {
             <img src="https://abcdefghijklmn-pqrstuvwxyz.com/wp-content/themes/o/img/prev.svg" width="30">\
             <br>{{uiLabels.cancel}}\
           </button>\
-            <button v-on:click="orderInMade(orderId)" id="Drink_items" >\
+            <button v-on:click="orderInMade" id="Drink_items">\
           <order-item\
             :ui-labels="uiLabels"\
             :lang="lang"\
@@ -26,14 +26,8 @@ Vue.component('order-item-to-prepare', {
     orderDone: function () {
     this.$emit('done');
     },
-    orderInMade: function(orderId){
-    if (document.getElementById("Drink_items")){
-    console.log(orderId)
-    document.getElementById("Drink_items").id='changeButton';
-    }
-    else{
-    document.getElementById("changeButton").id='Drink_items';
-    }
+    orderInMade: function(){
+    this.$emit('in-made');
     },
     cancelOrder: function () {
     this.$emit('cancel');
@@ -50,10 +44,18 @@ var vm = new Vue({
     markDone: function (orderid) {
       socket.emit("orderDone", orderid);
     },
-
     sendCancel: function (orderid) {
         socket.emit("cancelOrder", orderid);
     },
+    markInMade: function(orderid){
+        socket.emit("orderInMade", orderid);
+        console.log(orderid)
+    },
+    unmarkInMade: function(orderid){
+        socket.emit("notInMade", orderid);
+        console.log(orderid)
+    },
+      
     ShowHistory: function(){
         console.log("hej")
         document.getElementById("finishedOrder").style.display ="block";
@@ -75,8 +77,39 @@ var vm = new Vue({
     }
 });
 
- (function(){
-    ('#OrdersQueue').slimScroll({
-        height: '250px'
-    });
-    });
+Vue.component('order-item-to-prepare-in-made', {
+  props: ['uiLabels', 'order', 'orderId', 'lang'],
+  template: '<div id>\
+           <button v-on:click="cancelOrder" class = ArrowImg>\
+            <img src="https://abcdefghijklmn-pqrstuvwxyz.com/wp-content/themes/o/img/prev.svg" width="30">\
+            <br>{{uiLabels.cancel}}\
+          </button>\
+            <button v-on:click="notInMade" id="inMade_Drink_items">\
+          <order-item\
+            :ui-labels="uiLabels"\
+            :lang="lang"\
+            :order-id="orderId"\
+            :order="order">\
+          </order-item>\
+            </button>\
+            <button v-on:click="orderDone" class = ArrowImg>\
+            <img src="https://abcdefghijklmn-pqrstuvwxyz.com/wp-content/themes/o/img/next.svg" width="30">\
+            <br>{{uiLabels.ready}}\
+          </button>\
+         </div>',
+    methods: {
+    orderDone: function () {
+    this.$emit('done');
+    },
+    notInMade: function(){
+    this.$emit('in-made');
+    },
+    cancelOrder: function () {
+    this.$emit('cancel');
+    }
+}
+ 
+  });
+
+
+

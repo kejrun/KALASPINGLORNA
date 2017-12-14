@@ -126,10 +126,10 @@ Data.prototype.addOrder = function (order) {
      var orderId = this.getOrderNumber();
   this.orders[orderId] = order.order;
   this.orders[orderId].done = false;
+    this.orders[orderId].inMade = false;
   this.makeTransaction(order.order, -1);
     return orderId;
 };
-
 Data.prototype.getAllOrders = function () {
   return this.orders;
 };
@@ -141,6 +141,14 @@ Data.prototype.markOrderDone = function (orderId) {
 Data.prototype.cancelOrder = function(orderId){
     this.orders[orderId].done = true;
     this.makeTransaction(this.orders[orderId], 1);
+};
+
+Data.prototype.markOrderInMade = function(orderId){
+    this.orders[orderId].inMade = true;
+};
+
+Data.prototype.unmarkOrderInMade = function(orderId){
+    this.orders[orderId].inMade = false;
 };
 
 var data = new Data();
@@ -178,11 +186,23 @@ io.on('connection', function (socket) {
     io.emit('currentQueue', {orders: data.getAllOrders() });
   });
 
-socket.on('cancelOrder', function (orderId){
+    socket.on('cancelOrder', function (orderId){
+    
     data.cancelOrder(orderId);
+    
     io.emit('currentQueue', {orders: data.getAllOrders(), ingredients: data.getIngredients() });
 
 });
+
+    socket.on('orderInMade', function(orderId){
+        data.markOrderInMade(orderId);
+        io.emit('currentQueue', {orders: data.getAllOrders() });
+    });
+    
+    socket.on('notInMade', function(orderId){
+        data.unmarkOrderInMade(orderId);
+        io.emit('currentQueue', {orders: data.getAllOrders()});
+    });
 });
 //socket.on('History', function()){
 //          socket.emit('History', data)
