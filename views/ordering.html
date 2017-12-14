@@ -101,7 +101,7 @@
       
 <div id="showDrink">
     <h1>{{ uiLabels.order }}</h1>
-    {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }} {{ volume }} ml, {{ price }} kr
+    {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }} <br> {{ volume }} ml, {{ price }} kr
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
 </div>
 </div>
