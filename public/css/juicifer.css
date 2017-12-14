@@ -68,7 +68,10 @@ h1 {
     display: grid;
     grid-template-columns: repeat(4, 18em);
     grid-gap: 1em;
+    margin-top: 13%;
+    z-index: 5;
 }
+
 .ingredients-list{
 
 }
@@ -125,7 +128,6 @@ h1 {
     border: 2px solid black;
     width: 400px;
     height: 130px;
-
 }
 
 #Hist_Ingred{
@@ -160,6 +162,14 @@ h1 {
 
 /*CSS for IngredientsBar*/
 
+#chooseYourOwnHeader{
+    position: fixed;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to bottom right, purple, mediumpurple);
+    z-index: 100;
+}
+
 .ingredientsBar{
     position: relative;
     text-align: center;
@@ -167,17 +177,17 @@ h1 {
 }
 
 #ingredientsBar{
-    width: 506px;
+    /*width: 506px;*/
+    width: 80%;
     height: 36px;
     background-color: #bbb;
     border-radius: 8px;
     margin: auto;
-    margin-bottom: 20px;
 }
 
 #ingredientsBarProgress{
     position: absolute;
-    width: 0px;
+    width: 0%;
     height: 30px;
     border-radius: 5px;
     margin-left: 3px;
