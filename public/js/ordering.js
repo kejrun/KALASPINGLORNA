@@ -223,6 +223,7 @@ var vm = new Vue({
       var i,
       //Wrap the order in an object
       order = {
+        name: "premade drink",
         ingredients: this.chosenIngredients,
         volume: this.volume,
         type: this.type,
