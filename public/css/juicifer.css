@@ -70,13 +70,13 @@ h1 {
     width 100%;
     grid-template-columns: repeat(2, auto);
     grid-gap:1em;
+    margin-top: 10%;
 }
 .category-list {
     display: grid;
     width: 100%;
     grid-template-columns: repeat(4, 23%);
     grid-gap: 1em;
-    margin-top: 13%;
     z-index: 5;
 }
 
