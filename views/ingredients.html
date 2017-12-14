@@ -13,8 +13,10 @@
     <body>
     <div class = kitchen_layout>
     <div id="ingredients"> 
+    
     <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
     <h1>{{ uiLabels.stockList }}</h1>
+    <div id= "ingredients_layout">
     <ingredient
       ref="ingredient"
       type="smoothie"
@@ -26,10 +28,11 @@
       :lang="lang"
       :key="item.ingredient_id">
     </ingredient>
+     </div>
     <button v-on:click="refreshPage()" class=refillbtn>{{ uiLabels.refill }}</button>
+</div>
 
-
-    </div>
+   
     </div>
 </body>
     
