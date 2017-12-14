@@ -103,9 +103,12 @@
     <h1>{{ uiLabels.order }}</h1>
     {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }} {{ volume }} ml, {{ price }} kr
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+    <button>Small</button>
+    <button>Medium</button>
+    <button>Large</button>
+    
+</div>  
 </div>
-</div>
-
 
    <h1>{{ uiLabels.ordersInQueue }}</h1>
     <div>

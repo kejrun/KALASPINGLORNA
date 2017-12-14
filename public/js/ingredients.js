@@ -12,6 +12,7 @@ Vue.component('ingredient', {
     };
   },
   methods: {
+
     refillCounter: function () {
       this.counter += 1000;
       this.$emit('refill');
@@ -33,30 +34,39 @@ Vue.component('ingredient', {
       }
       this.chosenIngredients = [];
      }*/
-  }
-});
+  }});
 
 var vm = new Vue({
   el: '#ingredients',
   mixins: [sharedVueStuff],
-   data: {
+    data: {
+    type: '',
     chosenIngredients: [],
+    volume: 0,
+    price: 0
   },
-    methods: {
-    
-     /*refillStock: function (){
-          var i,
+    methods:{
+     RefillStock: function () {
+         console.log("please refill");
+      //var i,
       //Wrap the order in an object
-      refill = {
+       refill_ingred = {
         ingredients: this.chosenIngredients,
-      };
+        volume: this.volume,
+        type: this.type,
+        price: this.price
+        };
+         console.log(refill_ingred);
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      socket.emit('refill', {refill: refill});
+      //socket.emit('order', {orderId: getOrderNumber(), order: order});
       //set all counters to 0. Notice the use of $refs
-      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
-        this.$refs.ingredient[i].resetCounter();
-      }
-      this.chosenIngredients = [];
-     }*/
-        }
-});
+      //for (i = 0; i < this.$refs.ingredient.length; i += 1) {
+     //   this.$refs.ingredient[i].resetCounter();
+     // }
+      //this.volume = 0;
+     // this.price = 0;
+    //  this.type = '';
+    //  this.chosenIngredients = [];
+    }
+
+}});

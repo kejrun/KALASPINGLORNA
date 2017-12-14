@@ -37,7 +37,6 @@ Vue.component('ingredient', {
     },
     */
               
-
     /*återuppta den här versionen när vi vet hur vi kommer åt en specifik knapp att disable
     minusIngredient: function(){
         this.counter -=1;
@@ -170,8 +169,8 @@ var vm = new Vue({
   methods: {
     addToOrder: function (item, type) {
       this.chosenIngredients.push(item);
-        console.log(this.chosenIngredients);
       this.type = type;
+        console.log(this.type);
     this.chosenIngredients.push(document.createElement('br'));
       if (type === "small"){
         this.volume += +item.vol_s;
@@ -229,8 +228,33 @@ var vm = new Vue({
       }
       return ingredientList;
     },
+      
+      
+      placeOrder: function () {
+      var i,
+      //Wrap the order in an object
+      order = {
+        ingredients: this.chosenIngredients,
+        volume: this.volume,
+        type: this.type,
+        price: this.price
+      };
+      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+      socket.emit('order', {order: order});
+      //set all counters to 0. Notice the use of $refs
+      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
+        this.$refs.ingredient[i].resetCounter();
+      }
+      this.volume = 0;
+      this.price = 0;
+      this.type = '';
+      this.chosenIngredients = [];
+      resetIngredientsForNewOrder();
+    },
+      
     placeOrderPremade: function (item, type) {
       this.chosenIngredients.push(item);
+        console.log(item.ingredient_en);
       this.type = type;
       var i,
       //Wrap the order in an object
@@ -241,7 +265,7 @@ var vm = new Vue({
         price: this.price
       };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      socket.emit('order', {orderId: getOrderNumber(), order: order});
+      socket.emit('order', { order: order});
       //set all counters to 0. Notice the use of $refs
       for (i = 0; i < this.$refs.ingredient.length; i += 1) {
         this.$refs.ingredient[i].resetCounter();
@@ -251,8 +275,6 @@ var vm = new Vue({
       this.price = 0;
       this.type = '';
       this.chosenIngredients = [];
-      resetIngredientsForNewOrder();
-
     },
 
     chooseYourOwn: function () {
