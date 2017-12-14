@@ -4,7 +4,6 @@
 body {
 	background:  #f4f4f4;
 	color: #808080;
-    height: 220mm;
     /*width: 200mm;*/
     /*border: 2px solid black;*/
     font-family: 'Encode Sans Semi Condensed';
@@ -26,6 +25,17 @@ h1 {
 
 #finishedOrder{
     display: none;
+}
+
+.refillbtn {
+    text-transform: uppercase;
+    background-color: #4CAF50;
+    padding: 15px 32px;
+    cursor: pointer;
+    width: 50%;
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-bottom: 5%;
 }
 
 .backBtn {
@@ -70,13 +80,14 @@ h1 {
 #ordering{
 }
 
-/*Creating a grid containing one grid with the categories in one column, and "My drink" in the other column */ 
+/*Creating a grid containing one grid with the categories in one column, and "My drink" in the other column */
 .categories-drink{
     display: grid;
     width 100%;
     grid-template-columns: repeat(2, auto);
     grid-gap:1em;
     margin-top: 10%;
+
 }
 .category-list {
     display: grid;
@@ -88,6 +99,8 @@ h1 {
 
 #showDrink{
     width: 100%;
+    border: 2px solid #cdc;
+    padding: 1em;
 }
 
 .ingredients-list{
@@ -97,27 +110,11 @@ h1 {
 .ingredient {
 	border: 1px solid #cdc;
 	padding: 1em;
-    
+
 }
 
-#chooseYourOwn-page {
-	display: none;
-}
-
-#preMade-page {
-	display: none;
-}
-
-#home-page {
+#home-page{
 	display: block;
-}
-
-#myOrder-page {
-	display: none;
-}
-
-#checkOut-page{
-	display: none;
 }
 
 #ProgressBarPreMade{
@@ -126,9 +123,6 @@ h1 {
 
 #ProgressBarChooseYourOwn{
 	display: none;
-	/*padding: 1em;*/
-
-    width: 20em;
 }
 
 /* Code for Ingredients and history buttons on staff view */
@@ -140,13 +134,16 @@ h1 {
     width: 400px;
     height: 130px;
 }
-
-#changeButton{
+#inMade_Drink_items{
+    text-align: center;
+    position: relative;
     background-color: #eda6a6;
     border: 2px solid black;
     width: 400px;
     height: 130px;
+    
 }
+
 
 #Hist_Ingred{
     bottom: 0;
@@ -229,3 +226,28 @@ h1 {
     margin-top: 2em;
 }
 /*FINISH CSS for IngedientsBar*/
+
+
+/* Style the tab buttons */
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+		width: 20%;
+}
+
+/* Change background color of buttons on hover */
+.tablink:hover {
+    background-color: #777;
+}
+
+/* Set default styles for tab content */
+.tabcontent {
+    display: none;
+    padding: 50px;
+}

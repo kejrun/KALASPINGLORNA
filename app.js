@@ -105,6 +105,17 @@ Data.prototype.makeTransaction = function(order, changeUnit){
                        change: changeUnit});
   }
 };
+
+//when the staff is changing the stock
+Data.prototype.makeStockTransaction = function(item, changeUnit){
+    var transactions = this.data[transactionsDataName],
+    transId =  transactions[transactions.length - 1].transaction_id;
+    transactions.push({transaction_id: transId, ingredient_id: item, change: changeUnit})
+    console.log (transId, item, changeUnit)
+};
+  
+
+
 /*
   Adds an order to to the queue and makes an withdrawal from the
   stock. If you have time, you should think a bit about whether
@@ -124,12 +135,12 @@ Data.prototype.makeTransaction = function(order, changeUnit){
 
 Data.prototype.addOrder = function (order) {
      var orderId = this.getOrderNumber();
-  this.orders[orderId] = order.order;
-  this.orders[orderId].done = false;
-  this.makeTransaction(order.order, -1);
+    this.orders[orderId] = order.order;
+    this.orders[orderId].done = false;
+    this.orders[orderId].inMade = false;
+    this.makeTransaction(order.order, -1);
     return orderId;
 };
-
 Data.prototype.getAllOrders = function () {
   return this.orders;
 };
@@ -142,6 +153,25 @@ Data.prototype.cancelOrder = function(orderId){
     this.orders[orderId].done = true;
     this.makeTransaction(this.orders[orderId], 1);
 };
+
+Data.prototype.markOrderInMade = function(orderId){
+    this.orders[orderId].inMade = true;
+};
+
+Data.prototype.unmarkOrderInMade = function(orderId){
+    this.orders[orderId].inMade = false;
+};
+
+Data.prototype.plusIngredientsStock = function(item){
+    this.makeStockTransaction(item, +1000)
+   
+};
+
+Data.prototype.minusIngredientsStock = function(item){
+    this.makeStockTransaction(item, -1000)
+};
+
+
 
 var data = new Data();
 // Load initial ingredients. If you want to add columns, do it in the CSV file.
@@ -163,7 +193,8 @@ io.on('connection', function (socket) {
     var orderNumber = data.addOrder(order);
     socket.emit('orderNumber', orderNumber);
     io.emit('currentQueue', { orders: data.getAllOrders(),
-                          ingredients: data.getIngredients() });
+                          ingredients: data.getIngredients(),
+                          premade: data.getPremade()});
   });
   // send UI labels in the chosen language
   socket.on('switchLang', function (lang) {
@@ -177,11 +208,33 @@ io.on('connection', function (socket) {
     io.emit('currentQueue', {orders: data.getAllOrders() });
   });
 
-socket.on('cancelOrder', function (orderId){
+    socket.on('cancelOrder', function (orderId){
+    
     data.cancelOrder(orderId);
+    
     io.emit('currentQueue', {orders: data.getAllOrders(), ingredients: data.getIngredients() });
 
 });
+
+    socket.on('orderInMade', function(orderId){
+        data.markOrderInMade(orderId);
+        io.emit('currentQueue', {orders: data.getAllOrders() });
+    });
+    
+    socket.on('notInMade', function(orderId){
+        data.unmarkOrderInMade(orderId);
+        io.emit('currentQueue', {orders: data.getAllOrders()});
+    });
+    
+    socket.on('minusIngredient', function(item){
+        data.minusIngredientsStock(item);
+        io.emit('currentQueue', {orders: data.getAllOrders(), ingredients: data.getIngredients() });
+    });
+    
+    socket.on('plusIngredient', function(item){
+        data.plusIngredientsStock(item);
+        io.emit('currentQueue', {orders: data.getAllOrders(), ingredients: data.getIngredients() });
+    });
 });
 //socket.on('History', function()){
 //          socket.emit('History', data)

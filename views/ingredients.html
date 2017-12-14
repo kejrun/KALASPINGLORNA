@@ -20,13 +20,13 @@
       type="smoothie"
       v-for="item in ingredients"
       v-if="item.vol_m > 0"
-      v-on:increment="addToRefill(item)"
+      v-on:refill="addToRefill(item)"
+      v-on:un-refill="unaddToRefill(item)"
       :item="item"
       :lang="lang"
       :key="item.ingredient_id">
     </ingredient>
-        
-    <button v-on:click="refillStock()">{{ uiLabels.refill }}</button>
+    <button v-on:click="refreshPage()" class=refillbtn>{{ uiLabels.refill }}</button>
 
 
     </div>
