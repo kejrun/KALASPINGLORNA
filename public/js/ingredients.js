@@ -40,6 +40,9 @@ var vm = new Vue({
     },
     unaddToRefill: function(item){
         socket.emit("minusIngredient", item.ingredient_id);
+    },
+     refreshPage: function(){
+        window.location = 'http://localhost:3000/ingredients';
     }
-    
+        
 }});

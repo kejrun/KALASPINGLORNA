@@ -111,7 +111,6 @@ Data.prototype.makeStockTransaction = function(item, changeUnit){
     var transactions = this.data[transactionsDataName],
     transId =  transactions[transactions.length - 1].transaction_id;
     transactions.push({transaction_id: transId, ingredient_id: item, change: changeUnit})
-    console.log (transId, item, changeUnit)
 };
   
 

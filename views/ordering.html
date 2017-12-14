@@ -27,9 +27,8 @@
   </div>
 
   <div id="chooseYourOwn-page" class="tabcontent">
-  <div id="chooseYourOwnHeader">
+  <div id="myHeader" class="stickyHeader">
   <h1>{{ uiLabels.chooseYourOwn }}</h1>
-
       <!--Ingredients bar at the top of this page only-->
         <div id="ingredientsBar" class="ingredientsBar">
         <div id="ingredientsBarText">Choose 5 ingredients</div>
@@ -37,8 +36,8 @@
       </div>
       <!--*-->
   </div>
+<div class="mainHeaderBottom">
 
-    <p> here you can decide for yourself :)</p>
 
 <!-- Category-list and ingredient-list created to be able to get a grid layout -->
    <div class = "categories-drink">
@@ -105,9 +104,12 @@
     <p v-for= "item in chosenIngredients"> {{ item["ingredient_" + lang] }}</p>
     <br> {{ volume }} ml, {{ price }} kr
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
-</div>
-</div>
+    <button>Small</button>
+    <button>Medium</button>
+    <button>Large</button>
 
+</div>
+</div>
 
    <h1>{{ uiLabels.ordersInQueue }}</h1>
     <div>
@@ -123,6 +125,7 @@
     </div>
 
   </div>
+</div>
 
 
   <div id="preMade-page" class="tabcontent">
@@ -146,14 +149,14 @@
 
 
 </body>
-<footer id="ProgressBarPreMade">
+<div id="ProgressBarPreMade" class="stickyBottom">
 <button class="tablink" v-on:click="openTab('home-page', this, 'orange')">{{ uiLabels.home }}</button>
 <button class="tablink" v-on:click="openTab('preMade-page', this, 'red')" id="defaultOpen">{{ uiLabels.preMade }}</button>
 <button class="tablink" v-on:click="openTab('myOrder-page', this, 'blue')">{{ uiLabels.myOrder }}</button>
 <button class="tablink" v-on:click="openTab('checkOut-page', this, 'green')">{{ uiLabels.checkOut }}</button>
 </footer>
 
-<footer id="ProgressBarChooseYourOwn">
+<div id="ProgressBarChooseYourOwn" class="stickyBottom">
 <button class="tablink" v-on:click="openTab('home-page', this, 'orange')">{{ uiLabels.home }}</button>
 <button class="tablink" v-on:click="openTab('chooseYourOwn-page', this, 'green')" id="defaultOpen">{{ uiLabels.ingredients }}</button>
 <button class="tablink" v-on:click="openTab('chooseYourOwn-page', this, 'red')">{{ uiLabels.extras }}</button>
