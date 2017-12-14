@@ -91,21 +91,20 @@ function increaseBar() {
     var curSize = $("#ingredientsBarProgress").width();
     var increment = fullSize/5;
     if(curSize < fullSize) {
-        var newLength = curSize+20;
         $("#ingredientsBarProgress").css('width', '+=' + increment);
+        var newLength = curSize+20; //20%
         textOnBar(newLength, fullSize);
     }
 }
 
 //minskar progress i ingredientsBar
 function decreaseBar() {
-    var fullSize = $("#ingredientsBar").width();
+    var fullSize = $("#ingredientsBar").width()-6; //magic number 6, adds padding 3px on each side
     var curSize = $("#ingredientsBarProgress").width();
-    var fullSize = 500;
     var increment = fullSize/5;
     if(curSize > 0) {
-        var newLength = curSize-increment;
         $("#ingredientsBarProgress").css('width', '-=' + increment);
+        var newLength = curSize-20; //20%
         textOnBar(newLength, fullSize);
     }
 }
@@ -152,6 +151,7 @@ function getRandomInt(min, max) {
   return "#" + getRandomInt(1, 1000000);
 }*/
 
+
 var vm = new Vue({
   el: '#ordering',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
@@ -165,12 +165,13 @@ var vm = new Vue({
     socket.on("orderNumber",function(orderNumber) {
     //alert("Your ordernumber is " + orderNumber);
   });
-    
+
   },
   methods: {
     addToOrder: function (item, type) {
       this.chosenIngredients.push(item);
       this.type = type;
+        console.log(this.type);
     this.chosenIngredients.push(document.createElement('br'));
       if (type === "medium") {
         this.volume += +item.vol_m;
@@ -179,25 +180,8 @@ var vm = new Vue({
         this.volume += +item.vol_juice;
       }
       this.price += +item.price_m;
-        
+
     },
-      
-      
-    removeFromOrder: function (item, type) {
-      this.chosenIngredients.remove(item);
-      this.type = type;
-    this.chosenIngredients.push(document.createElement('br'));
-      if (type === "medium") {
-        this.volume += +item.vol_m;
-          console.log("vol_m added");
-      } else if (type === "juice") {
-        this.volume += +item.vol_juice;
-      }
-      this.price += +item.price_m;
-    },
-      
-      
-      
 
     placeOrder: function () {
       var i,
@@ -247,13 +231,14 @@ var vm = new Vue({
       var i,
       //Wrap the order in an object
       order = {
+        name: "premade drink",
         ingredients: this.chosenIngredients,
         volume: this.volume,
         type: this.type,
         price: this.price
       };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      socket.emit('order', {orderId: getOrderNumber(), order: order});
+      socket.emit('order', { order: order});
       //set all counters to 0. Notice the use of $refs
       for (i = 0; i < this.$refs.ingredient.length; i += 1) {
         this.$refs.ingredient[i].resetCounter();
@@ -265,6 +250,26 @@ var vm = new Vue({
       this.chosenIngredients = [];
       resetIngredientsForNewOrder();
 
+    },
+    openTab: function(tabName, elmnt, color) {
+        // Hide all elements with class="tabcontent" by default */
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Remove the background color of all tablinks/buttons
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+        }
+
+        // Show the specific tab content
+        document.getElementById(tabName).style.display = "block";
+
+        // Add the specific color to the button used to open the tab content
+        elmnt.style.backgroundColor = color;
     },
 
     chooseYourOwn: function () {
@@ -284,40 +289,6 @@ var vm = new Vue({
       document.getElementById("checkOut-page").style.display = "none";
       document.getElementById("ProgressBarPreMade").style.display = "block";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
-    },
-    myOrder: function () {
-      document.getElementById("chooseYourOwn-page").style.display = "none";
-      document.getElementById("preMade-page").style.display = "none";
-      document.getElementById("home-page").style.display = "none";
-      document.getElementById("myOrder-page").style.display = "block";
-      document.getElementById("checkOut-page").style.display = "none";
-      if (document.getElementById("ProgressBarPreMade").style.display = "block"){
-        document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
-      }
-      else {
-        document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
-      };
-    },
-    checkOut: function () {
-      document.getElementById("chooseYourOwn-page").style.display = "none";
-      document.getElementById("preMade-page").style.display = "none";
-      document.getElementById("home-page").style.display = "none";
-      document.getElementById("myOrder-page").style.display = "none";
-      document.getElementById("checkOut-page").style.display = "block";
-      if (document.getElementById("ProgressBarPreMade").style.display = "block"){
-        document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
-      }
-      else {
-        document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
-      };
-    },
-    HomePage: function () {
-      document.getElementById("chooseYourOwn-page").style.display = "none";
-      document.getElementById("preMade-page").style.display = "none";
-      document.getElementById("home-page").style.display = "block";
-      document.getElementById("myOrder-page").style.display = "none";
-      document.getElementById("checkOut-page").style.display = "none";
     }
-
   }
 });

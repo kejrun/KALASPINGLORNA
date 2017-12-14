@@ -11,6 +11,7 @@
   <script src="js/ingredients.js" defer></script>
 </head>
     <body>
+    <div class = kitchen_layout>
     <div id="ingredients"> 
     <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
     <h1>{{ uiLabels.stockList }}</h1>
@@ -19,15 +20,17 @@
       type="smoothie"
       v-for="item in ingredients"
       v-if="item.vol_m > 0"
-      v-on:increment="addToOrder(item, 'smoothie')"
+      v-on:increment="addToRefill(item)"
       :item="item"
       :lang="lang"
       :key="item.ingredient_id">
     </ingredient>
         
-    <button v-on:click="refillStock()">{{ uiLabels.refill }}</button>
+    <button v-on:click="refillStock()" class=refillbtn>{{ uiLabels.refill }}</button>
 
-        </div>
+
+    </div>
+    </div>
 </body>
     
 </html>
