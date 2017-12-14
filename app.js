@@ -171,7 +171,8 @@ io.on('connection', function (socket) {
     var orderNumber = data.addOrder(order);
     socket.emit('orderNumber', orderNumber);
     io.emit('currentQueue', { orders: data.getAllOrders(),
-                          ingredients: data.getIngredients() });
+                          ingredients: data.getIngredients(),
+                          premade: data.getPremade()});
   });
   // send UI labels in the chosen language
   socket.on('switchLang', function (lang) {
