@@ -34,7 +34,7 @@ Vue.component('ingredient', {
       }
       this.chosenIngredients = [];
      }*/
-  }};
+  }});
 
 var vm = new Vue({
   el: '#ingredients',
@@ -69,4 +69,4 @@ var vm = new Vue({
     //  this.chosenIngredients = [];
     }
 
-});
+}});
