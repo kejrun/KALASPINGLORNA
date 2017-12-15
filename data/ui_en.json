@@ -21,5 +21,9 @@
   "fruit" : "Fruits",
   "vegetable" : "Vegetables",
   "berry" : "Berries",
-  "liquid" : "Liquids"
+  "liquid" : "Liquids",
+    "nut" : "Nuts and seeds",
+    "flavour" : "Flavours",
+    "powder" : "Powders",
+    "other" : "Others"
 }

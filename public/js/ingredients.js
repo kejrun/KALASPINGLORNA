@@ -5,7 +5,7 @@ Vue.component('ingredient', {
   <label>{{ counter }}</label>\
   <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
   <label>\
-  {{item["ingredient_"+ lang]}} ({{ item.vol_m }} ml), {{item.stock}}ml\
+  {{item["ingredient_"+ lang]}}, {{item.stock}}ml\
   </label>\
   </div>',
   data: function () {

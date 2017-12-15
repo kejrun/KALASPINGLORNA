@@ -7,7 +7,7 @@
   "ingredients" : "Ingredienser",
   "with" : "med",
   "ready" : "Klart",
-  "cancel": "Cancel",
+  "cancel": "Avbryt",
   "order" : "Min drink",
   "language" : "English",
   "home" : "Hem",
@@ -21,5 +21,9 @@
   "fruit" : "Frukter",
   "vegetable" : "Grönsaker",
   "berry" : "Bär",
-  "liquid" : "Vätskor"
+  "liquid" : "Vätskor",
+    "nut" : "Nötter och frön",
+    "flavour" : "Smaksättare",
+    "powder" : "Pulver",
+    "other" : "Övrigt"
 }
