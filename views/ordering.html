@@ -13,59 +13,59 @@
 </head>
 <div id="ordering">
 
-<body>
+  <body>
 
-  <div id="home-page" class="tabcontent">
-  <h1>{{ uiLabels.home }}</h1>
-  <div style="text-align:center;">
-  <button class="homebutton" v-on:click="switchLang()">{{ uiLabels.language }}</button>
-  <button class="homebutton" v-on:click="chooseYourOwn()">{{ uiLabels.chooseYourOwn }}</button>
-  <button class="homebutton" v-on:click="preMade()">{{ uiLabels.preMade }}</button>
-  </div>
-  </div>
-
-  <div id="chooseYourOwn-page" class="tabcontent">
-  <div id="fixedHeader">
-      <!--<h1>{{ uiLabels.chooseYourOwn }}</h1>-->
-        <div id="ingredientsBar" class="ingredientsBar">
-        <div id="ingredientsBarText">Choose 5 ingredients</div>
-        <div id="ingredientsBarProgress"></div>
+    <div id="home-page" class="tabcontent">
+      <h1>{{ uiLabels.home }}</h1>
+      <div style="text-align:center;">
+        <button class="homebutton" v-on:click="switchLang()">{{ uiLabels.language }}</button>
+        <button class="homebutton" v-on:click="chooseYourOwn()">{{ uiLabels.chooseYourOwn }}</button>
+        <button class="homebutton" v-on:click="preMade()">{{ uiLabels.preMade }}</button>
       </div>
-  </div>
-<!-- Category-list and ingredient-list created to be able to get a grid layout -->
-   <div class = "categories-drink">
-    <div class = "category-list">
-    <div class ="ingredients-list">
-    <h1>{{ uiLabels.fruit }}</h1>
-    <ingredient
-      ref="ingredient"
-      type="medium"
-      v-for="item in ingredients"
-      v-if="item.category == 'fruit'"
-      v-on:increment="addToOrder(item, 'medium')"
-      :item="item"
-      :lang="lang"
-      :key="item.ingredient_id">
-    </ingredient>
     </div>
 
-    <div class = "ingredients-list">
-    <h1>{{ uiLabels.vegetable }}</h1>
-       <ingredient
-      ref="ingredient"
-      type="medium"
-      v-for="item in ingredients"
-      v-if="item.category == 'vegetable'"
-      v-on:increment="addToOrder(item, 'medium')"
-      :item="item"
-      :lang="lang"
-      :key="item.ingredient_id">
-    </ingredient>
-    </div>
+    <div id="chooseYourOwn-page" class="tabcontent">
+      <div id="fixedHeader">
+        <!--<h1>{{ uiLabels.chooseYourOwn }}</h1>-->
+        <div id="ingredientsBar" class="ingredientsBar">
+          <div id="ingredientsBarText">Choose 5 ingredients</div>
+          <div id="ingredientsBarProgress"></div>
+        </div>
+      </div>
+      <!-- Category-list and ingredient-list created to be able to get a grid layout -->
+      <div class = "categories-drink">
+        <div class = "category-list">
+          <div class ="ingredients-list">
+            <h1>{{ uiLabels.fruit }}</h1>
+            <ingredient
+            ref="ingredient"
+            type="medium"
+            v-for="item in ingredients"
+            v-if="item.category == 'fruit'"
+            v-on:increment="addToOrder(item, 'medium')"
+            :item="item"
+            :lang="lang"
+            :key="item.ingredient_id">
+          </ingredient>
+        </div>
 
-    <div class = "ingredients-list">
-    <h1> {{uiLabels.berry}} </h1>
-      <ingredient
+        <div class = "ingredients-list">
+          <h1>{{ uiLabels.vegetable }}</h1>
+          <ingredient
+          ref="ingredient"
+          type="medium"
+          v-for="item in ingredients"
+          v-if="item.category == 'vegetable'"
+          v-on:increment="addToOrder(item, 'medium')"
+          :item="item"
+          :lang="lang"
+          :key="item.ingredient_id">
+        </ingredient>
+      </div>
+
+      <div class = "ingredients-list">
+        <h1> {{uiLabels.berry}} </h1>
+        <ingredient
         ref = "ingredient"
         type="medium"
         v-for = "item in ingredients"
@@ -74,90 +74,90 @@
         :item="item"
         :lang="lang"
         :key="item.ingredient_id">
-        </ingredient>
+      </ingredient>
     </div>
 
     <div class = "ingredients-list">
       <h1> {{uiLabels.liquid}} </h1>
       <ingredient
-        ref = "ingredient"
-        type="medium"
-        v-for = "item in ingredients"
-        v-if = "item.category == 'liquid'"
-        v-on:increment="addToOrder(item, 'medium')"
-        :item="item"
-        :lang="lang"
-        :key="item.ingredient_id">
-        </ingredient>
-    </div>
+      ref = "ingredient"
+      type="medium"
+      v-for = "item in ingredients"
+      v-if = "item.category == 'liquid'"
+      v-on:increment="addToOrder(item, 'medium')"
+      :item="item"
+      :lang="lang"
+      :key="item.ingredient_id">
+    </ingredient>
+  </div>
 </div>
 
 <div id="showDrink">
-    <h1>{{ uiLabels.order }}</h1>
-    <table id="showDrinkTable" >
-        <tr v-for= "item in chosenIngredients">
-            <td class="ingredientColumn">{{ item["ingredient_" + lang] }}</td>
-            <td class="priceColumn"> {{ item["price_"+"m"] }} kr</td>
-        </tr></table>
+  <h1>{{ uiLabels.order }}</h1>
+  <table id="showDrinkTable" >
+    <tr v-for= "item in chosenIngredients">
+      <td class="ingredientColumn">{{ item["ingredient_" + lang] }}</td>
+      <td class="priceColumn"> {{ item["price_"+"m"] }} kr</td>
+    </tr></table>
     <br> Totalt: {{ price }} kr
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button><br>
     <button>Small</button>
     <button>Medium</button>
     <button>Large</button>
 
-</div>
+  </div>
 </div>
 <!--
-   <h1>{{ uiLabels.ordersInQueue }}</h1>
-    <div>
-      <order-item
-        v-for="(order, key) in orders"
-        v-if="!order.done && order.type == 'medium'"
-        :order-id="key"
-        :order="order"
-        :ui-labels="uiLabels"
-        :lang="lang"
-        :key="key">
-      </order-item>
-    </div>-->
+<h1>{{ uiLabels.ordersInQueue }}</h1>
+<div>
+<order-item
+v-for="(order, key) in orders"
+v-if="!order.done && order.type == 'medium'"
+:order-id="key"
+:order="order"
+:ui-labels="uiLabels"
+:lang="lang"
+:key="key">
+</order-item>
+</div>-->
 </div>
 
-  <div id="preMade-page" class="tabcontent">
+<div id="preMade-page" class="tabcontent">
   <h1>{{ uiLabels.preMade }}</h1>
   <div v-for="preparedDrink in premade">
-      <h2>{{preparedDrink.pm_name}}</h2>
-      <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
-      <button v-on:click="orderPremade(preparedDrink)">{{ uiLabels.placeOrder }}</button>
-    </div>
+    <h2>{{preparedDrink.pm_name}}</h2>
+    <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
+    <button v-on:click="orderPremade(preparedDrink)">{{ uiLabels.placeOrder }}</button>
   </div>
+</div>
 
-  <div id="myOrder-page" class="tabcontent">
+<div id="myOrder-page" class="tabcontent">
   <h1>{{ uiLabels.myOrder }}</h1>
   <p>These are your ordered drinks:</p>
-  </div>
+</div>
 
-  <div id="checkOut-page" class="tabcontent">
+<div id="checkOut-page" class="tabcontent">
   <h1>{{ uiLabels.checkOut }}</h1>
-  <p>PAAYY!</p>
-      </div>
+  <p>PAY!</p>
+</div>
 
-      <div id="extras-page" class="tabcontent">
-          </div>
-
+<div id="extras-page" class="tabcontent">
+</div>
 </body>
+
 <div id="ProgressBarPreMade">
-<button class="tablinkPM" v-on:click="openTab('home-page', this, 'orange')" id="home-pageBtnPM">{{ uiLabels.home }}</button>
-<button class="tablinkPM" v-on:click="openTab('preMade-page', this, 'red')" id="defaultOpenPM">{{ uiLabels.preMade }}</button>
-<button class="tablinkPM" v-on:click="openTab('myOrder-page', this, 'blue')" id="myOrder-pageBtnPM">{{ uiLabels.myOrder }}</button>
-<button class="tablinkPM" v-on:click="openTab('checkOut-page', this, 'green')"id="checkOut-pageBtnPM">{{ uiLabels.checkOut }}</button>
+  <button class="tablinkPM" v-on:click="openTab('home-page', this, 'orange')" id="home-pageBtnPM">{{ uiLabels.home }}</button>
+  <button class="tablinkPM" v-on:click="openTab('preMade-page', this, 'red')" id="defaultOpenPM">{{ uiLabels.preMade }}</button>
+  <button class="tablinkPM" v-on:click="openTab('myOrder-page', this, 'blue')" id="myOrder-pageBtnPM">{{ uiLabels.myOrder }}</button>
+  <button class="tablinkPM" v-on:click="openTab('checkOut-page', this, 'green')"id="checkOut-pageBtnPM">{{ uiLabels.checkOut }}</button>
 </div>
 
 <div id="ProgressBarChooseYourOwn">
-<button class="tablink" v-on:click="openTab('home-page', this, 'orange')" id="home-pageBtn">{{ uiLabels.home }}</button>
-<button class="tablink" v-on:click="openTab('chooseYourOwn-page', this, 'green')" id="defaultOpen">{{ uiLabels.ingredients }}</button>
-<button class="tablink" v-on:click="openTab('extras-page', this, 'red')" id="extras-pageBtn">{{ uiLabels.extras }}</button>
-<button class="tablink" v-on:click="openTab('myOrder-page', this, 'blue')" id="myOrder-pageBtn">{{ uiLabels.myOrder }}</button>
-<button class="tablink" v-on:click="openTab('checkOut-page', this, 'pink')" id="checkOut-pageBtn">{{ uiLabels.checkOut }}</button>
+  <button class="tablink" v-on:click="openTab('home-page', this, 'orange')" id="home-pageBtn">{{ uiLabels.home }}</button>
+  <button class="tablink" v-on:click="openTab('chooseYourOwn-page', this, 'green')" id="defaultOpen">{{ uiLabels.ingredients }}</button>
+  <button class="tablink" v-on:click="openTab('extras-page', this, 'red')" id="extras-pageBtn">{{ uiLabels.extras }}</button>
+  <button class="tablink" v-on:click="openTab('myOrder-page', this, 'blue')" id="myOrder-pageBtn">{{ uiLabels.myOrder }}</button>
+  <button class="tablink" v-on:click="openTab('checkOut-page', this, 'pink')" id="checkOut-pageBtn">{{ uiLabels.checkOut }}</button>
 </div>
 </div>
 </html>

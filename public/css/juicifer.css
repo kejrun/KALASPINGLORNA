@@ -121,7 +121,7 @@ h1 {
 
 #showDrinkTable{
     width:100%;
-    
+
 }
 
 .ingredientColumn{
@@ -146,6 +146,7 @@ h1 {
 }
 
 #ProgressBarPreMade{
+	font-family: 'Encode Sans Semi Condensed';
 	display: none;
 	position: fixed;
 	bottom: 0;
@@ -156,6 +157,7 @@ h1 {
 }
 
 #ProgressBarChooseYourOwn{
+	font-family: 'Encode Sans Semi Condensed';
 	display: none;
 	position: fixed;
 	bottom: 0;
@@ -273,7 +275,6 @@ max-height: 4em;
 
 /* Tab for choose chooseYourOwn */
 .tablink {
-	font-family: 'Encode Sans Semi Condensed';
 	background-color: #555;
 	color: white;
 	float: left;
@@ -287,7 +288,6 @@ max-height: 4em;
 
 /* Tab for choose premade */
 .tablinkPM {
-	font-family: 'Encode Sans Semi Condensed';
 	background-color: #555;
 	color: white;
 	float: left;
