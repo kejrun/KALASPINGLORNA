@@ -151,7 +151,6 @@ function getRandomInt(min, max) {
   return "#" + getRandomInt(1, 1000000);
 }*/
 
-
 var vm = new Vue({
   el: '#ordering',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
@@ -257,6 +256,9 @@ var vm = new Vue({
     },
 
     openTab: function(tabName, elmnt, color) {
+      //this.elmnt = elmnt
+      console.log(elmnt)
+
         // Hide all elements with class="tabcontent" by default */
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -265,7 +267,11 @@ var vm = new Vue({
         }
 
         // Remove the background color of all tablinks/buttons
-        tablinks = document.getElementsByClassName("tablink","tablinkPM");
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+        }
+        tablinks = document.getElementsByClassName("tablinkPM");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].style.backgroundColor = "";
         }
@@ -274,11 +280,12 @@ var vm = new Vue({
         document.getElementById(tabName).style.display = "block";
 
         // Add the specific color to the button used to open the tab content
+        //document.getElementById(elmnt).style.backgroundColor = "red";
         //elmnt.style.backgroundColor = "red";
     },
 
     chooseYourOwn: function () {
-      //document.getElementById("defaultOpen").style.color = "red";
+      document.getElementById("defaultOpen").style.backgroundColor = "red";
       document.getElementById("chooseYourOwn-page").style.display = "block";
       document.getElementById("preMade-page").style.display = "none";
       document.getElementById("home-page").style.display = "none";
@@ -288,7 +295,7 @@ var vm = new Vue({
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
     },
     preMade: function () {
-      //document.getElementById("defaultOpenPM").style.color = "red";
+      document.getElementById("defaultOpenPM").style.backgroundColor = "red";
       document.getElementById("chooseYourOwn-page").style.display = "none";
       document.getElementById("preMade-page").style.display = "block";
       document.getElementById("home-page").style.display = "none";
