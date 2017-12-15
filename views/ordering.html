@@ -13,9 +13,6 @@
 </head>
 <div id="ordering">
 
-<header>
-</header>
-
 <body>
 
   <div id="home-page" class="tabcontent">
@@ -28,18 +25,13 @@
   </div>
 
   <div id="chooseYourOwn-page" class="tabcontent">
-  <div id="myHeader" class="stickyHeader">
-  <h1>{{ uiLabels.chooseYourOwn }}</h1>
-      <!--Ingredients bar at the top of this page only-->
+  <div id="fixedHeader">
+      <!--<h1>{{ uiLabels.chooseYourOwn }}</h1>-->
         <div id="ingredientsBar" class="ingredientsBar">
         <div id="ingredientsBarText">Choose 5 ingredients</div>
         <div id="ingredientsBarProgress"></div>
-        </div>
-      <!--*-->
+      </div>
   </div>
-<div class="mainHeaderBottom">
-
-
 <!-- Category-list and ingredient-list created to be able to get a grid layout -->
    <div class = "categories-drink">
     <div class = "category-list">
@@ -104,14 +96,14 @@
     <h1>{{ uiLabels.order }}</h1>
     <p v-for= "item in chosenIngredients"> {{ item["ingredient_" + lang] }}</p>
     <br> {{ volume }} ml, {{ price }} kr
-    <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+    <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button><br>
     <button>Small</button>
     <button>Medium</button>
     <button>Large</button>
-    
-</div>  
-</div>
 
+</div>
+</div>
+<!--
    <h1>{{ uiLabels.ordersInQueue }}</h1>
     <div>
       <order-item
@@ -123,11 +115,8 @@
         :lang="lang"
         :key="key">
       </order-item>
-    </div>
-
-  </div>
+    </div>-->
 </div>
-
 
   <div id="preMade-page" class="tabcontent">
   <h1>{{ uiLabels.preMade }}</h1>
@@ -148,16 +137,15 @@
   <p>PAAYY!</p>
       </div>
 
-
 </body>
-<div id="ProgressBarPreMade" class="stickyBottom">
-<button class="tablink" v-on:click="openTab('home-page', this, 'orange')">{{ uiLabels.home }}</button>
-<button class="tablink" v-on:click="openTab('preMade-page', this, 'red')" id="defaultOpen">{{ uiLabels.preMade }}</button>
-<button class="tablink" v-on:click="openTab('myOrder-page', this, 'blue')">{{ uiLabels.myOrder }}</button>
-<button class="tablink" v-on:click="openTab('checkOut-page', this, 'green')">{{ uiLabels.checkOut }}</button>
+<div id="ProgressBarPreMade">
+<button class="tablinkPM" v-on:click="openTab('home-page', this, 'orange')">{{ uiLabels.home }}</button>
+<button class="tablinkPM" v-on:click="openTab('preMade-page', this, 'red')" id="defaultOpenPM">{{ uiLabels.preMade }}</button>
+<button class="tablinkPM" v-on:click="openTab('myOrder-page', this, 'blue')">{{ uiLabels.myOrder }}</button>
+<button class="tablinkPM" v-on:click="openTab('checkOut-page', this, 'green')">{{ uiLabels.checkOut }}</button>
 </div>
 
-<div id="ProgressBarChooseYourOwn" class="stickyBottom">
+<div id="ProgressBarChooseYourOwn">
 <button class="tablink" v-on:click="openTab('home-page', this, 'orange')">{{ uiLabels.home }}</button>
 <button class="tablink" v-on:click="openTab('chooseYourOwn-page', this, 'green')" id="defaultOpen">{{ uiLabels.ingredients }}</button>
 <button class="tablink" v-on:click="openTab('chooseYourOwn-page', this, 'red')">{{ uiLabels.extras }}</button>

@@ -40,6 +40,15 @@ var vm = new Vue({
     },
     unaddToRefill: function(item){
         socket.emit("minusIngredient", item.ingredient_id);
+    },
+     refreshPage: function(){
+        window.location = 'http://localhost:3000/ingredients';
+         
+    },
+    ShowStartpage: function(){
+        window.location = 'http://localhost:3000/kitchen';
+        document.getElementById("finishedOrder").style.display ="none";
+        document.getElementById("start_page").style.display = "none";
     }
     
 }});
