@@ -155,7 +155,7 @@ var vm = new Vue({
   el: '#ordering',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
   data: {
-    type: '',
+    type: 'm',
     chosenIngredients: [],
     pricesSmall: [],
     pricesMedium: [],
