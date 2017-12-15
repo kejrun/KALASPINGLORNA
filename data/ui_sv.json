@@ -2,7 +2,7 @@
   "ordersFinished" : "Färdiga beställningar",
   "ordersInQueue" : "Beställningar att förbereda",
   "ordersTrending" : "Populära beställningar",
-  "placeOrder" : "Beställ",
+  "addToOrder" : "Lägg till i min order",
   "sideorders" : "Tillbehör",
   "ingredients" : "Ingredienser",
   "with" : "med",
@@ -20,7 +20,7 @@
   "checkOut" : "Till betalning",
   "extras" : "Extra",
     "stockList": "Lager",
-    "refill": "Fyll på",
+    "refill": "Uppdatera",
   "fruit" : "Frukter",
   "vegetable" : "Grönsaker",
   "berry" : "Bär",
@@ -28,5 +28,7 @@
     "nut" : "Nötter och frön",
     "flavour" : "Smaksättare",
     "powder" : "Pulver",
-    "other" : "Övrigt"
+    "other" : "Övrigt",
+     "stock" : "Lagersaldo (ml)",
+    "add" : "Fyll på lager (ml)"
 }

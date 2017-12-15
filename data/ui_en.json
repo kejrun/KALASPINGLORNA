@@ -2,7 +2,7 @@
   "ordersFinished" : "Finished orders",
   "ordersInQueue" : "Order queue",
   "ordersTrending" : "Trending orders",
-  "placeOrder" : "Place order",
+  "addToOrder" : "Add to my order",
   "sideorders" : "Side orders",
   "ingredients" : "Ingredients",
   "with" : "with",
@@ -20,7 +20,7 @@
   "checkOut" : "Checkout",
   "extras" : "Extras",
     "stockList": "Stock List",
-    "refill": "Refill",
+    "refill": "Update",
   "fruit" : "Fruits",
   "vegetable" : "Vegetables",
   "berry" : "Berries",
@@ -28,5 +28,7 @@
     "nut" : "Nuts and seeds",
     "flavour" : "Flavours",
     "powder" : "Powders",
-    "other" : "Others"
+    "other" : "Others",
+    "stock" : "Stock Balance (ml)",
+    "add" : "Add to Stock (ml)"
 }

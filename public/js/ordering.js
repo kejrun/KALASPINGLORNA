@@ -111,6 +111,7 @@ function decreaseBar() {
 
 //skriver ut text på ingredientsBar
 function textOnBar(newLength, fullSize){
+    console.log(newLength);
   if (newLength == 0){
     ingredientsBarText.innerHTML = 'Choose 5 ingredients';
   }
@@ -155,7 +156,7 @@ var vm = new Vue({
   el: '#ordering',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
   data: {
-    type: 'M',
+    type: "m", //preset on size medium
     chosenIngredients: [],
     pricesSmall: [],
     pricesMedium: [],
@@ -172,7 +173,9 @@ var vm = new Vue({
   methods: {
     addToOrder: function (item, type) {
       this.chosenIngredients.push(item);
-
+        if (this.chosenIngredients.length == 5){
+            document.getElementById("addToMyOrder").disabled = false;
+            }
       this.pricesSmall.push(item.price_s);
       this.pricesMedium.push(item.price_m);
       this.pricesLarge.push(item.price_l);
@@ -210,6 +213,23 @@ var vm = new Vue({
           }
           }
       ,
+      
+      markChosenSizeButton: function(type){
+          document.getElementById("smallCup").style.backgroundColor = "white";
+          document.getElementById("mediumCup").style.backgroundColor = "white";
+          document.getElementById("largeCup").style.backgroundColor = "white";
+          this.type=type;
+          console.log(type);
+          if (type === 's'){
+          document.getElementById("smallCup").style.backgroundColor = "lightblue";
+          }
+          else if (type === 'm'){
+          document.getElementById("mediumCup").style.backgroundColor = "lightblue";
+          }
+          else {
+          document.getElementById("largeCup").style.backgroundColor = "lightblue";
+          }
+      },
 
     placeOrder: function () {
       var i,
@@ -369,29 +389,26 @@ var vm = new Vue({
     },
 
     toExtras: function(){
-        document.getElementById("defaultOpenPM").style.backgroundColor = "red";
-      document.getElementById("chooseYourOwn-page").style.display = "block";
-
-        var i, ingredientsList;
-        ingredientsList = document.getElementsByClassName("ingredients-list")
-        for(i=0; i<ingredientsList.length; i++){
-            ingredientsList[i].style.display = "none";
-        }
+        var extrasCategories,categoriesDrink;
+      document.getElementById("defaultOpenPM").style.backgroundColor = "red";
+      document.getElementById("category-list").style.display ="none";
       document.getElementById("preMade-page").style.display = "none";
       document.getElementById("home-page").style.display = "none";
       document.getElementById("myOrder-page").style.display = "none";
       document.getElementById("checkOut-page").style.display = "none";
       document.getElementById("ProgressBarPreMade").style.display = "none";
+      document.getElementById("chooseYourOwn-page").style.display = "block"; 
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
+      extrasCategories = document.getElementById("extrasCategories")
+      categoriesDrink = document.getElementById("categories-drink");
+     categoriesDrink.appendChild(extrasCategories);
+        extrasCategories.style.display="grid";
+    
     },
 
     toChooseYourOwn: function() {
-        var i, ingredientsList;
-        ingredientsList = document.getElementsByClassName("ingredients-list")
-        for(i=0; i<ingredientsList.length; i++){
-            ingredientsList[i].style.display = "block";
-        }
-  }
+      document.getElementById("extrasCategories").style.display = "none"; document.getElementById("category-list").style.display ="grid";
+    }
   }
 
 });

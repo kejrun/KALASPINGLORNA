@@ -21,8 +21,13 @@
     <h1>{{ uiLabels.stockList }}</h1>
         
     <div id = "ingredients_layout">
-    <div class ="stockList">
-    <h1>{{ uiLabels.fruit }}</h1>
+    <div class ="stockHeaders">
+        <div class ="stockHead">{{ uiLabels.fruit }}</div>
+        <div class ="stockHead">{{ uiLabels.stock }}</div>
+        <div class ="stockHead">{{ uiLabels.add }}</div>
+        </div>
+   <!-- <h2>{{ uiLabels.fruit }}{{uiLabels.stock}}{{uiLabels.add}}</h2>-->
+        <div class = "stockList">
     <ingredient
       ref="ingredient"
       type="medium"
@@ -34,10 +39,14 @@
       :lang="lang"
       :key="item.ingredient_id">
     </ingredient>
-    </div>
-
+        <div/>
+   
+ <div class ="stockHeaders">
+        <div class ="stockHead">{{ uiLabels.vegetable }}</div>
+        <div class ="stockHead">{{ uiLabels.stock }}</div>
+        <div class ="stockHead">{{ uiLabels.add }}</div>
+        </div>
     <div class = "stockList">
-    <h1>{{ uiLabels.vegetable }}</h1>
        <ingredient
       ref="ingredient"
       type="medium"
@@ -52,7 +61,7 @@
     </div>
 
     <div class = "stockList">
-    <h1> {{uiLabels.berry}} </h1>
+    <h2> {{uiLabels.berry}} </h2>
       <ingredient
         ref = "ingredient"
         type="medium"
@@ -67,7 +76,7 @@
     </div>
 
     <div class = "stockList">
-      <h1> {{uiLabels.liquid}} </h1>
+      <h2> {{uiLabels.liquid}} </h2>
       <ingredient
         ref = "ingredient"
         type="medium"
@@ -82,7 +91,7 @@
     </div>
         
         <div class = "stockList">
-      <h1> {{uiLabels.nut}} </h1>
+      <h2> {{uiLabels.nut}} </h2>
       <ingredient
         ref = "ingredient"
         type="medium"
@@ -97,7 +106,7 @@
     </div>
         
          <div class = "stockList">
-      <h1> {{uiLabels.flavour}} </h1>
+      <h2> {{uiLabels.flavour}} </h2>
       <ingredient
         ref = "ingredient"
         type="medium"
@@ -112,7 +121,7 @@
     </div>
         
           <div class = "stockList">
-      <h1> {{uiLabels.powder}} </h1>
+      <h2> {{uiLabels.powder}} </h2>
       <ingredient
         ref = "ingredient"
         type="medium"
@@ -127,7 +136,7 @@
     </div>
         
           <div class = "stockList">
-      <h1> {{uiLabels.other}} </h1>
+      <h2> {{uiLabels.other}} </h2>
       <ingredient
         ref = "ingredient"
         type="medium"
@@ -141,6 +150,7 @@
         </ingredient>
     </div>
 </div>
+        
         
     <!--<div id= "ingredients_layout">
     <ingredient

@@ -30,13 +30,14 @@
   <div id="fixedHeader">
       <!--<h1>{{ uiLabels.chooseYourOwn }}</h1>-->
         <div id="ingredientsBar" class="ingredientsBar">
+
         <div id="ingredientsBarText">Choose 5 ingredients</div>
         <div id="ingredientsBarProgress"></div>
       </div>
   </div>
 <!-- Category-list and ingredient-list created to be able to get a grid layout -->
-   <div class = "categories-drink">
-    <div class = "category-list">
+   <div id = "categories-drink">
+    <div id = "category-list">
     <div class ="ingredients-list">
     <h1>{{ uiLabels.fruit }}</h1>
     <div class ="ingredients-list-text">
@@ -106,6 +107,8 @@
 </div>
 </div>
 
+
+
 <div id="showDrink">
     <h1>{{ uiLabels.order }}</h1>
     <table id="showDrinkTable" >
@@ -115,10 +118,13 @@
         </tr></table>
 
     <br> Totalt: {{ price }} kr
-    <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button><br>
-    <button v-on:click="switchType('S'); changeTotalPrice('S')">{{ uiLabels.smallType }}</button>
-    <button v-on:click="switchType('M'); changeTotalPrice('M')">{{ uiLabels.mediumType }}</button>
-    <button v-on:click="switchType('L'); changeTotalPrice('L')">{{ uiLabels.largeType }}</button>
+
+    <button id="addToMyOrder" v-on:click="placeOrder();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button><br>
+    <br>
+    <button id="smallCup" class="sizeButton" v-on:click="switchType('s'); changeTotalPrice('s');markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
+    <button id="mediumCup" class="sizeButton" v-on:click="switchType('m'); changeTotalPrice('m');markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
+    <button id="largeCup" class="sizeButton" v-on:click="switchType('l'); changeTotalPrice('l');markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
+
 
   </div>
 </div>
@@ -142,11 +148,65 @@ v-if="!order.done && order.type == 'medium'"
   <div v-for="preparedDrink in premade">
     <h2>{{preparedDrink.pm_name}}</h2>
     <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
-    <button v-on:click="orderPremade(preparedDrink)">{{ uiLabels.placeOrder }}</button>
+    <button v-on:click="orderPremade(preparedDrink)">{{ uiLabels.addToOrder}}</button>
   </div>
   </div>
 
 <div id="extras-page" class="tabcontent">
+    <div id="extrasCategories">
+          <div class ="extras-list">
+            <h1>{{ uiLabels.nut }}</h1>
+            <ingredient
+            ref="ingredient"
+            type="medium"
+            v-for="item in ingredients"
+            v-if="item.category == 'nut'"
+            v-on:increment="addToOrder(item, 'medium')"
+            :item="item"
+            :lang="lang"
+            :key="item.ingredient_id">
+          </ingredient>
+         </div>
+          <div class ="extras-list">
+            <h1>{{ uiLabels.flavour }}</h1>
+            <ingredient
+            ref="ingredient"
+            type="medium"
+            v-for="item in ingredients"
+            v-if="item.category == 'flavour'"
+            v-on:increment="addToOrder(item, 'medium')"
+            :item="item"
+            :lang="lang"
+            :key="item.ingredient_id">
+          </ingredient>
+         </div>
+         <div class ="extras-list">
+            <h1>{{ uiLabels.powder }}</h1>
+            <ingredient
+            ref="ingredient"
+            type="medium"
+            v-for="item in ingredients"
+            v-if="item.category == 'powder'"
+            v-on:increment="addToOrder(item, 'medium')"
+            :item="item"
+            :lang="lang"
+            :key="item.ingredient_id">
+          </ingredient>
+         </div>
+         <div class ="extras-list">
+            <h1>{{ uiLabels.other }}</h1>
+            <ingredient
+            ref="ingredient"
+            type="medium"
+            v-for="item in ingredients"
+            v-if="item.category == 'other'"
+            v-on:increment="addToOrder(item, 'medium')"
+            :item="item"
+            :lang="lang"
+            :key="item.ingredient_id">
+          </ingredient>
+         </div>
+    </div>
 </div>
 
 <div id="myOrder-page" class="tabcontent">
@@ -158,7 +218,6 @@ v-if="!order.done && order.type == 'medium'"
   <h1>{{ uiLabels.checkOut }}</h1>
   <p>PAAYY!</p>
       </div>
-
 
 <div id="extras-page" class="tabcontent">
 </div>
