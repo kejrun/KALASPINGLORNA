@@ -194,6 +194,7 @@ var vm = new Vue({
         type: this.type,
         price: this.price
       };
+      console.log('order', {order: order});
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       socket.emit('order', {order: order});
       //set all counters to 0. Notice the use of $refs

@@ -35,8 +35,10 @@
       <!-- Category-list and ingredient-list created to be able to get a grid layout -->
       <div class = "categories-drink">
         <div class = "category-list">
+
           <div class ="ingredients-list">
             <h1>{{ uiLabels.fruit }}</h1>
+            <div class ="ingredients-list-text">
             <ingredient
             ref="ingredient"
             type="medium"
@@ -48,9 +50,11 @@
             :key="item.ingredient_id">
           </ingredient>
         </div>
+        </div>
 
         <div class = "ingredients-list">
           <h1>{{ uiLabels.vegetable }}</h1>
+          <div class ="ingredients-list-text">
           <ingredient
           ref="ingredient"
           type="medium"
@@ -61,10 +65,12 @@
           :lang="lang"
           :key="item.ingredient_id">
         </ingredient>
+        </div>
       </div>
 
       <div class = "ingredients-list">
         <h1> {{uiLabels.berry}} </h1>
+        <div class ="ingredients-list-text">
         <ingredient
         ref = "ingredient"
         type="medium"
@@ -75,10 +81,12 @@
         :lang="lang"
         :key="item.ingredient_id">
       </ingredient>
+      </div>
     </div>
 
     <div class = "ingredients-list">
       <h1> {{uiLabels.liquid}} </h1>
+      <div class ="ingredients-list-text">
       <ingredient
       ref = "ingredient"
       type="medium"
@@ -89,6 +97,7 @@
       :lang="lang"
       :key="item.ingredient_id">
     </ingredient>
+  </div>
   </div>
 </div>
 
