@@ -171,7 +171,6 @@ var vm = new Vue({
       this.chosenIngredients.push(item);
       this.type = type;
         console.log(this.type);
-    //this.chosenIngredients.push(document.createElement('br'));
       if (type === "small"){
         this.volume += +item.vol_s;
         this.price += +item.price_s;
@@ -337,6 +336,32 @@ var vm = new Vue({
       document.getElementById("checkOut-page").style.display = "none";
       document.getElementById("ProgressBarPreMade").style.display = "block";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
-    }
+    },
+    
+    toExtras: function(){
+        document.getElementById("defaultOpenPM").style.backgroundColor = "red";
+      document.getElementById("chooseYourOwn-page").style.display = "block";
+    
+        var i, ingredientsList;
+        ingredientsList = document.getElementsByClassName("ingredients-list")
+        for(i=0; i<ingredientsList.length; i++){
+            ingredientsList[i].style.display = "none";
+        }
+      document.getElementById("preMade-page").style.display = "none";
+      document.getElementById("home-page").style.display = "none";
+      document.getElementById("myOrder-page").style.display = "none";
+      document.getElementById("checkOut-page").style.display = "none";
+      document.getElementById("ProgressBarPreMade").style.display = "none";
+      document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
+    },
+    
+    toChooseYourOwn: function() {
+        var i, ingredientsList;
+        ingredientsList = document.getElementsByClassName("ingredients-list")
+        for(i=0; i<ingredientsList.length; i++){
+            ingredientsList[i].style.display = "block";
+        }
+  }
+      
   }
 });

@@ -129,6 +129,8 @@ v-if="!order.done && order.type == 'medium'"
     <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
     <button v-on:click="orderPremade(preparedDrink)">{{ uiLabels.placeOrder }}</button>
   </div>
+
+<div id="extras-page" class="tabcontent">
 </div>
 
 <div id="myOrder-page" class="tabcontent">
@@ -138,8 +140,9 @@ v-if="!order.done && order.type == 'medium'"
 
 <div id="checkOut-page" class="tabcontent">
   <h1>{{ uiLabels.checkOut }}</h1>
-  <p>PAY!</p>
-</div>
+  <p>PAAYY!</p>
+      </div>
+
 
 <div id="extras-page" class="tabcontent">
 </div>
@@ -153,11 +156,13 @@ v-if="!order.done && order.type == 'medium'"
 </div>
 
 <div id="ProgressBarChooseYourOwn">
-  <button class="tablink" v-on:click="openTab('home-page', this, 'orange')" id="home-pageBtn">{{ uiLabels.home }}</button>
-  <button class="tablink" v-on:click="openTab('chooseYourOwn-page', this, 'green')" id="defaultOpen">{{ uiLabels.ingredients }}</button>
-  <button class="tablink" v-on:click="openTab('extras-page', this, 'red')" id="extras-pageBtn">{{ uiLabels.extras }}</button>
-  <button class="tablink" v-on:click="openTab('myOrder-page', this, 'blue')" id="myOrder-pageBtn">{{ uiLabels.myOrder }}</button>
-  <button class="tablink" v-on:click="openTab('checkOut-page', this, 'pink')" id="checkOut-pageBtn">{{ uiLabels.checkOut }}</button>
+<button class="tablink" v-on:click="openTab('home-page', this, 'orange')" id="home-pageBtn">{{ uiLabels.home }}</button>
+<button class="tablink" v-on:click="openTab('chooseYourOwn-page', this, 'green');toChooseYourOwn()" id="defaultOpen">{{ uiLabels.ingredients }}</button>
+
+<button class="tablink" v-on:click="openTab('extras-page', this, 'red');toExtras()" id="extras-pageBtn">{{ uiLabels.extras }}</button>
+<button class="tablink" v-on:click="openTab('myOrder-page', this, 'blue')" id="myOrder-pageBtn">{{ uiLabels.myOrder }}</button>
+<button class="tablink" v-on:click="openTab('checkOut-page', this, 'pink')" id="checkOut-pageBtn">{{ uiLabels.checkOut }}</button>
+
 </div>
 </div>
 </html>
