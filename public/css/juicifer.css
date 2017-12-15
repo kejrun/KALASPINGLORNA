@@ -119,6 +119,20 @@ h1 {
 	padding: 1em;
 }
 
+#showDrinkTable{
+    width:100%;
+    
+}
+
+.ingredientColumn{
+    text-align:left;
+    width:80%;
+}
+.priceColumn{
+    text-align:right;
+    width: 20%;
+}
+
 .ingredients-list{
 }
 
