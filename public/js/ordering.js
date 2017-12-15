@@ -155,7 +155,7 @@ var vm = new Vue({
   el: '#ordering',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
   data: {
-    type: 'm',
+    type: "m", //preset on size medium
     chosenIngredients: [],
     pricesSmall: [],
     pricesMedium: [],
@@ -210,6 +210,23 @@ var vm = new Vue({
           }
           }
       ,
+      
+      markChosenSizeButton: function(type){
+          document.getElementById("smallCup").style.backgroundColor = "white";
+          document.getElementById("mediumCup").style.backgroundColor = "white";
+          document.getElementById("largeCup").style.backgroundColor = "white";
+          this.type=type;
+          console.log(type);
+          if (type==='s'){
+          document.getElementById("smallCup").style.backgroundColor = "lightblue";
+          }
+          else if (type==='m'){
+          document.getElementById("mediumCup").style.backgroundColor = "lightblue";
+          }
+          else {
+          document.getElementById("largeCup").style.backgroundColor = "lightblue";
+          }
+      },
 
     placeOrder: function () {
       var i,
