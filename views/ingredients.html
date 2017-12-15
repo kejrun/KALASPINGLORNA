@@ -13,8 +13,11 @@
     <body>
     <div class = kitchen_layout>
     <div id="ingredients"> 
-    
+        
     <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+    <br>
+    <button v-on:click="ShowStartpage()" class=backBtn ><img src = http://simpleicon.com/wp-content/uploads/arrow-17.png width = 100% ></button>
+    <br>
     <h1>{{ uiLabels.stockList }}</h1>
     <div id= "ingredients_layout">
     <ingredient
@@ -28,11 +31,9 @@
       :lang="lang"
       :key="item.ingredient_id">
     </ingredient>
-     </div>
+    </div>
     <button v-on:click="refreshPage()" class=refillbtn>{{ uiLabels.refill }}</button>
-</div>
-
-   
+    </div>
     </div>
 </body>
     

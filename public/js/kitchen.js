@@ -49,22 +49,19 @@ var vm = new Vue({
     },
     markInMade: function(orderid){
         socket.emit("orderInMade", orderid);
-        console.log(orderid)
     },
     unmarkInMade: function(orderid){
         socket.emit("notInMade", orderid);
-        console.log(orderid)
     },
       
     ShowHistory: function(){
-        console.log("hej")
         document.getElementById("finishedOrder").style.display ="block";
         document.getElementById("start_page").style.display = "none";
         document.getElementById("IngredientsPage").style.display ="none";
             
     },
     ShowIngredients: function(){
-        window.location = 'http://localhost:3000/ingredients'
+        window.location = 'http://localhost:3000/ingredients';
         document.getElementById("finishedOrder").style.display ="none";
         document.getElementById("start_page").style.display = "none";
         //document.getElementById("IngredientsPage").style.display ="block";
