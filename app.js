@@ -151,7 +151,7 @@ Data.prototype.markOrderDone = function (orderId) {
 };
 
 //Samma här med if sats, vi behöver veta om kunden valt S, M, L för att veta om de är
-// +40, +60 eller +80 som ska skickas till makeTransaction
+// +40, +60 eller +80 som ska skickas till makeTransaxtion
 Data.prototype.cancelOrder = function(orderId){
     this.orders[orderId].done = true;
     this.makeTransaction(this.orders[orderId], +60);

@@ -21,6 +21,16 @@ body {
   width: 165mm;
   overflow-y: scroll;
 }
+
+/*Layout for Stock List rubrik*/
+#stock_heading{
+    width: 165mm;
+    height: 10mm
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    
+}
 h1 {
 	color: black;
 	text-transform: uppercase;
