@@ -257,7 +257,7 @@ var vm = new Vue({
 
     openTab: function(tabName, elmnt, color) {
       //this.elmnt = elmnt
-      console.log(elmnt)
+      console.log(tabName)
 
         // Hide all elements with class="tabcontent" by default */
         var i, tabcontent, tablinks;
@@ -280,9 +280,27 @@ var vm = new Vue({
         document.getElementById(tabName).style.display = "block";
 
         // Add the specific color to the button used to open the tab content
-        //document.getElementById("1").style.backgroundColor = "red";
-
-        //elmnt.style.backgroundColor = "red";
+        if (tabName === "checkOut-page") {
+          document.getElementById("checkOut-pageBtnPM").style.backgroundColor = "red";
+          document.getElementById("checkOut-pageBtn").style.backgroundColor = "red";
+        };
+        if (tabName === "home-page") {
+          document.getElementById("home-pageBtnPM").style.backgroundColor = "red";
+          document.getElementById("home-pageBtn").style.backgroundColor = "red";
+        };
+        if (tabName === "preMade-page") {
+          document.getElementById("defaultOpenPM").style.backgroundColor = "red";
+        };
+        if (tabName === "myOrder-page") {
+          document.getElementById("myOrder-pageBtnPM").style.backgroundColor = "red";
+          document.getElementById("myOrder-pageBtn").style.backgroundColor = "red";
+        };
+        if (tabName === "chooseYourOwn-page") {
+          document.getElementById("defaultOpen").style.backgroundColor = "red";
+        };
+        if (tabName === "extras-page") {
+          document.getElementById("extras-pageBtn").style.backgroundColor = "red";
+        };
     },
 
     chooseYourOwn: function () {
