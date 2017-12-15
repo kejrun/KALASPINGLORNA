@@ -170,6 +170,7 @@ var vm = new Vue({
     addToOrder: function (item, type) {
       this.chosenIngredients.push(item);
       this.type = type;
+        console.log(this.type);
       if (type === "small"){
         this.price += +item.price_s;
       }
@@ -333,6 +334,11 @@ var vm = new Vue({
       document.getElementById("checkOut-page").style.display = "none";
       document.getElementById("ProgressBarPreMade").style.display = "block";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
+    },
+    
+    toExtrasPage: function(){
+        
     }
+      
   }
 });
