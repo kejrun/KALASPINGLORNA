@@ -130,6 +130,9 @@
       <button v-on:click="orderPremade(preparedDrink)">{{ uiLabels.placeOrder }}</button>
     </div>
   </div>
+    
+<div id="extras-page" class="tabcontent">
+</div>
 
   <div id="myOrder-page" class="tabcontent">
   <h1>{{ uiLabels.myOrder }}</h1>
@@ -152,7 +155,7 @@
 <div id="ProgressBarChooseYourOwn">
 <button class="tablink" v-on:click="openTab('home-page', this, 'orange')">{{ uiLabels.home }}</button>
 <button class="tablink" v-on:click="openTab('chooseYourOwn-page', this, 'green')" id="defaultOpen">{{ uiLabels.ingredients }}</button>
-<button class="tablink" v-on:click="openTab('chooseYourOwn-page', this, 'red')">{{ uiLabels.extras }}</button>
+<button class="tablink" v-on:click="toExtrasPage()">{{ uiLabels.extras }}</button>
 <button class="tablink" v-on:click="openTab('myOrder-page', this, 'blue')">{{ uiLabels.myOrder }}</button>
 <button class="tablink" v-on:click="openTab('checkOut-page', this, 'pink')">{{ uiLabels.checkOut }}</button>
 </div>
