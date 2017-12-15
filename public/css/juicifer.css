@@ -108,7 +108,7 @@ h1 {
 .category-list {
 	display: grid;
 	width: 100%;
-	grid-template-columns: repeat(4, 23%);
+	grid-template-columns: repeat(4, auto);
 	grid-gap: 1em;
 	z-index: 5;
 }
