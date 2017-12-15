@@ -23,7 +23,7 @@
     <div id = OrdersQueue>
         <order-item-to-prepare-in-made 
         v-for="(order, key) in orders"
-        v-if="!order.done && order.type == 'medium' && order.inMade"
+        v-if="!order.done && order.inMade"
         v-on:done="markDone(key)"
         v-on:cancel= "sendCancel(key)"
         v-on:in-made="unmarkInMade(key)"
@@ -31,11 +31,12 @@
         :order="order" 
         :ui-labels="uiLabels"
         :lang="lang"
+        :type="type"
         :key="key">
       </order-item-to-prepare-in-made>
       <order-item-to-prepare 
         v-for="(order, key) in orders"
-        v-if="!order.done && order.type == 'medium' && !order.inMade"
+        v-if="!order.done && !order.inMade"
         v-on:done="markDone(key)"
         v-on:cancel= "sendCancel(key)"
         v-on:in-made="markInMade(key)"
@@ -43,6 +44,7 @@
         :order="order" 
         :ui-labels="uiLabels"
         :lang="lang"
+        :type="type"
         :key="key">
       </order-item-to-prepare>
     </div>
@@ -68,10 +70,11 @@
     <h2>{{ uiLabels.smoothie }}</h2>
       <order-item
         v-for="(order, key) in orders"
-        v-if="order.done && order.type == 'medium'"
+        v-if="order.done "
         :order-id="key"
         :order="order"
         :lang="lang"
+        :type="type"
         :ui-labels="uiLabels"
         :key="key">
       </order-item>

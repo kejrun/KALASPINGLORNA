@@ -11,24 +11,24 @@ body {
 
 /*rätt storlek på kitchen sidan*/
 .kitchen_layout{
-    height: 200mm;
-    width: 165mm;
+	height: 200mm;
+	width: 165mm;
 }
 
 /*Layout och scrollbar for ingredients på ingredientspage, dvs. där man kan se och ändra lagersaldo*/
 #ingredients_layout{
-  height: 160mm;
-  width: 165mm;
-  overflow-y: scroll;
+	height: 160mm;
+	width: 165mm;
+	overflow-y: scroll;
 }
 
 /*Layout for Stock List rubrik*/
 #stock_heading{
-    width: 165mm;
-    height: 10mm
-    position: absolute;
-    left: 10%;
-    right: 10%;
+	width: 165mm;
+	height: 10mm
+	position: absolute;
+	left: 10%;
+	right: 10%;
 
 }
 /*stock list något är konstigt*/
@@ -131,15 +131,18 @@ h2 {
 }
 
 /*Creating a grid containing one grid with the categories in one column, and "My drink" in the other column */
-.categories-drink{
+
+#categories-drink{
     display: grid;
     width 100%;
     grid-template-columns: repeat(2, auto);
     grid-gap:1em;
     margin-top: 3%;
 
+
 }
-.category-list {
+#category-list {
+
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(4, auto);
@@ -147,27 +150,56 @@ h2 {
 	z-index: 5;
 }
 
+#extrasCategories {
+    grid-column-start: 1;
+    grid-column-end:2;
+    grid-row-start:1;
+    grid-row-end:2;
+    display: grid;
+	width: 100%;
+	grid-template-columns: repeat(4, auto);
+	grid-gap: 1em;
+	z-index: 5;
+}
 #showDrink{
+    grid-column-start:2;
 	width: 100%;
 	border: 2px solid #cdc;
 	padding: 1em;
 }
 
 #showDrinkTable{
-    width:100%;
-    
+	width:100%;
+
+}
+
+/*Buttons for sizes on choose your own*/
+.sizeButton{
+    width: 90px;
+    height: 90px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    border-radius: 5px;
+}
+
+#mediumCup{
+    background-color: lightblue;
 }
 
 .ingredientColumn{
-    text-align:left;
-    width:80%;
+	text-align:left;
+	width:80%;
 }
 .priceColumn{
-    text-align:right;
-    width: 20%;
+	text-align:right;
+	width: 20%;
 }
 
-.ingredients-list{
+.ingredients-list-text{
+	width: 100%;
+	height: 50%;
+	overflow-y: scroll;
 }
 
 .ingredient {
@@ -180,22 +212,22 @@ h2 {
 }
 
 #ProgressBarPreMade{
+	font-family: 'Encode Sans Semi Condensed';
 	display: none;
 	position: fixed;
 	bottom: 0;
 	right: 0;
 	width: 100%;
-    height: 6.9%;
 	z-index: 100;
 }
 
 #ProgressBarChooseYourOwn{
+	font-family: 'Encode Sans Semi Condensed';
 	display: none;
 	position: fixed;
 	bottom: 0;
 	right: 0;
 	width: 100%;
-    height: 6.9%;
 	z-index: 100;
 }
 
@@ -209,20 +241,20 @@ h2 {
 	height: 130px;
 }
 #inMade_Drink_items{
-    text-align: center;
-    position: relative;
-    background-color: #eda6a6;
-    border: 2px solid black;
-    width: 400px;
-    height: 130px;
+	text-align: center;
+	position: relative;
+	background-color: #eda6a6;
+	border: 2px solid black;
+	width: 400px;
+	height: 130px;
 }
 
 #Hist_Ingred{
-    width: 165mm;
-    bottom: 0;
-    left: 2%;
-    right: 2%;
-    position: absolute;
+	width: 165mm;
+	bottom: 0;
+	left: 2%;
+	right: 2%;
+	position: absolute;
 }
 
 .Hist_Ingred_Button{
@@ -254,14 +286,14 @@ max-height: 4em;
 
 /*Fixed header*/
 #fixedHeader{
-  overflow: hidden;
-  background: linear-gradient(to bottom right, purple, mediumpurple);
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 10%;
-  z-index: 100;
+	overflow: hidden;
+	background: linear-gradient(to bottom right, purple, mediumpurple);
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 10%;
+	z-index: 100;
 }
 
 /*CSS for IngredientsBar*/
@@ -273,13 +305,13 @@ max-height: 4em;
 }
 
 #ingredientsBar{
-    width: 80%;
-    height: 36px;
-    background-color: #bbb;
-    border-radius: 8px;
-    margin: auto;
-    margin-bottom: 1%;
-    margin-top: 1.5%;
+	width: 80%;
+	height: 36px;
+	background-color: #bbb;
+	border-radius: 8px;
+	margin: auto;
+	margin-bottom: 1%;
+	margin-top: 1.5%;
 }
 
 #ingredientsBarProgress{
@@ -294,12 +326,12 @@ max-height: 4em;
 }
 
 #ingredientsBarText{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    font-size: 25px;
-    z-index: 20;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	font-size: 25px;
+	z-index: 20;
 }
 
 
@@ -307,7 +339,6 @@ max-height: 4em;
 
 /* Tab for choose chooseYourOwn */
 .tablink {
-	font-family: 'Encode Sans Semi Condensed';
 	background-color: #555;
 	color: white;
 	float: left;
@@ -321,7 +352,6 @@ max-height: 4em;
 
 /* Tab for choose premade */
 .tablinkPM {
-	font-family: 'Encode Sans Semi Condensed';
 	background-color: #555;
 	color: white;
 	float: left;
