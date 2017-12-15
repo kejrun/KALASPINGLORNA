@@ -170,7 +170,6 @@ var vm = new Vue({
     addToOrder: function (item, type) {
       this.chosenIngredients.push(item);
       this.type = type;
-    this.chosenIngredients.push(document.createElement('br'));
       if (type === "small"){
         this.price += +item.price_s;
       }

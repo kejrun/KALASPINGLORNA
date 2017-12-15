@@ -103,7 +103,7 @@
     <table id="showDrinkTable" >
         <tr v-for= "item in chosenIngredients">
             <td class="ingredientColumn">{{ item["ingredient_" + lang] }}</td>
-            <td class="priceColumn"> {{ item["price_" + type] }} kr</td>
+            <td class="priceColumn"> {{ item["price_" + 'm'] }} kr</td>
         </tr></table>
     <br> Totalt: {{ price }} kr
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button><br>
