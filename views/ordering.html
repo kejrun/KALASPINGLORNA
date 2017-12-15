@@ -13,60 +13,59 @@
 </head>
 <div id="ordering">
 
-  <body>
+<body>
 
-    <div id="home-page" class="tabcontent">
-      <h1>{{ uiLabels.home }}</h1>
-      <div style="text-align:center;">
-        <button class="homebutton" v-on:click="switchLang()">{{ uiLabels.language }}</button>
-        <button class="homebutton" v-on:click="chooseYourOwn()">{{ uiLabels.chooseYourOwn }}</button>
-        <button class="homebutton" v-on:click="preMade()">{{ uiLabels.preMade }}</button>
+  <div id="home-page" class="tabcontent">
+  <h1>{{ uiLabels.home }}</h1>
+  <div style="text-align:center;">
+      <img src="http://cdn.shopify.com/s/files/1/0499/4781/articles/Rosie-the-Riveter_600x.jpg?v=1466789221" width="100" height="120">
+          <br>
+  <button class="homebutton" v-on:click="switchLang()">{{ uiLabels.language }}</button>
+  <button class="homebutton" v-on:click="chooseYourOwn()">{{ uiLabels.chooseYourOwn }}</button>
+  <button class="homebutton" v-on:click="preMade()">{{ uiLabels.preMade }}</button>
+  </div>
+  </div>
+
+  <div id="chooseYourOwn-page" class="tabcontent">
+  <div id="fixedHeader">
+      <!--<h1>{{ uiLabels.chooseYourOwn }}</h1>-->
+        <div id="ingredientsBar" class="ingredientsBar">
+        <div id="ingredientsBarText">Choose 5 ingredients</div>
+        <div id="ingredientsBarProgress"></div>
       </div>
+  </div>
+<!-- Category-list and ingredient-list created to be able to get a grid layout -->
+   <div class = "categories-drink">
+    <div class = "category-list">
+    <div class ="ingredients-list">
+    <h1>{{ uiLabels.fruit }}</h1>
+    <ingredient
+      ref="ingredient"
+      type="medium"
+      v-for="item in ingredients"
+      v-if="item.category == 'fruit'"
+      v-on:increment="addToOrder(item, type)"
+      :item="item"
+      :lang="lang"
+      :type="type"
+      :key="item.ingredient_id">
+    </ingredient>
     </div>
 
-    <div id="chooseYourOwn-page" class="tabcontent">
-      <div id="fixedHeader">
-        <!--<h1>{{ uiLabels.chooseYourOwn }}</h1>-->
-        <div id="ingredientsBar" class="ingredientsBar">
-          <div id="ingredientsBarText">Choose 5 ingredients</div>
-          <div id="ingredientsBarProgress"></div>
-        </div>
-      </div>
-      <!-- Category-list and ingredient-list created to be able to get a grid layout -->
-      <div class = "categories-drink">
-        <div class = "category-list">
-
-          <div class ="ingredients-list">
-            <h1>{{ uiLabels.fruit }}</h1>
-            <div class ="ingredients-list-text">
-            <ingredient
-            ref="ingredient"
-            type="medium"
-            v-for="item in ingredients"
-            v-if="item.category == 'fruit'"
-            v-on:increment="addToOrder(item, 'medium')"
-            :item="item"
-            :lang="lang"
-            :key="item.ingredient_id">
-          </ingredient>
-        </div>
-        </div>
-
-        <div class = "ingredients-list">
-          <h1>{{ uiLabels.vegetable }}</h1>
-          <div class ="ingredients-list-text">
-          <ingredient
-          ref="ingredient"
-          type="medium"
-          v-for="item in ingredients"
-          v-if="item.category == 'vegetable'"
-          v-on:increment="addToOrder(item, 'medium')"
-          :item="item"
-          :lang="lang"
-          :key="item.ingredient_id">
-        </ingredient>
-        </div>
-      </div>
+    <div class = "ingredients-list">
+    <h1>{{ uiLabels.vegetable }}</h1>
+       <ingredient
+      ref="ingredient"
+      type="medium"
+      v-for="item in ingredients"
+      v-if="item.category == 'vegetable'"
+      v-on:increment="addToOrder(item, type)"
+      :item="item"
+      :lang="lang"
+      :type="type"
+      :key="item.ingredient_id">
+    </ingredient>
+    </div>
 
       <div class = "ingredients-list">
         <h1> {{uiLabels.berry}} </h1>
@@ -76,9 +75,10 @@
         type="medium"
         v-for = "item in ingredients"
         v-if = "item.category == 'berry'"
-        v-on:increment="addToOrder(item, 'medium')"
+        v-on:increment="addToOrder(item, type)"
         :item="item"
         :lang="lang"
+        :type="type"
         :key="item.ingredient_id">
       </ingredient>
       </div>
@@ -88,31 +88,32 @@
       <h1> {{uiLabels.liquid}} </h1>
       <div class ="ingredients-list-text">
       <ingredient
-      ref = "ingredient"
-      type="medium"
-      v-for = "item in ingredients"
-      v-if = "item.category == 'liquid'"
-      v-on:increment="addToOrder(item, 'medium')"
-      :item="item"
-      :lang="lang"
-      :key="item.ingredient_id">
-    </ingredient>
-  </div>
-  </div>
+        ref = "ingredient"
+        type="medium"
+        v-for = "item in ingredients"
+        v-if = "item.category == 'liquid'"
+        v-on:increment="addToOrder(item, type)"
+        :item="item"
+        :lang="lang"
+        :type="type"
+        :key="item.ingredient_id">
+        </ingredient>
+    </div>
 </div>
 
 <div id="showDrink">
-  <h1>{{ uiLabels.order }}</h1>
-  <table id="showDrinkTable" >
-    <tr v-for= "item in chosenIngredients">
-      <td class="ingredientColumn">{{ item["ingredient_" + lang] }}</td>
-      <td class="priceColumn"> {{ item["price_"+"m"] }} kr</td>
-    </tr></table>
+    <h1>{{ uiLabels.order }}</h1>
+    <table id="showDrinkTable" >
+        <tr v-for= "item in chosenIngredients">
+            <td class="ingredientColumn">{{ item["ingredient_" + lang] }}</td>
+            <td class="priceColumn"> {{ item["price_" + type] }} kr</td>
+        </tr></table>
+
     <br> Totalt: {{ price }} kr
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button><br>
-    <button>Small</button>
-    <button>Medium</button>
-    <button>Large</button>
+    <button v-on:click="switchType('s'); changeTotalPrice('s')">{{ uiLabels.smallType }}</button>
+    <button v-on:click="switchType('m'); changeTotalPrice('m')">{{ uiLabels.mediumType }}</button>
+    <button v-on:click="switchType('l'); changeTotalPrice('l')">{{ uiLabels.largeType }}</button>
 
   </div>
 </div>

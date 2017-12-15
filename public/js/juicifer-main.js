@@ -17,7 +17,8 @@ var sharedVueStuff = {
     uiLabels: {},
     ingredients: {},
     premade:{},
-    lang: "en"
+    lang: "en",
+    type: ''
   },
   created: function () {
     socket.on('initialize', function (data) {
@@ -30,7 +31,7 @@ var sharedVueStuff = {
     socket.on('switchLang', function (data) {
       this.uiLabels = data;
     }.bind(this));
-
+      
     socket.on('currentQueue', function (data) {
       this.orders = data.orders;
       if (typeof data.ingredients !== 'undefined') {
@@ -46,6 +47,12 @@ var sharedVueStuff = {
         this.lang = "en";
       }
       socket.emit('switchLang', this.lang);
-    }
+    },
+      
+     switchType: function (type) {
+      this.type = type;
+      socket.emit('switchSize', this.type);
+    } 
+      
   }
 };
