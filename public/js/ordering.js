@@ -385,29 +385,24 @@ var vm = new Vue({
     },
 
     toExtras: function(){
-      document.getElementById("defaultOpenPM").style.backgroundColor = "red";
-      document.getElementById("chooseYourOwn-page").style.display = "block";
 
-        var i, ingredientsList;
-        ingredientsList = document.getElementsByClassName("ingredients-list")
-        for(i=0; i<ingredientsList.length; i++){
-            ingredientsList[i].style.display = "none";
-        }
+      document.getElementById("defaultOpenPM").style.backgroundColor = "red";
+      document.getElementById("category-list").style.display ="none";
       document.getElementById("preMade-page").style.display = "none";
       document.getElementById("home-page").style.display = "none";
       document.getElementById("myOrder-page").style.display = "none";
       document.getElementById("checkOut-page").style.display = "none";
       document.getElementById("ProgressBarPreMade").style.display = "none";
+      document.getElementById("chooseYourOwn-page").style.display = "block"; 
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
+      document.getElementById("extrasCategories").style.display = "grid";
+    
+    
     },
 
     toChooseYourOwn: function() {
-        var i, ingredientsList;
-        ingredientsList = document.getElementsByClassName("ingredients-list")
-        for(i=0; i<ingredientsList.length; i++){
-            ingredientsList[i].style.display = "block";
-        }
-  }
+      document.getElementById("extrasCategories").style.display = "none"; document.getElementById("category-list").style.display ="grid";
+    }
   }
 
 });
