@@ -25,16 +25,13 @@
   </div>
 
   <div id="chooseYourOwn-page" class="tabcontent">
-  <div id="myHeader">
-
-      <!--Ingredients bar at the top of this page only <h1>{{ uiLabels.chooseYourOwn }}</h1>-->
+  <div id="fixedHeader">
+      <!--<h1>{{ uiLabels.chooseYourOwn }}</h1>-->
         <div id="ingredientsBar" class="ingredientsBar">
         <div id="ingredientsBarText">Choose 5 ingredients</div>
         <div id="ingredientsBarProgress"></div>
       </div>
-      <!--*-->
   </div>
-<div class="mainHeaderBottom">
 <!-- Category-list and ingredient-list created to be able to get a grid layout -->
    <div class = "categories-drink">
     <div class = "category-list">
@@ -98,7 +95,7 @@
 <div id="showDrink">
     <h1>{{ uiLabels.order }}</h1>
     <p v-for= "item in chosenIngredients"> {{ item["ingredient_" + lang] }}</p>
-    <br> {{ volume }} ml, {{ price }} kr
+    <br> Totalt: {{ price }} kr
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button><br>
     <button>Small</button>
     <button>Medium</button>
@@ -119,9 +116,7 @@
         :key="key">
       </order-item>
     </div>-->
-  </div>
 </div>
-
 
   <div id="preMade-page" class="tabcontent">
   <h1>{{ uiLabels.preMade }}</h1>

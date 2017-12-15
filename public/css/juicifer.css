@@ -108,7 +108,7 @@ h1 {
 .category-list {
 	display: grid;
 	width: 100%;
-	grid-template-columns: repeat(4, 23%);
+	grid-template-columns: repeat(4, auto);
 	grid-gap: 1em;
 	z-index: 5;
 }
@@ -137,6 +137,7 @@ h1 {
 	bottom: 0;
 	right: 0;
 	width: 100%;
+    height: 6.9%;
 	z-index: 100;
 }
 
@@ -146,6 +147,7 @@ h1 {
 	bottom: 0;
 	right: 0;
 	width: 100%;
+    height: 6.9%;
 	z-index: 100;
 }
 
@@ -201,33 +203,17 @@ max-height: 4em;
 */
 
 
-/*Fixed header and bottom*/
-#myHeader{
+
+/*Fixed header*/
+#fixedHeader{
   overflow: hidden;
   background: linear-gradient(to bottom right, purple, mediumpurple);
   position: fixed;
   top: 0;
-	right: 0;
+  right: 0;
   width: 100%;
+  height: 10%;
   z-index: 100;
-}
-
-
-.stickyHeader a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.mainHeaderBottom {
-  padding: 16px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  height: 1500px;
 }
 
 /*CSS for IngredientsBar*/
@@ -244,8 +230,8 @@ max-height: 4em;
     background-color: #bbb;
     border-radius: 8px;
     margin: auto;
-    margin-bottom: 1.5%;
-    margin-top: -1.5%;
+    margin-bottom: 1%;
+    margin-top: 1.5%;
 }
 
 #ingredientsBarProgress{
