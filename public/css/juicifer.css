@@ -110,13 +110,11 @@ h1 {
 }
 
 .ingredients-list{
-
 }
 
 .ingredient {
 	border: 1px solid #cdc;
 	padding: 1em;
-
 }
 
 #home-page{
@@ -192,14 +190,16 @@ max-height: 4em;
 
 
 /*Fixed header and bottom*/
-.stickyHeader {
+#myHeader{
   overflow: hidden;
   background: linear-gradient(to bottom right, purple, mediumpurple);
   position: fixed;
   top: 0;
+	right: 0;
   width: 100%;
   z-index: 100;
 }
+
 
 .stickyHeader a {
   float: left;
@@ -215,28 +215,8 @@ max-height: 4em;
   padding: 16px;
   margin-top: 30px;
   margin-bottom: 30px;
-  height: 1500px; /* Used in this example to enable scrolling */
+  height: 1500px;
 }
-
-.stickyBottom {
-  overflow: hidden;
-  background-color: #333;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: 100;
-}
-
-.stickyBottom a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
 
 /*CSS for IngredientsBar*/
 
@@ -283,6 +263,8 @@ max-height: 4em;
 
 
 /* Style the tab buttons */
+
+/* Tab for choose chooseYourOwn */
 .tablink {
 	font-family: 'Encode Sans Semi Condensed';
 	background-color: #555;
@@ -296,13 +278,34 @@ max-height: 4em;
 	width: 20%;
 }
 
-/* Change background color of buttons on hover */
+/* Tab for choose premade */
+.tablinkPM {
+	font-family: 'Encode Sans Semi Condensed';
+	background-color: #555;
+	color: white;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	font-size: 14px;
+	width: 25%;
+}
+
+/* Change background color of buttons on hover for both tabs */
 .tablink:hover {
 	background-color: #777;
 }
+.tablinkPM:hover {
+	background-color: #777;
+}
 
-/* Set default styles for tab content */
+/* Set default styles for tab content for both tabs */
 .tabcontent {
+	display: none;
+	padding: 50px;
+}
+.tabcontentPM {
 	display: none;
 	padding: 50px;
 }
