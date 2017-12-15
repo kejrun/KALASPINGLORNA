@@ -144,8 +144,6 @@
   <p>PAAYY!</p>
       </div>
 
-      <div id="extras-page" class="tabcontent">
-          </div>
 
 </body>
 <div id="ProgressBarPreMade">
@@ -158,15 +156,11 @@
 <div id="ProgressBarChooseYourOwn">
 <button class="tablink" v-on:click="openTab('home-page', this, 'orange')" id="home-pageBtn">{{ uiLabels.home }}</button>
 <button class="tablink" v-on:click="openTab('chooseYourOwn-page', this, 'green')" id="defaultOpen">{{ uiLabels.ingredients }}</button>
-<<<<<<< HEAD
-<button class="tablink" v-on:click="toExtrasPage()">{{ uiLabels.extras }}</button>
-<button class="tablink" v-on:click="openTab('myOrder-page', this, 'blue')">{{ uiLabels.myOrder }}</button>
-<button class="tablink" v-on:click="openTab('checkOut-page', this, 'pink')">{{ uiLabels.checkOut }}</button>
-=======
+
 <button class="tablink" v-on:click="openTab('extras-page', this, 'red')" id="extras-pageBtn">{{ uiLabels.extras }}</button>
 <button class="tablink" v-on:click="openTab('myOrder-page', this, 'blue')" id="myOrder-pageBtn">{{ uiLabels.myOrder }}</button>
 <button class="tablink" v-on:click="openTab('checkOut-page', this, 'pink')" id="checkOut-pageBtn">{{ uiLabels.checkOut }}</button>
->>>>>>> f3e0fff2d314c324aeafea1e3cca637ce3b82130
+
 </div>
 </div>
 </html>

@@ -323,17 +323,6 @@ var vm = new Vue({
       document.getElementById("ProgressBarPreMade").style.display = "block";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
     },
-    toExtrasPage: function(){
-      document.getElementById("defaultOpenPM").style.backgroundColor = "red";
-      document.getElementById("chooseYourOwn-page").style.display = "block";
-      document.getElementByClassName("ingredients-list").style.display="none";
-      document.getElementById("preMade-page").style.display = "none";
-      document.getElementById("home-page").style.display = "none";
-      document.getElementById("myOrder-page").style.display = "none";
-      document.getElementById("checkOut-page").style.display = "none";
-      document.getElementById("ProgressBarPreMade").style.display = "none";
-      document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
-  }
       
   }
 });
