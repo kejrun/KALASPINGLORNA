@@ -171,7 +171,6 @@ var vm = new Vue({
       this.chosenIngredients.push(item);
       this.type = type;
         console.log(this.type);
-    //this.chosenIngredients.push(document.createElement('br'));
       if (type === "small"){
         this.volume += +item.vol_s;
         this.price += +item.price_s;
@@ -339,6 +338,10 @@ var vm = new Vue({
       document.getElementById("ProgressBarPreMade").style.display = "block";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
     },
+    
+    toExtrasPage: function(){
+        
+    }
       
   }
 });
