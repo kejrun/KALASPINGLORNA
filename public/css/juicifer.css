@@ -4,9 +4,9 @@
 body {
 	background:  #f4f4f4;
 	color: #808080;
-    /*width: 200mm;*/
-    /*border: 2px solid black;*/
-    font-family: 'Encode Sans Semi Condensed';
+	/*width: 200mm;*/
+	/*border: 2px solid black;*/
+	font-family: 'Encode Sans Semi Condensed';
 }
 
 /*rätt storlek på kitchen sidan*/
@@ -29,68 +29,68 @@ body {
     position: absolute;
     left: 10%;
     right: 10%;
-    
+
 }
 h1 {
 	color: black;
 	text-transform: uppercase;
 	letter-spacing: 2pt;
-    text-align: center;
-    position: relative;
+	text-align: center;
+	position: relative;
 }
 
 #finishedOrder{
-    display: none;
+	display: none;
 }
 
 .refillbtn {
-    text-transform: uppercase;
-    background-color: #4CAF50;
-    padding: 15px 32px;
-    cursor: pointer;
-    width: 50%;
-    margin-top: 5%;
-    margin-left: 20%;
-    margin-bottom: 5%;
+	text-transform: uppercase;
+	background-color: #4CAF50;
+	padding: 15px 32px;
+	cursor: pointer;
+	width: 50%;
+	margin-top: 5%;
+	margin-left: 20%;
+	margin-bottom: 5%;
 }
 
 .backBtn {
-    position:absolute;
-    left: 3%;
-    transition: .5s ease;
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    outline:none;
-    width: 70px;
+	position:absolute;
+	left: 3%;
+	transition: .5s ease;
+	background-color: Transparent;
+	background-repeat:no-repeat;
+	border: none;
+	cursor: pointer;
+	overflow: hidden;
+	outline:none;
+	width: 70px;
 }
 
 #IngredientsPage{
-    display: none;
+	display: none;
 }
 
 #orders {
-    text-align: center;
+	text-align: center;
 	margin:auto;
 	width: 40em;
-    font-family: 'Encode Sans Semi Condensed';
-    height: 800px;
+	font-family: 'Encode Sans Semi Condensed';
+	height: 800px;
 }
 
 #OrdersQueue{
-    height: 400px;
-    overflow-y: scroll;
+	height: 400px;
+	overflow-y: scroll;
 }
 .ArrowImg {
-    text-align: center;
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
+	text-align: center;
+	background-color: Transparent;
+	background-repeat:no-repeat;
+	border: none;
+	cursor:pointer;
+	overflow: hidden;
+	outline:none;
 }
 
 #ordering{
@@ -106,27 +106,25 @@ h1 {
 
 }
 .category-list {
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(4, 23%);
-    grid-gap: 1em;
-    z-index: 5;
+	display: grid;
+	width: 100%;
+	grid-template-columns: repeat(4, 23%);
+	grid-gap: 1em;
+	z-index: 5;
 }
 
 #showDrink{
-    width: 100%;
-    border: 2px solid #cdc;
-    padding: 1em;
+	width: 100%;
+	border: 2px solid #cdc;
+	padding: 1em;
 }
 
 .ingredients-list{
-
 }
 
 .ingredient {
 	border: 1px solid #cdc;
 	padding: 1em;
-
 }
 
 #home-page{
@@ -135,20 +133,30 @@ h1 {
 
 #ProgressBarPreMade{
 	display: none;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	z-index: 100;
 }
 
 #ProgressBarChooseYourOwn{
 	display: none;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	z-index: 100;
 }
 
 /* Code for Ingredients and history buttons on staff view */
 #Drink_items{
-    text-align: center;
-    position: relative;
-    background-color:#F0E6F0;
-    border: 2px solid black;
-    width: 400px;
-    height: 130px;
+	text-align: center;
+	position: relative;
+	background-color:#F0E6F0;
+	border: 2px solid black;
+	width: 400px;
+	height: 130px;
 }
 #inMade_Drink_items{
     text-align: center;
@@ -168,40 +176,42 @@ h1 {
 }
 
 .Hist_Ingred_Button{
-    background-color:#F0E6F0;
-    border: 2px solid black;
-    width: 300px;
-    height: 130px;
+	background-color:#F0E6F0;
+	border: 2px solid black;
+	width: 300px;
+	height: 130px;
 }
 
 /* Code for Ingredients and history buttons on staff view ends here */
 
 /*@media(max-width: 480px){
-    #ingredients-list{
-    display: block;
-    }
-    .ingredient {
-	border: 1px solid #cdc;
-	/*padding: 1em;
-    width: calc(100% - 2em);
-    }
-    .ingredient img {
-        max-width: 4em;
-        max-height: 4em;
-    }
+#ingredients-list{
+display: block;
+}
+.ingredient {
+border: 1px solid #cdc;
+/*padding: 1em;
+width: calc(100% - 2em);
+}
+.ingredient img {
+max-width: 4em;
+max-height: 4em;
+}
 }
 */
 
 
 /*Fixed header and bottom*/
-.stickyHeader {
+#myHeader{
   overflow: hidden;
   background: linear-gradient(to bottom right, purple, mediumpurple);
   position: fixed;
   top: 0;
+	right: 0;
   width: 100%;
   z-index: 100;
 }
+
 
 .stickyHeader a {
   float: left;
@@ -217,35 +227,15 @@ h1 {
   padding: 16px;
   margin-top: 30px;
   margin-bottom: 30px;
-  height: 1500px; /* Used in this example to enable scrolling */
+  height: 1500px;
 }
-
-.stickyBottom {
-  overflow: hidden;
-  background-color: #333;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: 100;
-}
-
-.stickyBottom a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
 
 /*CSS for IngredientsBar*/
 
 .ingredientsBar{
-    position: relative;
-    text-align: center;
-    color: white;
+	position: relative;
+	text-align: center;
+	color: white;
 }
 
 #ingredientsBar{
@@ -259,14 +249,14 @@ h1 {
 }
 
 #ingredientsBarProgress{
-    position: absolute;
-    width: 0%;
-    height: 30px;
-    border-radius: 5px;
-    margin-left: 3px;
-    margin-top: 3px;
-    background-color: forestgreen;
-    z-index: 10;
+	position: absolute;
+	width: 0%;
+	height: 30px;
+	border-radius: 5px;
+	margin-left: 3px;
+	margin-top: 3px;
+	background-color: forestgreen;
+	z-index: 10;
 }
 
 #ingredientsBarText{
@@ -279,31 +269,55 @@ h1 {
 }
 
 #minusBtn{
-    margin-top: 2em;
+	margin-top: 2em;
 }
 /*FINISH CSS for IngedientsBar*/
 
 
 /* Style the tab buttons */
+
+/* Tab for choose chooseYourOwn */
 .tablink {
-    background-color: #555;
-    color: white;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
-		width: 20%;
+	font-family: 'Encode Sans Semi Condensed';
+	background-color: #555;
+	color: white;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	font-size: 14px;
+	width: 20%;
 }
 
-/* Change background color of buttons on hover */
+/* Tab for choose premade */
+.tablinkPM {
+	font-family: 'Encode Sans Semi Condensed';
+	background-color: #555;
+	color: white;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	font-size: 14px;
+	width: 25%;
+}
+
+/* Change background color of buttons on hover for both tabs */
 .tablink:hover {
-    background-color: #777;
+	background-color: #777;
+}
+.tablinkPM:hover {
+	background-color: #777;
 }
 
-/* Set default styles for tab content */
+/* Set default styles for tab content for both tabs */
 .tabcontent {
-    display: none;
-    padding: 50px;
+	display: none;
+	padding: 50px;
+}
+.tabcontentPM {
+	display: none;
+	padding: 50px;
 }
