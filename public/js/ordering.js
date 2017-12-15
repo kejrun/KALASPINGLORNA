@@ -151,7 +151,6 @@ function getRandomInt(min, max) {
   return "#" + getRandomInt(1, 1000000);
 }*/
 
-
 var vm = new Vue({
   el: '#ordering',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
