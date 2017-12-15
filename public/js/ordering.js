@@ -10,7 +10,7 @@ Vue.component('ingredient', {
   <label>{{ counter }}</label>\
   <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
   <label>\
-  {{item["ingredient_"+ lang]}} ({{ (type=="medium") ? item.vol_m:item.vol_m }} ml), {{item.price_m}}:-\
+  {{item["ingredient_"+ lang]}} {{ (type=="medium") ? item.price_m:item.price_l }} :- \
   </label>\
   </div>',
   data: function () {
@@ -36,7 +36,7 @@ Vue.component('ingredient', {
         }
     },
     */
-              
+
     /*återuppta den här versionen när vi vet hur vi kommer åt en specifik knapp att disable
     minusIngredient: function(){
         this.counter -=1;
@@ -53,7 +53,7 @@ Vue.component('ingredient', {
         }
     },
     */
-    
+
     plusIngredient: function(){
         if (totalIngredientsCounter > -1 && totalIngredientsCounter < 5){
             this.counter +=1;
@@ -180,11 +180,11 @@ var vm = new Vue({
       else if (type === "medium") {
         this.volume += +item.vol_m;
         this.price += +item.price_m;
-      } 
+      }
       else{
         this.volume += +item.vol_l;
         this.price += +item.price_l;
-      } 
+      }
     },
 
     placeOrder: function () {
@@ -229,7 +229,7 @@ var vm = new Vue({
       }
       return ingredientList;
     },
-      
+
       placeOrderPremade: function (item, type) {
       this.chosenIngredients.push(item);
         console.log(item.ingredient_en);
@@ -255,7 +255,7 @@ var vm = new Vue({
       this.type = '';
       this.chosenIngredients = [];
     },
-      
+
     openTab: function(tabName, elmnt, color) {
         // Hide all elements with class="tabcontent" by default */
         var i, tabcontent, tablinks;
@@ -265,7 +265,7 @@ var vm = new Vue({
         }
 
         // Remove the background color of all tablinks/buttons
-        tablinks = document.getElementsByClassName("tablink");
+        tablinks = document.getElementsByClassName("tablink","tablinkPM");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].style.backgroundColor = "";
         }
@@ -274,10 +274,11 @@ var vm = new Vue({
         document.getElementById(tabName).style.display = "block";
 
         // Add the specific color to the button used to open the tab content
-        elmnt.style.backgroundColor = color;
+        //elmnt.style.backgroundColor = "red";
     },
 
     chooseYourOwn: function () {
+      //document.getElementById("defaultOpen").style.color = "red";
       document.getElementById("chooseYourOwn-page").style.display = "block";
       document.getElementById("preMade-page").style.display = "none";
       document.getElementById("home-page").style.display = "none";
@@ -287,6 +288,7 @@ var vm = new Vue({
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
     },
     preMade: function () {
+      //document.getElementById("defaultOpenPM").style.color = "red";
       document.getElementById("chooseYourOwn-page").style.display = "none";
       document.getElementById("preMade-page").style.display = "block";
       document.getElementById("home-page").style.display = "none";
