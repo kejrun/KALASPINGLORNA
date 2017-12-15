@@ -135,7 +135,7 @@ h1 {
 
 .ingredients-list-text{
 	width: 100%;
-	max-height: 60%;
+	height: 50%;
 	overflow-y: scroll;
 }
 

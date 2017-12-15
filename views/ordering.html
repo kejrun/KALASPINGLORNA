@@ -39,6 +39,7 @@
     <div class = "category-list">
     <div class ="ingredients-list">
     <h1>{{ uiLabels.fruit }}</h1>
+    <div class ="ingredients-list-text">
     <ingredient
       ref="ingredient"
       type="medium"
@@ -51,9 +52,11 @@
       :key="item.ingredient_id">
     </ingredient>
     </div>
+    </div>
 
     <div class = "ingredients-list">
     <h1>{{ uiLabels.vegetable }}</h1>
+    <div class ="ingredients-list-text">
        <ingredient
       ref="ingredient"
       type="medium"
@@ -65,6 +68,7 @@
       :type="type"
       :key="item.ingredient_id">
     </ingredient>
+    </div>
     </div>
 
       <div class = "ingredients-list">
@@ -99,6 +103,7 @@
         :key="item.ingredient_id">
         </ingredient>
     </div>
+</div>
 </div>
 
 <div id="showDrink">
@@ -160,18 +165,18 @@ v-if="!order.done && order.type == 'medium'"
 </body>
 
 <div id="ProgressBarPreMade">
-  <button class="tablinkPM" v-on:click="openTab('home-page', this, 'orange')" id="home-pageBtnPM">{{ uiLabels.home }}</button>
-  <button class="tablinkPM" v-on:click="openTab('preMade-page', this, 'red')" id="defaultOpenPM">{{ uiLabels.preMade }}</button>
-  <button class="tablinkPM" v-on:click="openTab('myOrder-page', this, 'blue')" id="myOrder-pageBtnPM">{{ uiLabels.myOrder }}</button>
-  <button class="tablinkPM" v-on:click="openTab('checkOut-page', this, 'green')"id="checkOut-pageBtnPM">{{ uiLabels.checkOut }}</button>
+  <button class="tablinkPM" v-on:click="openTab('home-page')" id="home-pageBtnPM">{{ uiLabels.home }}</button>
+  <button class="tablinkPM" v-on:click="openTab('preMade-page')" id="defaultOpenPM">{{ uiLabels.preMade }}</button>
+  <button class="tablinkPM" v-on:click="openTab('myOrder-page')" id="myOrder-pageBtnPM">{{ uiLabels.myOrder }}</button>
+  <button class="tablinkPM" v-on:click="openTab('checkOut-page')"id="checkOut-pageBtnPM">{{ uiLabels.checkOut }}</button>
 </div>
 
 <div id="ProgressBarChooseYourOwn">
-<button class="tablink" v-on:click="openTab('home-page', this, 'orange')" id="home-pageBtn">{{ uiLabels.home }}</button>
-<button class="tablink" v-on:click="openTab('chooseYourOwn-page', this, 'green');toChooseYourOwn()" id="defaultOpen">{{ uiLabels.ingredients }}</button>
-<button class="tablink" v-on:click="openTab('extras-page', this, 'red');toExtras()" id="extras-pageBtn">{{ uiLabels.extras }}</button>
-<button class="tablink" v-on:click="openTab('myOrder-page', this, 'blue')" id="myOrder-pageBtn">{{ uiLabels.myOrder }}</button>
-<button class="tablink" v-on:click="openTab('checkOut-page', this, 'pink')" id="checkOut-pageBtn">{{ uiLabels.checkOut }}</button>
+<button class="tablink" v-on:click="openTab('home-page')" id="home-pageBtn">{{ uiLabels.home }}</button>
+<button class="tablink" v-on:click="openTab('chooseYourOwn-page');toChooseYourOwn()" id="defaultOpen">{{ uiLabels.ingredients }}</button>
+<button class="tablink" v-on:click="openTab('extras-page');toExtras()" id="extras-pageBtn">{{ uiLabels.extras }}</button>
+<button class="tablink" v-on:click="openTab('myOrder-page')" id="myOrder-pageBtn">{{ uiLabels.myOrder }}</button>
+<button class="tablink" v-on:click="openTab('checkOut-page')" id="checkOut-pageBtn">{{ uiLabels.checkOut }}</button>
 </div>
 </div>
 </html>

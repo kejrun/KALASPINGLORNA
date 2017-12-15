@@ -172,7 +172,7 @@ var vm = new Vue({
   methods: {
     addToOrder: function (item, type) {
       this.chosenIngredients.push(item);
-        
+
       this.pricesSmall.push(item.price_s);
       this.pricesMedium.push(item.price_m);
       this.pricesLarge.push(item.price_l);
@@ -187,7 +187,7 @@ var vm = new Vue({
         this.price += +item.price_l;
       }
     },
-      
+
       changeTotalPrice: function (type){
           this.price = 0;
           this.type = type;
@@ -202,7 +202,7 @@ var vm = new Vue({
                   this.price += this.pricesMedium[i];
               }
           }
-          
+
           else{
               for (i = 0; i < this.pricesLarge.length; i++){
                   this.price += this.pricesLarge[i];
@@ -283,7 +283,7 @@ var vm = new Vue({
       this.chosenIngredients = [];
     },
 
-    openTab: function(tabName, elmnt, color) {
+    openTab: function(tabName) {
         // Hide all elements with class="tabcontent" by default */
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -306,25 +306,25 @@ var vm = new Vue({
 
         // Add the specific color to the button used to open the tab content
         if (tabName === "checkOut-page") {
-          document.getElementById("checkOut-pageBtnPM").style.backgroundColor = "red";
-          document.getElementById("checkOut-pageBtn").style.backgroundColor = "red";
+          document.getElementById("checkOut-pageBtnPM").style.backgroundColor = "purple";
+          document.getElementById("checkOut-pageBtn").style.backgroundColor = "purple";
         };
         if (tabName === "home-page") {
-          document.getElementById("home-pageBtnPM").style.backgroundColor = "red";
-          document.getElementById("home-pageBtn").style.backgroundColor = "red";
+          document.getElementById("home-pageBtnPM").style.backgroundColor = "purple";
+          document.getElementById("home-pageBtn").style.backgroundColor = "purple";
         };
         if (tabName === "preMade-page") {
-          document.getElementById("defaultOpenPM").style.backgroundColor = "red";
+          document.getElementById("defaultOpenPM").style.backgroundColor = "purple";
         };
         if (tabName === "myOrder-page") {
-          document.getElementById("myOrder-pageBtnPM").style.backgroundColor = "red";
-          document.getElementById("myOrder-pageBtn").style.backgroundColor = "red";
+          document.getElementById("myOrder-pageBtnPM").style.backgroundColor = "purple";
+          document.getElementById("myOrder-pageBtn").style.backgroundColor = "purple";
         };
         if (tabName === "chooseYourOwn-page") {
-          document.getElementById("defaultOpen").style.backgroundColor = "red";
+          document.getElementById("defaultOpen").style.backgroundColor = "purple";
         };
         if (tabName === "extras-page") {
-          document.getElementById("extras-pageBtn").style.backgroundColor = "red";
+          document.getElementById("extras-pageBtn").style.backgroundColor = "purple";
         };
     },
 
@@ -338,7 +338,7 @@ var vm = new Vue({
       for (i = 0; i < tablinks.length; i++) {
           tablinks[i].style.backgroundColor = "";
       }
-      document.getElementById("defaultOpen").style.backgroundColor = "red";
+      document.getElementById("defaultOpen").style.backgroundColor = "purple";
       document.getElementById("chooseYourOwn-page").style.display = "block";
       document.getElementById("preMade-page").style.display = "none";
       document.getElementById("home-page").style.display = "none";
@@ -358,7 +358,7 @@ var vm = new Vue({
       for (i = 0; i < tablinks.length; i++) {
           tablinks[i].style.backgroundColor = "";
       }
-      document.getElementById("defaultOpenPM").style.backgroundColor = "red";
+      document.getElementById("defaultOpenPM").style.backgroundColor = "purple";
       document.getElementById("chooseYourOwn-page").style.display = "none";
       document.getElementById("preMade-page").style.display = "block";
       document.getElementById("home-page").style.display = "none";
