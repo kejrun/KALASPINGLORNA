@@ -91,14 +91,31 @@ Data.prototype.initializeData = function (table) {
     });
 };
 
-Data.prototype.makeTransaction = function(order, changeUnit){
+Data.prototype.makeTransaction = function(order, change_direction){
       var transactions = this.data[transactionsDataName],
     //find out the currently highest transaction id
     transId =  transactions[transactions.length - 1].transaction_id,
     i = order.ingredients,
-    k;
-
-  for (k = 0; k < i.length; k += 1) {
+    k,
+    changeUnit; 
+    if(change_direction == "remove"){
+        if (order.type == "M"){
+            changeUnit = -60;
+        } else if(order.type == "S"){
+            changeUnit = -40;
+        } else{
+        changeUnit = -80;
+        }
+    } else
+    {if (order.type == "M"){
+        changeUnit = +60;
+    } else if(order.type == "S"){
+        changeUnit = +40;
+    } else{
+        changeUnit = +80;
+    }
+    }
+    for (k = 0; k < i.length; k += 1) {
     transId += 1;
     transactions.push({transaction_id: transId,
                        ingredient_id: i[k].ingredient_id,
@@ -139,7 +156,7 @@ Data.prototype.addOrder = function (order) {
     this.orders[orderId] = order.order;
     this.orders[orderId].done = false;
     this.orders[orderId].inMade = false;
-    this.makeTransaction(order.order, -60);
+    this.makeTransaction(order.order, "remove");
     return orderId;
 };
 Data.prototype.getAllOrders = function () {
@@ -154,7 +171,7 @@ Data.prototype.markOrderDone = function (orderId) {
 // +40, +60 eller +80 som ska skickas till makeTransaxtion
 Data.prototype.cancelOrder = function(orderId){
     this.orders[orderId].done = true;
-    this.makeTransaction(this.orders[orderId], +60);
+    this.makeTransaction(this.orders[orderId], "add");
 };
 
 Data.prototype.markOrderInMade = function(orderId){

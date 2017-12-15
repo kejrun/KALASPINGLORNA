@@ -155,7 +155,7 @@ var vm = new Vue({
   el: '#ordering',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
   data: {
-    type: 'm',
+    type: 'M',
     chosenIngredients: [],
     pricesSmall: [],
     pricesMedium: [],
@@ -220,6 +220,7 @@ var vm = new Vue({
         type: this.type,
         price: this.price
       };
+        
       console.log('order', {order: order});
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       socket.emit('order', {order: order});
@@ -276,7 +277,6 @@ var vm = new Vue({
       for (i = 0; i < this.$refs.ingredient.length; i += 1) {
         this.$refs.ingredient[i].resetCounter();
       }
-      console.log("hejhej");
       this.volume = 0;
       this.price = 0;
       this.type = '';

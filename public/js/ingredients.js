@@ -46,7 +46,7 @@ var vm = new Vue({
     ShowStartpage: function(){
         window.location = 'http://localhost:3000/kitchen';
         document.getElementById("finishedOrder").style.display ="none";
-        document.getElementById("start_page").style.display = "none";
+        
     }
 
 }});

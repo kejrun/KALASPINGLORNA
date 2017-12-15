@@ -68,7 +68,7 @@
     <br>
     <h1>{{ uiLabels.ordersFinished }}</h1>
     <h2>{{ uiLabels.smoothie }}</h2>
-      <order-item
+      <order-item-done
         v-for="(order, key) in orders"
         v-if="order.done "
         :order-id="key"
@@ -77,7 +77,7 @@
         :type="type"
         :ui-labels="uiLabels"
         :key="key">
-      </order-item>
+      </order-item-done>
     </div>  
     <!--<h2>{{ uiLabels.juice }}</h2>
     <div>
