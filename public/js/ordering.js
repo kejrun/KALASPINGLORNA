@@ -402,6 +402,7 @@ var vm = new Vue({
       extrasCategories = document.getElementById("extrasCategories")
       categoriesDrink = document.getElementById("categories-drink");
      categoriesDrink.appendChild(extrasCategories);
+        extrasCategories.style.display="grid";
     
     },
 
