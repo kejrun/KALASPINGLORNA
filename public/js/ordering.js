@@ -252,8 +252,6 @@ var vm = new Vue({
     },
 
     openTab: function(tabName, elmnt, color) {
-      //this.elmnt = elmnt
-      console.log(elmnt)
 
         // Hide all elements with class="tabcontent" by default */
         var i, tabcontent, tablinks;
@@ -276,12 +274,39 @@ var vm = new Vue({
         document.getElementById(tabName).style.display = "block";
 
         // Add the specific color to the button used to open the tab content
-        //document.getElementById("1").style.backgroundColor = "red";
-
-        //elmnt.style.backgroundColor = "red";
+        if (tabName === "checkOut-page") {
+          document.getElementById("checkOut-pageBtnPM").style.backgroundColor = "red";
+          document.getElementById("checkOut-pageBtn").style.backgroundColor = "red";
+        };
+        if (tabName === "home-page") {
+          document.getElementById("home-pageBtnPM").style.backgroundColor = "red";
+          document.getElementById("home-pageBtn").style.backgroundColor = "red";
+        };
+        if (tabName === "preMade-page") {
+          document.getElementById("defaultOpenPM").style.backgroundColor = "red";
+        };
+        if (tabName === "myOrder-page") {
+          document.getElementById("myOrder-pageBtnPM").style.backgroundColor = "red";
+          document.getElementById("myOrder-pageBtn").style.backgroundColor = "red";
+        };
+        if (tabName === "chooseYourOwn-page") {
+          document.getElementById("defaultOpen").style.backgroundColor = "red";
+        };
+        if (tabName === "extras-page") {
+          document.getElementById("extras-pageBtn").style.backgroundColor = "red";
+        };
     },
 
     chooseYourOwn: function () {
+      var i, tabcontent, tablinks;
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].style.backgroundColor = "";
+      }
+      tablinks = document.getElementsByClassName("tablinkPM");
+      for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].style.backgroundColor = "";
+      }
       document.getElementById("defaultOpen").style.backgroundColor = "red";
       document.getElementById("chooseYourOwn-page").style.display = "block";
       document.getElementById("preMade-page").style.display = "none";
@@ -292,6 +317,15 @@ var vm = new Vue({
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
     },
     preMade: function () {
+      var i, tabcontent, tablinks;
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].style.backgroundColor = "";
+      }
+      tablinks = document.getElementsByClassName("tablinkPM");
+      for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].style.backgroundColor = "";
+      }
       document.getElementById("defaultOpenPM").style.backgroundColor = "red";
       document.getElementById("chooseYourOwn-page").style.display = "none";
       document.getElementById("preMade-page").style.display = "block";
