@@ -10,7 +10,7 @@ Vue.component('ingredient', {
   <label>{{ counter }}</label>\
   <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
   <label>\
-  {{item["ingredient_"+ lang]}} {{ (type=="medium") ? item.price_m:item.price_l }} :- \
+  {{item["ingredient_"+ lang]}} {{ item["price_" + type] }} :- \
   </label>\
   </div>',
   data: function () {
@@ -172,15 +172,12 @@ var vm = new Vue({
       this.type = type;
     this.chosenIngredients.push(document.createElement('br'));
       if (type === "small"){
-        this.volume += +item.vol_s;
         this.price += +item.price_s;
       }
       else if (type === "medium") {
-        this.volume += +item.vol_m;
         this.price += +item.price_m;
       }
       else{
-        this.volume += +item.vol_l;
         this.price += +item.price_l;
       }
     },
@@ -279,7 +276,8 @@ var vm = new Vue({
         document.getElementById(tabName).style.display = "block";
 
         // Add the specific color to the button used to open the tab content
-        //document.getElementById(elmnt).style.backgroundColor = "red";
+        //document.getElementById("1").style.backgroundColor = "red";
+
         //elmnt.style.backgroundColor = "red";
     },
 

@@ -47,6 +47,7 @@
       v-on:increment="addToOrder(item, 'medium')"
       :item="item"
       :lang="lang"
+      :type="type" 
       :key="item.ingredient_id">
     </ingredient>
     </div>
@@ -61,6 +62,7 @@
       v-on:increment="addToOrder(item, 'medium')"
       :item="item"
       :lang="lang"
+      :type="type"
       :key="item.ingredient_id">
     </ingredient>
     </div>
@@ -75,6 +77,7 @@
         v-on:increment="addToOrder(item, 'medium')"
         :item="item"
         :lang="lang"
+        :type="type"        
         :key="item.ingredient_id">
         </ingredient>
     </div>
@@ -89,6 +92,7 @@
         v-on:increment="addToOrder(item, 'medium')"
         :item="item"
         :lang="lang"
+        :type="type"
         :key="item.ingredient_id">
         </ingredient>
     </div>
@@ -99,13 +103,13 @@
     <table id="showDrinkTable" > 
         <tr v-for= "item in chosenIngredients">
             <td class="ingredientColumn">{{ item["ingredient_" + lang] }}</td>
-            <td class="priceColumn"> {{ item["price_"+"m"] }} kr</td>
+            <td class="priceColumn"> {{ item["price_" + type] }} kr</td>
         </tr></table>
     <br> Totalt: {{ price }} kr
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button><br>
-    <button>Small</button>
-    <button>Medium</button>
-    <button>Large</button>
+    <button v-on:click="switchType('s')">{{ uiLabels.smallType }}</button>
+    <button v-on:click="switchType('m')">{{ uiLabels.mediumType }}</button>
+    <button v-on:click="switchType('l')">{{ uiLabels.largeType }}</button>
 
 </div>
 </div>
@@ -135,7 +139,7 @@
 
   <div id="myOrder-page" class="tabcontent">
   <h1>{{ uiLabels.myOrder }}</h1>
-  <p>fucking order!</p>
+  <p>These are your ordered drinks:</p>
   </div>
 
   <div id="checkOut-page" class="tabcontent">
