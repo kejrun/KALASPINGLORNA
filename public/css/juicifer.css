@@ -97,7 +97,7 @@ h1 {
 }
 
 /*Creating a grid containing one grid with the categories in one column, and "My drink" in the other column */
-.categories-drink{
+#categories-drink{
     display: grid;
     width 100%;
     grid-template-columns: repeat(2, auto);
@@ -105,7 +105,7 @@ h1 {
     margin-top: 3%;
 
 }
-.category-list {
+#category-list {
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(4, auto);
@@ -113,6 +113,13 @@ h1 {
 	z-index: 5;
 }
 
+#extrasCategories {
+    display: grid;
+	width: 100%;
+	grid-template-columns: repeat(4, auto);
+	grid-gap: 1em;
+	z-index: 5;
+}
 #showDrink{
 	width: 100%;
 	border: 2px solid #cdc;

@@ -33,8 +33,8 @@
         </div>
       </div>
       <!-- Category-list and ingredient-list created to be able to get a grid layout -->
-      <div class = "categories-drink">
-        <div class = "category-list">
+      <div id = "categories-drink">
+        <div id = "category-list">
           <div class ="ingredients-list">
             <h1>{{ uiLabels.fruit }}</h1>
             <ingredient
@@ -92,6 +92,8 @@
   </div>
 </div>
 
+
+
 <div id="showDrink">
   <h1>{{ uiLabels.order }}</h1>
   <table id="showDrinkTable" >
@@ -132,6 +134,60 @@ v-if="!order.done && order.type == 'medium'"
   </div>
 
 <div id="extras-page" class="tabcontent">
+    <div id="extrasCategories">
+          <div class ="extras-list">
+            <h1>{{ uiLabels.nut }}</h1>
+            <ingredient
+            ref="ingredient"
+            type="medium"
+            v-for="item in ingredients"
+            v-if="item.category == 'nut'"
+            v-on:increment="addToOrder(item, 'medium')"
+            :item="item"
+            :lang="lang"
+            :key="item.ingredient_id">
+          </ingredient>
+         </div>
+          <div class ="extras-list">
+            <h1>{{ uiLabels.flavour }}</h1>
+            <ingredient
+            ref="ingredient"
+            type="medium"
+            v-for="item in ingredients"
+            v-if="item.category == 'flavour'"
+            v-on:increment="addToOrder(item, 'medium')"
+            :item="item"
+            :lang="lang"
+            :key="item.ingredient_id">
+          </ingredient>
+         </div>
+         <div class ="extras-list">
+            <h1>{{ uiLabels.powder }}</h1>
+            <ingredient
+            ref="ingredient"
+            type="medium"
+            v-for="item in ingredients"
+            v-if="item.category == 'powder'"
+            v-on:increment="addToOrder(item, 'medium')"
+            :item="item"
+            :lang="lang"
+            :key="item.ingredient_id">
+          </ingredient>
+         </div>
+         <div class ="extras-list">
+            <h1>{{ uiLabels.other }}</h1>
+            <ingredient
+            ref="ingredient"
+            type="medium"
+            v-for="item in ingredients"
+            v-if="item.category == 'other'"
+            v-on:increment="addToOrder(item, 'medium')"
+            :item="item"
+            :lang="lang"
+            :key="item.ingredient_id">
+          </ingredient>
+         </div>
+    </div>
 </div>
 
 <div id="myOrder-page" class="tabcontent">
