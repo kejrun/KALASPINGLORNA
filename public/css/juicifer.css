@@ -97,15 +97,18 @@ h1 {
 }
 
 /*Creating a grid containing one grid with the categories in one column, and "My drink" in the other column */
-.categories-drink{
-	display: grid;
-	width 100%;
-	grid-template-columns: repeat(2, auto);
-	grid-gap:1em;
-	margin-top: 3%;
+
+#categories-drink{
+    display: grid;
+    width 100%;
+    grid-template-columns: repeat(2, auto);
+    grid-gap:1em;
+    margin-top: 3%;
+
 
 }
-.category-list {
+#category-list {
+
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(4, auto);
@@ -113,7 +116,19 @@ h1 {
 	z-index: 5;
 }
 
+#extrasCategories {
+    grid-column-start: 1;
+    grid-column-end:2;
+    grid-row-start:1;
+    grid-row-end:2;
+    display: grid;
+	width: 100%;
+	grid-template-columns: repeat(4, auto);
+	grid-gap: 1em;
+	z-index: 5;
+}
 #showDrink{
+    grid-column-start:2;
 	width: 100%;
 	border: 2px solid #cdc;
 	padding: 1em;
@@ -122,6 +137,20 @@ h1 {
 #showDrinkTable{
 	width:100%;
 
+}
+
+/*Buttons for sizes on choose your own*/
+.sizeButton{
+    width: 90px;
+    height: 90px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    border-radius: 5px;
+}
+
+#mediumCup{
+    background-color: lightblue;
 }
 
 .ingredientColumn{
