@@ -4,9 +4,11 @@ Vue.component('ingredient', {
   <label>\
   {{item["ingredient_"+ lang]}}, {{item.stock}}ml\
   </label>\
+<div id="plusMinus">\
  <button v-on:click="minusIngredient" id="ingredientsMinusButton" name="ingredientsMinusButton">-</button>\
   <label>{{ counter }}</label>\
   <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
+</div>\
   </div>',
   data: function () {
     return {

@@ -31,6 +31,11 @@ body {
     right: 10%;
 
 }
+/*to get the plus and minus buttons on the right side*/
+#plusMinus{
+    text-align: right;
+}
+
 h1 {
 	color: black;
 	text-transform: uppercase;
