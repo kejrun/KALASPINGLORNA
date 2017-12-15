@@ -108,6 +108,7 @@ h1 {
 
 }
 #category-list {
+
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(4, auto);
@@ -116,6 +117,7 @@ h1 {
 }
 
 #extrasCategories {
+
     display: grid;
 	width: 100%;
 	grid-template-columns: repeat(4, auto);
@@ -123,6 +125,7 @@ h1 {
 	z-index: 5;
 }
 #showDrink{
+    grid-column-start:2;
 	width: 100%;
 	border: 2px solid #cdc;
 	padding: 1em;

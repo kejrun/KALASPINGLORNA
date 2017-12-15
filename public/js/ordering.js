@@ -385,7 +385,7 @@ var vm = new Vue({
     },
 
     toExtras: function(){
-
+        var extrasCategories,categoriesDrink;
       document.getElementById("defaultOpenPM").style.backgroundColor = "red";
       document.getElementById("category-list").style.display ="none";
       document.getElementById("preMade-page").style.display = "none";
@@ -395,8 +395,9 @@ var vm = new Vue({
       document.getElementById("ProgressBarPreMade").style.display = "none";
       document.getElementById("chooseYourOwn-page").style.display = "block"; 
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
-      document.getElementById("extrasCategories").style.display = "grid";
-    
+      extrasCategories = document.getElementById("extrasCategories").style.display = "grid";
+      categoriesDrink = document.getElementById("categories-drink");
+     // categoriesDrink.appendChild(extrasCategories);
     
     },
 
