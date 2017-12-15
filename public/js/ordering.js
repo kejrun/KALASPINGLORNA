@@ -339,9 +339,30 @@ var vm = new Vue({
       document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
     },
     
-    toExtrasPage: function(){
-        
-    }
+    toExtras: function(){
+        document.getElementById("defaultOpenPM").style.backgroundColor = "red";
+      document.getElementById("chooseYourOwn-page").style.display = "block";
+    
+        var i, ingredientsList;
+        ingredientsList = document.getElementsByClassName("ingredients-list")
+        for(i=0; i<ingredientsList.length; i++){
+            ingredientsList[i].style.display = "none";
+        }
+      document.getElementById("preMade-page").style.display = "none";
+      document.getElementById("home-page").style.display = "none";
+      document.getElementById("myOrder-page").style.display = "none";
+      document.getElementById("checkOut-page").style.display = "none";
+      document.getElementById("ProgressBarPreMade").style.display = "none";
+      document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
+    },
+    
+    toChooseYourOwn: function() {
+        var i, ingredientsList;
+        ingredientsList = document.getElementsByClassName("ingredients-list")
+        for(i=0; i<ingredientsList.length; i++){
+            ingredientsList[i].style.display = "block";
+        }
+  }
       
   }
 });
