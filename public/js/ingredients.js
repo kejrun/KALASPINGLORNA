@@ -17,12 +17,10 @@ Vue.component('ingredient', {
      plusIngredient: function(){
         this.$emit('refill');
         this.counter += 1000;
-        
     },
      minusIngredient: function(){
         this.$emit('un-refill');
         this.counter -= 1000;
-        
      },
     resetCounter: function () {
       this.counter = 0;
@@ -43,12 +41,12 @@ var vm = new Vue({
     },
      refreshPage: function(){
         window.location = 'http://localhost:3000/ingredients';
-         
+
     },
     ShowStartpage: function(){
         window.location = 'http://localhost:3000/kitchen';
         document.getElementById("finishedOrder").style.display ="none";
         document.getElementById("start_page").style.display = "none";
     }
-    
+
 }});

@@ -190,25 +190,30 @@ var vm = new Vue({
       
       changeTotalPrice: function (type){
           this.price = 0;
+          this.type = type;
+          console.log('changeprice');
           var i;
           if (type === "s"){
-              for (i = 0; i < pricesSmall.lenght; i++){
-                  this.price += pricesSmall[i];
+              console.log('changeSmall');
+              for (i = 0; i < this.pricesSmall.length; i++){
+                  this.price += this.pricesSmall[i];
               }
           }
           else if (type === "m") {
-              for (i = 0; i < pricesMedium.lenght; i++){
-                  this.price += pricesMedium[i];
+              console.log('changeMedium');
+              for (i = 0; i < this.pricesMedium.length; i++){
+                  this.price += this.pricesMedium[i];
               }
           }
           
           else{
-              for (i = 0; i < pricesLarge.lenght; i++){
-                  this.price += pricesLarge[i];
+              console.log('changeLarge');
+              for (i = 0; i < this.pricesLarge.length; i++){
+                  this.price += this.pricesLarge[i];
               }
           }
           }
-      },
+      ,
 
     placeOrder: function () {
       var i,
@@ -229,6 +234,9 @@ var vm = new Vue({
       this.price = 0;
       this.type = '';
       this.chosenIngredients = [];
+      this.pricesSmall = [];
+      this.pricesMedium = [];
+      this.pricesLarge = [];
       resetIngredientsForNewOrder();
 
     },
@@ -280,7 +288,6 @@ var vm = new Vue({
     },
 
     openTab: function(tabName, elmnt, color) {
-
         // Hide all elements with class="tabcontent" by default */
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -344,6 +351,7 @@ var vm = new Vue({
       document.getElementById("ProgressBarPreMade").style.display = "none";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
     },
+
     preMade: function () {
       var i, tabcontent, tablinks;
       tablinks = document.getElementsByClassName("tablink");
@@ -363,10 +371,31 @@ var vm = new Vue({
       document.getElementById("ProgressBarPreMade").style.display = "block";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
     },
-    
-    toExtrasPage: function(){
-        
-    }
-      
+
+    toExtras: function(){
+        document.getElementById("defaultOpenPM").style.backgroundColor = "red";
+      document.getElementById("chooseYourOwn-page").style.display = "block";
+
+        var i, ingredientsList;
+        ingredientsList = document.getElementsByClassName("ingredients-list")
+        for(i=0; i<ingredientsList.length; i++){
+            ingredientsList[i].style.display = "none";
+        }
+      document.getElementById("preMade-page").style.display = "none";
+      document.getElementById("home-page").style.display = "none";
+      document.getElementById("myOrder-page").style.display = "none";
+      document.getElementById("checkOut-page").style.display = "none";
+      document.getElementById("ProgressBarPreMade").style.display = "none";
+      document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
+    },
+
+    toChooseYourOwn: function() {
+        var i, ingredientsList;
+        ingredientsList = document.getElementsByClassName("ingredients-list")
+        for(i=0; i<ingredientsList.length; i++){
+            ingredientsList[i].style.display = "block";
+        }
   }
+  }
+
 });
