@@ -157,6 +157,9 @@ var vm = new Vue({
   data: {
     type: '',
     chosenIngredients: [],
+    pricesSmall: [],
+    pricesMedium: [],
+    pricesLarge: [],
     volume: 0,
     price: 0
   },
@@ -169,18 +172,43 @@ var vm = new Vue({
   methods: {
     addToOrder: function (item, type) {
       this.chosenIngredients.push(item);
+      this.pricesSmall.push(item.price_s);
+      this.pricesMedium.push(item.price_m);
+      this.pricesLarge.push(item.price_l);
       this.type = type;
         console.log(this.type);
-      if (type === "small"){
+      if (type === "s"){
         this.price += +item.price_s;
       }
-      else if (type === "medium") {
+      else if (type === "m") {
         this.price += +item.price_m;
       }
       else{
         this.price += +item.price_l;
       }
     },
+      
+      changeTotalPrice: function (type){
+          this.price = 0;
+          var i;
+          if (type === "s"){
+              for (i = 0; i < pricesSmall.lenght; i++){
+                  this.price += pricesSmall[i];
+              }
+          }
+          else if (type === "m") {
+              for (i = 0; i < pricesMedium.lenght; i++){
+                  this.price += pricesMedium[i];
+              }
+          }
+          
+          else{
+              for (i = 0; i < pricesLarge.lenght; i++){
+                  this.price += pricesLarge[i];
+              }
+          }
+          }
+      },
 
     placeOrder: function () {
       var i,

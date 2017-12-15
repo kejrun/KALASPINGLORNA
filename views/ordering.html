@@ -44,7 +44,7 @@
       type="medium"
       v-for="item in ingredients"
       v-if="item.category == 'fruit'"
-      v-on:increment="addToOrder(item, 'medium')"
+      v-on:increment="addToOrder(item, type)"
       :item="item"
       :lang="lang"
       :type="type" 
@@ -59,7 +59,7 @@
       type="medium"
       v-for="item in ingredients"
       v-if="item.category == 'vegetable'"
-      v-on:increment="addToOrder(item, 'medium')"
+      v-on:increment="addToOrder(item, type)"
       :item="item"
       :lang="lang"
       :type="type"
@@ -74,7 +74,7 @@
         type="medium"
         v-for = "item in ingredients"
         v-if = "item.category == 'berry'"
-        v-on:increment="addToOrder(item, 'medium')"
+        v-on:increment="addToOrder(item, type)"
         :item="item"
         :lang="lang"
         :type="type"        
@@ -89,7 +89,7 @@
         type="medium"
         v-for = "item in ingredients"
         v-if = "item.category == 'liquid'"
-        v-on:increment="addToOrder(item, 'medium')"
+        v-on:increment="addToOrder(item, type)"
         :item="item"
         :lang="lang"
         :type="type"
@@ -103,13 +103,13 @@
     <table id="showDrinkTable" >
         <tr v-for= "item in chosenIngredients">
             <td class="ingredientColumn">{{ item["ingredient_" + lang] }}</td>
-            <td class="priceColumn"> {{ item["price_" + 'm'] }} kr</td>
+            <td class="priceColumn"> {{ item["price_" + type] }} kr</td>
         </tr></table>
     <br> Totalt: {{ price }} kr
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button><br>
-    <button v-on:click="switchType('s')">{{ uiLabels.smallType }}</button>
-    <button v-on:click="switchType('m')">{{ uiLabels.mediumType }}</button>
-    <button v-on:click="switchType('l')">{{ uiLabels.largeType }}</button>
+    <button v-on:click="switchType('s'); changeTotalPrice('s')">{{ uiLabels.smallType }}</button>
+    <button v-on:click="switchType('m'); changeTotalPrice('m')">{{ uiLabels.mediumType }}</button>
+    <button v-on:click="switchType('l'); changeTotalPrice('l')">{{ uiLabels.largeType }}</button>
 
 </div>
 </div>
