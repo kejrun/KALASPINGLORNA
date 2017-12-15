@@ -132,12 +132,14 @@ Data.prototype.makeStockTransaction = function(item, changeUnit){
     this.currentOrderNumber = 1000;
   };
 
+//Här i addOrder skulle vi behöva en if sats som säger att -60 som är changeUnit beror
+//av vilken storlek kunden valt på muggen. T.ex. om kunden valt en M så ska det vara -60. 
 Data.prototype.addOrder = function (order) {
-     var orderId = this.getOrderNumber();
+    var orderId = this.getOrderNumber();
     this.orders[orderId] = order.order;
     this.orders[orderId].done = false;
     this.orders[orderId].inMade = false;
-    this.makeTransaction(order.order, -1);
+    this.makeTransaction(order.order, -60);
     return orderId;
 };
 Data.prototype.getAllOrders = function () {
@@ -148,9 +150,11 @@ Data.prototype.markOrderDone = function (orderId) {
   this.orders[orderId].done = true;
 };
 
+//Samma här med if sats, vi behöver veta om kunden valt S, M, L för att veta om de är
+// +40, +60 eller +80 som ska skickas till makeTransaction
 Data.prototype.cancelOrder = function(orderId){
     this.orders[orderId].done = true;
-    this.makeTransaction(this.orders[orderId], 1);
+    this.makeTransaction(this.orders[orderId], +60);
 };
 
 Data.prototype.markOrderInMade = function(orderId){
