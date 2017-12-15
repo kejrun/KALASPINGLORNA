@@ -118,7 +118,7 @@
         </tr></table>
 
     <br> Totalt: {{ price }} kr
-    <button v-on:click="placeOrder();switchType('m');markChosenSizeButton('m')">{{ uiLabels.placeOrder }}</button><br>
+    <button id="addToMyOrder" v-on:click="placeOrder();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.placeOrder }}</button><br>
     <br>
     <button id="smallCup" class="sizeButton" v-on:click="switchType('s'); changeTotalPrice('s');markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
     <button id="mediumCup" class="sizeButton" v-on:click="switchType('m'); changeTotalPrice('m');markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>

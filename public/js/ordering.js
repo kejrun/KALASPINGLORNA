@@ -111,6 +111,7 @@ function decreaseBar() {
 
 //skriver ut text på ingredientsBar
 function textOnBar(newLength, fullSize){
+    console.log(newLength);
   if (newLength == 0){
     ingredientsBarText.innerHTML = 'Choose 5 ingredients';
   }
@@ -172,6 +173,9 @@ var vm = new Vue({
   methods: {
     addToOrder: function (item, type) {
       this.chosenIngredients.push(item);
+        if (this.chosenIngredients.length == 5){
+            document.getElementById("addToMyOrder").disabled = false;
+            }
       this.pricesSmall.push(item.price_s);
       this.pricesMedium.push(item.price_m);
       this.pricesLarge.push(item.price_l);
