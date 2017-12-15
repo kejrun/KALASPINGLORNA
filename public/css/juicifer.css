@@ -135,6 +135,10 @@ h1 {
     justify-content: center;
 }
 
+#mediumCup{
+    background-color: lightblue;
+}
+
 .ingredientColumn{
 	text-align:left;
 	width:80%;

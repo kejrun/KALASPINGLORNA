@@ -172,7 +172,6 @@ var vm = new Vue({
   methods: {
     addToOrder: function (item, type) {
       this.chosenIngredients.push(item);
-
       this.pricesSmall.push(item.price_s);
       this.pricesMedium.push(item.price_m);
       this.pricesLarge.push(item.price_l);
@@ -217,10 +216,10 @@ var vm = new Vue({
           document.getElementById("largeCup").style.backgroundColor = "white";
           this.type=type;
           console.log(type);
-          if (type==='s'){
+          if (type === 's'){
           document.getElementById("smallCup").style.backgroundColor = "lightblue";
           }
-          else if (type==='m'){
+          else if (type === 'm'){
           document.getElementById("mediumCup").style.backgroundColor = "lightblue";
           }
           else {
@@ -386,7 +385,7 @@ var vm = new Vue({
     },
 
     toExtras: function(){
-        document.getElementById("defaultOpenPM").style.backgroundColor = "red";
+      document.getElementById("defaultOpenPM").style.backgroundColor = "red";
       document.getElementById("chooseYourOwn-page").style.display = "block";
 
         var i, ingredientsList;
