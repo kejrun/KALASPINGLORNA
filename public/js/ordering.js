@@ -280,7 +280,8 @@ var vm = new Vue({
         document.getElementById(tabName).style.display = "block";
 
         // Add the specific color to the button used to open the tab content
-        //document.getElementById(elmnt).style.backgroundColor = "red";
+        //document.getElementById("1").style.backgroundColor = "red";
+
         //elmnt.style.backgroundColor = "red";
     },
 
