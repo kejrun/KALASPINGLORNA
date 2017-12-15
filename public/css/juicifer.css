@@ -317,3 +317,16 @@ max-height: 4em;
 	display: none;
 	padding: 50px;
 }
+
+/* Set style for change language button and flag, still working on it.... */
+.LanguageButton{
+font-family: 'Encode Sans Semi Condensed';
+cursor:pointer;
+width: auto;
+height: 30px;
+border: none;
+}
+
+#LanguageDiv{
+	display: inline;
+}
