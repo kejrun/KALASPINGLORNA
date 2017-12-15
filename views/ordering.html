@@ -129,6 +129,7 @@ v-if="!order.done && order.type == 'medium'"
     <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
     <button v-on:click="orderPremade(preparedDrink)">{{ uiLabels.placeOrder }}</button>
   </div>
+  </div>
 
 <div id="extras-page" class="tabcontent">
 </div>
@@ -158,11 +159,9 @@ v-if="!order.done && order.type == 'medium'"
 <div id="ProgressBarChooseYourOwn">
 <button class="tablink" v-on:click="openTab('home-page', this, 'orange')" id="home-pageBtn">{{ uiLabels.home }}</button>
 <button class="tablink" v-on:click="openTab('chooseYourOwn-page', this, 'green');toChooseYourOwn()" id="defaultOpen">{{ uiLabels.ingredients }}</button>
-
 <button class="tablink" v-on:click="openTab('extras-page', this, 'red');toExtras()" id="extras-pageBtn">{{ uiLabels.extras }}</button>
 <button class="tablink" v-on:click="openTab('myOrder-page', this, 'blue')" id="myOrder-pageBtn">{{ uiLabels.myOrder }}</button>
 <button class="tablink" v-on:click="openTab('checkOut-page', this, 'pink')" id="checkOut-pageBtn">{{ uiLabels.checkOut }}</button>
-
 </div>
 </div>
 </html>

@@ -318,6 +318,7 @@ var vm = new Vue({
       document.getElementById("ProgressBarPreMade").style.display = "none";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
     },
+
     preMade: function () {
       var i, tabcontent, tablinks;
       tablinks = document.getElementsByClassName("tablink");
@@ -337,11 +338,11 @@ var vm = new Vue({
       document.getElementById("ProgressBarPreMade").style.display = "block";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
     },
-    
+
     toExtras: function(){
         document.getElementById("defaultOpenPM").style.backgroundColor = "red";
       document.getElementById("chooseYourOwn-page").style.display = "block";
-    
+
         var i, ingredientsList;
         ingredientsList = document.getElementsByClassName("ingredients-list")
         for(i=0; i<ingredientsList.length; i++){
@@ -354,7 +355,7 @@ var vm = new Vue({
       document.getElementById("ProgressBarPreMade").style.display = "none";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
     },
-    
+
     toChooseYourOwn: function() {
         var i, ingredientsList;
         ingredientsList = document.getElementsByClassName("ingredients-list")
@@ -362,6 +363,5 @@ var vm = new Vue({
             ingredientsList[i].style.display = "block";
         }
   }
-      
   }
 });
