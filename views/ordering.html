@@ -94,7 +94,11 @@
 
 <div id="showDrink">
     <h1>{{ uiLabels.order }}</h1>
-    <p v-for= "item in chosenIngredients"> {{ item["ingredient_" + lang] }}</p>
+    <table id="showDrinkTable" > 
+        <tr v-for= "item in chosenIngredients">
+            <td class="ingredientColumn">{{ item["ingredient_" + lang] }}</td>
+            <td class="priceColumn"> {{ item["price_"+"m"] }} kr</td>
+        </tr></table>
     <br> Totalt: {{ price }} kr
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button><br>
     <button>Small</button>
@@ -129,7 +133,7 @@
 
   <div id="myOrder-page" class="tabcontent">
   <h1>{{ uiLabels.myOrder }}</h1>
-  <p>fucking order!</p>
+  <p>These are your ordered drinks:</p>
   </div>
 
   <div id="checkOut-page" class="tabcontent">

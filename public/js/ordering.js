@@ -171,7 +171,7 @@ var vm = new Vue({
       this.chosenIngredients.push(item);
       this.type = type;
         console.log(this.type);
-    this.chosenIngredients.push(document.createElement('br'));
+    //this.chosenIngredients.push(document.createElement('br'));
       if (type === "small"){
         this.volume += +item.vol_s;
         this.price += +item.price_s;
@@ -280,7 +280,8 @@ var vm = new Vue({
         document.getElementById(tabName).style.display = "block";
 
         // Add the specific color to the button used to open the tab content
-        //document.getElementById(elmnt).style.backgroundColor = "red";
+        //document.getElementById("1").style.backgroundColor = "red";
+
         //elmnt.style.backgroundColor = "red";
     },
 
