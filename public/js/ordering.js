@@ -172,11 +172,11 @@ var vm = new Vue({
   methods: {
     addToOrder: function (item, type) {
       this.chosenIngredients.push(item);
+        
       this.pricesSmall.push(item.price_s);
       this.pricesMedium.push(item.price_m);
       this.pricesLarge.push(item.price_l);
       this.type = type;
-        console.log(this.type);
       if (type === "s"){
         this.price += +item.price_s;
       }
@@ -191,23 +191,19 @@ var vm = new Vue({
       changeTotalPrice: function (type){
           this.price = 0;
           this.type = type;
-          console.log('changeprice');
           var i;
           if (type === "s"){
-              console.log('changeSmall');
               for (i = 0; i < this.pricesSmall.length; i++){
                   this.price += this.pricesSmall[i];
               }
           }
           else if (type === "m") {
-              console.log('changeMedium');
               for (i = 0; i < this.pricesMedium.length; i++){
                   this.price += this.pricesMedium[i];
               }
           }
           
           else{
-              console.log('changeLarge');
               for (i = 0; i < this.pricesLarge.length; i++){
                   this.price += this.pricesLarge[i];
               }
@@ -238,7 +234,6 @@ var vm = new Vue({
       this.pricesMedium = [];
       this.pricesLarge = [];
       resetIngredientsForNewOrder();
-
     },
     getIngredientById: function (id) {
       for (var i =0; i < this.ingredients.length; i += 1) {
