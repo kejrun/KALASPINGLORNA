@@ -104,7 +104,7 @@
     <h1>{{ uiLabels.order }}</h1>
     <p v-for= "item in chosenIngredients"> {{ item["ingredient_" + lang] }}</p>
     <br> {{ volume }} ml, {{ price }} kr
-    <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+    <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button><br>
     <button>Small</button>
     <button>Medium</button>
     <button>Large</button>
