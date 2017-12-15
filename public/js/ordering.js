@@ -256,8 +256,6 @@ var vm = new Vue({
     },
 
     openTab: function(tabName, elmnt, color) {
-      //this.elmnt = elmnt
-      console.log(tabName)
 
         // Hide all elements with class="tabcontent" by default */
         var i, tabcontent, tablinks;
@@ -304,6 +302,15 @@ var vm = new Vue({
     },
 
     chooseYourOwn: function () {
+      var i, tabcontent, tablinks;
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].style.backgroundColor = "";
+      }
+      tablinks = document.getElementsByClassName("tablinkPM");
+      for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].style.backgroundColor = "";
+      }
       document.getElementById("defaultOpen").style.backgroundColor = "red";
       document.getElementById("chooseYourOwn-page").style.display = "block";
       document.getElementById("preMade-page").style.display = "none";
@@ -314,6 +321,15 @@ var vm = new Vue({
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
     },
     preMade: function () {
+      var i, tabcontent, tablinks;
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].style.backgroundColor = "";
+      }
+      tablinks = document.getElementsByClassName("tablinkPM");
+      for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].style.backgroundColor = "";
+      }
       document.getElementById("defaultOpenPM").style.backgroundColor = "red";
       document.getElementById("chooseYourOwn-page").style.display = "none";
       document.getElementById("preMade-page").style.display = "block";
