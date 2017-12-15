@@ -1,12 +1,12 @@
 Vue.component('ingredient', {
   props: ['item', 'lang'],
   template: ' <div class="ingredient">\
-    <button v-on:click="minusIngredient" id="ingredientsMinusButton" name="ingredientsMinusButton">-</button>\
-  <label>{{ counter }}</label>\
-  <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
   <label>\
   {{item["ingredient_"+ lang]}}, {{item.stock}}ml\
   </label>\
+ <button v-on:click="minusIngredient" id="ingredientsMinusButton" name="ingredientsMinusButton">-</button>\
+  <label>{{ counter }}</label>\
+  <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
   </div>',
   data: function () {
     return {

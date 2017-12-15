@@ -39,6 +39,15 @@ h1 {
 	position: relative;
 }
 
+h2 {
+ color: black;
+	text-transform: uppercase;
+	letter-spacing: 2pt;
+	text-align: left;
+	position: relative; 
+    font-size: 16pt;
+    margin-left: 1em;
+}
 #finishedOrder{
 	display: none;
 }
