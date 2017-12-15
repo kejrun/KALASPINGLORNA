@@ -31,8 +31,28 @@ body {
     right: 10%;
 
 }
+/*stock list något är konstigt*/
+.ingredientStock {
+	border: 1px solid #cdc;
+	padding: 1em;
+    width:100%;
+}
+
+#itemColumn{
+    width: 40em;
+    text-align: left;
+    
+}
+
+#stockColumn{
+    width: 700em;
+    text-align: center;
+    
+}
+
 /*to get the plus and minus buttons on the right side*/
 #plusMinus{
+    width: 70em;
     text-align: right;
 }
 

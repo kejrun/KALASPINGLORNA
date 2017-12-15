@@ -1,6 +1,15 @@
 Vue.component('ingredient', {
   props: ['item', 'lang'],
-  template: ' <div class="ingredient">\
+  template: '<div class="ingredientStock">\
+    <table>\
+    <td id= "itemColumn">{{item["ingredient_"+ lang]}}</td>\
+    <td id= "stockColumn">{{item.stock}}ml</td>\
+    <td id= "plusMinus"><button v-on:click="minusIngredient" id="ingredientsMinusButton" name="ingredientsMinusButton">-</button>\
+  <label>{{ counter }}</label>\
+  <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\</td>\
+    </table>\ </div>',
+    
+    /*' <div class="ingredient">\
   <label>\
   {{item["ingredient_"+ lang]}}, {{item.stock}}ml\
   </label>\
@@ -9,7 +18,9 @@ Vue.component('ingredient', {
   <label>{{ counter }}</label>\
   <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
 </div>\
-  </div>',
+  </div>',*/
+              
+              
   data: function () {
     return {
       counter: 0
