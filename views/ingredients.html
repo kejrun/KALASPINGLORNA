@@ -21,8 +21,13 @@
     <h1>{{ uiLabels.stockList }}</h1>
         
     <div id = "ingredients_layout">
-    <div class ="stockList">
-    <h2>{{ uiLabels.fruit }}</h2>
+    <div class ="stockHeaders">
+        <div class ="stockHead">{{ uiLabels.fruit }}</div>
+        <div class ="stockHead">{{ uiLabels.stock }}</div>
+        <div class ="stockHead">{{ uiLabels.add }}</div>
+        </div>
+   <!-- <h2>{{ uiLabels.fruit }}{{uiLabels.stock}}{{uiLabels.add}}</h2>-->
+        <div class = "stockList">
     <ingredient
       ref="ingredient"
       type="medium"
@@ -34,10 +39,14 @@
       :lang="lang"
       :key="item.ingredient_id">
     </ingredient>
-    </div>
-
+        <div/>
+   
+ <div class ="stockHeaders">
+        <div class ="stockHead">{{ uiLabels.vegetable }}</div>
+        <div class ="stockHead">{{ uiLabels.stock }}</div>
+        <div class ="stockHead">{{ uiLabels.add }}</div>
+        </div>
     <div class = "stockList">
-    <h2>{{ uiLabels.vegetable }}</h2>
        <ingredient
       ref="ingredient"
       type="medium"
@@ -141,6 +150,7 @@
         </ingredient>
     </div>
 </div>
+        
         
     <!--<div id= "ingredients_layout">
     <ingredient

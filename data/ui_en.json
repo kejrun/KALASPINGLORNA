@@ -28,5 +28,7 @@
     "nut" : "Nuts and seeds",
     "flavour" : "Flavours",
     "powder" : "Powders",
-    "other" : "Others"
+    "other" : "Others",
+    "stock" : "Stock Balance (ml)",
+    "add" : "Add to Stock (ml)"
 }

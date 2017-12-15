@@ -28,5 +28,7 @@
     "nut" : "Nötter och frön",
     "flavour" : "Smaksättare",
     "powder" : "Pulver",
-    "other" : "Övrigt"
+    "other" : "Övrigt",
+     "stock" : "Lagersaldo (ml)",
+    "add" : "Fyll på lager (ml)"
 }

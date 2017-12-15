@@ -31,29 +31,22 @@ body {
 	right: 10%;
 
 }
-/*stock list något är konstigt*/
+/*stock list */
 .ingredientStock {
 	border: 1px solid #cdc;
 	padding: 1em;
     width:100%;
 }
 
-#itemColumn{
-    width: 40em;
-    text-align: left;
-    
+.itemColumn{
+    float: left;
+    width: 33.33%;
 }
 
-#stockColumn{
-    width: 700em;
-    text-align: center;
-    
-}
-
-/*to get the plus and minus buttons on the right side*/
-#plusMinus{
-    width: 70em;
-    text-align: right;
+.ingredientStock:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 h1 {
@@ -64,14 +57,38 @@ h1 {
 	position: relative;
 }
 
+/*all headers*/
+.stockHeaders{
+    color: black;
+	letter-spacing: 1pt;
+	position: relative; 
+    font-size: 12pt; 
+    width:100%;
+    margin-bottom:7%;
+    
+}
+.stockList{
+
+ 
+}
+
+/*the single headers*/
+.stockHead{
+     float: left;
+    width: 33.33%;
+}
+
+.stockList: after{
+    content: "";
+    display: table;
+    clear: both;
+}
 h2 {
  color: black;
 	text-transform: uppercase;
 	letter-spacing: 2pt;
-	text-align: left;
 	position: relative; 
-    font-size: 16pt;
-    margin-left: 1em;
+    font-size: 12pt;
 }
 #finishedOrder{
 	display: none;
