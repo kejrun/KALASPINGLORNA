@@ -395,9 +395,9 @@ var vm = new Vue({
       document.getElementById("ProgressBarPreMade").style.display = "none";
       document.getElementById("chooseYourOwn-page").style.display = "block"; 
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
-      extrasCategories = document.getElementById("extrasCategories").style.display = "grid";
+      extrasCategories = document.getElementById("extrasCategories")
       categoriesDrink = document.getElementById("categories-drink");
-     // categoriesDrink.appendChild(extrasCategories);
+     categoriesDrink.appendChild(extrasCategories);
     
     },
 
