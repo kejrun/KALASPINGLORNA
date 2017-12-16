@@ -96,16 +96,13 @@ resetCounter: function () {
 
 //ökar progress i ingredientsBar
 function increaseBar() {
-    var fullSize = $("#ingredientsBar").width()-6; //magic number 6, adds padding 3px on each side
-    console.log('fullsize: '+ fullSize);
-    var curSize = $("#ingredientsBarProgress").width();
-    console.log('curSize: '+ curSize);
-    var increment = fullSize/5;
-    console.log('increment: '+ increment);
-    if(curSize < fullSize) {
+      var fullSize = $("#ingredientsBar").width()-6; //magic number 6, adds padding 3px on each side
+      var curSize = $("#ingredientsBarProgress").width();
+      var increment = Math.round(fullSize/5);
+      if(curSize < fullSize) {
         $("#ingredientsBarProgress").css('width', '+=' + increment);
         var newLength = curSize+increment;
-        textOnBar(newLength, fullSize);
+        textOnBar(newLength, increment);
     }
 }
 
@@ -113,30 +110,30 @@ function increaseBar() {
 function decreaseBar() {
   var fullSize = $("#ingredientsBar").width()-6; //magic number 6, adds padding 3px on each side
   var curSize = $("#ingredientsBarProgress").width();
-  var increment = fullSize/5;
+  var increment = Math.round(fullSize/5);
   if(curSize > 0) {
     $("#ingredientsBarProgress").css('width', '-=' + increment);
     var newLength = curSize-increment;
-    textOnBar(newLength, fullSize);
+    textOnBar(newLength, increment);
   }
 }
 
 //skriver ut text på ingredientsBar
-function textOnBar(newLength, fullSize){
-  console.log(newLength);
+function textOnBar(newLength, increment){
+    console.log(newLength);
   if (newLength == 0){
     ingredientsBarText.innerHTML = 'Choose 5 ingredients';
   }
-  else if (newLength == fullSize/5){
+  else if (newLength == increment){
     ingredientsBarText.innerHTML = 'Choose 4 ingredients';
   }
-  else if (newLength == 2*fullSize/5){
+  else if (newLength == 2*increment){
     ingredientsBarText.innerHTML = 'Choose 3 ingredients';
   }
-  else if (newLength == 3*fullSize/5){
+  else if (newLength == 3*increment){
     ingredientsBarText.innerHTML = 'Choose 2 ingredients';
   }
-  else if (newLength == 4*fullSize/5){
+  else if (newLength == 4*increment){
     ingredientsBarText.innerHTML = 'Choose 1 ingredient';
   }
   else{
