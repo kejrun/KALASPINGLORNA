@@ -55,20 +55,25 @@ x[i].disabled = true;
 */
 
 plusIngredient: function(item){
-  if (totalIngredientsCounter > -1 && totalIngredientsCounter < 5 && !item.extra){
-    this.counter +=1;
-    totalIngredientsCounter ++;
+  if (totalIngredientsCounter > -1 && totalIngredientsCounter < 5){
+    if(!item.extra){
+        this.counter +=1;
+        totalIngredientsCounter ++;
+        increaseBar(); 
+    } 
     this.$emit('increment');
-    increaseBar();
+    
   }
 },
 
 minusIngredient: function(item){
-  if (totalIngredientsCounter > 0 && totalIngredientsCounter <= 5 && !item.extra){
-    this.counter -=1;
-    totalIngredientsCounter --;
+  if (totalIngredientsCounter > 0 && totalIngredientsCounter <= 5){
+    if(!item.extra){
+        this.counter -=1;
+        totalIngredientsCounter --;
+        decreaseBar();
+    }
     this.$emit('increment');
-    decreaseBar();
   }
 },
 

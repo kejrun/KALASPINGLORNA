@@ -30,5 +30,6 @@
     "powder" : "Powders",
     "other" : "Others",
     "stock" : "Stock Balance (ml)",
-    "add" : "Add to Stock (ml)"
+    "add" : "Add to Stock (ml)",
+    "ingredientHeader" : "Ingredients" 
 }

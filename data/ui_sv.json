@@ -30,5 +30,6 @@
     "powder" : "Pulver",
     "other" : "Övrigt",
      "stock" : "Lagersaldo (ml)",
-    "add" : "Fyll på lager (ml)"
+    "add" : "Fyll på lager (ml)",
+    "ingredientHeader" : "ingredienser"
 }
