@@ -88,8 +88,11 @@ Vue.component('ingredient', {
 //ökar progress i ingredientsBar
 function increaseBar() {
     var fullSize = $("#ingredientsBar").width()-6; //magic number 6, adds padding 3px on each side
+    console.log('fullsize: '+ fullSize);
     var curSize = $("#ingredientsBarProgress").width();
+    console.log('curSize: '+ curSize);
     var increment = fullSize/5;
+    console.log('increment: '+ increment);
     if(curSize < fullSize) {
         $("#ingredientsBarProgress").css('width', '+=' + increment);
         var newLength = curSize+increment;
@@ -111,7 +114,6 @@ function decreaseBar() {
 
 //skriver ut text på ingredientsBar
 function textOnBar(newLength, fullSize){
-    console.log(newLength);
   if (newLength == 0){
     ingredientsBarText.innerHTML = 'Choose 5 ingredients';
   }
