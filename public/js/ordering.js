@@ -6,9 +6,9 @@ var totalIngredientsCounter = 0;
 Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
   template: '<div class="ingredient">\
-  <button v-on:click="minusIngredient" id="ingredientsMinusButton" name="ingredientsMinusButton">-</button>\
+  <button v-on:click="minusIngredient(item)" id="ingredientsMinusButton" name="ingredientsMinusButton">-</button>\
   <label>{{ counter }}</label>\
-  <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
+  <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
   <label>\
   {{item["ingredient_"+ lang]}} {{ item["price_" + type] }} :- \
   </label>\
@@ -54,8 +54,8 @@ x[i].disabled = true;
 },
 */
 
-plusIngredient: function(){
-  if (totalIngredientsCounter > -1 && totalIngredientsCounter < 5){
+plusIngredient: function(item){
+  if (totalIngredientsCounter > -1 && totalIngredientsCounter < 5 && !item.extra){
     this.counter +=1;
     totalIngredientsCounter ++;
     this.$emit('increment');
@@ -63,8 +63,8 @@ plusIngredient: function(){
   }
 },
 
-minusIngredient: function(){
-  if (totalIngredientsCounter > 0 && totalIngredientsCounter <= 5){
+minusIngredient: function(item){
+  if (totalIngredientsCounter > 0 && totalIngredientsCounter <= 5 && !item.extra){
     this.counter -=1;
     totalIngredientsCounter --;
     this.$emit('increment');
