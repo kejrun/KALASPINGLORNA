@@ -4,58 +4,42 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Juicifers kitchen</title>
-   
+
   <link rel="stylesheet" href="css/juicifer.css">
   <script src="/vue/vue.js" defer></script>
   <script src="/socket.io/socket.io.js" defer></script>
   <script src="js/juicifer-main.js" defer></script>
   <script src="js/kitchen.js" defer></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" defer></script>
-    <script type="text/javascript" src="libs/jquery.slimscroll.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" defer></script>
+  <script type="text/javascript" src="libs/jquery.slimscroll.min.js"></script>
 </head>
 <body>
-    <div class = kitchen_layout>
+  <div class = kitchen_layout>
     <div id="orders">
-    <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
-    <div id ="start_page"> 
-    <h1>{{ uiLabels.ordersInQueue }}</h1> 
-    <h2>{{ uiLabels.smoothie }}</h2>
-    <div id = OrdersQueue>
-        <order-item-to-prepare-in-made 
-        v-for="(order, key) in orders"
-        v-if="!order.done && order.inMade"
-        v-on:done="markDone(key)"
-        v-on:cancel= "sendCancel(key)"
-        v-on:in-made="unmarkInMade(key)"
-        :order-id="key"
-        :order="order" 
-        :ui-labels="uiLabels"
-        :lang="lang"
-        :type="type"
-        :key="key">
-      </order-item-to-prepare-in-made>
-      <order-item-to-prepare 
+      <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+      <div id ="start_page">
+        <h1>{{ uiLabels.ordersInQueue }}</h1>
+        <h2>{{ uiLabels.smoothie }}</h2>
+        <div id = OrdersQueue>
+          <order-item-to-prepare-in-made
+          v-for="(order, key) in orders"
+          v-if="!order.done && order.inMade"
+          v-on:done="markDone(key)"
+          v-on:cancel= "sendCancel(key)"
+          v-on:in-made="unmarkInMade(key)"
+          :order-id="key"
+          :order="order"
+          :ui-labels="uiLabels"
+          :lang="lang"
+          :type="type"
+          :key="key">
+        </order-item-to-prepare-in-made>
+        <order-item-to-prepare
         v-for="(order, key) in orders"
         v-if="!order.done && !order.inMade"
         v-on:done="markDone(key)"
         v-on:cancel= "sendCancel(key)"
         v-on:in-made="markInMade(key)"
-        :order-id="key"
-        :order="order" 
-        :ui-labels="uiLabels"
-        :lang="lang"
-        :type="type"
-        :key="key">
-      </order-item-to-prepare>
-    </div>
-    </div>
-    <!--<h2>{{ uiLabels.juice }}</h2>
-    <div>
-      <order-item-to-prepare
-        v-for="(order, key) in orders"
-        v-if="!order.done && order.type == 'juice'"
-        v-on:done="markDone(key)"
-        v-on:cancel= "sendCancel(key)"
         :order-id="key"
         :order="order"
         :ui-labels="uiLabels"
@@ -68,17 +52,16 @@
     <br>
     <h1>{{ uiLabels.ordersFinished }}</h1>
     <h2>{{ uiLabels.smoothie }}</h2>
-      <order-item
+      <order-item-done
         v-for="(order, key) in orders"
         v-if="order.done "
         :order-id="key"
         :order="order"
         :lang="lang"
         :type="type"
-        :ui-labels="uiLabels"
         :key="key">
-      </order-item>
-    </div>  
+      </order-item-done>
+    </div>
     <!--<h2>{{ uiLabels.juice }}</h2>
     <div>
       <order-item
@@ -91,13 +74,63 @@
         :key="key">
       </order-item>
     </div>-->
-    
+
     <div id = Hist_Ingred>
     <button v-on:click="ShowHistory()" class ="Hist_Ingred_Button">{{ uiLabels.ordersFinished }}</button>
     <button v-on:click="ShowIngredients()" class ="Hist_Ingred_Button">{{ uiLabels.ingredients }}</button>
     </div>
     </div>
     </div>
-    
+  </div>
+  <!--<h2>{{ uiLabels.juice }}</h2>
+  <div>
+  <order-item-to-prepare
+  v-for="(order, key) in orders"
+  v-if="!order.done && order.type == 'juice'"
+  v-on:done="markDone(key)"
+  v-on:cancel= "sendCancel(key)"
+  :order-id="key"
+  :order="order"
+  :ui-labels="uiLabels"
+  :lang="lang"
+  :key="key">
+</order-item-to-prepare>
+</div>-->
+<div id = "finishedOrder">
+  <button v-on:click="ShowStartpage()" class=backBtn ><img src = http://simpleicon.com/wp-content/uploads/arrow-17.png width = 100% ></button>
+  <br>
+  <h1>{{ uiLabels.ordersFinished }}</h1>
+  <h2>{{ uiLabels.smoothie }}</h2>
+  <order-item
+  v-for="(order, key) in orders"
+  v-if="order.done "
+  :order-id="key"
+  :order="order"
+  :lang="lang"
+  :type="type"
+  :ui-labels="uiLabels"
+  :key="key">
+</order-item>
+</div>
+<!--<h2>{{ uiLabels.juice }}</h2>
+<div>
+<order-item
+v-for="(order, key) in orders"
+v-if="order.done && order.type == 'juice'"
+:order-id="key"
+:order="order"
+:lang="lang"
+:ui-labels="uiLabels"
+:key="key">
+</order-item>
+</div>-->
+
+<div id = Hist_Ingred>
+  <button v-on:click="ShowHistory()" class ="Hist_Ingred_Button">{{ uiLabels.ordersFinished }}</button>
+  <button v-on:click="ShowIngredients()" class ="Hist_Ingred_Button">{{ uiLabels.ingredients }}</button>
+</div>
+</div>
+</div>
+
 </body>
 </html>

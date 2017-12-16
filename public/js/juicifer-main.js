@@ -7,9 +7,13 @@ var socket = io();
 
 Vue.component('order-item', {
   props: ['uiLabels', 'order', 'orderId', 'lang'],
-  template: '<div>{{orderId}} {{order.type}} {{uiLabels.ingredients}}: {{ order.ingredients.map(item=>item["ingredient_"+ lang]).join(", ") }} </div>'
+  template: '<div id = style-orderbutton><div class = orderInfo>{{orderId}} <br><br> {{order.type}} </div> <div class = orderInfo>{{ order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</div></div>'
 });
 
+Vue.component('order-item-done', {
+  props: ['uiLabels', 'order', 'orderId', 'lang'],
+  template: '<div>{{orderId}} {{order.type}} {{uiLabels.ingredients}}: {{ order.ingredients.map(item=>item["ingredient_"+ lang]).join(", ") }} </div>'
+});
 // Stuff that is used both in the ordering system and in the kitchen
 var sharedVueStuff = {
   data: {
@@ -31,7 +35,7 @@ var sharedVueStuff = {
     socket.on('switchLang', function (data) {
       this.uiLabels = data;
     }.bind(this));
-      
+
     socket.on('currentQueue', function (data) {
       this.orders = data.orders;
       if (typeof data.ingredients !== 'undefined') {
@@ -48,11 +52,11 @@ var sharedVueStuff = {
       }
       socket.emit('switchLang', this.lang);
     },
-      
-     switchType: function (type) {
+
+    switchType: function (type) {
       this.type = type;
       socket.emit('switchSize', this.type);
-    } 
-      
+    }
+
   }
 };

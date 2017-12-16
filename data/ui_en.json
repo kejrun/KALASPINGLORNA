@@ -10,9 +10,9 @@
   "cancel": "Cancel",
   "order" : "My drink",
   "language" : "Svenska",
-    "smallType" : "Small",
-    "mediumType" : "Medium",
-    "largeType" : "Large",
+  "smallType" : "Small",
+  "mediumType" : "Medium",
+  "largeType" : "Large",
   "home" : "Home",
   "chooseYourOwn" : "Choose Your Own",
   "preMade" : "Premade",
@@ -20,7 +20,7 @@
   "checkOut" : "Checkout",
   "extras" : "Extras",
     "stockList": "Stock List",
-    "refill": "Refill",
+    "refill": "Update",
   "fruit" : "Fruits",
   "vegetable" : "Vegetables",
   "berry" : "Berries",
@@ -28,5 +28,8 @@
     "nut" : "Nuts and seeds",
     "flavour" : "Flavours",
     "powder" : "Powders",
-    "other" : "Others"
+    "other" : "Others",
+    "stock" : "Stock Balance (ml)",
+    "add" : "Add to Stock (ml)",
+    "ingredientHeader" : "Ingredients" 
 }

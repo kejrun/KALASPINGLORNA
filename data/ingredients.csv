@@ -1,61 +1,61 @@
-﻿ingredient_id,ingredient_sv,ingredient_en,category,price_s,price_m,price_l,vol_s,vol_m,vol_l
-1,banan,banana,fruit,6,8,10,40,60,80
-2,citron,lemon,fruit,6,8,10,40,60,80
-3,lime,lime,fruit,6,8,10,40,60,80
-4,apelsin,orange,fruit,5,7,9,40,60,80
-5,kaffe,coffee,liquid,3,5,7,40,60,80
-6,vanilj glass,vanilla ice cream,liquid,3,5,7,40,60,80
-7,sodavatten,soda water,liquid,2,4,6,40,60,80
-8,vatten,water,liquid,0,0,0,40,60,80
-9,is,ice,other,1,2,3,5,10,15
-10,guava,guava,fruit,8,10,12,40,60,80
-11,grönkål,kale,vegetable,3,5,7,40,60,80
-12,morot,carrot,vegetable,3,5,7,40,60,80
-13,ingefära,ginger,flavour,3,5,7,5,10,15
-14,chili,chili,flavour,3,5,7,5,10,15
-15,kanel,cinnamon,flavour,1,2,3,5,10,15
-16,kakao,cocoa,flavour,3,5,7,5,10,15
-17,äpple,apple,fruit,6,8,10,40,60,80
-18,päron,pear,fruit,8,10,12,40,60,80
-19,ananas,pineapple,fruit,10,12,14,40,60,80
-20,katrinplommon,prune,fruit,3,4,5,40,60,80
-21,blåbär,blueberry,berry,3,5,7,40,60,80
-22,hallon,raspberry,berry,3,5,7,40,60,80
-23,jordgubbe,strawberry,berry,3,5,7,40,60,80
-24,pumpa,pumpkin,vegetable,5,7,9,40,60,80
-25,selleri,celery,vegetable,2,3,4,40,60,80
-26,mango,mango,fruit,18,20,22,40,60,80
-27,grapefrukt,grapefruit,fruit,15,17,19,40,60,80
-28,druva,grape,fruit,10,12,14,40,60,80
-29,spenat,spinach,vegetable,7,9,11,40,60,80
-30,rödbeta,beet,vegetable,3,5,7,40,60,80
-31,mjölk,milk,liquid,3,5,7,40,60,80
-32,sojadryck,soy milk,liquid,5,7,9,40,60,80
-33,havredryck,oat milk,liquid,5,7,9,40,60,80
-34,kokosmjölk,coconut milk,liquid,6,8,10,40,60,80
-35,mandelmjölk,almond milk,liquid,10,12,14,40,60,80
-36,kokosnöt,coconut,liquid,13,15,17,40,60,80
-37,mynta,mint leaves,flavour,3,5,7,5,10,15
-38,chiafrön,chia seeds,nut,8,10,12,5,10,15
-39,cashewnötter,cashew nuts,nut,13,15,17,5,10,15
-40,valnötter,walnut,nut,13,15,17,5,10,15
-41,mandel,almond,nut,13,15,17,5,10,15
-42,hasselnötter,hazelnut,nut,13,15,17,5,10,15
-43,broccoli,broccoli,vegetable,6,8,10,40,60,80
-44,blomkål,cauliflower,vegetable,6,8,10,40,60,80
-45,honung,honey,flavour,2,4,6,5,10,15
-46,socker,sugar,flavour,1,2,3,5,10,15
-47,jordnötssmör,peanut butter,flavour,3,5,7,5,10,15
-48,kiwi,kiwi,fruit,4,6,8,40,60,80
-49,russin,raisins,other,2,3,4,5,10,15
-50,dadlar,dates,other,2,3,4,5,10,15
-51,avocado,avocado,vegetable,13,15,17,40,60,80
-52,linfrön,flax seeds,nut,8,10,12,5,10,15
-53,tomat,tomato,vegetable,2,4,6,40,60,80
-54,keso,cottage cheese,others,1,2,3,5,10,15
-55,spirulina,spirulina,powder,2,4,6,5,10,15
-56,tabasco,tabasco,flavour,2,3,4,5,10,15
-57,proteinpulver av vassle,whey protein powder,powder,3,5,7,5,10,15
-58,veganskt proteinpulver,vegan protein powder,powder,3,5,7,5,10,15
-59,yoghurt,yoghurt,liquid,5,7,9,40,60,80
-60,ägg,egg,other,3,5,7,5,10,15
+﻿ingredient_id,ingredient_sv,ingredient_en,category,price_s,price_m,price_l,vol_s,vol_m,vol_l,extra
+1,banan,banana,fruit,6,8,10,40,60,80,0
+2,citron,lemon,fruit,6,8,10,40,60,80,0
+3,lime,lime,fruit,6,8,10,40,60,80,0
+4,apelsin,orange,fruit,5,7,9,40,60,80,0
+5,kaffe,coffee,liquid,3,5,7,40,60,80,0
+6,vanilj glass,vanilla ice cream,liquid,3,5,7,40,60,80,0
+7,sodavatten,soda water,liquid,2,4,6,40,60,80,0
+8,vatten,water,liquid,0,0,0,40,60,80,0
+9,is,ice,other,1,2,3,5,10,15,1
+10,guava,guava,fruit,8,10,12,40,60,80,0
+11,grönkål,kale,vegetable,3,5,7,40,60,80,0
+12,morot,carrot,vegetable,3,5,7,40,60,80,0
+13,ingefära,ginger,flavour,3,5,7,5,10,15,1
+14,chili,chili,flavour,3,5,7,5,10,15,1
+15,kanel,cinnamon,flavour,1,2,3,5,10,15,1
+16,kakao,cocoa,flavour,3,5,7,5,10,15,1
+17,äpple,apple,fruit,6,8,10,40,60,80,0
+18,päron,pear,fruit,8,10,12,40,60,80,0
+19,ananas,pineapple,fruit,10,12,14,40,60,80,0
+20,katrinplommon,prune,fruit,3,4,5,40,60,80,0
+21,blåbär,blueberry,berry,3,5,7,40,60,80,0
+22,hallon,raspberry,berry,3,5,7,40,60,80, 0
+23,jordgubbe,strawberry,berry,3,5,7,40,60,80,0
+24,pumpa,pumpkin,vegetable,5,7,9,40,60,80,0
+25,selleri,celery,vegetable,2,3,4,40,60,80,0
+26,mango,mango,fruit,18,20,22,40,60,80,0
+27,grapefrukt,grapefruit,fruit,15,17,19,40,60,80,0
+28,druva,grape,fruit,10,12,14,40,60,80,0
+29,spenat,spinach,vegetable,7,9,11,40,60,80,0
+30,rödbeta,beet,vegetable,3,5,7,40,60,80,0
+31,mjölk,milk,liquid,3,5,7,40,60,80,0
+32,sojadryck,soy milk,liquid,5,7,9,40,60,80,0
+33,havredryck,oat milk,liquid,5,7,9,40,60,80,0
+34,kokosmjölk,coconut milk,liquid,6,8,10,40,60,80,0
+35,mandelmjölk,almond milk,liquid,10,12,14,40,60,80,0
+36,kokosnöt,coconut,liquid,13,15,17,40,60,80,0
+37,mynta,mint leaves,flavour,3,5,7,5,10,15,1
+38,chiafrön,chia seeds,nut,8,10,12,5,10,15,1
+39,cashewnötter,cashew nuts,nut,13,15,17,5,10,15,1
+40,valnötter,walnut,nut,13,15,17,5,10,15,1
+41,mandel,almond,nut,13,15,17,5,10,15,1
+42,hasselnötter,hazelnut,nut,13,15,17,5,10,15,1
+43,broccoli,broccoli,vegetable,6,8,10,40,60,80,0
+44,blomkål,cauliflower,vegetable,6,8,10,40,60,80,0
+45,honung,honey,flavour,2,4,6,5,10,15,1
+46,socker,sugar,flavour,1,2,3,5,10,15,1
+47,jordnötssmör,peanut butter,flavour,3,5,7,5,10,15,1
+48,kiwi,kiwi,fruit,4,6,8,40,60,80,0
+49,russin,raisins,other,2,3,4,5,10,15,1
+50,dadlar,dates,other,2,3,4,5,10,15,1
+51,avocado,avocado,vegetable,13,15,17,40,60,80,0
+52,linfrön,flax seeds,nut,8,10,12,5,10,15,1
+53,tomat,tomato,vegetable,2,4,6,40,60,80,0
+54,keso,cottage cheese,others,1,2,3,5,10,15,1
+55,spirulina,spirulina,powder,2,4,6,5,10,15,1
+56,tabasco,tabasco,flavour,2,3,4,5,10,15,1
+57,proteinpulver av vassle,whey protein powder,powder,3,5,7,5,10,15,1
+58,veganskt proteinpulver,vegan protein powder,powder,3,5,7,5,10,15,1
+59,yoghurt,yoghurt,liquid,5,7,9,40,60,80,0
+60,ägg,egg,other,3,5,7,5,10,15,1
