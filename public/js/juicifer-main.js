@@ -31,7 +31,7 @@ var sharedVueStuff = {
     socket.on('switchLang', function (data) {
       this.uiLabels = data;
     }.bind(this));
-      
+
     socket.on('currentQueue', function (data) {
       this.orders = data.orders;
       if (typeof data.ingredients !== 'undefined') {
@@ -48,11 +48,11 @@ var sharedVueStuff = {
       }
       socket.emit('switchLang', this.lang);
     },
-      
-     switchType: function (type) {
+
+    switchType: function (type) {
       this.type = type;
       socket.emit('switchSize', this.type);
-    } 
-      
+    }
+
   }
 };
