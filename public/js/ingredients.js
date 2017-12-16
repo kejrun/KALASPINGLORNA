@@ -1,13 +1,13 @@
 Vue.component('ingredient', {
   props: ['item', 'lang'],
-  template: ' <div class="ingredient">\
-    <button v-on:click="minusIngredient" id="ingredientsMinusButton" name="ingredientsMinusButton">-</button>\
+  template: '<div class="ingredientStock">\
+    <div class= "itemColumn">{{item["ingredient_"+ lang]}}</div>\
+    <div class= "itemColumn">{{item.stock}}ml</div>\
+    <div class= "itemColumn"><button v-on:click="minusIngredient" id="ingredientsMinusButton" name="ingredientsMinusButton">-</button>\
   <label>{{ counter }}</label>\
-  <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
-  <label>\
-  {{item["ingredient_"+ lang]}}, {{item.stock}}ml\
-  </label>\
-  </div>',
+  <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\</div>\
+   </div>',
+              
   data: function () {
     return {
       counter: 0
@@ -46,7 +46,7 @@ var vm = new Vue({
     ShowStartpage: function(){
         window.location = 'http://localhost:3000/kitchen';
         document.getElementById("finishedOrder").style.display ="none";
-        document.getElementById("start_page").style.display = "none";
+        
     }
 
 }});

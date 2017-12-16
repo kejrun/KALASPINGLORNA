@@ -44,9 +44,42 @@
         :order="order"
         :ui-labels="uiLabels"
         :lang="lang"
-        :type="type"
         :key="key">
       </order-item-to-prepare>
+    </div>-->
+    <div id = "finishedOrder">
+    <button v-on:click="ShowStartpage()" class=backBtn ><img src = http://simpleicon.com/wp-content/uploads/arrow-17.png width = 100% ></button>
+    <br>
+    <h1>{{ uiLabels.ordersFinished }}</h1>
+    <h2>{{ uiLabels.smoothie }}</h2>
+      <order-item-done
+        v-for="(order, key) in orders"
+        v-if="order.done "
+        :order-id="key"
+        :order="order"
+        :lang="lang"
+        :type="type"
+        :key="key">
+      </order-item-done>
+    </div>
+    <!--<h2>{{ uiLabels.juice }}</h2>
+    <div>
+      <order-item
+        v-for="(order, key) in orders"
+        v-if="order.done && order.type == 'juice'"
+        :order-id="key"
+        :order="order"
+        :lang="lang"
+        :ui-labels="uiLabels"
+        :key="key">
+      </order-item>
+    </div>-->
+
+    <div id = Hist_Ingred>
+    <button v-on:click="ShowHistory()" class ="Hist_Ingred_Button">{{ uiLabels.ordersFinished }}</button>
+    <button v-on:click="ShowIngredients()" class ="Hist_Ingred_Button">{{ uiLabels.ingredients }}</button>
+    </div>
+    </div>
     </div>
   </div>
   <!--<h2>{{ uiLabels.juice }}</h2>

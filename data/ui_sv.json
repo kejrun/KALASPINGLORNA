@@ -19,14 +19,16 @@
   "myOrder" : "Min order",
   "checkOut" : "Till betalning",
   "extras" : "Extra",
-  "stockList": "Lager",
-  "refill": "Fyll på",
+    "stockList": "Lager",
+    "refill": "Uppdatera",
   "fruit" : "Frukter",
   "vegetable" : "Grönsaker",
   "berry" : "Bär",
   "liquid" : "Vätskor",
-  "nut" : "Nötter och frön",
-  "flavour" : "Smaksättare",
-  "powder" : "Pulver",
-  "other" : "Övrigt"
+    "nut" : "Nötter och frön",
+    "flavour" : "Smaksättare",
+    "powder" : "Pulver",
+    "other" : "Övrigt",
+     "stock" : "Lagersaldo (ml)",
+    "add" : "Fyll på lager (ml)"
 }

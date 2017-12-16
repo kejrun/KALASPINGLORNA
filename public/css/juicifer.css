@@ -25,12 +25,30 @@ body {
 /*Layout for Stock List rubrik*/
 #stock_heading{
 	width: 165mm;
-	height: 10mm
+	height: 10mm;
 	position: absolute;
 	left: 10%;
 	right: 10%;
 
 }
+/*stock list */
+.ingredientStock {
+	border: 1px solid #cdc;
+	padding: 1em;
+    width:100%;
+}
+
+.itemColumn{
+    float: left;
+    width: 33.33%;
+}
+
+.ingredientStock:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 h1 {
 	color: black;
 	text-transform: uppercase;
@@ -39,6 +57,39 @@ h1 {
 	position: relative;
 }
 
+/*all headers*/
+.stockHeaders{
+    color: black;
+	letter-spacing: 1pt;
+	position: relative; 
+    font-size: 12pt; 
+    width:100%;
+    margin-bottom:7%;
+    
+}
+.stockList{
+
+ 
+}
+
+/*the single headers*/
+.stockHead{
+     float: left;
+    width: 33.33%;
+}
+
+.stockList: after{
+    content: "";
+    display: table;
+    clear: both;
+}
+h2 {
+ color: black;
+	text-transform: uppercase;
+	letter-spacing: 2pt;
+	position: relative; 
+    font-size: 12pt;
+}
 #finishedOrder{
 	display: none;
 }
@@ -83,6 +134,10 @@ h1 {
 	height: 400px;
 	overflow-y: scroll;
 }
+
+
+
+/*Layout för knappar på staff view och kösidan*/
 .ArrowImg {
 	text-align: center;
 	background-color: Transparent;
@@ -91,7 +146,46 @@ h1 {
 	cursor:pointer;
 	overflow: hidden;
 	outline:none;
+    position:relative;
+    top: 30px;
 }
+/*Layout för knappen som ej går att trycka på*/
+.ArrowImg_dis {
+	text-align: center;
+	background-color: Transparent;
+	background-repeat:no-repeat;
+	border: none;
+	cursor:pointer;
+	overflow: hidden;
+	outline:none;
+    opacity: 0.2;
+    position:relative;
+    top: 30px;
+}
+
+.style_orders_inQueue{
+    height: 140px;
+}
+#style-orderbutton{
+    text-transform: uppercase;
+    display: grid;
+    height: auto;
+    top: 10%;
+    width: 100%;
+	grid-template-columns: repeat(2, auto);
+	grid-gap:0.5em;
+    font-size: 1.3em;
+    position: absolute;
+    
+}
+
+.orderInfo{
+    position: relative;
+    display: grid;
+    width: 130px;
+}
+
+
 
 #ordering{
 }
@@ -221,6 +315,7 @@ h1 {
 	left: 2%;
 	right: 2%;
 	position: absolute;
+    
 }
 
 .Hist_Ingred_Button{

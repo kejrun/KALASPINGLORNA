@@ -19,14 +19,16 @@
   "myOrder" : "My order",
   "checkOut" : "Checkout",
   "extras" : "Extras",
-  "stockList": "Stock List",
-  "refill": "Refill",
+    "stockList": "Stock List",
+    "refill": "Update",
   "fruit" : "Fruits",
   "vegetable" : "Vegetables",
   "berry" : "Berries",
   "liquid" : "Liquids",
-  "nut" : "Nuts and seeds",
-  "flavour" : "Flavours",
-  "powder" : "Powders",
-  "other" : "Others"
+    "nut" : "Nuts and seeds",
+    "flavour" : "Flavours",
+    "powder" : "Powders",
+    "other" : "Others",
+    "stock" : "Stock Balance (ml)",
+    "add" : "Add to Stock (ml)"
 }
