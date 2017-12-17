@@ -6,7 +6,7 @@ var totalIngredientsCounter = 0;
 Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
   template: '<div class="ingredient">\
-  <button v-on:click="minusIngredient(item)" id="ingredientsMinusButton" class="ingredientsMinusButton">-</button>\
+  <button v-on:click="minusIngredient(item)" id="ingredientsMinusButton" class="ingredientsMinusButton" disabled>-</button>\
   <label class="counterID">{{ counter }}</label>\
   <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" class="ingredientsPlusButton">+</button>\
   <label>\
@@ -27,17 +27,24 @@ plusIngredient: function(item){
     increaseBar();
     this.$emit('increment'); 
     if (totalIngredientsCounter == 5){
-        var x = document.getElementsByClassName("ingredientsPlusButton");
-        var i;
-        for (i = 0; i < x.length; i++) {
-        x[i].disabled = true;
+        var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
+        for ( var i = 0; i < plusButtons.length; i++) {
+        plusButtons[i].disabled = true;
         }
+    }
+    //reaching a specific minusButton
+    if (this.counter > 0){
+        var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
+        var thisIngredientsId = this.item.ingredient_id;
+        console.log(thisIngredientsId);
+        console.log(this.item.ingredient_en);
+        minusButtons[thisIngredientsId-1].disabled = false;
     }
   }
     
-    if (item.extra){
+  if (item.extra){
         this.$emit('increment');
-    }
+  }
 },
 
 minusIngredient: function(item){
@@ -47,11 +54,15 @@ minusIngredient: function(item){
     decreaseBar();
     this.$emit('increment');
     if (totalIngredientsCounter < 5){
-        var x = document.getElementsByClassName("ingredientsPlusButton");
-        var i;
-        for (i = 0; i < x.length; i++) {
-            x[i].disabled = false;
+        var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
+        for ( var i = 0; i < plusButtons.length; i++) {
+            plusButtons[i].disabled = false;
         }
+    }
+    if (this.counter == 0){
+        var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
+        var thisIngredientsId = this.item.ingredient_id;
+        minusButtons[thisIngredientsId-1].disabled = true;
     }
   }
   if (item.extra){
