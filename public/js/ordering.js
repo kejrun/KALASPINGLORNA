@@ -64,7 +64,7 @@ minusIngredient: function(item){
     }
   }
   if (item.extra){
-    //this.$emit('increment');
+    this.$emit('decrement');
   }
 },
 
