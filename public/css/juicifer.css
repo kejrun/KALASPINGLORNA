@@ -59,16 +59,19 @@ h1 {
 
 /*all headers*/
 .stockHeaders{
+    margin-top: 20px;
+    margin-bottom: 20px;
     color: black;
 	letter-spacing: 1pt;
-	position: relative; 
+	position: relative;
     font-size: 12pt; 
     width:100%;
     margin-bottom:7%;
     
 }
 .stockList{
-
+    margin-top: 20px;
+    position: relative;
  
 }
 
