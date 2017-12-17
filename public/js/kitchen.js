@@ -57,7 +57,6 @@ var vm = new Vue({
     ShowHistory: function(){
       document.getElementById("finishedOrder").style.display ="block";
       document.getElementById("start_page").style.display = "none";
-      document.getElementById("IngredientsPage").style.display ="none";
 
     },
     ShowIngredients: function(){
@@ -69,7 +68,7 @@ var vm = new Vue({
     ShowStartpage: function(){
       document.getElementById("finishedOrder").style.display ="none";
       document.getElementById("start_page").style.display = "block";
-      document.getElementById("IngredientsPage").style.display ="none";
+      
     }
   }
 });
