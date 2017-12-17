@@ -36,8 +36,6 @@ plusIngredient: function(item){
     if (this.counter > 0){
         var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
         var thisIngredientsId = this.item.ingredient_id;
-        console.log(thisIngredientsId);
-        console.log(this.item.ingredient_en);
         minusButtons[thisIngredientsId-1].disabled = false;
     }
   }
@@ -52,7 +50,7 @@ minusIngredient: function(item){
     this.counter -=1;
     totalIngredientsCounter --;
     decreaseBar();
-    this.$emit('increment');
+    this.$emit('decrement');
     if (totalIngredientsCounter < 5){
         var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
         for ( var i = 0; i < plusButtons.length; i++) {
@@ -66,7 +64,7 @@ minusIngredient: function(item){
     }
   }
   if (item.extra){
-    this.$emit('increment');
+    //this.$emit('increment');
   }
 },
 
@@ -168,7 +166,7 @@ var vm = new Vue({
 
   },
   methods: {
-    addToOrder: function (item, type) {
+    addToDrink: function (item, type) {
       this.chosenIngredients.push(item);
       if (this.chosenIngredients.length == 5){
         document.getElementById("addToMyOrder").disabled = false;
@@ -187,6 +185,36 @@ var vm = new Vue({
         this.price += +item.price_l;
       }
     },
+      
+      removeFromDrink: function (item, type) {
+          for (var i=0; i < this.chosenIngredients.length; i++){
+              if(this.chosenIngredients[i] == item){
+                this.chosenIngredients.splice(i,1);
+                break;
+              }
+          }
+      document.getElementById("addToMyOrder").disabled = true;
+      
+      this.type = type;
+      if (type === "s"){
+        this.price -= +item.price_s;
+      }
+      else if (type === "m") {
+        this.price -= +item.price_m;
+      }
+      else{
+        this.price -= +item.price_l;
+      }
+          
+        for (var i=0; i < this.pricesSmall.length; i++){
+          if (this.pricesSmall[i] == item.price_s && this.pricesMedium[i] == item.price_m && this.pricesLarge[i] == item.price_l){
+              this.pricesSmall.splice(i,1);
+              this.pricesMedium.splice(i,1);
+              this.pricesLarge.splice(i,1);
+              break;
+          }
+        }  
+    },
 
     changeTotalPrice: function (type){
       this.price = 0;
@@ -202,14 +230,12 @@ var vm = new Vue({
           this.price += this.pricesMedium[i];
         }
       }
-
       else{
         for (i = 0; i < this.pricesLarge.length; i++){
           this.price += this.pricesLarge[i];
         }
       }
-    }
-    ,
+    },
 
     markChosenSizeButton: function(type){
       document.getElementById("smallCup").style.backgroundColor = "white";
