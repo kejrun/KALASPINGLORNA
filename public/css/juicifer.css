@@ -226,20 +226,25 @@ h2 {
 	width: 100%;
 	border: 2px solid #cdc;
 	padding: 1em;
+    display: block;
 }
 
 #showDrinkTable{
 	width:100%;
-
 }
 
 /*Buttons for sizes on choose your own*/
+#sizeButtons{
+    display: flex;
+    justify-content: space-around;
+}
+
+
 .sizeButton{
 	width: 90px;
 	height: 90px;
 	border-style: solid;
 	border-width: 2px;
-	border-color: white;
 	border-radius: 5px;
 }
 

@@ -6,9 +6,9 @@ var totalIngredientsCounter = 0;
 Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
   template: '<div class="ingredient">\
-  <button v-on:click="minusIngredient(item)" id="ingredientsMinusButton" name="ingredientsMinusButton">-</button>\
-  <label>{{ counter }}</label>\
-  <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
+  <button v-on:click="minusIngredient(item)" id="ingredientsMinusButton" class="ingredientsMinusButton">-</button>\
+  <label class="counterID">{{ counter }}</label>\
+  <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" class="ingredientsPlusButton">+</button>\
   <label>\
   {{item["ingredient_"+ lang]}} {{ item["price_" + type] }} :- \
   </label>\
@@ -20,53 +20,24 @@ Vue.component('ingredient', {
   },
   methods: {
 
-    /*återuppta den här versionen när vi vet hur vi kommer åt en specifik knapp att disable
-    plusIngredient: function(){
-    this.counter +=1;
-    totalIngredientsCounter ++;
-    this.$emit('increment');
-    increaseBar();
-    document.getElementById("ingredientsMinusButton").disabled = false;
-    if (totalIngredientsCounter == 5){
-    var x = document.getElementsByName("ingredientsPlusButton");
-    var i;
-    for (i = 0; i < x.length; i++) {
-    x[i].disabled = true;
-  }
-}
-},
-*/
-
-/*återuppta den här versionen när vi vet hur vi kommer åt en specifik knapp att disable
-minusIngredient: function(){
-this.counter -=1;
-totalIngredientsCounter --;
-this.$emit('increment');
-decreaseBar();
-document.getElementById("ingredientsPlusButton").disabled = false;
-if (totalIngredientsCounter == 0){
-var x = document.getElementsByName("ingredientsMinusButton");
-var i;
-for (i = 0; i < x.length; i++) {
-x[i].disabled = true;
-}
-}
-},
-*/
-
 plusIngredient: function(item){
   if (totalIngredientsCounter > -1 && totalIngredientsCounter < 5 && !item.extra){
-    this.counter +=1;
     totalIngredientsCounter ++;
+    this.counter +=1;
     increaseBar();
-    this.$emit('increment');
+    this.$emit('increment'); 
+    if (totalIngredientsCounter == 5){
+        var x = document.getElementsByClassName("ingredientsPlusButton");
+        var i;
+        for (i = 0; i < x.length; i++) {
+        x[i].disabled = true;
+        }
+    }
   }
-if (item.extra){
-  this.$emit('increment');  
-}
     
-    
-  
+    if (item.extra){
+        this.$emit('increment');
+    }
 },
 
 minusIngredient: function(item){
@@ -75,6 +46,13 @@ minusIngredient: function(item){
     totalIngredientsCounter --;
     decreaseBar();
     this.$emit('increment');
+    if (totalIngredientsCounter < 5){
+        var x = document.getElementsByClassName("ingredientsPlusButton");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].disabled = false;
+        }
+    }
   }
   if (item.extra){
     this.$emit('increment');
@@ -120,7 +98,6 @@ function decreaseBar() {
 
 //skriver ut text på ingredientsBar
 function textOnBar(newLength, increment){
-    console.log(newLength);
   if (newLength == 0){
     ingredientsBarText.innerHTML = 'Choose 5 ingredients';
   }
@@ -228,7 +205,6 @@ var vm = new Vue({
       document.getElementById("mediumCup").style.backgroundColor = "white";
       document.getElementById("largeCup").style.backgroundColor = "white";
       this.type=type;
-      console.log(type);
       if (type === 's'){
         document.getElementById("smallCup").style.backgroundColor = "lightblue";
       }

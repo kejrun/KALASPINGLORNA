@@ -41,7 +41,7 @@
       <!-- Category-list and ingredient-list created to be able to get a grid layout -->
       <div id = "categories-drink">
         <div id = "category-list">
-          <div class ="ingredients-list">
+          <div id="fruit" class ="ingredients-list">
             <h1>{{ uiLabels.fruit }}</h1>
             <div class ="ingredients-list-text">
               <ingredient
@@ -58,7 +58,7 @@
           </div>
         </div>
 
-        <div class = "ingredients-list">
+        <div id="vegetable" class = "ingredients-list">
           <h1>{{ uiLabels.vegetable }}</h1>
           <div class ="ingredients-list-text">
             <ingredient
@@ -75,7 +75,7 @@
         </div>
       </div>
 
-      <div class = "ingredients-list">
+      <div id="berry" class = "ingredients-list">
         <h1> {{uiLabels.berry}} </h1>
         <div class ="ingredients-list-text">
           <ingredient
@@ -92,7 +92,7 @@
       </div>
     </div>
 
-    <div class = "ingredients-list">
+    <div id="liquid" class = "ingredients-list">
       <h1> {{uiLabels.liquid}} </h1>
       <div class ="ingredients-list-text">
         <ingredient
@@ -133,11 +133,11 @@
 
     <button id="addToMyOrder" v-on:click="placeOrder();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button><br>
     <br>
+    <div id="sizeButtons">
     <button id="smallCup" class="sizeButton" v-on:click="switchType('s'); changeTotalPrice('s');markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
     <button id="mediumCup" class="sizeButton" v-on:click="switchType('m'); changeTotalPrice('m');markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
     <button id="largeCup" class="sizeButton" v-on:click="switchType('l'); changeTotalPrice('l');markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
-
-
+    </div>
   </div>
 </div>
 <!--
