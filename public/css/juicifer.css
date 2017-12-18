@@ -15,6 +15,17 @@ h1 {
 	letter-spacing: 2pt;
 	text-align: center;
 	position: relative;
+	font-size: 18pt;
+}
+
+h2 {
+	margin: 10px;
+	margin-left: 0;
+	color: black;
+	text-transform: uppercase;
+	letter-spacing: 2pt;
+	position: relative;
+	font-size: 12pt;
 }
 
 h3 {
@@ -27,15 +38,15 @@ h3 {
 	font-size: 20pt;
 }
 
-h2 {
+h4 {
 	margin: 10px;
-	margin-left: 0;
 	color: black;
 	text-transform: uppercase;
 	letter-spacing: 2pt;
 	position: relative;
 	font-size: 12pt;
 }
+
 
 ::-webkit-scrollbar {
   -webkit-appearance: none;
@@ -314,7 +325,7 @@ h2 {
 }
 
 .ingredientColumn{
-	padding: 2em;
+	padding: 3px;
 	text-align:left;
 	width:80%;
 }
@@ -427,6 +438,7 @@ h2 {
 /* Style the tab buttons */
 /* Tab for choose chooseYourOwn */
 .tablink {
+	border-radius: 8px;
 	font-family: 'Encode Sans Semi Condensed';
 	background-color: #555;
 	color: white;
@@ -441,6 +453,7 @@ h2 {
 
 /* Tab for choose premade */
 .tablinkPM {
+	border-radius: 8px;
 	font-family: 'Encode Sans Semi Condensed';
 	background-color: #555;
 	color: white;
