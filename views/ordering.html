@@ -126,7 +126,7 @@
       <td class="ingredientColumn">{{ item["ingredient_" + lang] }}</td>
       <td class="priceColumn"> {{ item["price_" + type] }} kr</td>
     </tr>
-    <tr><th >
+    <tr><th>
         Extras
         </th></tr>
     <tr v-for= "item in chosenIngredients" v-if="item.extra">
@@ -161,12 +161,16 @@ v-if="!order.done && order.type == 'medium'"
 </div>
 
 <div id="preMade-page" class="tabcontent">
-  <h1>{{ uiLabels.preMade }}</h1>
+  <h3>{{ uiLabels.preMade }}</h3>
+  <div id="preMade-list">
   <div v-for="preparedDrink in premade">
+    <br>
+    <img v-bind:src="preparedDrink.image" height="250px">
     <h2>{{preparedDrink.pm_name}}</h2>
     <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
-    <button v-on:click="orderPremade(preparedDrink)">{{ uiLabels.addToOrder}}</button>
+    <button id=orderButton v-on:click="orderPremade(preparedDrink)">{{ uiLabels.addToOrder}}</button>
   </div>
+    </div>
 </div>
 
 <div id="extras-page" class="tabcontent">
@@ -233,12 +237,12 @@ v-if="!order.done && order.type == 'medium'"
 </div>
 
 <div id="myOrder-page" class="tabcontent">
-  <h1>{{ uiLabels.myOrder }}</h1>
+  <h3>{{ uiLabels.myOrder }}</h3>
   <p>These are your ordered drinks:</p>
 </div>
 
 <div id="checkOut-page" class="tabcontent">
-  <h1>{{ uiLabels.checkOut }}</h1>
+  <h3>{{ uiLabels.checkOut }}</h3>
   <p>PAAYY!</p>
 </div>
 
