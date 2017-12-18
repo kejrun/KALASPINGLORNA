@@ -2,12 +2,67 @@
 
 
 body {
+	overflow: hidden;
 	background:  #f4f4f4;
 	color: #808080;
-	/*width: 200mm;*/
-	/*border: 2px solid black;*/
 	font-family: 'Encode Sans Semi Condensed';
 }
+
+h1 {
+	margin: 10px;
+	color: black;
+	text-transform: uppercase;
+	letter-spacing: 2pt;
+	text-align: center;
+	position: relative;
+	font-size: 18pt;
+}
+
+h2 {
+	margin: 10px;
+	margin-left: 0;
+	color: black;
+	text-transform: uppercase;
+	letter-spacing: 2pt;
+	position: relative;
+	font-size: 12pt;
+}
+
+h3 {
+	margin: 10px;
+	color: black;
+	text-transform: uppercase;
+	letter-spacing: 2pt;
+	text-align: center;
+	position: relative;
+	font-size: 20pt;
+}
+
+h4 {
+	text-align: left;
+	margin: 10px;
+	margin-top: 20px;
+	color: black;
+	text-transform: uppercase;
+	letter-spacing: 2pt;
+	position: relative;
+	font-size: 12pt;
+}
+
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+/**********************THIS IS THE CSS FOR THE KITCHEN VIEW*********************/
+/*******************************************************************************/
+/*******************************************************************************/
 
 /*rätt storlek på kitchen sidan*/
 .kitchen_layout{
@@ -29,70 +84,56 @@ body {
 	position: absolute;
 	left: 10%;
 	right: 10%;
-
 }
+
 /*stock list */
 .ingredientStock {
 	border: 1px solid #cdc;
 	padding: 1em;
-    width:100%;
+	width:100%;
 }
 
 .itemColumn{
-    float: left;
-    width: 33.33%;
+	float: left;
+	width: 33.33%;
 }
 
 .ingredientStock:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-h1 {
-	color: black;
-	text-transform: uppercase;
-	letter-spacing: 2pt;
-	text-align: center;
-	position: relative;
+	content: "";
+	display: table;
+	clear: both;
 }
 
 /*all headers*/
 .stockHeaders{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: black;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: black;
 	letter-spacing: 1pt;
 	position: relative;
-    font-size: 12pt; 
-    width:100%;
-    margin-bottom:7%;
-    
+	font-size: 12pt;
+	width:100%;
+	margin-bottom:7%;
+
 }
 .stockList{
-    margin-top: 20px;
-    position: relative;
- 
+	margin-top: 20px;
+	position: relative;
+
 }
 
 /*the single headers*/
 .stockHead{
-     float: left;
-    width: 33.33%;
+	float: left;
+	width: 33.33%;
 }
 
 .stockList: after{
-    content: "";
-    display: table;
-    clear: both;
+	content: "";
+	display: table;
+	clear: both;
 }
-h2 {
- color: black;
-	text-transform: uppercase;
-	letter-spacing: 2pt;
-	position: relative; 
-    font-size: 12pt;
-}
+
 #finishedOrder{
 	display: none;
 }
@@ -138,8 +179,6 @@ h2 {
 	overflow-y: scroll;
 }
 
-
-
 /*Layout för knappar på staff view och kösidan*/
 .ArrowImg {
 	text-align: center;
@@ -149,8 +188,8 @@ h2 {
 	cursor:pointer;
 	overflow: hidden;
 	outline:none;
-    position:relative;
-    top: 30px;
+	position:relative;
+	top: 30px;
 }
 /*Layout för knappen som ej går att trycka på*/
 .ArrowImg_dis {
@@ -161,51 +200,82 @@ h2 {
 	cursor:pointer;
 	overflow: hidden;
 	outline:none;
-    opacity: 0.2;
-    position:relative;
-    top: 30px;
+	opacity: 0.2;
+	position:relative;
+	top: 30px;
 }
 
 .style_orders_inQueue{
-    height: 140px;
+	height: 140px;
 }
+
 #style-orderbutton{
-    text-transform: uppercase;
-    display: grid;
-    height: auto;
-    top: 10%;
-    width: 100%;
+	text-transform: uppercase;
+	display: grid;
+	height: auto;
+	top: 10%;
+	width: 100%;
 	grid-template-columns: repeat(2, auto);
 	grid-gap:0.5em;
-    font-size: 1.3em;
-    position: absolute;
-    
+	font-size: 1.3em;
+	position: absolute;
 }
 
 .orderInfo{
-    position: relative;
-    display: grid;
-    width: 130px;
+	position: relative;
+	display: grid;
+	width: 130px;
 }
 
-
-
-#ordering{
+/* Code for Ingredients and history buttons on staff view */
+#Drink_items{
+	text-align: center;
+	position: relative;
+	background-color:#F0E6F0;
+	border: 2px solid black;
+	width: 400px;
+	height: 130px;
 }
+
+#inMade_Drink_items{
+	text-align: center;
+	position: relative;
+	background-color: #eda6a6;
+	border: 2px solid black;
+	width: 400px;
+	height: 130px;
+}
+
+#Hist_Ingred{
+	width: 165mm;
+	bottom: 0;
+	left: 2%;
+	right: 2%;
+	position: absolute;
+}
+
+.Hist_Ingred_Button{
+	background-color:#F0E6F0;
+	border: 2px solid black;
+	width: 300px;
+	height: 130px;
+}
+
+/*********************THIS IS THE CSS FOR THE ORDERING VIEW*********************/
+/*******************************************************************************/
+/*******************************************************************************/
 
 /*Creating a grid containing one grid with the categories in one column, and "My drink" in the other column */
 
 #categories-drink{
 	display: grid;
-	width 100%;
+	width: 100%;
 	grid-template-columns: repeat(2, auto);
 	grid-gap:1em;
 	margin-top: 3%;
-
-
 }
-#category-list {
 
+#category-list {
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(4, auto);
@@ -224,25 +294,32 @@ h2 {
 	grid-gap: 1em;
 	z-index: 5;
 }
+
 #showDrink{
 	grid-column-start:2;
 	width: 100%;
+	height: 470px;
 	border: 2px solid #cdc;
 	padding: 1em;
+	display: block;
 }
 
 #showDrinkTable{
 	width:100%;
-
 }
 
 /*Buttons for sizes on choose your own*/
+#sizeButtons{
+	display: flex;
+	justify-content: space-around;
+}
+
 .sizeButton{
+	font-family: 'Encode Sans Semi Condensed';
 	width: 90px;
 	height: 90px;
 	border-style: solid;
 	border-width: 2px;
-	border-color: white;
 	border-radius: 5px;
 }
 
@@ -251,28 +328,46 @@ h2 {
 }
 
 .ingredientColumn{
+	padding: 3px;
 	text-align:left;
 	width:80%;
 }
+
 .priceColumn{
 	text-align:right;
 	width: 20%;
 }
 
 .ingredients-list-text{
+	max-height: 450px;
 	width: 100%;
-	height: 50%;
 	overflow-y: scroll;
 }
 
 .ingredient {
 	border: 1px solid #cdc;
-	padding: 1em;
+	padding: 0.8em;
 }
 
 #home-page{
 	display: block;
 }
+
+/* Code for Premade page */
+#preMade-list{
+	margin-left: 5%;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 15em);
+	grid-gap: 1em;
+	max-height: 500px;
+	width: 100%;
+	overflow-y: scroll;
+}
+
+#orderButton{
+}
+
+/* END Code for Premade page */
 
 #ProgressBarPreMade{
 	font-family: 'Encode Sans Semi Condensed';
@@ -294,74 +389,19 @@ h2 {
 	z-index: 100;
 }
 
-/* Code for Ingredients and history buttons on staff view */
-#Drink_items{
-	text-align: center;
-	position: relative;
-	background-color:#F0E6F0;
-	border: 2px solid black;
-	width: 400px;
-	height: 130px;
-}
-#inMade_Drink_items{
-	text-align: center;
-	position: relative;
-	background-color: #eda6a6;
-	border: 2px solid black;
-	width: 400px;
-	height: 130px;
-}
-
-#Hist_Ingred{
-	width: 165mm;
-	bottom: 0;
-	left: 2%;
-	right: 2%;
-	position: absolute;
-    
-}
-
-.Hist_Ingred_Button{
-	background-color:#F0E6F0;
-	border: 2px solid black;
-	width: 300px;
-	height: 130px;
-}
-
-/* Code for Ingredients and history buttons on staff view ends here */
-
-/*@media(max-width: 480px){
-#ingredients-list{
-display: block;
-}
-.ingredient {
-border: 1px solid #cdc;
-/*padding: 1em;
-width: calc(100% - 2em);
-}
-.ingredient img {
-max-width: 4em;
-max-height: 4em;
-}
-}
-*/
-
-
-
 /*Fixed header*/
 #fixedHeader{
 	overflow: hidden;
-	background: linear-gradient(to bottom right, purple, mediumpurple);
+	background: purple;
 	position: fixed;
 	top: 0;
 	right: 0;
 	width: 100%;
-	height: 10%;
+	height: 70px;
 	z-index: 100;
 }
 
 /*CSS for IngredientsBar*/
-
 .ingredientsBar{
 	position: relative;
 	text-align: center;
@@ -398,11 +438,11 @@ max-height: 4em;
 	z-index: 20;
 }
 
-
 /* Style the tab buttons */
-
 /* Tab for choose chooseYourOwn */
 .tablink {
+	border-radius: 8px;
+	font-family: 'Encode Sans Semi Condensed';
 	background-color: #555;
 	color: white;
 	float: left;
@@ -410,12 +450,14 @@ max-height: 4em;
 	outline: none;
 	cursor: pointer;
 	padding: 14px 16px;
-	font-size: 14px;
+	font-size: 18px;
 	width: 20%;
 }
 
 /* Tab for choose premade */
 .tablinkPM {
+	border-radius: 8px;
+	font-family: 'Encode Sans Semi Condensed';
 	background-color: #555;
 	color: white;
 	float: left;
@@ -423,7 +465,7 @@ max-height: 4em;
 	outline: none;
 	cursor: pointer;
 	padding: 14px 16px;
-	font-size: 14px;
+	font-size: 18px;
 	width: 25%;
 }
 
@@ -448,9 +490,6 @@ max-height: 4em;
 /* Set style for change language button and flag, still working on it.... */
 .LanguageButton{
 	font-family: 'Encode Sans Semi Condensed';
-	cursor:pointer;
-	width: auto;
-	height: 30px;
 }
 
 #LanguageDiv{

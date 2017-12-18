@@ -6,9 +6,9 @@ var totalIngredientsCounter = 0;
 Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
   template: '<div class="ingredient">\
-  <button v-on:click="minusIngredient(item)" id="ingredientsMinusButton" name="ingredientsMinusButton">-</button>\
-  <label>{{ counter }}</label>\
-  <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\
+  <button v-on:click="minusIngredient(item)" id="ingredientsMinusButton" class="ingredientsMinusButton" disabled>-</button>\
+  <label class="counterID">{{ counter }}</label>\
+  <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" class="ingredientsPlusButton">+</button>\
   <label>\
   {{item["ingredient_"+ lang]}} {{ item["price_" + type] }} :- \
   </label>\
@@ -20,53 +20,29 @@ Vue.component('ingredient', {
   },
   methods: {
 
-    /*återuppta den här versionen när vi vet hur vi kommer åt en specifik knapp att disable
-    plusIngredient: function(){
-    this.counter +=1;
-    totalIngredientsCounter ++;
-    this.$emit('increment');
-    increaseBar();
-    document.getElementById("ingredientsMinusButton").disabled = false;
-    if (totalIngredientsCounter == 5){
-    var x = document.getElementsByName("ingredientsPlusButton");
-    var i;
-    for (i = 0; i < x.length; i++) {
-    x[i].disabled = true;
-  }
-}
-},
-*/
-
-/*återuppta den här versionen när vi vet hur vi kommer åt en specifik knapp att disable
-minusIngredient: function(){
-this.counter -=1;
-totalIngredientsCounter --;
-this.$emit('increment');
-decreaseBar();
-document.getElementById("ingredientsPlusButton").disabled = false;
-if (totalIngredientsCounter == 0){
-var x = document.getElementsByName("ingredientsMinusButton");
-var i;
-for (i = 0; i < x.length; i++) {
-x[i].disabled = true;
-}
-}
-},
-*/
-
 plusIngredient: function(item){
   if (totalIngredientsCounter > -1 && totalIngredientsCounter < 5 && !item.extra){
-    this.counter +=1;
     totalIngredientsCounter ++;
+    this.counter +=1;
     increaseBar();
     this.$emit('increment');
+    if (totalIngredientsCounter == 5){
+        var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
+        for ( var i = 0; i < plusButtons.length; i++) {
+        plusButtons[i].disabled = true;
+        }
+    }
+    //reaching a specific minusButton
+    if (this.counter > 0){
+        var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
+        var thisIngredientsId = this.item.ingredient_id;
+        minusButtons[thisIngredientsId-1].disabled = false;
+    }
   }
-if (item.extra){
-  this.$emit('increment');  
-}
-    
-    
-  
+
+  if (item.extra){
+        this.$emit('increment');
+  }
 },
 
 minusIngredient: function(item){
@@ -74,10 +50,21 @@ minusIngredient: function(item){
     this.counter -=1;
     totalIngredientsCounter --;
     decreaseBar();
-    this.$emit('increment');
+    this.$emit('decrement');
+    if (totalIngredientsCounter < 5){
+        var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
+        for ( var i = 0; i < plusButtons.length; i++) {
+            plusButtons[i].disabled = false;
+        }
+    }
+    if (this.counter == 0){
+        var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
+        var thisIngredientsId = this.item.ingredient_id;
+        minusButtons[thisIngredientsId-1].disabled = true;
+    }
   }
   if (item.extra){
-    this.$emit('increment');
+    this.$emit('decrement');
   }
 },
 
@@ -120,7 +107,6 @@ function decreaseBar() {
 
 //skriver ut text på ingredientsBar
 function textOnBar(newLength, increment){
-    console.log(newLength);
   if (newLength == 0){
     ingredientsBarText.innerHTML = 'Choose 5 ingredients';
   }
@@ -180,7 +166,7 @@ var vm = new Vue({
 
   },
   methods: {
-    addToOrder: function (item, type) {
+    addToDrink: function (item, type) {
       this.chosenIngredients.push(item);
       if (this.chosenIngredients.length == 5){
         document.getElementById("addToMyOrder").disabled = false;
@@ -200,6 +186,36 @@ var vm = new Vue({
       }
     },
 
+      removeFromDrink: function (item, type) {
+          for (var i=0; i < this.chosenIngredients.length; i++){
+              if(this.chosenIngredients[i] == item){
+                this.chosenIngredients.splice(i,1);
+                break;
+              }
+          }
+      document.getElementById("addToMyOrder").disabled = true;
+
+      this.type = type;
+      if (type === "s"){
+        this.price -= +item.price_s;
+      }
+      else if (type === "m") {
+        this.price -= +item.price_m;
+      }
+      else{
+        this.price -= +item.price_l;
+      }
+
+        for (var i=0; i < this.pricesSmall.length; i++){
+          if (this.pricesSmall[i] == item.price_s && this.pricesMedium[i] == item.price_m && this.pricesLarge[i] == item.price_l){
+              this.pricesSmall.splice(i,1);
+              this.pricesMedium.splice(i,1);
+              this.pricesLarge.splice(i,1);
+              break;
+          }
+        }
+    },
+
     changeTotalPrice: function (type){
       this.price = 0;
       this.type = type;
@@ -214,21 +230,18 @@ var vm = new Vue({
           this.price += this.pricesMedium[i];
         }
       }
-
       else{
         for (i = 0; i < this.pricesLarge.length; i++){
           this.price += this.pricesLarge[i];
         }
       }
-    }
-    ,
+    },
 
     markChosenSizeButton: function(type){
       document.getElementById("smallCup").style.backgroundColor = "white";
       document.getElementById("mediumCup").style.backgroundColor = "white";
       document.getElementById("largeCup").style.backgroundColor = "white";
       this.type=type;
-      console.log(type);
       if (type === 's'){
         document.getElementById("smallCup").style.backgroundColor = "lightblue";
       }
@@ -249,7 +262,7 @@ var vm = new Vue({
         type: this.type,
         price: this.price
       };
-        
+
       console.log('order', {order: order});
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       socket.emit('order', {order: order});
@@ -408,8 +421,8 @@ var vm = new Vue({
       document.getElementById("ProgressBarPreMade").style.display = "none";
       document.getElementById("chooseYourOwn-page").style.display = "block";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
-      extrasCategories = document.getElementById("extrasCategories")
       categoriesDrink = document.getElementById("categories-drink");
+      extrasCategories = document.getElementById("extrasCategories");
       categoriesDrink.appendChild(extrasCategories);
       extrasCategories.style.display="grid";
 

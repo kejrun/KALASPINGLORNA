@@ -1,9 +1,9 @@
-pm_id,pm_name,pm_ingredients,price_s,price_m,price_l,vol_s,vol_m,vol_l
-1,Mango Dream,"[26,26,27,1,4,37]",28,36,45,40,60,80
-2,Citrus Family,"[4,27,19,10,2]",28,36,45,40,60,80
-3,Super Berries,"[1,21,22,23,35,55]",28,36,45,40,60,80
-4,Banana-Choco,"[1,1,32,6,32,40,16]",28,36,45,40,60,80
-5,Strawberry fusion,"[23,23,35,24,17,37]",28,36,45,40,60,80
-6,Cream-Dream,"[5,6,31,51,59,42]",28,36,45,40,60,80
-7,Veggie,"[53,30,43,25,24,52]",28,36,45,40,60,80
-8,Super Juice,"[11,12,2,1,35,13]",28,36,45,40,60,80
+pm_id,pm_name,pm_ingredients,price_s,price_m,price_l,vol_s,vol_m,vol_l,image
+1,Super Juice,"[18,3,7,1,14,56]",28,36,45,40,60,80,images/Super_Juice.jpg
+2,Citrus Family,"[4,2,11,3,37,49]",28,36,45,40,60,80,images/Citrus_Family.jpg
+3,Super Berries,"[26,13,1,25,35,53]",28,36,45,40,60,80,images/Super_Berries.jpg
+4,Banana Choco,"[1,42,33,27,28,48]",28,36,45,40,60,80,images/Banana_Choco.jpg
+5,Strawberry fusion,"[26,10,6,35,1,44]",28,36,45,40,60,80,images/Strawberry_Fusion.jpg
+6,Ginger Dream,"[39,1,22,3,32,43]",28,36,45,40,60,80,images/Ginger_Dream.jpg
+7,Veggie,"[15,16,21,23,37,40]",28,36,45,40,60,80,images/Veggie.jpg
+8,Beet Lover,"[19,8,22,1,35,52]",28,36,45,40,60,80,images/Beet_Lover.jpg
