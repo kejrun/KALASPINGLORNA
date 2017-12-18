@@ -25,7 +25,7 @@ plusIngredient: function(item){
     totalIngredientsCounter ++;
     this.counter +=1;
     increaseBar();
-    this.$emit('increment'); 
+    this.$emit('increment');
     if (totalIngredientsCounter == 5){
         var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
         for ( var i = 0; i < plusButtons.length; i++) {
@@ -39,7 +39,7 @@ plusIngredient: function(item){
         minusButtons[thisIngredientsId-1].disabled = false;
     }
   }
-    
+
   if (item.extra){
         this.$emit('increment');
   }
@@ -185,7 +185,7 @@ var vm = new Vue({
         this.price += +item.price_l;
       }
     },
-      
+
       removeFromDrink: function (item, type) {
           for (var i=0; i < this.chosenIngredients.length; i++){
               if(this.chosenIngredients[i] == item){
@@ -194,7 +194,7 @@ var vm = new Vue({
               }
           }
       document.getElementById("addToMyOrder").disabled = true;
-      
+
       this.type = type;
       if (type === "s"){
         this.price -= +item.price_s;
@@ -205,7 +205,7 @@ var vm = new Vue({
       else{
         this.price -= +item.price_l;
       }
-          
+
         for (var i=0; i < this.pricesSmall.length; i++){
           if (this.pricesSmall[i] == item.price_s && this.pricesMedium[i] == item.price_m && this.pricesLarge[i] == item.price_l){
               this.pricesSmall.splice(i,1);
@@ -213,7 +213,7 @@ var vm = new Vue({
               this.pricesLarge.splice(i,1);
               break;
           }
-        }  
+        }
     },
 
     changeTotalPrice: function (type){
@@ -262,7 +262,7 @@ var vm = new Vue({
         type: this.type,
         price: this.price
       };
-        
+
       console.log('order', {order: order});
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       socket.emit('order', {order: order});

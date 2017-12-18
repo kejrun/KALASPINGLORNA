@@ -2,6 +2,7 @@
 
 
 body {
+	overflow: hidden;
 	background:  #f4f4f4;
 	color: #808080;
 	/*width: 200mm;*/
@@ -35,21 +36,22 @@ body {
 .ingredientStock {
 	border: 1px solid #cdc;
 	padding: 1em;
-    width:100%;
+	width:100%;
 }
 
 .itemColumn{
-    float: left;
-    width: 33.33%;
+	float: left;
+	width: 33.33%;
 }
 
 .ingredientStock:after {
-    content: "";
-    display: table;
-    clear: both;
+	content: "";
+	display: table;
+	clear: both;
 }
 
 h1 {
+	margin: 10px;
 	color: black;
 	text-transform: uppercase;
 	letter-spacing: 2pt;
@@ -59,39 +61,40 @@ h1 {
 
 /*all headers*/
 .stockHeaders{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: black;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: black;
 	letter-spacing: 1pt;
 	position: relative;
-    font-size: 12pt; 
-    width:100%;
-    margin-bottom:7%;
-    
+	font-size: 12pt;
+	width:100%;
+	margin-bottom:7%;
+
 }
 .stockList{
-    margin-top: 20px;
-    position: relative;
- 
+	margin-top: 20px;
+	position: relative;
+
 }
 
 /*the single headers*/
 .stockHead{
-     float: left;
-    width: 33.33%;
+	float: left;
+	width: 33.33%;
 }
 
 .stockList: after{
-    content: "";
-    display: table;
-    clear: both;
+	content: "";
+	display: table;
+	clear: both;
 }
 h2 {
- color: black;
+	margin: 10px;
+	color: black;
 	text-transform: uppercase;
 	letter-spacing: 2pt;
-	position: relative; 
-    font-size: 12pt;
+	position: relative;
+	font-size: 12pt;
 }
 #finishedOrder{
 	display: none;
@@ -149,8 +152,8 @@ h2 {
 	cursor:pointer;
 	overflow: hidden;
 	outline:none;
-    position:relative;
-    top: 30px;
+	position:relative;
+	top: 30px;
 }
 /*Layout för knappen som ej går att trycka på*/
 .ArrowImg_dis {
@@ -161,31 +164,31 @@ h2 {
 	cursor:pointer;
 	overflow: hidden;
 	outline:none;
-    opacity: 0.2;
-    position:relative;
-    top: 30px;
+	opacity: 0.2;
+	position:relative;
+	top: 30px;
 }
 
 .style_orders_inQueue{
-    height: 140px;
+	height: 140px;
 }
 #style-orderbutton{
-    text-transform: uppercase;
-    display: grid;
-    height: auto;
-    top: 10%;
-    width: 100%;
+	text-transform: uppercase;
+	display: grid;
+	height: auto;
+	top: 10%;
+	width: 100%;
 	grid-template-columns: repeat(2, auto);
 	grid-gap:0.5em;
-    font-size: 1.3em;
-    position: absolute;
-    
+	font-size: 1.3em;
+	position: absolute;
+
 }
 
 .orderInfo{
-    position: relative;
-    display: grid;
-    width: 130px;
+	position: relative;
+	display: grid;
+	width: 130px;
 }
 
 
@@ -197,7 +200,7 @@ h2 {
 
 #categories-drink{
 	display: grid;
-	width 100%;
+	width: 100%;
 	grid-template-columns: repeat(2, auto);
 	grid-gap:1em;
 	margin-top: 3%;
@@ -205,7 +208,6 @@ h2 {
 
 }
 #category-list {
-
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(4, auto);
@@ -229,7 +231,8 @@ h2 {
 	width: 100%;
 	border: 2px solid #cdc;
 	padding: 1em;
-    display: block;
+	display: block;
+
 }
 
 #showDrinkTable{
@@ -238,12 +241,13 @@ h2 {
 
 /*Buttons for sizes on choose your own*/
 #sizeButtons{
-    display: flex;
-    justify-content: space-around;
+	display: flex;
+	justify-content: space-around;
 }
 
 
 .sizeButton{
+	font-family: 'Encode Sans Semi Condensed';
 	width: 90px;
 	height: 90px;
 	border-style: solid;
@@ -256,6 +260,7 @@ h2 {
 }
 
 .ingredientColumn{
+	padding: 2em;
 	text-align:left;
 	width:80%;
 }
@@ -265,8 +270,8 @@ h2 {
 }
 
 .ingredients-list-text{
+	max-height: 500px;
 	width: 100%;
-	height: 50%;
 	overflow-y: scroll;
 }
 
@@ -323,7 +328,7 @@ h2 {
 	left: 2%;
 	right: 2%;
 	position: absolute;
-    
+
 }
 
 .Hist_Ingred_Button{
@@ -361,7 +366,7 @@ max-height: 4em;
 	top: 0;
 	right: 0;
 	width: 100%;
-	height: 10%;
+	height: 70px;
 	z-index: 100;
 }
 
@@ -408,6 +413,7 @@ max-height: 4em;
 
 /* Tab for choose chooseYourOwn */
 .tablink {
+	font-family: 'Encode Sans Semi Condensed';
 	background-color: #555;
 	color: white;
 	float: left;
@@ -421,6 +427,7 @@ max-height: 4em;
 
 /* Tab for choose premade */
 .tablinkPM {
+	font-family: 'Encode Sans Semi Condensed';
 	background-color: #555;
 	color: white;
 	float: left;

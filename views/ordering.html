@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Juicifer Craft Beverages </title>
+  <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/juicifer.css">
   <script src="/vue/vue.js" defer></script>
   <script src="/socket.io/socket.io.js" defer></script>
@@ -17,13 +18,13 @@
 
     <div id="home-page" class="tabcontent">
       <div id="LanguageDiv">
-        <img src="/public/images/Sweden.png">
+        <img src="/images/Sweden.png" width="3%" height=auto>
+        <img src="/images/United-Kingdom.png" width="3%" height=auto>
+        <br>
         <button class="LanguageButton" v-on:click="switchLang()">{{ uiLabels.language }}</button>
       </div>
       <h1>{{ uiLabels.home }}</h1>
       <div style="text-align:center;">
-        <img src="http://cdn.shopify.com/s/files/1/0499/4781/articles/Rosie-the-Riveter_600x.jpg?v=1466789221" width="100" height="120">
-        <br>
         <button class="homebutton" v-on:click="chooseYourOwn()">{{ uiLabels.chooseYourOwn }}</button>
         <button class="homebutton" v-on:click="preMade()">{{ uiLabels.preMade }}</button>
       </div>
@@ -39,8 +40,26 @@
         </div>
       </div>
       <!-- Category-list and ingredient-list created to be able to get a grid layout -->
-      <div id = "categories-drink">
-        <div id = "category-list">
+      <div id= "categories-drink">
+        <div id= "category-list">
+          <div id="vegetable" class = "ingredients-list">
+            <h1>{{ uiLabels.vegetable }}</h1>
+            <div class ="ingredients-list-text">
+              <ingredient
+              ref="ingredient"
+              type="medium"
+              v-for="item in ingredients"
+              v-if="item.category == 'vegetable'"
+              v-on:increment="addToDrink(item, type)"
+              v-on:decrement="removeFromDrink(item, type)"
+              :item="item"
+              :lang="lang"
+              :type="type"
+              :key="item.ingredient_id">
+            </ingredient>
+          </div>
+        </div>
+
           <div id="fruit" class ="ingredients-list">
             <h1>{{ uiLabels.fruit }}</h1>
             <div class ="ingredients-list-text">
@@ -58,24 +77,6 @@
             </ingredient>
           </div>
         </div>
-
-        <div id="vegetable" class = "ingredients-list">
-          <h1>{{ uiLabels.vegetable }}</h1>
-          <div class ="ingredients-list-text">
-            <ingredient
-            ref="ingredient"
-            type="medium"
-            v-for="item in ingredients"
-            v-if="item.category == 'vegetable'"
-            v-on:increment="addToDrink(item, type)"
-            v-on:decrement="removeFromDrink(item, type)"
-            :item="item"
-            :lang="lang"
-            :type="type"
-            :key="item.ingredient_id">
-          </ingredient>
-        </div>
-      </div>
 
       <div id="berry" class = "ingredients-list">
         <h1> {{uiLabels.berry}} </h1>
@@ -169,6 +170,7 @@ v-if="!order.done && order.type == 'medium'"
 </div>
 
 <div id="extras-page" class="tabcontent">
+  <div id= "category-list">
   <div id="extrasCategories">
     <div class ="extras-list">
       <h1>{{ uiLabels.nut }}</h1>
@@ -225,6 +227,7 @@ v-if="!order.done && order.type == 'medium'"
   :lang="lang"
   :key="item.ingredient_id">
 </ingredient>
+</div>
 </div>
 </div>
 </div>
