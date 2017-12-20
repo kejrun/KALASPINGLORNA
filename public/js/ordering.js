@@ -21,51 +21,48 @@ Vue.component('ingredient', {
   methods: {
 
 plusIngredient: function(item){
-  if (totalIngredientsCounter > -1 && totalIngredientsCounter < 5 && !item.extra){
-    totalIngredientsCounter ++;
     this.counter +=1;
-    increaseBar();
-    this.$emit('increment');
-    if (totalIngredientsCounter == 5){
-        var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
-        for ( var i = 0; i < plusButtons.length; i++) {
-        plusButtons[i].disabled = true;
-        }
-    }
-    //reaching a specific minusButton
     if (this.counter > 0){
         var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
         var thisIngredientsId = this.item.ingredient_id;
         minusButtons[thisIngredientsId-1].disabled = false;
-    }
-  }
-
-  if (item.extra){
-        this.$emit('increment');
-  }
-},
-
-minusIngredient: function(item){
-  if (totalIngredientsCounter > 0 && totalIngredientsCounter <= 5 && !item.extra){
-    this.counter -=1;
-    totalIngredientsCounter --;
-    decreaseBar();
-    this.$emit('decrement');
-    if (totalIngredientsCounter < 5){
-        var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
-        for ( var i = 0; i < plusButtons.length; i++) {
-            plusButtons[i].disabled = false;
+    }   
+    
+    if (totalIngredientsCounter >= 0 && totalIngredientsCounter < 5 && !item.extra){
+        totalIngredientsCounter ++;
+        increaseBar();
+    
+        //Jenny kolla här - 37, antalet ingredienser som inte är extras
+        if (totalIngredientsCounter == 5){
+            var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
+            for ( var i = 0; i < 37; i++) {
+                plusButtons[i].disabled = true;
+            }
         }
     }
+    this.$emit('increment');
+  },
+
+minusIngredient: function(item){
+    this.counter -=1;
     if (this.counter == 0){
-        var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
-        var thisIngredientsId = this.item.ingredient_id;
-        minusButtons[thisIngredientsId-1].disabled = true;
+    var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
+    var thisIngredientsId = this.item.ingredient_id;
+    minusButtons[thisIngredientsId-1].disabled = true;
     }
-  }
-  if (item.extra){
+    
+    if (totalIngredientsCounter > 0 && totalIngredientsCounter <= 5 && !item.extra){
+        totalIngredientsCounter --;
+        decreaseBar();
+    
+        if (totalIngredientsCounter < 5){
+            var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
+            for ( var i = 0; i < plusButtons.length; i++) {
+                plusButtons[i].disabled = false;
+            }
+        }
+    }
     this.$emit('decrement');
-  }
 },
 
 //incrementCounter används inte i nuläget, tror jag..
@@ -168,7 +165,7 @@ var vm = new Vue({
   methods: {
     addToDrink: function (item, type) {
       this.chosenIngredients.push(item);
-      if (this.chosenIngredients.length == 5){
+      if (totalIngredientsCounter == 5){
         document.getElementById("addToMyOrder").disabled = false;
       }
       this.pricesSmall.push(item.price_s);

@@ -33,7 +33,6 @@ Vue.component('order-item-to-prepare', {
     //this.$emit('cancel');
 
     }
-
   });
 
 

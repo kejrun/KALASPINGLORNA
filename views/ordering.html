@@ -14,8 +14,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js"></script>
 
 </head>
+    
 <div id="ordering">
-
   <body>
 
     <div id="home-page" class="tabcontent">
@@ -47,7 +47,7 @@
             <div class ="ingredients-list-text">
               <ingredient
               ref="ingredient"
-              type="medium"
+              type="m"
               v-for="item in ingredients"
               v-if="item.category == 'vegetable'"
               v-on:increment="addToDrink(item, type)"
@@ -65,7 +65,7 @@
             <div class ="ingredients-list-text">
               <ingredient
               ref="ingredient"
-              type="medium"
+              type="m"
               v-for="item in ingredients"
               v-if="item.category == 'fruit'"
               v-on:increment="addToDrink(item, type)"
@@ -83,7 +83,7 @@
         <div class ="ingredients-list-text">
           <ingredient
           ref = "ingredient"
-          type="medium"
+          type="m"
           v-for = "item in ingredients"
           v-if = "item.category == 'berry'"
           v-on:increment="addToDrink(item, type)"
@@ -101,7 +101,7 @@
       <div class ="ingredients-list-text">
         <ingredient
         ref = "ingredient"
-        type="medium"
+        type="m"
         v-for = "item in ingredients"
         v-if = "item.category == 'liquid'"
         v-on:increment="addToDrink(item, type)"
@@ -114,8 +114,6 @@
     </div>
   </div>
 </div>
-
-
 
 <div id="showDrink">
   <h1>{{ uiLabels.order }}</h1>
@@ -176,13 +174,14 @@ v-if="!order.done && order.type == 'medium'"
       <h1>{{ uiLabels.nut }}</h1>
       <ingredient
       ref="ingredient"
-      type="medium"
+      type="m"
       v-for="item in ingredients"
       v-if="item.category == 'nut'"
-      v-on:increment="addToDrink(item, 'medium')"
+      v-on:increment="addToDrink(item, type)"
       v-on:decrement="removeFromDrink(item, type)"
       :item="item"
       :lang="lang"
+      :type="type"
       :key="item.ingredient_id">
     </ingredient>
   </div>
@@ -190,13 +189,14 @@ v-if="!order.done && order.type == 'medium'"
     <h1>{{ uiLabels.flavour }}</h1>
     <ingredient
     ref="ingredient"
-    type="medium"
+    type="m"
     v-for="item in ingredients"
     v-if="item.category == 'flavour'"
-    v-on:increment="addToDrink(item, 'medium')"
+    v-on:increment="addToDrink(item, type)"
     v-on:decrement="removeFromDrink(item, type)"
     :item="item"
     :lang="lang"
+    :type="type"
     :key="item.ingredient_id">
   </ingredient>
 </div>
@@ -204,13 +204,14 @@ v-if="!order.done && order.type == 'medium'"
   <h1>{{ uiLabels.powder }}</h1>
   <ingredient
   ref="ingredient"
-  type="medium"
+  type="m"
   v-for="item in ingredients"
   v-if="item.category == 'powder'"
-  v-on:increment="addToDrink(item, 'medium')"
+  v-on:increment="addToDrink(item, type)"
   v-on:decrement="removeFromDrink(item, type)"
   :item="item"
   :lang="lang"
+  :type="type"
   :key="item.ingredient_id">
 </ingredient>
 </div>
@@ -218,19 +219,19 @@ v-if="!order.done && order.type == 'medium'"
   <h1>{{ uiLabels.other }}</h1>
   <ingredient
   ref="ingredient"
-  type="medium"
+  type="m"
   v-for="item in ingredients"
   v-if="item.category == 'other'"
-  v-on:increment="addToDrink(item, 'medium')"
+  v-on:increment="addToDrink(item, type)"
   v-on:decrement="removeFromDrink(item, type)"
   :item="item"
   :lang="lang"
+  :type="type"
   :key="item.ingredient_id">
 </ingredient>
 </div>
 </div>
 </div>
-
 
 <div id="myOrder-page" class="tabcontent">
   <h3>{{ uiLabels.myOrder }}</h3>

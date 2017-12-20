@@ -131,7 +131,6 @@ Data.prototype.makeStockTransaction = function(item, changeUnit){
 };
   
 
-
 /*
   Adds an order to to the queue and makes an withdrawal from the
   stock. If you have time, you should think a bit about whether
@@ -190,7 +189,6 @@ Data.prototype.plusIngredientsStock = function(item){
 Data.prototype.minusIngredientsStock = function(item){
     this.makeStockTransaction(item, -1000)
 };
-
 
 
 var data = new Data();
@@ -260,8 +258,6 @@ io.on('connection', function (socket) {
 //socket.on('History', function()){
 //          socket.emit('History', data)
 //          }
-
-
 
 
 var server = http.listen(app.get('port'), function () {
