@@ -56,10 +56,9 @@
     <h2>{{ uiLabels.smoothie }}</h2>
       <order-item-done
         v-for="(order, key) in orders"
-        v-if="order.done "
-        v-for="(ingred) in order"
+        v-if="order.done"
         :order-id="key"
-        :ingred="ingred"
+        :order="order" 
         :lang="lang"
         :type="type"
         :key="key">
