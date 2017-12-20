@@ -22,7 +22,7 @@ var sharedVueStuff = {
     ingredients: {},
     premade:{},
     lang: "en",
-    type: ''
+    type: 'm'
   },
   created: function () {
     socket.on('initialize', function (data) {
@@ -34,6 +34,10 @@ var sharedVueStuff = {
 
     socket.on('switchLang', function (data) {
       this.uiLabels = data;
+    }.bind(this));
+      
+    socket.on('switchSize', function (data) {
+      this.type = data;
     }.bind(this));
 
     socket.on('currentQueue', function (data) {
@@ -57,6 +61,5 @@ var sharedVueStuff = {
       this.type = type;
       socket.emit('switchSize', this.type);
     }
-
   }
 };

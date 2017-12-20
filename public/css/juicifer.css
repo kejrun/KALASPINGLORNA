@@ -60,6 +60,20 @@ h4 {
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
 
+/**********************THIS IS THE CSS FOR THE HOMEPAGE*************************/
+/*******************************************************************************/
+/*******************************************************************************/
+
+
+/* Set style for change language button and flag, still working on it.... */
+.LanguageButton{
+	font-family: 'Encode Sans Semi Condensed';
+}
+
+#LanguageDiv{
+	display: inline;
+}
+
 /**********************THIS IS THE CSS FOR THE KITCHEN VIEW*********************/
 /*******************************************************************************/
 /*******************************************************************************/
@@ -114,12 +128,11 @@ h4 {
 	font-size: 12pt;
 	width:100%;
 	margin-bottom:7%;
-
 }
+
 .stockList{
 	margin-top: 20px;
 	position: relative;
-
 }
 
 /*the single headers*/
@@ -485,13 +498,4 @@ h4 {
 .tabcontentPM {
 	display: none;
 	padding: 50px;
-}
-
-/* Set style for change language button and flag, still working on it.... */
-.LanguageButton{
-	font-family: 'Encode Sans Semi Condensed';
-}
-
-#LanguageDiv{
-	display: inline;
 }
