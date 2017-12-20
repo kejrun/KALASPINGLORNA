@@ -57,8 +57,9 @@
       <order-item-done
         v-for="(order, key) in orders"
         v-if="order.done "
+        v-for="(ingred) in order"
         :order-id="key"
-        :order="order"
+        :ingred="ingred"
         :lang="lang"
         :type="type"
         :key="key">
