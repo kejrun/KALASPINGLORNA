@@ -123,7 +123,7 @@ function textOnBar(newLength, increment){
     ingredientsBarText.innerHTML = 'Choose 1 ingredient';
   }
   else{
-    ingredientsBarText.innerHTML = 'Your drink is done!';
+    ingredientsBarText.innerHTML = 'Your drink is full!';
   }
 }
 
