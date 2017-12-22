@@ -141,6 +141,12 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+//****************Homepage animation*************
+
+
+//****************Homepage animation- END *************
+
+
 /*function getOrderNumber() {
 // It's probably not a good idea to generate a random order number, client-side.
 // A better idea would be to let the server decide.
