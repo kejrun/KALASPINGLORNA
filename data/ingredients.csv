@@ -8,7 +8,7 @@
 6,rödbeta,beet,vegetable,3,5,7,40,60,80,0
 7,broccoli,broccoli,vegetable,6,8,10,40,60,80,0
 8,blomkål,cauliflower,vegetable,6,8,10,40,60,80,0
-9,avocado,avocado,vegetable,13,15,17,40,60,80,0
+9,avokado,avocado,vegetable,13,15,17,40,60,80,0
 10,tomat,tomato,vegetable,2,4,6,40,60,80,0
 
 11,banan,banana,fruit,6,8,10,40,60,80,0
@@ -22,14 +22,14 @@
 19,katrinplommon,prune,fruit,3,4,5,40,60,80,0
 20,mango,mango,fruit,18,20,22,40,60,80,0
 21,grapefrukt,grapefruit,fruit,15,17,19,40,60,80,0
-22,druva,grape,fruit,10,12,14,40,60,80,0
+22,vindruvor,grape,fruit,10,12,14,40,60,80,0
 23,kiwi,kiwi,fruit,4,6,8,40,60,80,0
 
 24,blåbär,blueberry,berry,3,5,7,40,60,80,0
 25,hallon,raspberry,berry,3,5,7,40,60,80, 0
-26,jordgubbe,strawberry,berry,3,5,7,40,60,80,0
+26,jordgubbar,strawberry,berry,3,5,7,40,60,80,0
 27,kaffe,coffee,liquid,3,5,7,40,60,80,0
-28,vanilj glass,vanilla ice cream,liquid,3,5,7,40,60,80,0
+28,vaniljglass,vanilla ice cream,liquid,3,5,7,40,60,80,0
 29,sodavatten,soda water,liquid,2,4,6,40,60,80,0
 30,vatten,water,liquid,0,0,0,40,60,80,0
 31,mjölk,milk,liquid,3,5,7,40,60,80,0
@@ -42,9 +42,9 @@
 
 38,chiafrön,chia seeds,nut,8,10,12,5,10,15,1
 39,cashewnötter,cashew nuts,nut,13,15,17,5,10,15,1
-40,valnötter,walnut,nut,13,15,17,5,10,15,1
-41,mandel,almond,nut,13,15,17,5,10,15,1
-42,hasselnötter,hazelnut,nut,13,15,17,5,10,15,1
+40,valnötter,walnuts,nut,13,15,17,5,10,15,1
+41,mandel,almonds,nut,13,15,17,5,10,15,1
+42,hasselnötter,hazelnuts,nut,13,15,17,5,10,15,1
 43,linfrön,flax seeds,nut,8,10,12,5,10,15,1
 
 44,ingefära,ginger,flavour,3,5,7,5,10,15,1
