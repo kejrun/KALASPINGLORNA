@@ -14,21 +14,36 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js"></script>
 
 </head>
-    
+
+<div id="holder">
+  <div class="animation">
+    <svg width="200pt" height="227pt" viewBox="0 0 120 147" version="1.1" xmlns="http://www.w3.org/2000/svg" id="HomeFruit">
+      <g id="orange">
+        <path  class="pieces" id="p1" stroke="#DE6B00" stroke-width="2" d=" M 55.26 48.43 C 61.14 48.28 67.21 47.79 72.93 49.53 C 80.43 51.54 87.59 55.46 92.62 61.47 C 80.36 59.39 66.56 60.54 56.59 68.65 C 49.71 74.07 46.34 82.45 43.90 90.59 C 40.71 84.99 41.02 78.23 41.92 72.07 C 43.89 63.09 49.10 55.12 55.26 48.43 Z" />
+        <path class="pieces" id="p2" stroke="#DE6B00" stroke-width="2" d=" M 75.45 63.61 C 82.34 63.16 89.33 63.19 96.11 64.69 C 100.05 70.11 103.26 76.15 104.52 82.78 C 105.99 88.41 105.50 94.26 105.21 99.99 C 103.67 99.96 102.41 99.43 102.03 97.84 C 98.32 89.84 92.50 82.70 84.95 78.07 C 76.93 73.20 66.88 72.47 58.00 75.25 C 56.47 75.48 54.93 75.69 53.40 75.89 C 58.85 69.19 66.78 64.44 75.45 63.61 Z" />
+        <path class="pieces" id="p3" stroke="#DE6B00" stroke-width="2" d=" M 70.54 77.05 C 80.29 76.87 89.12 82.70 94.65 90.41 C 97.65 94.28 100.00 98.62 101.98 103.09 C 102.86 104.88 103.02 107.03 102.19 108.88 C 97.19 120.84 86.72 130.66 74.06 133.95 C 80.55 124.98 85.98 114.25 85.18 102.91 C 84.48 92.59 78.47 83.38 70.54 77.05 Z" />
+        <path class="pieces" id="p4" stroke="#DE6B00" stroke-width="2" d=" M 79.03 92.56 C 82.70 97.86 82.91 104.73 82.13 110.91 C 80.32 120.10 75.63 128.65 69.36 135.56 C 63.28 135.59 57.07 136.34 51.11 134.76 C 43.00 132.72 35.39 128.44 29.69 122.29 C 38.66 122.39 47.96 123.82 56.59 120.55 C 68.73 116.58 76.82 104.78 79.03 92.56 Z" />
+        <path class="pieces" id="p5" stroke="#DE6B00" stroke-width="2" d=" M 18.62 82.81 C 20.89 84.27 21.35 87.15 22.78 89.28 C 28.26 99.27 37.54 108.07 49.15 109.85 C 55.86 111.45 62.51 109.14 69.08 108.16 C 62.37 117.02 50.89 121.07 40.02 120.38 C 35.33 119.96 30.36 119.88 25.99 118.01 C 18.75 108.03 15.75 94.87 18.62 82.81 Z" />
+        <path class="pieces" id="p6" stroke="#DE6B00" stroke-width="2" d=" M 45.97 50.86 C 47.34 50.40 48.80 50.27 50.22 50.05 C 46.73 55.67 42.40 60.91 40.54 67.37 C 38.09 74.01 37.44 81.45 39.69 88.24 C 41.75 95.61 46.69 101.75 52.18 106.92 C 39.93 106.96 30.11 97.56 24.57 87.42 C 22.96 83.87 19.95 80.31 20.57 76.23 C 24.76 64.60 34.44 55.20 45.97 50.86 Z" />
+        <path class="leaves"  stroke="#678528" stroke-width="1" d=" M 22.95 19.55 C 30.35 20.11 37.95 19.53 45.16 21.51 C 51.83 23.31 56.30 29.97 55.77 36.83 C 52.68 33.79 49.38 30.95 45.77 28.55 C 48.85 31.47 52.38 34.13 54.05 38.20 C 49.75 38.50 44.73 39.81 41.03 36.88 C 37.27 33.92 35.41 29.31 32.09 25.93 C 29.54 23.17 26.29 21.21 22.95 19.55 M 81.79 15.79 C 87.77 14.27 93.95 13.77 99.94 12.26 C 93.46 16.20 88.25 22.16 85.08 29.05 C 82.76 33.84 80.73 39.20 76.18 42.35 C 71.78 45.60 66.01 44.65 60.90 44.69 C 62.45 38.37 66.62 32.86 71.81 29.01 C 65.88 31.97 61.94 37.52 58.50 42.98 C 56.92 38.21 56.95 32.83 59.79 28.51 C 64.22 20.63 73.40 17.41 81.79 15.79Z" />
+      </g>
+    </svg>
+  </div>
+  <h5>JUICIFER</h5>
+</div>
+
 <div id="ordering">
   <body>
-
     <div id="home-page" class="tabcontent">
+      <div style="text-align:center;">
+        <button class="homebutton" v-on:click="chooseYourOwn()"><a>{{ uiLabels.chooseYourOwn }}</a></button>
+        <button class="homebutton" v-on:click="preMade()"><a>{{ uiLabels.preMade }}</a></button>
+      </div>
       <div id="LanguageDiv">
+        <button class="LanguageButton" v-on:click="switchLang()"><a>{{ uiLabels.language }}</a></button>
+        <br>
         <img src="/images/Sweden.png" width="3%" height=auto>
         <img src="/images/United-Kingdom.png" width="3%" height=auto>
-        <br>
-        <button class="LanguageButton" v-on:click="switchLang()">{{ uiLabels.language }}</button>
-      </div>
-      <h1>JUICIFER</h1>
-      <div style="text-align:center;">
-        <button class="homebutton" v-on:click="chooseYourOwn()">{{ uiLabels.chooseYourOwn }}</button>
-        <button class="homebutton" v-on:click="preMade()">{{ uiLabels.preMade }}</button>
       </div>
     </div>
 
@@ -60,23 +75,23 @@
           </div>
         </div>
 
-          <div id="fruit" class ="ingredients-list">
-            <h1>{{ uiLabels.fruit }}</h1>
-            <div class ="ingredients-list-text">
-              <ingredient
-              ref="ingredient"
-              type="m"
-              v-for="item in ingredients"
-              v-if="item.category == 'fruit'"
-              v-on:increment="addToDrink(item, type)"
-              v-on:decrement="removeFromDrink(item, type)"
-              :item="item"
-              :lang="lang"
-              :type="type"
-              :key="item.ingredient_id">
-            </ingredient>
-          </div>
+        <div id="fruit" class ="ingredients-list">
+          <h1>{{ uiLabels.fruit }}</h1>
+          <div class ="ingredients-list-text">
+            <ingredient
+            ref="ingredient"
+            type="m"
+            v-for="item in ingredients"
+            v-if="item.category == 'fruit'"
+            v-on:increment="addToDrink(item, type)"
+            v-on:decrement="removeFromDrink(item, type)"
+            :item="item"
+            :lang="lang"
+            :type="type"
+            :key="item.ingredient_id">
+          </ingredient>
         </div>
+      </div>
 
       <div id="berry" class = "ingredients-list">
         <h1> {{uiLabels.berry}} </h1>
@@ -127,16 +142,16 @@
     <tr v-for= "item in chosenIngredients" v-if="item.extra">
       <td class="ingredientColumn">{{ item["ingredient_" + lang] }}</td>
       <td class="priceColumn"> {{ item["price_" + type] }} kr</td>
-      </tr></table>
+    </tr></table>
 
     <br>{{ uiLabels.totalPrice }} {{ price }} kr
 
     <button id="addToMyOrder" v-on:click="placeOrder();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button><br>
     <br>
     <div id="sizeButtons">
-    <button id="smallCup" class="sizeButton" v-on:click="switchType('s'); changeTotalPrice('s');markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
-    <button id="mediumCup" class="sizeButton" v-on:click="switchType('m'); changeTotalPrice('m');markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
-    <button id="largeCup" class="sizeButton" v-on:click="switchType('l'); changeTotalPrice('l');markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
+      <button id="smallCup" class="sizeButton" v-on:click="switchType('s'); changeTotalPrice('s');markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
+      <button id="mediumCup" class="sizeButton" v-on:click="switchType('m'); changeTotalPrice('m');markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
+      <button id="largeCup" class="sizeButton" v-on:click="switchType('l'); changeTotalPrice('l');markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
     </div>
   </div>
 </div>
@@ -158,14 +173,14 @@ v-if="!order.done && order.type == 'medium'"
 <div id="preMade-page" class="tabcontent">
   <h3>{{ uiLabels.preMade }}</h3>
   <div id="preMade-list">
-  <div v-for="preparedDrink in premade">
-    <br>
-    <img v-bind:src="preparedDrink.image" height="250px">
-    <h2>{{preparedDrink.pm_name}}</h2>
-    <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
-    <button id=orderButton v-on:click="orderPremade(preparedDrink)">{{ uiLabels.addToOrder}}</button>
-  </div>
+    <div v-for="preparedDrink in premade">
+      <br>
+      <img v-bind:src="preparedDrink.image" height="250px">
+      <h2>{{preparedDrink.pm_name}}</h2>
+      <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
+      <button id=orderButton v-on:click="orderPremade(preparedDrink)">{{ uiLabels.addToOrder}}</button>
     </div>
+  </div>
 </div>
 
 <div id="extras-page" class="tabcontent">
