@@ -120,16 +120,34 @@ function textOnBar(newLength, increment){
     ingredientsBarText.innerHTML = 'Choose 1 ingredient';
   }
   else{
-    ingredientsBarText.innerHTML = 'Your drink is full!';
+    ingredientsBarText.innerHTML = 'Your drink is full, choose extras!';
   }
 }
 
-//resets the ingredientsBar and the ingredientsCounter
-function resetIngredientsForNewOrder(){
+//to reset the entire choose your own page, call function resetChooseYourOwnPage in Vue component
+//functions for resetting choose your own, resetChooseYourOwn calls the other resetting functions
+function resetChooseYourOwn(){
+    resetIngredientsBar();
+    resetPlusMinusButtons();
+    document.getElementById("addToMyOrder").disabled = true;
+}
+
+function resetIngredientsBar(){
   totalIngredientsCounter = 0;
   var curSize = $("#ingredientsBarProgress").width();
   $("#ingredientsBarProgress").css('width', '-=' + curSize);
   ingredientsBarText.innerHTML = 'Choose 5 ingredients';
+}
+
+function resetPlusMinusButtons(){
+    var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
+    for ( var i = 0; i < plusButtons.length; i++) {
+        plusButtons[i].disabled = false;
+    }
+    var minusButtons = document.getElementsByClassName("ingredientsMinusButton");
+    for ( var i = 0; i < minusButtons.length; i++) {
+        minusButtons[i].disabled = true;
+    }
 }
 
 function getRandomInt(min, max) {
@@ -190,7 +208,6 @@ var vm = new Vue({
     socket.on("orderNumber",function(orderNumber) {
       //alert("Your ordernumber is " + orderNumber);
     });
-
   },
   methods: {
     addToDrink: function (item, type) {
@@ -290,7 +307,6 @@ var vm = new Vue({
         price: this.price
       };
 
-      console.log('order', {order: order});
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       socket.emit('order', {order: order});
       //set all counters to 0. Notice the use of $refs
@@ -304,8 +320,24 @@ var vm = new Vue({
       this.pricesSmall = [];
       this.pricesMedium = [];
       this.pricesLarge = [];
-      resetIngredientsForNewOrder();
+      resetChooseYourOwn();
     },
+      
+    //this function resets EVERYTHING on the choose your own page
+    resetChooseYourOwnPage: function(){
+      for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
+        this.$refs.ingredient[i].resetCounter();
+      }
+      this.volume = 0;
+      this.price = 0;
+      this.type = '';
+      this.chosenIngredients = [];
+      this.pricesSmall = [];
+      this.pricesMedium = [];
+      this.pricesLarge = [];
+      resetChooseYourOwn();
+    },
+      
     getIngredientById: function (id) {
       for (var i =0; i < this.ingredients.length; i += 1) {
         if (this.ingredients[i].ingredient_id === id){
