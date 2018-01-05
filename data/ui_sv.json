@@ -3,6 +3,7 @@
   "ordersInQueue" : "Beställningar att förbereda",
   "ordersTrending" : "Populära beställningar",
   "addToOrder" : "Lägg till i min order",
+  "placeOrder": "Lägg order",
   "resetCurrentDrink" : "Nollställ drink",
   "change" : "Ändra drink",
   "sideorders" : "Tillbehör",
@@ -34,5 +35,6 @@
   "stock" : "Lagersaldo (ml)",
   "add" : "Fyll på lager (ml)",
   "ingredientHeader" : "ingredienser",
-  "totalPrice": "Totalt pris:"
+  "totalPrice": "Totalt pris:",
+    "search":"Sök ingrediens.."
 }
