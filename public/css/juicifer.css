@@ -2,7 +2,7 @@
 
 
 body {
-	
+
 	background:  #f0f0f0;
 	font-family: 'Encode Sans Semi Condensed';
 }
@@ -197,7 +197,7 @@ a {
     display: table;
     height: 102.4px;
     width: 768px;
-    
+
 }
 #ingredients_layout{
 	height: 768px;
@@ -324,7 +324,7 @@ a {
 	outline:none;
 	width: 70px;
 }
- 
+
 
 #start_page{
     display: table;
@@ -355,7 +355,7 @@ a {
 	outline:none;
 	position:relative;
     bottom: 30%;
-   
+
 }
 /*Layout för knappen som ej går att trycka på*/
 .ArrowImg_dis {
