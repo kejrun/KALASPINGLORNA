@@ -2,7 +2,7 @@
 
 
 body {
-	overflow: hidden;
+	
 	background:  #f0f0f0;
 	font-family: 'Encode Sans Semi Condensed';
 }
@@ -187,6 +187,7 @@ a {
 .kitchen_layout{
 	height: 1024px;
 	width: 768px;
+    overflow-y: scroll;
 }
 
 /*Layout och scrollbar for ingredients på ingredientspage, dvs. där man kan se och ändra lagersaldo*/
@@ -195,13 +196,13 @@ a {
     position: absolute;
     margin: 0 auto;
     display: table;
-    height: 10vh;
-    width: 100vw;
+    height: 102.4px;
+    width: 768px;
     
 }
 #ingredients_layout{
-	height: 80vh;
-	width: 100vw;
+	height: 768px;
+	width: 768px;
     left: 2%;
     right: 2%;
     position: absolute;
@@ -291,7 +292,8 @@ a {
     display: table;
     margin: 0 auto;
     width: 768px;
-    top: 930px;
+    height: 102.4px;
+    top: 973px;
 }
 
 .refillbtn {
@@ -303,7 +305,6 @@ a {
     font-size: 20pt;
 	cursor: pointer;
 	width: 50%;
-    top: 90%;
     height: 50%;
 	margin-top: 5%;
 	margin-left: 20%;
@@ -344,7 +345,7 @@ a {
 }
 
 #OrdersQueue{
-	height: 100vw;
+	height: 768px;
 	overflow-y: scroll;
 }
 
@@ -418,6 +419,7 @@ a {
 
 #Hist_Ingred{
     bottom: 20px;
+    height: 204px;
     display: table;
     margin: 0 auto;
 }
