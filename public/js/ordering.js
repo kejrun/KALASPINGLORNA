@@ -199,6 +199,7 @@ var vm = new Vue({
   data: {
     type: "m", //preset on size medium
     chosenIngredients: [],
+    myOrder: [],
     pricesSmall: [],
     pricesMedium: [],
     pricesLarge: [],
@@ -297,8 +298,39 @@ var vm = new Vue({
         document.getElementById("largeCup").style.backgroundColor = "lightblue";
       }
     },
+      
+    addToMyOrder: function () {
+     var i;
+     //Wrap the order in an object
+     var currentDrink = {
+       ingredients: this.chosenIngredients,
+       volume: this.volume,
+       type: this.type,
+       price: this.price
+     };
+           //set all counters to 0. Notice the use of $refs
+     for (i = 0; i < this.$refs.ingredient.length; i += 1) {
+       this.$refs.ingredient[i].resetCounter();
+     }
+     this.volume = 0;
+     this.price = 0;
+     this.type = '';
+     this.chosenIngredients = [];
+     this.pricesSmall = [];
+     this.pricesMedium = [];
+     this.pricesLarge = [];
+     resetChooseYourOwn();
 
-    placeOrder: function () {
+     this.myOrder.push(currentDrink);
+     resetChooseYourOwn();
+   },
+   placeOrder: function () {
+     // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+     socket.emit('order', {order: this.myOrder});
+     this.myOrder = [];
+   },
+
+    /*placeOrder: function () {
       var i,
       //Wrap the order in an object
       order = {
@@ -322,7 +354,7 @@ var vm = new Vue({
       this.pricesMedium = [];
       this.pricesLarge = [];
       resetChooseYourOwn();
-    },
+    },*/
       
     //this function resets EVERYTHING on the choose your own page
     resetChooseYourOwnPage: function(){
