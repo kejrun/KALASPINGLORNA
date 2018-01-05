@@ -26,12 +26,12 @@ plusIngredient: function(item){
         var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
         var thisIngredientsId = this.item.ingredient_id;
         minusButtons[thisIngredientsId-1].disabled = false;
-    }   
-    
+    }
+
     if (totalIngredientsCounter >= 0 && totalIngredientsCounter < 5 && !item.extra){
         totalIngredientsCounter ++;
         increaseBar();
-    
+
         //Jenny kolla här - 37, antalet ingredienser som inte är extras
         if (totalIngredientsCounter == 5){
             var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
@@ -50,11 +50,11 @@ minusIngredient: function(item){
     var thisIngredientsId = this.item.ingredient_id;
     minusButtons[thisIngredientsId-1].disabled = true;
     }
-    
+
     if (totalIngredientsCounter > 0 && totalIngredientsCounter <= 5 && !item.extra){
         totalIngredientsCounter --;
         decreaseBar();
-    
+
         if (totalIngredientsCounter < 5){
             var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
             for ( var i = 0; i < plusButtons.length; i++) {
@@ -120,16 +120,34 @@ function textOnBar(newLength, increment){
     ingredientsBarText.innerHTML = 'Choose 1 ingredient';
   }
   else{
-    ingredientsBarText.innerHTML = 'Your drink is full!';
+    ingredientsBarText.innerHTML = 'Your drink is full, choose extras!';
   }
 }
 
-//resets the ingredientsBar and the ingredientsCounter
-function resetIngredientsForNewOrder(){
+//to reset the entire choose your own page, call function resetChooseYourOwnPage in Vue component
+//functions for resetting choose your own, resetChooseYourOwn calls the other resetting functions
+function resetChooseYourOwn(){
+    resetIngredientsBar();
+    resetPlusMinusButtons();
+    document.getElementById("addToMyOrder").disabled = true;
+}
+
+function resetIngredientsBar(){
   totalIngredientsCounter = 0;
   var curSize = $("#ingredientsBarProgress").width();
   $("#ingredientsBarProgress").css('width', '-=' + curSize);
   ingredientsBarText.innerHTML = 'Choose 5 ingredients';
+}
+
+function resetPlusMinusButtons(){
+    var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
+    for ( var i = 0; i < plusButtons.length; i++) {
+        plusButtons[i].disabled = false;
+    }
+    var minusButtons = document.getElementsByClassName("ingredientsMinusButton");
+    for ( var i = 0; i < minusButtons.length; i++) {
+        minusButtons[i].disabled = true;
+    }
 }
 
 function getRandomInt(min, max) {
@@ -137,6 +155,36 @@ function getRandomInt(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
 }
+
+//****************Homepage animation*************
+var leaves = $(".leaves"),
+    piece1 = $("#p1"),
+    piece2 = $("#p2"),
+    piece3 = $("#p3"),
+    piece4 = $("#p4"),
+    piece5 = $("#p5"),
+    piece6 = $("#p6"),
+    orange = $("#orange"),
+    letters = $("#text path"),
+    tl;
+
+tl = new TimelineMax();
+tl.timeScale(0.4).seek(0);
+tl.set(orange, {transform: "translateY(-120px)"})
+tl.to(orange, 1, {transform: "translateY(0px)", ease:Bounce.easeOut})
+  .to(piece4, 0.3, {rotation:-20, ease:Bounce.easeOut,                transformOrigin:"center bottom"}, "split")
+  .to(piece3, 0.3, {yPercent: -10, rotation: 45, ease:Bounce.easeOut,
+                  transformOrigin:"left bottom"}, "split")
+  .to(piece2, 0.3, {transform: "translateY(35px) rotate(-25deg)", ease:Bounce.easeOut, transformOrigin:"right bottom"}, "split")
+  .to(piece5, 0.3, {transform: "translateY(-10px) rotate(-45deg)", rotation: -45, ease:Bounce.easeOut, transformOrigin:"right bottom"}, "split")
+  .to(piece6, 0.3, {transform: "translateY(25px) rotate(-45deg)", rotation: -45, ease:Bounce.easeOut, transformOrigin:"right bottom"}, "split")
+  .to(piece1, 0.3, {transform: "translateY(50px) rotate(15deg)", rotation: 15, ease:Bounce.easeOut, transformOrigin:"left bottom"}, "split")
+  .to(leaves, 0.5, {transform: "translateY(65px)", ease:Bounce.easeOut},"split")
+  .staggerFrom(letters, 0.01, {autoAlpha: 0}, 0.05)
+		.add("end");
+
+//****************Homepage animation- END *************
+
 
 /*function getOrderNumber() {
 // It's probably not a good idea to generate a random order number, client-side.
@@ -160,7 +208,6 @@ var vm = new Vue({
     socket.on("orderNumber",function(orderNumber) {
       //alert("Your ordernumber is " + orderNumber);
     });
-
   },
   methods: {
     addToDrink: function (item, type) {
@@ -260,7 +307,6 @@ var vm = new Vue({
         price: this.price
       };
 
-      console.log('order', {order: order});
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       socket.emit('order', {order: order});
       //set all counters to 0. Notice the use of $refs
@@ -274,8 +320,24 @@ var vm = new Vue({
       this.pricesSmall = [];
       this.pricesMedium = [];
       this.pricesLarge = [];
-      resetIngredientsForNewOrder();
+      resetChooseYourOwn();
     },
+      
+    //this function resets EVERYTHING on the choose your own page
+    resetChooseYourOwnPage: function(){
+      for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
+        this.$refs.ingredient[i].resetCounter();
+      }
+      this.volume = 0;
+      this.price = 0;
+      this.type = '';
+      this.chosenIngredients = [];
+      this.pricesSmall = [];
+      this.pricesMedium = [];
+      this.pricesLarge = [];
+      resetChooseYourOwn();
+    },
+      
     getIngredientById: function (id) {
       for (var i =0; i < this.ingredients.length; i += 1) {
         if (this.ingredients[i].ingredient_id === id){
@@ -329,6 +391,7 @@ var vm = new Vue({
       for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
       }
+      document.getElementById("holder").style.display = "none";
 
       // Remove the background color of all tablinks/buttons
       tablinks = document.getElementsByClassName("tablink");
@@ -345,25 +408,26 @@ var vm = new Vue({
 
       // Add the specific color to the button used to open the tab content
       if (tabName === "checkOut-page") {
-        document.getElementById("checkOut-pageBtnPM").style.backgroundColor = "purple";
-        document.getElementById("checkOut-pageBtn").style.backgroundColor = "purple";
+        document.getElementById("checkOut-pageBtnPM").style.backgroundColor = "#810051";
+        document.getElementById("checkOut-pageBtn").style.backgroundColor = "#810051";
       };
       if (tabName === "home-page") {
-        document.getElementById("home-pageBtnPM").style.backgroundColor = "purple";
-        document.getElementById("home-pageBtn").style.backgroundColor = "purple";
+        document.getElementById("home-pageBtnPM").style.backgroundColor = "#810051";
+        document.getElementById("home-pageBtn").style.backgroundColor = "#810051";
+        document.getElementById("holder").style.display = "block";
       };
       if (tabName === "preMade-page") {
-        document.getElementById("defaultOpenPM").style.backgroundColor = "purple";
+        document.getElementById("defaultOpenPM").style.backgroundColor = "#810051";
       };
       if (tabName === "myOrder-page") {
-        document.getElementById("myOrder-pageBtnPM").style.backgroundColor = "purple";
-        document.getElementById("myOrder-pageBtn").style.backgroundColor = "purple";
+        document.getElementById("myOrder-pageBtnPM").style.backgroundColor = "#810051";
+        document.getElementById("myOrder-pageBtn").style.backgroundColor = "#810051";
       };
       if (tabName === "chooseYourOwn-page") {
-        document.getElementById("defaultOpen").style.backgroundColor = "purple";
+        document.getElementById("defaultOpen").style.backgroundColor = "#810051";
       };
       if (tabName === "extras-page") {
-        document.getElementById("extras-pageBtn").style.backgroundColor = "purple";
+        document.getElementById("extras-pageBtn").style.backgroundColor = "#810051";
       };
     },
 
@@ -377,7 +441,8 @@ var vm = new Vue({
       for (i = 0; i < tablinks.length; i++) {
         tablinks[i].style.backgroundColor = "";
       }
-      document.getElementById("defaultOpen").style.backgroundColor = "purple";
+      document.getElementById("holder").style.display = "none";
+      document.getElementById("defaultOpen").style.backgroundColor = "#810051";
       document.getElementById("chooseYourOwn-page").style.display = "block";
       document.getElementById("preMade-page").style.display = "none";
       document.getElementById("home-page").style.display = "none";
@@ -397,7 +462,8 @@ var vm = new Vue({
       for (i = 0; i < tablinks.length; i++) {
         tablinks[i].style.backgroundColor = "";
       }
-      document.getElementById("defaultOpenPM").style.backgroundColor = "purple";
+      document.getElementById("holder").style.display = "none";
+      document.getElementById("defaultOpenPM").style.backgroundColor = "#810051";
       document.getElementById("chooseYourOwn-page").style.display = "none";
       document.getElementById("preMade-page").style.display = "block";
       document.getElementById("home-page").style.display = "none";
