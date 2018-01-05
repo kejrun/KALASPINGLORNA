@@ -252,6 +252,17 @@ v-if="!order.done && order.type == 'medium'"
 <div id="myOrder-page" class="tabcontent">
   <h3>{{ uiLabels.myOrder }}</h3>
   <p>These are your ordered drinks:</p>
+    <div id="myOrderedDrinks">
+    <ordered-drinks
+          v-for="(order, key) in orders"
+          v-on:order-id="key"
+          :order="order"
+          :ui-labels="uiLabels"
+          :lang="lang"
+          :type="type"
+          :key="key">
+    </ordered-drinks>
+    </div>
 </div>
 
 <div id="checkOut-page" class="tabcontent">

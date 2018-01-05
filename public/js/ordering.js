@@ -192,6 +192,7 @@ tl.to(orange, 1, {transform: "translateY(0px)", ease:Bounce.easeOut})
 return "#" + getRandomInt(1, 1000000);
 }*/
 
+
 var vm = new Vue({
   el: '#ordering',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
@@ -497,3 +498,33 @@ var vm = new Vue({
   }
 
 });
+// ------------------ For MyOrder page -------------------- 
+Vue.component('ordered-drinks', {
+  props: ['uiLabels', 'order', 'orderId', 'lang'],
+  template: '<div id = "myOrderedDrinks">\
+          <ordered-drink\
+            :ui-labels="uiLabels"\
+            :lang="lang"\
+            :order-id="orderId"\
+            :order="order">\
+          </ordered-drink>\
+         </div>',
+    methods: {
+    
+    //drinkInOrder: function(){
+    //this.$emit('in-order');
+    //}
+    
+    }
+  });
+
+/*var drinkVue = new Vue({
+  el: '#myOrderedDrinks',
+  mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
+  methods: {
+   /* markInOrder: function (orderid) {
+      socket.emit("drinkInOrder", orderid);
+    }
+  }
+})*/
+
