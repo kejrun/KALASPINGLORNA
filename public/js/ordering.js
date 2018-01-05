@@ -338,8 +338,12 @@ var vm = new Vue({
       this.pricesMedium = [];
       this.pricesLarge = [];
       resetChooseYourOwn();
+
+      //show the notifybubble
+      document.getElementById("notifybubble").style.display = "block";
+      document.getElementById("notifybubblePM").style.display = "block";
     },
-      
+
     //this function resets EVERYTHING on the choose your own page
     resetChooseYourOwnPage: function(){
       for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
@@ -354,7 +358,7 @@ var vm = new Vue({
       this.pricesLarge = [];
       resetChooseYourOwn();
     },
-      
+
     getIngredientById: function (id) {
       for (var i =0; i < this.ingredients.length; i += 1) {
         if (this.ingredients[i].ingredient_id === id){
@@ -515,7 +519,7 @@ var vm = new Vue({
   }
 
 });
-// ------------------ For MyOrder page -------------------- 
+// ------------------ For MyOrder page --------------------
 Vue.component('ordered-drinks', {
   props: ['uiLabels', 'order', 'orderId', 'lang'],
   template: '<div id = "myOrderedDrinks">\
@@ -527,11 +531,11 @@ Vue.component('ordered-drinks', {
           </ordered-drink>\
          </div>',
     methods: {
-    
+
     //drinkInOrder: function(){
     //this.$emit('in-order');
     //}
-    
+
     }
   });
 
@@ -544,4 +548,3 @@ Vue.component('ordered-drinks', {
     }
   }
 })*/
-
