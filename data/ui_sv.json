@@ -35,5 +35,6 @@
   "stock" : "Lagersaldo (ml)",
   "add" : "Fyll på lager (ml)",
   "ingredientHeader" : "ingredienser",
-  "totalPrice": "Totalt pris:"
+  "totalPrice": "Totalt pris:",
+    "search":"Sök ingrediens.."
 }

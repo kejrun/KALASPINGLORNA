@@ -205,6 +205,20 @@ a {
 	right: 10%;
 }
 
+#searchField{
+    background-image: url('http://mi1glisse.com/static/img/search.png'); /* Add a search icon to input */
+    background-position: right; /* Position the search icon */
+    background-size: 30px 30px;
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 50%;
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
 /*stock list */
 .ingredientStock {
 	border: 1px solid #777;
@@ -262,10 +276,12 @@ a {
 	font-family: 'Encode Sans Semi Condensed';
 	border: none;
 	text-transform: uppercase;
-	background-color: #4CAF50;
+	background-color: #64c47d;
 	padding: 15px 32px;
+    font-size: 20pt;
 	cursor: pointer;
 	width: 50%;
+    height: 50%;
 	margin-top: 5%;
 	margin-left: 20%;
 	margin-bottom: 5%;
