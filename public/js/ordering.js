@@ -195,6 +195,12 @@ tl.to(orange, 1, {transform: "translateY(0px)", ease:Bounce.easeOut})
 return "#" + getRandomInt(1, 1000000);
 }*/
 
+function orderCounter() {
+  var orderCounterValue = this;
+  orderCounterValue += 1;
+  console.log(orderCounterValue);
+  return orderCounterValue;
+}
 
 var vm = new Vue({
   el: '#ordering',
@@ -342,6 +348,7 @@ var vm = new Vue({
      resetChooseYourOwn();
 
      //show the notifybubble
+     orderCounter();
      document.getElementById("notifybubble").style.display = "block";
      document.getElementById("notifybubblePM").style.display = "block";
    },
@@ -435,7 +442,6 @@ var vm = new Vue({
         type: this.type,
         price: this.price
       };
-      console.log(currentDrink);
 
       this.myOrder.push(currentDrink);
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
@@ -450,6 +456,7 @@ var vm = new Vue({
       this.chosenIngredients = [];
 
       //show the notifybubble
+      orderCounter()
       document.getElementById("notifybubble").style.display = "block";
       document.getElementById("notifybubblePM").style.display = "block";
     },
