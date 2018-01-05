@@ -3,6 +3,7 @@
   "ordersInQueue" : "Order queue",
   "ordersTrending" : "Trending orders",
   "addToOrder" : "Add to my order",
+  "placeOrder": "Place order",
   "resetCurrentDrink" : "Reset Drink",
   "change" : "Change drink",
   "sideorders" : "Side orders",
@@ -34,5 +35,6 @@
   "stock" : "Stock Balance (ml)",
   "add" : "Add to Stock (ml)",
   "ingredientHeader" : "Ingredients",
-  "totalPrice": "Total price:"
+  "totalPrice": "Total price:",
+    "search":"Search for ingredient.."
 }
