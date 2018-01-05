@@ -241,7 +241,10 @@ var vm = new Vue({
                 break;
               }
           }
-      document.getElementById("addToMyOrder").disabled = true;
+          
+      if (!item.extra){
+        document.getElementById("addToMyOrder").disabled = true;
+      }
 
       this.type = type;
       if (type === "s"){
