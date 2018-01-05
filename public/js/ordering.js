@@ -195,6 +195,14 @@ tl.to(orange, 1, {transform: "translateY(0px)", ease:Bounce.easeOut})
 return "#" + getRandomInt(1, 1000000);
 }*/
 
+// ------------- For myOrder page --------------
+Vue.component('ordered-drink', {
+    props: ['uiLabels', 'order', 'orderId', 'lang'],
+    template: '<div class = drinkInfo>{{order.type}} {{ order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</div>'
+})
+// --------------------------------------------
+// --------------------------------------------
+
 
 var vm = new Vue({
   el: '#ordering',
