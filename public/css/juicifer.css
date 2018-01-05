@@ -187,7 +187,6 @@ a {
 .kitchen_layout{
 	height: 1024px;
 	width: 768px;
-    overflow-y: scroll;
 }
 
 /*Layout och scrollbar for ingredients på ingredientspage, dvs. där man kan se och ändra lagersaldo*/
@@ -206,7 +205,7 @@ a {
     left: 2%;
     right: 2%;
     position: absolute;
-	overflow-y: scroll;
+    overflow-y: scroll;
 }
 
 /*Layout for Stock List rubrik*/
@@ -306,7 +305,6 @@ a {
 	cursor: pointer;
 	width: 50%;
     height: 50%;
-	margin-top: 5%;
 	margin-left: 20%;
     bottom: 2%;
     position: absolute;
@@ -332,7 +330,6 @@ a {
     display: table;
     margin: 0 auto;
     height: 820px;
-    overflow-y: scroll;
 }
 
 #orders {
@@ -340,13 +337,11 @@ a {
 	margin:auto;
 	font-family: 'Encode Sans Semi Condensed';
     height: 1024px;
-    overflow-y: scroll;
 
 }
 
 #OrdersQueue{
 	height: 768px;
-	overflow-y: scroll;
 }
 
 /*Layout för knappar på staff view och kösidan*/
