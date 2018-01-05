@@ -22,7 +22,7 @@ var sharedVueStuff = {
     ingredients: {},
     premade:{},
     lang: "en",
-    type: 'm'
+    type: "m"
   },
   created: function () {
     socket.on('initialize', function (data) {
