@@ -2,7 +2,7 @@
 
 
 body {
-	
+
 	background:  #f0f0f0;
 	font-family: 'Encode Sans Semi Condensed';
 }
@@ -197,7 +197,7 @@ a {
     display: table;
     height: 102.4px;
     width: 768px;
-    
+
 }
 #ingredients_layout{
 	height: 768px;
@@ -324,7 +324,7 @@ a {
 	outline:none;
 	width: 70px;
 }
- 
+
 
 #start_page{
     display: table;
@@ -355,7 +355,7 @@ a {
 	outline:none;
 	position:relative;
     bottom: 30%;
-   
+
 }
 /*Layout för knappen som ej går att trycka på*/
 .ArrowImg_dis {
@@ -523,7 +523,7 @@ a {
 /* Code for Premade page */
 #sizeButtonsPreMade{
 	display: flex;
-    margin-left: 5%;
+    justify-content: space-evenly;
 }
 
 .sizeButtonPreMade{
@@ -533,7 +533,6 @@ a {
 	border-style: solid;
 	border-width: 2px;
 	border-radius: 5px;
-    margin-right: 5%;
 }
 
 #mediumCupPreMade{
@@ -543,6 +542,7 @@ a {
 #preMade-list{
 	display: grid;
 	grid-template-columns: repeat(auto-fit, 15em);
+    justify-content: center;
 	grid-gap: 1em;
 	max-height: 500px;
 	width: 100%;
