@@ -41,10 +41,12 @@
         <button class="homebutton" v-on:click="preMade()"><a>{{ uiLabels.preMade }}</a></button>
       </div>
       <div id="LanguageDiv">
+        <div style="text-align:center;">
         <button class="LanguageButton" v-on:click="switchLang()"><a>{{ uiLabels.language }}</a></button>
         <br>
         <img src="/images/Sweden.png" width="3%" height=auto>
         <img src="/images/United-Kingdom.png" width="3%" height=auto>
+      </div>
       </div>
     </div>
 
@@ -275,6 +277,7 @@ v-if="!order.done && order.type == 'medium'"
 </body>
 
 <div id="ProgressBarPreMade">
+  <div id="notifybubblePM">1</div>
   <button class="tablinkPM" v-on:click="openTab('home-page')" id="home-pageBtnPM">{{ uiLabels.home }}</button>
   <button class="tablinkPM" v-on:click="openTab('preMade-page')" id="defaultOpenPM">{{ uiLabels.preMade }}</button>
   <button class="tablinkPM" v-on:click="openTab('myOrder-page')" id="myOrder-pageBtnPM">{{ uiLabels.myOrder }}</button>
@@ -282,6 +285,7 @@ v-if="!order.done && order.type == 'medium'"
 </div>
 
 <div id="ProgressBarChooseYourOwn">
+  <div id="notifybubble">1</div>
   <button class="tablink" v-on:click="openTab('home-page')" id="home-pageBtn">{{ uiLabels.home }}</button>
   <button class="tablink" v-on:click="openTab('chooseYourOwn-page');toChooseYourOwn()" id="defaultOpen">{{ uiLabels.ingredients }}</button>
   <button class="tablink" v-on:click="openTab('extras-page');toExtras()" id="extras-pageBtn">{{ uiLabels.extras }}</button>
