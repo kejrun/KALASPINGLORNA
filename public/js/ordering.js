@@ -217,11 +217,11 @@ var vm = new Vue({
   methods: {
     addToDrink: function (item, type) {
       this.chosenIngredients.push(item);
-        
+
       if (this.chosenIngredients.length > 0){
         document.getElementById("resetCurrentDrink").disabled = false;
       }
-        
+
       if (totalIngredientsCounter == 5){
         document.getElementById("addToMyOrder").disabled = false;
       }
@@ -251,7 +251,7 @@ var vm = new Vue({
       if (!item.extra){
         document.getElementById("addToMyOrder").disabled = true;
       }
-          
+
       if (this.chosenIngredients.length == 0){
           document.getElementById("resetCurrentDrink").disabled = true;
       }
@@ -313,7 +313,7 @@ var vm = new Vue({
         document.getElementById("largeCup").style.backgroundColor = "lightblue";
       }
     },
-      
+
     addToMyOrder: function () {
      var i;
      //Wrap the order in an object
@@ -324,6 +324,7 @@ var vm = new Vue({
        type: this.type,
        price: this.price
      };
+     console.log(currentDrink)
            //set all counters to 0. Notice the use of $refs
      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
        this.$refs.ingredient[i].resetCounter();
@@ -339,7 +340,7 @@ var vm = new Vue({
 
      this.myOrder.push(currentDrink);
      resetChooseYourOwn();
-    
+
      //show the notifybubble
      document.getElementById("notifybubble").style.display = "block";
      document.getElementById("notifybubblePM").style.display = "block";
@@ -377,7 +378,7 @@ var vm = new Vue({
       this.pricesLarge = [];
       resetChooseYourOwn();
     },*/
-      
+
 
 
     //this function resets EVERYTHING on the choose your own page
@@ -403,9 +404,10 @@ var vm = new Vue({
       }
     },
     orderPremade: function(pm) {
-      for (var i = 0; i < pm.pm_ingredients.length; i += 1) {
-        this.addPremadeDrink(this.getIngredientById(pm.pm_ingredients[i]), "medium");
-      }
+      //for (var i = 0; i < pm.pm_ingredients.length; i += 1) {
+        this.addPremadeDrink(pm);
+        // this.addPremadeDrink(this.getIngredientById(pm.pm_ingredients[i]), "medium");
+      //}
     },
     getIngredientNameList: function (idArr) {
       var ingredientList = "", tempIngredient;
@@ -415,20 +417,26 @@ var vm = new Vue({
       }
       return ingredientList;
     },
-
-    addPremadeDrink: function (item, type) {
-      this.chosenIngredients.push(item);
-      console.log(item.ingredient_en);
-      this.type = type;
+    getIngredientList: function (idArr) {
+      var ingredientList = [], tempIngredient;
+      for (var i = 0; i < idArr.length ; i += 1) {
+        tempIngredient = this.getIngredientById(idArr[i]);
+        ingredientList.push(tempIngredient);
+      }
+      return ingredientList;
+    },
+    addPremadeDrink: function (item) {
       var i;
       //Wrap the order in an object
       var currentDrink = {
-        name: "premade drink",
-        ingredients: this.chosenIngredients,
+        name: this.name,
+        ingredients: this.getIngredientList(item.pm_ingredients),
         volume: this.volume,
         type: this.type,
         price: this.price
       };
+      console.log(currentDrink);
+
       this.myOrder.push(currentDrink);
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       //socket.emit('order', { order: order});
@@ -563,14 +571,14 @@ var vm = new Vue({
 // ------------------ For MyOrder page --------------------
 Vue.component('ordered-drinks', {
   props: ['uiLabels', 'order', 'orderId', 'lang'],
-  template: '<div id = "myOrderedDrinks">\
-          <ordered-drink\
-            :ui-labels="uiLabels"\
-            :lang="lang"\
-            :order-id="orderId"\
-            :order="order">\
-          </ordered-drink>\
-         </div>',
+   template: '<div id = "myOrderedDrinks">\
+           <ordered-drink\
+             :ui-labels="uiLabels"\
+             :lang="lang"\
+             :order-id="orderId"\
+             :order="order">\
+           </ordered-drink>\
+          </div>',
     methods: {
 
     //drinkInOrder: function(){
