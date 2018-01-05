@@ -17,12 +17,19 @@
 
     <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
     <br>
+    <br>
     <button v-on:click="ShowStartpage()" class=backBtn ><img src = http://simpleicon.com/wp-content/uploads/arrow-17.png width = 100% ></button>
     <br>
     <h1>{{ uiLabels.stockList }}</h1>
         
-        <div id="search"> 
-        <input type="text" id="searchField" onkeyup="searchFunction()" placeholder="uiLabels.search"></div>
+         
+        <input 
+               id="searchField"
+               ref="ingredient"
+               type="text"
+               :lang="lang"
+               :placeholder="uiLabels.search"
+               v-model="searchText">
 
     <div id = "ingredients_layout">
     <div class ="stockHeaders">
@@ -35,7 +42,7 @@
     <ingredient
       ref="ingredient"
       type="medium"
-      v-for="item in ingredients"
+      v-for="item in filteredIngredients()"
       v-if="item.category == 'fruit'"
       v-on:refill="addToRefill(item)"
       v-on:un-refill="unaddToRefill(item)"
@@ -54,7 +61,7 @@
        <ingredient
       ref="ingredient"
       type="medium"
-      v-for="item in ingredients"
+      v-for="item in filteredIngredients()"
       v-if="item.category == 'vegetable'"
       v-on:refill="addToRefill(item)"
       v-on:un-refill="unaddToRefill(item)"
@@ -74,8 +81,8 @@
       <ingredient
         ref = "ingredient"
         type="medium"
-        v-for="item in ingredients"
-        v-if="item.category == 'vegetable'"
+        v-for="item in filteredIngredients()"
+        v-if="item.category == 'berry'"
         v-on:refill="addToRefill(item)"
         v-on:un-refill="unaddToRefill(item)"
         :item="item"
@@ -93,7 +100,7 @@
       <ingredient
         ref = "ingredient"
         type="medium"
-        v-for = "item in ingredients"
+        v-for = "item in filteredIngredients()"
         v-if = "item.category == 'liquid'"
          v-on:refill="addToRefill(item)"
       v-on:un-refill="unaddToRefill(item)"
@@ -112,7 +119,7 @@
       <ingredient
         ref = "ingredient"
         type="medium"
-        v-for = "item in ingredients"
+        v-for = "item in filteredIngredients()"
         v-if = "item.category == 'nut'"
          v-on:refill="addToRefill(item)"
       v-on:un-refill="unaddToRefill(item)"
@@ -131,7 +138,7 @@
       <ingredient
         ref = "ingredient"
         type="medium"
-        v-for = "item in ingredients"
+        v-for = "item in filteredIngredients()"
         v-if = "item.category == 'flavour'"
          v-on:refill="addToRefill(item)"
       v-on:un-refill="unaddToRefill(item)"
@@ -150,7 +157,7 @@
       <ingredient
         ref = "ingredient"
         type="medium"
-        v-for = "item in ingredients"
+        v-for = "item in filteredIngredients()"
         v-if = "item.category == 'powder'"
          v-on:refill="addToRefill(item)"
       v-on:un-refill="unaddToRefill(item)"
@@ -169,7 +176,7 @@
       <ingredient
         ref = "ingredient"
         type="medium"
-        v-for = "item in ingredients"
+        v-for = "item in filteredIngredients()"
         v-if = "item.category == 'other'"
          v-on:refill="addToRefill(item)"
       v-on:un-refill="unaddToRefill(item)"
@@ -181,112 +188,15 @@
 </div>
 
 
-    <!--<div id= "ingredients_layout">
-    <ingredient
-      ref="ingredient"
-      type="smoothie"
-      v-for="item in ingredients"
-      v-if="item.vol_m > 0"
-      v-on:refill="addToRefill(item)"
-      v-on:un-refill="unaddToRefill(item)"
-      :item="item"
-      :lang="lang"
-      :key="item.ingredient_id">
-    </ingredient>
-  </div>
 
-  <div class = "stockList">
-    <h1> {{uiLabels.liquid}} </h1>
-    <ingredient
-    ref = "ingredient"
-    type="medium"
-    v-for = "item in ingredients"
-    v-if = "item.category == 'liquid'"
-    v-on:refill="addToRefill(item)"
-    v-on:un-refill="unaddToRefill(item)"
-    :item="item"
-    :lang="lang"
-    :key="item.ingredient_id">
-  </ingredient>
-</div>
 
-<div class = "stockList">
-  <h1> {{uiLabels.nut}} </h1>
-  <ingredient
-  ref = "ingredient"
-  type="medium"
-  v-for = "item in ingredients"
-  v-if = "item.category == 'nut'"
-  v-on:refill="addToRefill(item)"
-  v-on:un-refill="unaddToRefill(item)"
-  :item="item"
-  :lang="lang"
-  :key="item.ingredient_id">
-</ingredient>
-</div>
-
-<div class = "stockList">
-  <h1> {{uiLabels.flavour}} </h1>
-  <ingredient
-  ref = "ingredient"
-  type="medium"
-  v-for = "item in ingredients"
-  v-if = "item.category == 'flavour'"
-  v-on:refill="addToRefill(item)"
-  v-on:un-refill="unaddToRefill(item)"
-  :item="item"
-  :lang="lang"
-  :key="item.ingredient_id">
-</ingredient>
-</div>
-
-<div class = "stockList">
-  <h1> {{uiLabels.powder}} </h1>
-  <ingredient
-  ref = "ingredient"
-  type="medium"
-  v-for = "item in ingredients"
-  v-if = "item.category == 'powder'"
-  v-on:refill="addToRefill(item)"
-  v-on:un-refill="unaddToRefill(item)"
-  :item="item"
-  :lang="lang"
-  :key="item.ingredient_id">
-</ingredient>
-</div>
-
-<div class = "stockList">
-  <h1> {{uiLabels.other}} </h1>
-  <ingredient
-  ref = "ingredient"
-  type="medium"
-  v-for = "item in ingredients"
-  v-if = "item.category == 'other'"
-  v-on:refill="addToRefill(item)"
-  v-on:un-refill="unaddToRefill(item)"
-  :item="item"
-  :lang="lang"
-  :key="item.ingredient_id">
-</ingredient>
-</div>
-</div>
-
-<!--<div id= "ingredients_layout">
-<ingredient
-ref="ingredient"
-type="smoothie"
-v-for="item in ingredients"
-v-if="item.vol_m > 0"
-v-on:refill="addToRefill(item)"
-v-on:un-refill="unaddToRefill(item)"
-:item="item"
-:lang="lang"
-:key="item.ingredient_id">
-</ingredient>
-</div>-->
+<div id = refillbtnID>
 <button v-on:click="refreshPage()" class=refillbtn>{{ uiLabels.refill }}</button>
 </div>
 </div>
+</div>
+
+
 </body>
 
 </html>
