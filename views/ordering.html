@@ -150,7 +150,7 @@
     <br>{{ uiLabels.totalPrice }} {{ price }} kr
 
     <button id="addToMyOrder" v-on:click="placeOrder();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button>
-    <button id="resetCurrentDrink" v-on:click="resetChooseYourOwnPage()" disabled>{{ uiLabels.resetCurrentDrink }}</button>
+    <button id="resetCurrentDrink" v-on:click="resetChooseYourOwnPage();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.resetCurrentDrink }}</button>
     <br>
     <br>
     <div id="sizeButtons">
