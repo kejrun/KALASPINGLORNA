@@ -319,6 +319,7 @@ var vm = new Vue({
      var i;
      //Wrap the order in an object
      var currentDrink = {
+       name: this.name,
        ingredients: this.chosenIngredients,
        volume: this.volume,
        type: this.type,
@@ -402,7 +403,7 @@ var vm = new Vue({
     },
     orderPremade: function(pm) {
       for (var i = 0; i < pm.pm_ingredients.length; i += 1) {
-        this.placeOrderPremade(this.getIngredientById(pm.pm_ingredients[i]), "medium");
+        this.addPremadeDrink(this.getIngredientById(pm.pm_ingredients[i]), "medium");
       }
     },
     getIngredientNameList: function (idArr) {
@@ -414,21 +415,22 @@ var vm = new Vue({
       return ingredientList;
     },
 
-    placeOrderPremade: function (item, type) {
+    addPremadeDrink: function (item, type) {
       this.chosenIngredients.push(item);
       console.log(item.ingredient_en);
       this.type = type;
-      var i,
+      var i;
       //Wrap the order in an object
-      order = {
+      var currentDrink = {
         name: "premade drink",
         ingredients: this.chosenIngredients,
         volume: this.volume,
         type: this.type,
         price: this.price
       };
+      this.myOrder.push(currentDrink);
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      socket.emit('order', { order: order});
+      //socket.emit('order', { order: order});
       //set all counters to 0. Notice the use of $refs
       for (i = 0; i < this.$refs.ingredient.length; i += 1) {
         this.$refs.ingredient[i].resetCounter();
