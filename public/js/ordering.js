@@ -13,7 +13,6 @@ Vue.component('ingredient', {
   {{item["ingredient_"+ lang]}} {{ item["price_" + type] }} :- \
   </label>\
   </div>',
-  //mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
   data: function () {
     return {
       counter: 0
@@ -34,12 +33,12 @@ plusIngredient: function(item){
         totalIngredientsCounter ++;
         increaseBar();
 
-
-        //Jenny kolla här - 37, antalet ingredienser som inte är extras, avnvända mixins på något sätt fö att få listan ingredients som finns i sharedVueStuff
         if (totalIngredientsCounter == 5){
             var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
-            for ( var i = 0; i < 37; i++) {
+            for ( var i = 0; i < vm.ingredients.length; i++) {
+                if(!vm.ingredients[i].extra){
                 plusButtons[i].disabled = true;
+                }
             }
         }
     }
