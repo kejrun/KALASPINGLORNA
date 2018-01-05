@@ -321,7 +321,23 @@ var vm = new Vue({
         document.getElementById("largeCup").style.backgroundColor = "lightblue";
       }
     },
-
+    
+      markChosenSizeButtonPreMade: function(type){
+      document.getElementById("smallCupPreMade").style.backgroundColor = "white";
+      document.getElementById("mediumCupPreMade").style.backgroundColor = "white";
+      document.getElementById("largeCupPreMade").style.backgroundColor = "white";
+      this.type=type;
+      if (type === 's'){
+        document.getElementById("smallCupPreMade").style.backgroundColor = "lightblue";
+      }
+      else if (type === 'm'){
+        document.getElementById("mediumCupPreMade").style.backgroundColor = "lightblue";
+      }
+      else {
+        document.getElementById("largeCupPreMade").style.backgroundColor = "lightblue";
+      }
+    },
+      
     addToMyOrder: function () {
      var i;
      //Wrap the order in an object
