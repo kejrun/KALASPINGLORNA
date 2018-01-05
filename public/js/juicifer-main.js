@@ -23,7 +23,12 @@ Vue.component('ordered-drink', {
 
 Vue.component('order-item-done', {
   props: ['uiLabels', 'order', 'orderId', 'lang'],
-  template: '<div>{{orderId}} {{order.type}}: {{ order.ingredients.map(item=>item["ingredient_"+ lang]).join(", ") }} </div>'
+  template: '<div>{{orderId}} {{order.type}}:\
+             <div v-for="o in order.order">\
+                <div v-for="ing in o.ingredients">\
+                    {{ ing["ingredient_"+ lang] }}\
+                </div>\
+             </div></div>'
 });
 // Stuff that is used both in the ordering system and in the kitchen
 var sharedVueStuff = {
