@@ -236,6 +236,7 @@ a {
 	border: 1px solid #777;
 	padding: 1em;
 	width:90%;
+    height:20px;
 	margin-left: 1em;
 }
 
@@ -253,13 +254,13 @@ a {
 /*all headers*/
 .stockHeaders{
 	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-bottom:20px;
 	color: black;
 	letter-spacing: 1pt;
 	position: relative;
 	font-size: 12pt;
 	width: 90%;
-	margin-bottom:7%;
+    height: 20px;
 	margin-left: 1em;
 }
 
