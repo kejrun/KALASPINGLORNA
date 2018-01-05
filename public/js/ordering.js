@@ -202,6 +202,15 @@ function orderCounter() {
   return orderCounterValue;
 }
 
+// ------------- For myOrder page --------------
+Vue.component('ordered-drink', {
+    props: ['uiLabels', 'order', 'orderId', 'lang'],
+    template: '<div class = drinkInfo>{{order.type}} {{ order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</div>'
+})
+// --------------------------------------------
+// --------------------------------------------
+
+
 var vm = new Vue({
   el: '#ordering',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
@@ -317,6 +326,22 @@ var vm = new Vue({
       }
       else {
         document.getElementById("largeCup").style.backgroundColor = "lightblue";
+      }
+    },
+
+      markChosenSizeButtonPreMade: function(type){
+      document.getElementById("smallCupPreMade").style.backgroundColor = "white";
+      document.getElementById("mediumCupPreMade").style.backgroundColor = "white";
+      document.getElementById("largeCupPreMade").style.backgroundColor = "white";
+      this.type=type;
+      if (type === 's'){
+        document.getElementById("smallCupPreMade").style.backgroundColor = "lightblue";
+      }
+      else if (type === 'm'){
+        document.getElementById("mediumCupPreMade").style.backgroundColor = "lightblue";
+      }
+      else {
+        document.getElementById("largeCupPreMade").style.backgroundColor = "lightblue";
       }
     },
 

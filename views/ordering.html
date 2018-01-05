@@ -181,18 +181,18 @@ v-if="!order.done && order.type == 'medium'"
   <h3>{{ uiLabels.preMade }}</h3>
 
     <div id="sizeButtonsPreMade">
-      <button id="smallCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('s'); changeTotalPrice('s');markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
-      <button id="mediumCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('m'); changeTotalPrice('m');markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
-      <button id="largeCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('l'); changeTotalPrice('l');markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
+      <button id="smallCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('s'); markChosenSizeButtonPreMade('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
+      <button id="mediumCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('m'); markChosenSizeButtonPreMade('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
+      <button id="largeCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('l'); markChosenSizeButtonPreMade('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
     </div>
 
   <div id="preMade-list">
     <div v-for="preparedDrink in premade">
       <br>
-      <img v-bind:src="preparedDrink.image" height="250px">
-      <h2>{{preparedDrink.pm_name}}</h2>
+      <img v-bind:src="preparedDrink.image" height="250px"> 
+      <h2>{{preparedDrink.pm_name + " "}}{{preparedDrink["price_" + type]}} :-</h2>
       <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
-      <button id=orderButton v-on:click="orderPremade(preparedDrink)">{{ uiLabels.addToOrder}}</button>
+      <button id=orderButton v-on:click="orderPremade(preparedDrink);switchType('m');markChosenSizeButton('m')">{{ uiLabels.addToOrder}}</button>
     </div>
   </div>
 </div>
