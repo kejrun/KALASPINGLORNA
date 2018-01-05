@@ -2,7 +2,7 @@
 
 
 body {
-	overflow: hidden;
+	
 	background:  #f0f0f0;
 	font-family: 'Encode Sans Semi Condensed';
 }
@@ -185,14 +185,27 @@ a {
 
 /*rätt storlek på kitchen sidan*/
 .kitchen_layout{
-	height: 200mm;
-	width: 165mm;
+	height: 1024px;
+	width: 768px;
+    overflow-y: scroll;
 }
 
 /*Layout och scrollbar for ingredients på ingredientspage, dvs. där man kan se och ändra lagersaldo*/
+
+#ingredients{
+    position: absolute;
+    margin: 0 auto;
+    display: table;
+    height: 102.4px;
+    width: 768px;
+    
+}
 #ingredients_layout{
-	height: 150mm;
-	width: 160mm;
+	height: 768px;
+	width: 768px;
+    left: 2%;
+    right: 2%;
+    position: absolute;
 	overflow-y: scroll;
 }
 
@@ -270,6 +283,17 @@ a {
 
 #finishedOrder{
 	display: none;
+    height: 80%;
+    margin: 0 auto;
+}
+
+#refillbtnID{
+    position: absolute;
+    display: table;
+    margin: 0 auto;
+    width: 768px;
+    height: 102.4px;
+    top: 973px;
 }
 
 .refillbtn {
@@ -284,8 +308,11 @@ a {
     height: 50%;
 	margin-top: 5%;
 	margin-left: 20%;
-	margin-bottom: 5%;
+    bottom: 2%;
+    position: absolute;
 }
+
+
 
 .backBtn {
 	position:absolute;
@@ -299,21 +326,26 @@ a {
 	outline:none;
 	width: 70px;
 }
+ 
 
-#IngredientsPage{
-	display: none;
+#start_page{
+    display: table;
+    margin: 0 auto;
+    height: 820px;
+    overflow-y: scroll;
 }
 
 #orders {
 	text-align: center;
 	margin:auto;
-	width: 40em;
 	font-family: 'Encode Sans Semi Condensed';
-	height: 800px;
+    height: 1024px;
+    overflow-y: scroll;
+
 }
 
 #OrdersQueue{
-	height: 400px;
+	height: 768px;
 	overflow-y: scroll;
 }
 
@@ -327,7 +359,8 @@ a {
 	overflow: hidden;
 	outline:none;
 	position:relative;
-	top: 30px;
+    bottom: 30%;
+   
 }
 /*Layout för knappen som ej går att trycka på*/
 .ArrowImg_dis {
@@ -340,7 +373,7 @@ a {
 	outline:none;
 	opacity: 0.2;
 	position:relative;
-	top: 30px;
+	bottom: 30%;
 }
 
 .style_orders_inQueue{
@@ -385,11 +418,10 @@ a {
 }
 
 #Hist_Ingred{
-	width: 165mm;
-	bottom: 0;
-	left: 2%;
-	right: 2%;
-	position: absolute;
+    bottom: 20px;
+    height: 204px;
+    display: table;
+    margin: 0 auto;
 }
 
 .Hist_Ingred_Button{
@@ -494,6 +526,25 @@ a {
 }
 
 /* Code for Premade page */
+#sizeButtonsPreMade{
+	display: flex;
+    margin-left: 5%;
+}
+
+.sizeButtonPreMade{
+	font-family: 'Encode Sans Semi Condensed';
+	width: 90px;
+	height: 90px;
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 5px;
+    margin-right: 5%;
+}
+
+#mediumCupPreMade{
+	background-color: lightblue;
+}
+
 #preMade-list{
 	margin-left: 5%;
 	display: grid;

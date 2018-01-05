@@ -2,6 +2,11 @@
 /*global sharedVueStuff, Vue, socket */
 'use strict';
 
+Vue.component('order-item', {
+  props: ['uiLabels', 'order', 'orderId', 'lang'],
+  template: '<div id = style-orderbutton><div class = orderInfo>{{orderId}} <br><br> {{order.type}} </div> <div v-for="o in order.order" class = "orderInfo"><div v-for="ing in o.ingredients">{{ ing["ingredient_"+ lang] }}</div></div></div>'
+});
+
 Vue.component('order-item-to-prepare', {
   props: ['uiLabels', 'order', 'orderId', 'lang'],
   template: '<div class = style_orders_inQueue>\
@@ -62,7 +67,6 @@ var vm = new Vue({
       window.location = 'http://localhost:3000/ingredients';
       document.getElementById("finishedOrder").style.display ="none";
       document.getElementById("start_page").style.display = "none";
-      //document.getElementById("IngredientsPage").style.display ="block";
     },
     ShowStartpage: function(){
       document.getElementById("finishedOrder").style.display ="none";
