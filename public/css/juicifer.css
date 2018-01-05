@@ -495,7 +495,6 @@ a {
 
 /* Code for Premade page */
 #preMade-list{
-	margin-left: 5%;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, 15em);
 	grid-gap: 1em;
