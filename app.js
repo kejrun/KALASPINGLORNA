@@ -151,10 +151,12 @@ Data.prototype.makeStockTransaction = function(item, changeUnit){
 //av vilken storlek kunden valt på muggen. T.ex. om kunden valt en M så ska det vara -60. 
 Data.prototype.addOrder = function (order) {
     var orderId = this.getOrderNumber();
-    this.orders[orderId] = order.order;
+    this.orders[orderId] = order;
     this.orders[orderId].done = false;
     this.orders[orderId].inMade = false;
-    this.makeTransaction(order.order, "remove");
+    for (var i=0; i< order.order.length; i+=1){
+        this.makeTransaction(order.order[i], "remove");
+    }
     return orderId;
 };
 Data.prototype.getAllOrders = function () {
@@ -169,7 +171,9 @@ Data.prototype.markOrderDone = function (orderId) {
 // +40, +60 eller +80 som ska skickas till makeTransaxtion
 Data.prototype.cancelOrder = function(orderId){
     this.orders[orderId].done = true;
-    this.makeTransaction(this.orders[orderId], "add");
+    for (var i=0; i<this.orders[orderId].order.length; i+=1){
+        this.makeTransaction(this.orders[orderId].order[i], "add");
+    }
 };
 
 Data.prototype.markOrderInMade = function(orderId){

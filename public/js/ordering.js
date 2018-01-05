@@ -133,6 +133,7 @@ function resetChooseYourOwn(){
     resetIngredientsBar();
     resetPlusMinusButtons();
     document.getElementById("addToMyOrder").disabled = true;
+    document.getElementById("resetCurrentDrink").disabled = true;
 }
 
 function resetIngredientsBar(){
@@ -202,6 +203,7 @@ var vm = new Vue({
   data: {
     type: "m", //preset on size medium
     chosenIngredients: [],
+    myOrder: [],
     pricesSmall: [],
     pricesMedium: [],
     pricesLarge: [],
@@ -216,6 +218,11 @@ var vm = new Vue({
   methods: {
     addToDrink: function (item, type) {
       this.chosenIngredients.push(item);
+        
+      if (this.chosenIngredients.length > 0){
+        document.getElementById("resetCurrentDrink").disabled = false;
+      }
+        
       if (totalIngredientsCounter == 5){
         document.getElementById("addToMyOrder").disabled = false;
       }
@@ -244,6 +251,10 @@ var vm = new Vue({
 
       if (!item.extra){
         document.getElementById("addToMyOrder").disabled = true;
+      }
+          
+      if (this.chosenIngredients.length == 0){
+          document.getElementById("resetCurrentDrink").disabled = true;
       }
 
       this.type = type;
@@ -303,8 +314,44 @@ var vm = new Vue({
         document.getElementById("largeCup").style.backgroundColor = "lightblue";
       }
     },
+      
+    addToMyOrder: function () {
+     var i;
+     //Wrap the order in an object
+     var currentDrink = {
+       name: this.name,
+       ingredients: this.chosenIngredients,
+       volume: this.volume,
+       type: this.type,
+       price: this.price
+     };
+           //set all counters to 0. Notice the use of $refs
+     for (i = 0; i < this.$refs.ingredient.length; i += 1) {
+       this.$refs.ingredient[i].resetCounter();
+     }
+     this.volume = 0;
+     this.price = 0;
+     this.type = '';
+     this.chosenIngredients = [];
+     this.pricesSmall = [];
+     this.pricesMedium = [];
+     this.pricesLarge = [];
+     resetChooseYourOwn();
 
-    placeOrder: function () {
+     this.myOrder.push(currentDrink);
+     resetChooseYourOwn();
+    
+     //show the notifybubble
+     document.getElementById("notifybubble").style.display = "block";
+     document.getElementById("notifybubblePM").style.display = "block";
+   },
+   placeOrder: function () {
+     // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+     socket.emit('order', {order: this.myOrder});
+     this.myOrder = [];
+   },
+
+    /*placeOrder: function () {
       var i,
       //Wrap the order in an object
       order = {
@@ -328,11 +375,9 @@ var vm = new Vue({
       this.pricesMedium = [];
       this.pricesLarge = [];
       resetChooseYourOwn();
+    },*/
+      
 
-      //show the notifybubble
-      document.getElementById("notifybubble").style.display = "block";
-      document.getElementById("notifybubblePM").style.display = "block";
-    },
 
     //this function resets EVERYTHING on the choose your own page
     resetChooseYourOwnPage: function(){
@@ -358,7 +403,7 @@ var vm = new Vue({
     },
     orderPremade: function(pm) {
       for (var i = 0; i < pm.pm_ingredients.length; i += 1) {
-        this.placeOrderPremade(this.getIngredientById(pm.pm_ingredients[i]), "medium");
+        this.addPremadeDrink(this.getIngredientById(pm.pm_ingredients[i]), "medium");
       }
     },
     getIngredientNameList: function (idArr) {
@@ -370,21 +415,22 @@ var vm = new Vue({
       return ingredientList;
     },
 
-    placeOrderPremade: function (item, type) {
+    addPremadeDrink: function (item, type) {
       this.chosenIngredients.push(item);
       console.log(item.ingredient_en);
       this.type = type;
-      var i,
+      var i;
       //Wrap the order in an object
-      order = {
+      var currentDrink = {
         name: "premade drink",
         ingredients: this.chosenIngredients,
         volume: this.volume,
         type: this.type,
         price: this.price
       };
+      this.myOrder.push(currentDrink);
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      socket.emit('order', { order: order});
+      //socket.emit('order', { order: order});
       //set all counters to 0. Notice the use of $refs
       for (i = 0; i < this.$refs.ingredient.length; i += 1) {
         this.$refs.ingredient[i].resetCounter();

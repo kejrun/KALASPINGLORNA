@@ -149,7 +149,11 @@
 
     <br>{{ uiLabels.totalPrice }} {{ price }} kr
 
-    <button id="addToMyOrder" v-on:click="placeOrder();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button><br>
+
+    <button id="addToMyOrder" v-on:click="addToMyOrder();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button>
+    <button id="resetCurrentDrink" v-on:click="resetChooseYourOwnPage();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.resetCurrentDrink }}</button>
+
+    <br>
     <br>
     <div id="sizeButtons">
       <button id="smallCup" class="sizeButton" v-on:click="switchType('s'); changeTotalPrice('s');markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
@@ -256,7 +260,7 @@ v-if="!order.done && order.type == 'medium'"
   <p>These are your ordered drinks:</p>
     <div id="myOrderedDrinks">
     <ordered-drinks
-          v-for="(order, key) in orders"
+          v-for="(order, key) in myOrder"
           v-on:order-id="key"
           :order="order"
           :ui-labels="uiLabels"
@@ -264,6 +268,9 @@ v-if="!order.done && order.type == 'medium'"
           :type="type"
           :key="key">
     </ordered-drinks>
+    </div>
+    <div>
+    <button id=placeOrderButton v-on:click="placeOrder()">{{ uiLabels.placeOrder}}</button>
     </div>
 </div>
 
