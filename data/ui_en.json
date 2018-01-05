@@ -3,6 +3,7 @@
   "ordersInQueue" : "Order queue",
   "ordersTrending" : "Trending orders",
   "addToOrder" : "Add to my order",
+  "placeOrder": "Place order",
   "resetCurrentDrink" : "Reset Drink",
   "change" : "Change drink",
   "sideorders" : "Side orders",
