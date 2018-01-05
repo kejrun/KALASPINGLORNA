@@ -130,7 +130,6 @@ Data.prototype.makeStockTransaction = function(item, changeUnit){
     transactions.push({transaction_id: transId, ingredient_id: item, change: changeUnit})
 };
   
-
 /*
   Adds an order to to the queue and makes an withdrawal from the
   stock. If you have time, you should think a bit about whether
@@ -258,7 +257,6 @@ io.on('connection', function (socket) {
 //socket.on('History', function()){
 //          socket.emit('History', data)
 //          }
-
 
 var server = http.listen(app.get('port'), function () {
   console.log('Server listening on port ' + app.get('port'));

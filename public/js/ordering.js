@@ -13,6 +13,7 @@ Vue.component('ingredient', {
   {{item["ingredient_"+ lang]}} {{ item["price_" + type] }} :- \
   </label>\
   </div>',
+  //mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
   data: function () {
     return {
       counter: 0
@@ -22,6 +23,7 @@ Vue.component('ingredient', {
 
 plusIngredient: function(item){
     this.counter +=1;
+    
     if (this.counter > 0){
         var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
         var thisIngredientsId = this.item.ingredient_id;
@@ -32,7 +34,8 @@ plusIngredient: function(item){
         totalIngredientsCounter ++;
         increaseBar();
 
-        //Jenny kolla här - 37, antalet ingredienser som inte är extras
+        
+        //Jenny kolla här - 37, antalet ingredienser som inte är extras, avnvända mixins på något sätt fö att få listan ingredients som finns i sharedVueStuff
         if (totalIngredientsCounter == 5){
             var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
             for ( var i = 0; i < 37; i++) {
@@ -130,6 +133,7 @@ function resetChooseYourOwn(){
     resetIngredientsBar();
     resetPlusMinusButtons();
     document.getElementById("addToMyOrder").disabled = true;
+    document.getElementById("resetCurrentDrink").disabled = true;
 }
 
 function resetIngredientsBar(){
@@ -213,6 +217,11 @@ var vm = new Vue({
   methods: {
     addToDrink: function (item, type) {
       this.chosenIngredients.push(item);
+        
+      if (this.chosenIngredients.length > 0){
+        document.getElementById("resetCurrentDrink").disabled = false;
+      }
+        
       if (totalIngredientsCounter == 5){
         document.getElementById("addToMyOrder").disabled = false;
       }
@@ -238,7 +247,14 @@ var vm = new Vue({
                 break;
               }
           }
-      document.getElementById("addToMyOrder").disabled = true;
+          
+      if (!item.extra){
+        document.getElementById("addToMyOrder").disabled = true;
+      }
+          
+      if (this.chosenIngredients.length == 0){
+          document.getElementById("resetCurrentDrink").disabled = true;
+      }
 
       this.type = type;
       if (type === "s"){
@@ -322,8 +338,12 @@ var vm = new Vue({
       this.pricesMedium = [];
       this.pricesLarge = [];
       resetChooseYourOwn();
+
+      //show the notifybubble
+      document.getElementById("notifybubble").style.display = "block";
+      document.getElementById("notifybubblePM").style.display = "block";
     },
-      
+
     //this function resets EVERYTHING on the choose your own page
     resetChooseYourOwnPage: function(){
       for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
@@ -338,7 +358,7 @@ var vm = new Vue({
       this.pricesLarge = [];
       resetChooseYourOwn();
     },
-      
+
     getIngredientById: function (id) {
       for (var i =0; i < this.ingredients.length; i += 1) {
         if (this.ingredients[i].ingredient_id === id){
@@ -493,12 +513,13 @@ var vm = new Vue({
     },
 
     toChooseYourOwn: function() {
-      document.getElementById("extrasCategories").style.display = "none"; document.getElementById("category-list").style.display ="grid";
+      document.getElementById("extrasCategories").style.display = "none"; 
+      document.getElementById("category-list").style.display ="grid";
     }
   }
 
 });
-// ------------------ For MyOrder page -------------------- 
+// ------------------ For MyOrder page --------------------
 Vue.component('ordered-drinks', {
   props: ['uiLabels', 'order', 'orderId', 'lang'],
   template: '<div id = "myOrderedDrinks">\
@@ -510,11 +531,11 @@ Vue.component('ordered-drinks', {
           </ordered-drink>\
          </div>',
     methods: {
-    
+
     //drinkInOrder: function(){
     //this.$emit('in-order');
     //}
-    
+
     }
   });
 
@@ -527,4 +548,3 @@ Vue.component('ordered-drinks', {
     }
   }
 })*/
-

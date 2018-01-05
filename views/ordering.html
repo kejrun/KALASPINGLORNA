@@ -41,10 +41,12 @@
         <button class="homebutton" v-on:click="preMade()"><a>{{ uiLabels.preMade }}</a></button>
       </div>
       <div id="LanguageDiv">
+        <div style="text-align:center;">
         <button class="LanguageButton" v-on:click="switchLang()"><a>{{ uiLabels.language }}</a></button>
         <br>
         <img src="/images/Sweden.png" width="3%" height=auto>
         <img src="/images/United-Kingdom.png" width="3%" height=auto>
+      </div>
       </div>
     </div>
 
@@ -147,7 +149,9 @@
 
     <br>{{ uiLabels.totalPrice }} {{ price }} kr
 
-    <button id="addToMyOrder" v-on:click="placeOrder();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button><br>
+    <button id="addToMyOrder" v-on:click="placeOrder();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button>
+    <button id="resetCurrentDrink" v-on:click="resetChooseYourOwnPage();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.resetCurrentDrink }}</button>
+    <br>
     <br>
     <div id="sizeButtons">
       <button id="smallCup" class="sizeButton" v-on:click="switchType('s'); changeTotalPrice('s');markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
@@ -275,6 +279,7 @@ v-if="!order.done && order.type == 'medium'"
 </body>
 
 <div id="ProgressBarPreMade">
+  <div id="notifybubblePM">1</div>
   <button class="tablinkPM" v-on:click="openTab('home-page')" id="home-pageBtnPM">{{ uiLabels.home }}</button>
   <button class="tablinkPM" v-on:click="openTab('preMade-page')" id="defaultOpenPM">{{ uiLabels.preMade }}</button>
   <button class="tablinkPM" v-on:click="openTab('myOrder-page')" id="myOrder-pageBtnPM">{{ uiLabels.myOrder }}</button>
@@ -282,6 +287,7 @@ v-if="!order.done && order.type == 'medium'"
 </div>
 
 <div id="ProgressBarChooseYourOwn">
+  <div id="notifybubble">1</div>
   <button class="tablink" v-on:click="openTab('home-page')" id="home-pageBtn">{{ uiLabels.home }}</button>
   <button class="tablink" v-on:click="openTab('chooseYourOwn-page');toChooseYourOwn()" id="defaultOpen">{{ uiLabels.ingredients }}</button>
   <button class="tablink" v-on:click="openTab('extras-page');toExtras()" id="extras-pageBtn">{{ uiLabels.extras }}</button>
