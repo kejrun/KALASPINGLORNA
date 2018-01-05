@@ -133,6 +133,7 @@ function resetChooseYourOwn(){
     resetIngredientsBar();
     resetPlusMinusButtons();
     document.getElementById("addToMyOrder").disabled = true;
+    document.getElementById("resetCurrentDrink").disabled = true;
 }
 
 function resetIngredientsBar(){
@@ -216,6 +217,11 @@ var vm = new Vue({
   methods: {
     addToDrink: function (item, type) {
       this.chosenIngredients.push(item);
+        
+      if (this.chosenIngredients.length > 0){
+        document.getElementById("resetCurrentDrink").disabled = false;
+      }
+        
       if (totalIngredientsCounter == 5){
         document.getElementById("addToMyOrder").disabled = false;
       }
@@ -244,6 +250,10 @@ var vm = new Vue({
           
       if (!item.extra){
         document.getElementById("addToMyOrder").disabled = true;
+      }
+          
+      if (this.chosenIngredients.length == 0){
+          document.getElementById("resetCurrentDrink").disabled = true;
       }
 
       this.type = type;
