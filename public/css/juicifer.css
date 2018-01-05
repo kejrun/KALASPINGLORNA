@@ -496,7 +496,7 @@ a {
 /* Code for Premade page */
 #sizeButtonsPreMade{
 	display: flex;
-    margin-left: 5%;
+    justify-content: space-evenly;
 }
 
 .sizeButtonPreMade{
@@ -506,7 +506,6 @@ a {
 	border-style: solid;
 	border-width: 2px;
 	border-radius: 5px;
-    margin-right: 5%;
 }
 
 #mediumCupPreMade{
@@ -514,9 +513,9 @@ a {
 }
 
 #preMade-list{
-	margin-left: 5%;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, 15em);
+    justify-content: center;
 	grid-gap: 1em;
 	max-height: 500px;
 	width: 100%;
