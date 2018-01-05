@@ -2,7 +2,7 @@
 
 
 body {
-	overflow: hidden;
+
 	background:  #f0f0f0;
 	font-family: 'Encode Sans Semi Condensed';
 }
@@ -185,15 +185,27 @@ a {
 
 /*rätt storlek på kitchen sidan*/
 .kitchen_layout{
-	height: 200mm;
-	width: 165mm;
+	height: 1024px;
+	width: 768px;
 }
 
 /*Layout och scrollbar for ingredients på ingredientspage, dvs. där man kan se och ändra lagersaldo*/
+
+#ingredients{
+    position: absolute;
+    margin: 0 auto;
+    display: table;
+    height: 102.4px;
+    width: 768px;
+
+}
 #ingredients_layout{
-	height: 150mm;
-	width: 160mm;
-	overflow-y: scroll;
+	height: 768px;
+	width: 768px;
+    left: 2%;
+    right: 2%;
+    position: absolute;
+    overflow-y: scroll;
 }
 
 /*Layout for Stock List rubrik*/
@@ -270,6 +282,17 @@ a {
 
 #finishedOrder{
 	display: none;
+    height: 80%;
+    margin: 0 auto;
+}
+
+#refillbtnID{
+    position: absolute;
+    display: table;
+    margin: 0 auto;
+    width: 768px;
+    height: 102.4px;
+    top: 973px;
 }
 
 .refillbtn {
@@ -282,10 +305,12 @@ a {
 	cursor: pointer;
 	width: 50%;
     height: 50%;
-	margin-top: 5%;
 	margin-left: 20%;
-	margin-bottom: 5%;
+    bottom: 2%;
+    position: absolute;
 }
+
+
 
 .backBtn {
 	position:absolute;
@@ -300,21 +325,23 @@ a {
 	width: 70px;
 }
 
-#IngredientsPage{
-	display: none;
+
+#start_page{
+    display: table;
+    margin: 0 auto;
+    height: 820px;
 }
 
 #orders {
 	text-align: center;
 	margin:auto;
-	width: 40em;
 	font-family: 'Encode Sans Semi Condensed';
-	height: 800px;
+    height: 1024px;
+
 }
 
 #OrdersQueue{
-	height: 400px;
-	overflow-y: scroll;
+	height: 768px;
 }
 
 /*Layout för knappar på staff view och kösidan*/
@@ -327,7 +354,8 @@ a {
 	overflow: hidden;
 	outline:none;
 	position:relative;
-	top: 30px;
+    bottom: 30%;
+
 }
 /*Layout för knappen som ej går att trycka på*/
 .ArrowImg_dis {
@@ -340,7 +368,7 @@ a {
 	outline:none;
 	opacity: 0.2;
 	position:relative;
-	top: 30px;
+	bottom: 30%;
 }
 
 .style_orders_inQueue{
@@ -385,11 +413,10 @@ a {
 }
 
 #Hist_Ingred{
-	width: 165mm;
-	bottom: 0;
-	left: 2%;
-	right: 2%;
-	position: absolute;
+    bottom: 20px;
+    height: 204px;
+    display: table;
+    margin: 0 auto;
 }
 
 .Hist_Ingred_Button{

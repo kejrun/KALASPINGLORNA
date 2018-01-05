@@ -28,29 +28,13 @@ Vue.component('ingredient', {
     }
 });
 
-/*function searchFunction() {
-    // Declare variables
-    var input, filter, sl, li, a, i;
-    input = document.getElementById('searchField');
-    filter = input.value.toUpperCase();
-    sl = document.getElementsByClassName("stockList");
-    li = sl.getElementsByTagName('li');
-
-    // Loop through all list items, and hide those who don't match the search query
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-        }
-    }
-};*/
-
 
 var vm = new Vue({
   el: '#ingredients',
   mixins: [sharedVueStuff],
+    data: {
+        searchText: ""
+    },
     methods:{
     addToRefill: function(item){
         socket.emit("plusIngredient", item.ingredient_id);
@@ -67,12 +51,19 @@ var vm = new Vue({
         document.getElementById("finishedOrder").style.display ="none";
         
     },
-    /*searchFunction: function(){
-        var input, filter, sl, li, a, i;
-        input = document.getElementById('searchField');
-        filter = input.value.toUpperCase();
-        sl = document.getElementsByClassName("stockList");
+    filteredIngredients: function () {
+        var resultList = [];
+        for (var i = 0; i< this.ingredients.length; i+=1) {
+            if(this.ingredients[i]["ingredient_" +this.lang].substring(0,this.searchText.length) == this.searchText) {
+                resultList.push(this.ingredients[i]);
+            }
+            
+        }
+        return resultList;
+    },
+    hideStockHeaders: function (){
         
-    }*/
+    }
+
 
 }});
