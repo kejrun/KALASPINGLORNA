@@ -23,7 +23,7 @@ Vue.component('ingredient', {
 
 plusIngredient: function(item){
     this.counter +=1;
-    
+
     if (this.counter > 0){
         var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
         var thisIngredientsId = this.item.ingredient_id;
@@ -34,7 +34,7 @@ plusIngredient: function(item){
         totalIngredientsCounter ++;
         increaseBar();
 
-        
+
         //Jenny kolla här - 37, antalet ingredienser som inte är extras, avnvända mixins på något sätt fö att få listan ingredients som finns i sharedVueStuff
         if (totalIngredientsCounter == 5){
             var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
@@ -241,7 +241,7 @@ var vm = new Vue({
                 break;
               }
           }
-          
+
       if (!item.extra){
         document.getElementById("addToMyOrder").disabled = true;
       }
@@ -393,6 +393,10 @@ var vm = new Vue({
       this.price = 0;
       this.type = '';
       this.chosenIngredients = [];
+
+      //show the notifybubble
+      document.getElementById("notifybubble").style.display = "block";
+      document.getElementById("notifybubblePM").style.display = "block";
     },
 
     openTab: function(tabName) {
@@ -503,7 +507,7 @@ var vm = new Vue({
     },
 
     toChooseYourOwn: function() {
-      document.getElementById("extrasCategories").style.display = "none"; 
+      document.getElementById("extrasCategories").style.display = "none";
       document.getElementById("category-list").style.display ="grid";
     }
   }
