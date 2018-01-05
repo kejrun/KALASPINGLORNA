@@ -28,6 +28,25 @@ Vue.component('ingredient', {
     }
 });
 
+/*function searchFunction() {
+    // Declare variables
+    var input, filter, sl, li, a, i;
+    input = document.getElementById('searchField');
+    filter = input.value.toUpperCase();
+    sl = document.getElementsByClassName("stockList");
+    li = sl.getElementsByTagName('li');
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+};*/
+
 
 var vm = new Vue({
   el: '#ingredients',
@@ -47,6 +66,13 @@ var vm = new Vue({
         window.location = 'http://localhost:3000/kitchen';
         document.getElementById("finishedOrder").style.display ="none";
         
-    }
+    },
+    /*searchFunction: function(){
+        var input, filter, sl, li, a, i;
+        input = document.getElementById('searchField');
+        filter = input.value.toUpperCase();
+        sl = document.getElementsByClassName("stockList");
+        
+    }*/
 
 }});

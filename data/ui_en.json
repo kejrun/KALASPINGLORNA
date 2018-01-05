@@ -33,5 +33,6 @@
   "stock" : "Stock Balance (ml)",
   "add" : "Add to Stock (ml)",
   "ingredientHeader" : "Ingredients",
-  "totalPrice": "Total price:"
+  "totalPrice": "Total price:",
+    "search":"Search for ingredient.."
 }
