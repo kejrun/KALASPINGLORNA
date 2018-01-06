@@ -77,8 +77,9 @@ var vm = new Vue({
       
     },
     popup: function(){
-      confirm('Are you sure you want to cancel this order?');
-  }
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+}
   }
 });
 
@@ -114,4 +115,9 @@ Vue.component('order-item-to-prepare-in-made', {
     }
   }
 
+});
+
+Vue.component('order-item-done', {
+  props: ['uiLabels', 'order', 'orderId', 'lang'],
+  template: '<div class = finishedOrderClass > <div v-for="o in order.order">{{orderId}}, {{o["type"]}}</div>\<div v-for="o in order.order"><div v-for="ing in o.ingredients" class = orderIngredInfo>{{ ing["ingredient_" + lang] }}</div></div></div>'
 });

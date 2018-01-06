@@ -61,9 +61,7 @@ var vm = new Vue({
         }
         return resultList;
     },
-    hideStockHeaders: function (){
-        
-    }
+   
 
 
 }});

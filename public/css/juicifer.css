@@ -286,8 +286,13 @@ a {
     padding-right: 15px;
 }
 
+.Heades_kitchenSide{
+    width:600px;
+    margin: 0 auto;
+}
 
 /*all headers*/
+
 .stockHeaders{
 	margin-top: 20px;
 	margin-bottom:20px;
@@ -298,6 +303,7 @@ a {
 	width: 90%;
 	height: 20px;
 	margin-left: 1em;
+    padding-left: 2%;
 }
 
 .stockList{
@@ -322,11 +328,14 @@ a {
 	display: none;
 	height: 80%;
 	margin: 0 auto;
+    overflow-y: scroll;
 }
 
 /*to make every order seperate, i.e. this is every unique order that is done*/
 .finishedOrderClass {
     padding: 6px;
+    text-transform: uppercase;
+    
 }
 
 #refillbtnID{
@@ -381,7 +390,6 @@ a {
     text-align: right;
     margin: 10px;
     font-size: 20pt;
-    width: 768px;
 }
 
 #orders {
@@ -504,6 +512,46 @@ a {
 	border-radius: 10px;
 	margin: 10px;
 }
+
+/*popup*/
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    cursor: pointer;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 300px;
+    height: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+  
+}
+
+.yesNoDiv{
+    padding-top: 40%;
+}
+.yesNoButtons{
+    width: 50pt;
+    height: 40pt;
+    cursor:pointer;
+    border-radius: 10px;
+}
+
 
 /*********************THIS IS THE CSS FOR THE ORDERING VIEW*********************/
 /*******************************************************************************/

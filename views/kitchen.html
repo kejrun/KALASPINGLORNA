@@ -33,12 +33,20 @@ function checkTime(i) {
 
 <body onload="startTime()">
 
-<div id="clock_kitchen"></div>
+
   <div class = kitchen_layout>
+      <div id="clock_kitchen"></div>
     <div id="orders">
         
-        
-    <!--<button v-on:click="popup()">Test button</button>-->
+    <div class="popup" v-on:click="popup()">Cancel test
+    <span class="popuptext" id="myPopup">{{uiLabels.cancelOrder}}
+        <div class="yesNoDiv">
+        <button class="yesNoButtons">{{uiLabels.yes}}</button>
+        <button class="yesNoButtons">{{uiLabels.no}}</button>
+        </div>
+        </span>
+    </div>
+     
 
         
       <button v-on:click="switchLang()" class="language">{{ uiLabels.language }}</button>
@@ -77,7 +85,7 @@ function checkTime(i) {
     <div id = "finishedOrder">
     <button v-on:click="ShowStartpage()" class=backBtn ><img src = http://simpleicon.com/wp-content/uploads/arrow-17.png width = 100% ></button>
     <br>
-        <h1>{{ uiLabels.ordersFinished }}</h1>
+        <div class= Heades_kitchenSide> <h1>{{ uiLabels.ordersFinished }}</h1></div>
       <order-item-done
         v-for="(order, key) in orders"
         v-if="order.done"
