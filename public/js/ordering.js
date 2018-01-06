@@ -424,6 +424,7 @@ var vm = new Vue({
         }
       }
     },
+      
     orderPremade: function(pm) {
       //for (var i = 0; i < pm.pm_ingredients.length; i += 1) {
         this.addPremadeDrink(pm);
@@ -605,7 +606,7 @@ var vm = new Vue({
 
 // ------------- For myOrder page --------------
 Vue.component('ordered-drink', {
-    props: ['uiLabels', 'order', 'orderId', 'lang'],
+    props: ['uiLabels', 'order', 'orderId', 'lang', 'type'],
     template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}<br></div>'
 })
 
