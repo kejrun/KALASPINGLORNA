@@ -435,7 +435,7 @@ a {
 }
 
 .style_orders_inQueue{
-	height: 140px;
+    min-height: 140px;
 }
 
 #style-orderbutton{
@@ -468,8 +468,9 @@ a {
 	background-color:#F0E6F0;
 	border: 2px solid black;
 	width: 400px;
-	height: 130px;
+	min-height: 130px;
 	border-radius: 10px;
+    overflow-y:  visible;
 }
 
 #inMade_Drink_items{
@@ -478,7 +479,7 @@ a {
 	background-color: #eda6a6;
 	border: 2px solid black;
 	width: 400px;
-	height: 130px;
+	min-height: 130px;
 	border-radius: 10px;
 }
 
