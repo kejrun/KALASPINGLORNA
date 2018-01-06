@@ -288,6 +288,7 @@ a {
 
 
 /*all headers*/
+
 .stockHeaders{
 	margin-top: 20px;
 	margin-bottom:20px;
@@ -298,6 +299,7 @@ a {
 	width: 90%;
 	height: 20px;
 	margin-left: 1em;
+    padding-left: 2%;
 }
 
 .stockList{
