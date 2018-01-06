@@ -2,7 +2,6 @@
 /*global sharedVueStuff, Vue, socket */
 'use strict';
 
-var totalOrderssCounter = 0;
 var totalIngredientsCounter = 0;
 Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
@@ -208,11 +207,6 @@ tl.to(orange, 1, {transform: "translateY(0px)", ease:Bounce.easeOut})
 return "#" + getRandomInt(1, 1000000);
 }*/
 
-function orderCounter() {
-  orderCounterValue += 1;
-  console.log(orderCounterValue);
-  return orderCounterValue;
-}
 
 var vm = new Vue({
   el: '#ordering',
@@ -228,7 +222,8 @@ var vm = new Vue({
     yourDrinkNumber: 0,
     volume: 0,
     price: 0,
-    totalPrice: 0
+    totalPrice: 0,
+    orderCounterValue: 0
   },
   created: function() {
     socket.on("orderNumber",function(orderNumber) {
@@ -355,6 +350,7 @@ var vm = new Vue({
      //Wrap the order in an object
      var drinkName = "Your Own Drink #" + this.yourDrinkNumber;
      this.totalPrice += this.price;
+     this.orderCounterValue += 1;
      var currentDrink = {
        name: drinkName,
        ingredients: this.chosenIngredients,
@@ -382,7 +378,6 @@ var vm = new Vue({
      resetChooseYourOwn();
 
      //show the notifybubble
-     orderCounter();
      document.getElementById("notifybubble").style.display = "block";
      document.getElementById("notifybubblePM").style.display = "block";
    },
@@ -458,6 +453,7 @@ var vm = new Vue({
           }
 
       this.totalPrice += this.price;
+      this.orderCounterValue += 1;
 
       //Wrap the order in an object
       var currentDrink = {
@@ -482,7 +478,6 @@ var vm = new Vue({
       this.chosenIngredients = [];
 
       //show the notifybubble
-      orderCounter()
       document.getElementById("notifybubble").style.display = "block";
       document.getElementById("notifybubblePM").style.display = "block";
     },
