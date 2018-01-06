@@ -395,8 +395,6 @@ var vm = new Vue({
       resetChooseYourOwn();
     },*/
 
-
-
     //this function resets EVERYTHING on the choose your own page
     resetChooseYourOwnPage: function(){
       for (var i = 0; i < this.$refs.ingredient.length; i += 1) {

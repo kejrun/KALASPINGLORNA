@@ -147,20 +147,20 @@
       <td class="priceColumn"> {{ item["price_" + type] }} kr</td>
     </tr></table>
 
-    <br>{{ uiLabels.totalPrice }} {{ price }} kr
-
-
-    <button id="addToMyOrder" v-on:click="addToMyOrder();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button>
-    <button id="resetCurrentDrink" v-on:click="resetChooseYourOwnPage();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.resetCurrentDrink }}</button>
-
-    <br>
-    <br>
-    <div id="sizeButtons">
-      <button id="smallCup" class="sizeButton" v-on:click="switchType('s'); changeTotalPrice('s');markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
-      <button id="mediumCup" class="sizeButton" v-on:click="switchType('m'); changeTotalPrice('m');markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
-      <button id="largeCup" class="sizeButton" v-on:click="switchType('l'); changeTotalPrice('l');markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
+    <div id="showDrinkFooter">
+        <br>{{ uiLabels.totalPrice }} {{ price }} kr
+        <button id="addToMyOrder" v-on:click="addToMyOrder();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button>
+        <button id="resetCurrentDrink" v-on:click="resetChooseYourOwnPage();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.resetCurrentDrink }}</button>
+        <br>
+        <br>
+        <div id="sizeButtons">
+          <button id="smallCup" class="sizeButton" v-on:click="switchType('s'); changeTotalPrice('s');markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
+          <button id="mediumCup" class="sizeButton" v-on:click="switchType('m'); changeTotalPrice('m');markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
+          <button id="largeCup" class="sizeButton" v-on:click="switchType('l'); changeTotalPrice('l');markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
+        </div>
     </div>
   </div>
+
 </div>
 <!--
 <h1>{{ uiLabels.ordersInQueue }}</h1>
