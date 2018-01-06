@@ -38,16 +38,9 @@
   "add" : "Add to Stock (ml)",
   "ingredientHeader" : "Ingredients",
   "totalPrice": "Total price:",
-<<<<<<< HEAD
   "search":"Search for ingredient..",
   "cancelOrder": "Are you sure you want to cancel?",
   "yes": "Yes",
   "no": "No",
-=======
-    "search":"Search for ingredient..",
-    "cancelOrder": "Are you sure you want to cancel?",
-    "yes": "Yes",
-    "no": "No",
->>>>>>> 5c398cf3a4785c7a664f493cade474d90c29be82
   "chosenDrinks": "Your chosen drinks: "
 }
