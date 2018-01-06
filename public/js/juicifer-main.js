@@ -5,9 +5,6 @@
 
 var socket = io();
 
-
-
-
 Vue.component('order-item-done', {
   props: ['uiLabels', 'order', 'orderId', 'lang'],
   template: '<div>{{orderId}} {{order.type}}:\
