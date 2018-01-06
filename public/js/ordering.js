@@ -606,7 +606,7 @@ var vm = new Vue({
 Vue.component('ordered-drink', {
     props: ['uiLabels', 'order', 'orderId', 'lang', 'type'],
     template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>\
-    <label>\{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}\
+    <label>\{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</label>\
     <br>\
     <button v-on:click="minusDrink(item)" id="drinkMinusButton" class="drinkMinusButton">-</button>\
     <label class="counterID">{{ counter }}</label>\
