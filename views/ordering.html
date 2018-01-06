@@ -192,7 +192,7 @@ v-if="!order.done && order.type == 'medium'"
       <img v-bind:src="preparedDrink.image" height="250px"> 
       <h2>{{preparedDrink.pm_name + " "}}{{preparedDrink["price_" + type]}} :-</h2>
       <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
-      <button id=orderButton v-on:click="orderPremade(preparedDrink);switchType('m');markChosenSizeButton('m')">{{ uiLabels.addToOrder}}</button>
+      <button id=orderButton v-on:click="orderPremade(preparedDrink);switchType('m');markChosenSizeButton('m');addToDrink(preparedDrink, preparedDrink.type)">{{ uiLabels.addToOrder}}</button>
     </div>
   </div>
 </div>
@@ -264,20 +264,38 @@ v-if="!order.done && order.type == 'medium'"
 
 <div id="myOrder-page" class="tabcontent">
   <h3>{{ uiLabels.myOrder }}</h3>
-  <p>These are your ordered drinks:</p>
+  <h4>{{uiLabels.chosenDrink}}</h4>
     <div id="myOrderedDrinks">
-    <ordered-drinks
-          v-for="(order, key) in myOrder"
-          v-on:order-id="key"
-          :order="order"
-          :ui-labels="uiLabels"
-          :lang="lang"
-          :type="type"
-          :key="key">
-    </ordered-drinks>
+        <ordered-drinks
+              v-for="(order, key) in myOrder"
+              v-on:order-id="key"
+              :order="order"
+              :ui-labels="uiLabels"
+              :lang="lang"
+              :type="type"
+              :key="key">
+        </ordered-drinks>
     </div>
     <div>
-    <button id=placeOrderButton v-on:click="placeOrder()">{{ uiLabels.placeOrder}}</button>
+        <h4> {{uiLabels.totalPrice}} </h4>
+       <!-- <div v-for= "drink in myOrder"> {{drink["</div>
+          <!-- <tr><th><h4>{{ uiLabels.ingredients }}</h4><hr></th></tr>
+    <tr v-for= "item in chosenIngredients" v-if="!item.extra">
+      <td class="ingredientColumn">{{ item["ingredient_" + lang] }}</td>
+      <td class="priceColumn"> {{ item["price_" + type] }} kr</td>
+    </tr>
+    <tr><th><h4>{{ uiLabels.extras }}</h4><hr></th></tr>
+    <tr v-for= "item in chosenIngredients" v-if="item.extra">
+      <td class="ingredientColumn">{{ item["ingredient_" + lang] }}</td>
+      <td class="priceColumn"> {{ item["price_" + type] }} kr</td>
+    </tr></table> 
+
+    <br>{{ uiLabels.totalPrice }} {{ price }} kr-->
+
+        
+    </div>
+    <div>
+        <button id=placeOrderButton v-on:click="placeOrder()">{{ uiLabels.placeOrder}}</button>
     </div>
 </div>
 

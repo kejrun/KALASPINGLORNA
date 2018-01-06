@@ -225,6 +225,9 @@ var vm = new Vue({
   methods: {
     addToDrink: function (item, type) {
       this.chosenIngredients.push(item);
+      console.log("addToDrink used");
+      console.log(item);
+      console.log(this.type);
 
       if (this.chosenIngredients.length > 0){
         document.getElementById("resetCurrentDrink").disabled = false;
@@ -247,6 +250,7 @@ var vm = new Vue({
         this.price += +item.price_l;
       }
     },
+      
 
       removeFromDrink: function (item, type) {
           for (var i=0; i < this.chosenIngredients.length; i++){
@@ -348,6 +352,7 @@ var vm = new Vue({
        type: this.type,
        price: this.price
      };
+     console.log(this.price);
      console.log(currentDrink)
            //set all counters to 0. Notice the use of $refs
      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
@@ -460,6 +465,7 @@ var vm = new Vue({
         price: this.price
       };
       console.log(currentDrink);
+      console.log(this.price);
 
       this.myOrder.push(currentDrink);
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)

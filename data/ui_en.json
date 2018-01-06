@@ -36,5 +36,6 @@
   "add" : "Add to Stock (ml)",
   "ingredientHeader" : "Ingredients",
   "totalPrice": "Total price:",
-    "search":"Search for ingredient.."
+  "search":"Search for ingredient..",
+  "chosenDrinks": "Your chosen drinks: "
 }
