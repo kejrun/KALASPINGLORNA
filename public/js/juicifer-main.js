@@ -5,13 +5,6 @@
 
 var socket = io();
 
-Vue.component('order-item', {
-  props: ['uiLabels', 'order', 'orderId', 'lang'],
-
-  //template: '<div id = style-orderbutton><div class = orderInfo>{{orderId}} <br><br> {{order.type}} </div> <div class = orderInfo>{{(order.ingredients.map(item=>item["ingredient_"+ lang]).join(" "))}}</div></div>',
-
-  template: '<div id = style-orderbutton><div class = orderInfo>{{orderId}} <br><br> {{order.type}} </div> <div v-for="o in order.order" class = "orderInfo"><div v-for="ing in o.ingredients">{{ ing["ingredient_"+ lang] }}</div></div></div>'
-});
 
 
 
