@@ -369,11 +369,19 @@ a {
 	width: 70px;
 }
 
+/* start_page på kitche view*/
 
 #start_page{
 	display: table;
 	margin: 0 auto;
 	height: 820px;
+}
+
+#clock_kitchen{
+    text-align: right;
+    margin: 10px;
+    font-size: 20pt;
+    width: 768px;
 }
 
 #orders {
