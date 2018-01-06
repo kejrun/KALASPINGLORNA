@@ -132,6 +132,8 @@ function resetChooseYourOwn(){
     resetIngredientsBar();
     resetPlusMinusButtons();
     document.getElementById("addToMyOrder").disabled = true;
+    document.getElementById("addToMyOrder").style.color = "gray";
+    document.getElementById("addToMyOrder").style.backgroundColor = "#306d31";
     document.getElementById("resetCurrentDrink").disabled = true;
 }
 
@@ -239,6 +241,8 @@ var vm = new Vue({
 
       if (totalIngredientsCounter == 5){
         document.getElementById("addToMyOrder").disabled = false;
+        document.getElementById("addToMyOrder").style.color = "white";
+        document.getElementById("addToMyOrder").style.backgroundColor = "forestgreen";
       }
       this.pricesSmall.push(item.price_s);
       this.pricesMedium.push(item.price_m);
@@ -265,6 +269,8 @@ var vm = new Vue({
 
       if (!item.extra){
         document.getElementById("addToMyOrder").disabled = true;
+        document.getElementById("addToMyOrder").style.color = "gray";
+        document.getElementById("addToMyOrder").style.backgroundColor = "#306d31";
       }
 
       if (this.chosenIngredients.length == 0){
@@ -410,8 +416,6 @@ var vm = new Vue({
       this.pricesLarge = [];
       resetChooseYourOwn();
     },*/
-
-
 
     //this function resets EVERYTHING on the choose your own page
     resetChooseYourOwnPage: function(){

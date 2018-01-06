@@ -319,6 +319,7 @@ a {
     margin-left: 134px;
     top: 10%;
     position: absolute;
+    border-radius: 15px;
 }
 
 
@@ -366,6 +367,8 @@ a {
 	outline:none;
 	position:relative;
     bottom: 30%;
+    font-size: 13pt;
+    font-family: 'Encode Sans Semi Condensed';
 
 }
 /*Layout för knappen som ej går att trycka på*/
@@ -378,8 +381,10 @@ a {
 	overflow: hidden;
 	outline:none;
 	opacity: 0.2;
+    font-size: 13pt;
 	position:relative;
 	bottom: 30%;
+    font-family: 'Encode Sans Semi Condensed';
 }
 
 .style_orders_inQueue{
@@ -412,6 +417,7 @@ a {
 	border: 2px solid black;
 	width: 400px;
 	height: 130px;
+    border-radius: 10px;
 }
 
 #inMade_Drink_items{
@@ -421,6 +427,7 @@ a {
 	border: 2px solid black;
 	width: 400px;
 	height: 130px;
+    border-radius: 10px;
 }
 
 #Hist_Ingred{
@@ -428,7 +435,7 @@ a {
     height: 204px;
     display: table;
     margin: 0 auto;
-    
+
 }
 
 .Hist_Ingred_Button{
@@ -438,6 +445,8 @@ a {
 	height: 130px;
     font-size: 20pt;
     font-family: 'Encode Sans Semi Condensed';
+    border-radius: 10px;
+    margin: 10px;
 }
 
 /*********************THIS IS THE CSS FOR THE ORDERING VIEW*********************/
@@ -450,14 +459,29 @@ a {
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(2, auto);
+    grid-template-areas: 
+        "categories myDrink"
+        ". addToOrderButton";
 	grid-gap:1em;
 	margin-top: 4%;
+}
+
+#addToMyOrder{
+    grid-area: addToOrderButton;
+    width: 100%;
+    height: 60px;
+    border-radius: 7px;
+    border-width: 3px;
+    justify-self: end;
+    font-size: 18px;
+    background-color: #306d31;
 }
 
 #category-list {
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(4, auto);
+    grid-area: categories;
 	grid-gap: 1em;
 	z-index: 5;
 }
@@ -478,8 +502,9 @@ a {
 	overflow-y: scroll;
 	background-color: #dbdbdb;
 	grid-column-start:2;
-	width: 100%;
-	height: 470px;
+    grid-area: myDrink;
+	width: 89%;
+	height: 500px;
 	padding: 1em;
 	display: block;
 	box-shadow: 1px 1px 1px 1px gray;
@@ -563,7 +588,14 @@ a {
 	overflow-y: scroll;
 }
 
-#orderButton{
+#addToMyOrderPreMade{
+    background-color: forestgreen;
+    color: white;
+    border-width: 2px;
+    border-radius: 5px;
+    width: 120px;
+    height: 30px;
+    margin-top: 8px;
 }
 
 /* END Code for Premade page */
@@ -652,7 +684,7 @@ a {
 	outline: none;
 	cursor: pointer;
 	padding: 14px 16px;
-	font-size: 18px;
+	font-size: 22px;
 	width: 16%;
 }
 
@@ -668,7 +700,7 @@ a {
 	outline: none;
 	cursor: pointer;
 	padding: 14px 16px;
-	font-size: 18px;
+	font-size: 22px;
 	width: 21%;
 }
 
@@ -722,4 +754,87 @@ a {
 	font-size: 1.5em;
 	border-radius: 50%;
 	box-shadow: 1px 1px 1px gray;
+}
+
+/* Media queries optimezed for Iphone 8 (375x667) */
+@media only screen and (max-width: 375px) {
+
+body{
+	margin-bottom: 10%;
+}
+
+#holder{
+	padding: 10% 0 0 0;
+}
+
+.homebutton {
+	width: 50%;
+margin-top: 5%;
+}
+
+.LanguageButton{
+	margin-top: 10%;
+}
+
+#LangIMG{
+	width: 10%
+}
+
+#ingredientsBarText{
+	font-size: 20px;
+}
+
+#categories-drink{
+	margin-top: 15%;
+	grid-template-columns: repeat(1, auto);
+}
+
+#category-list {
+	grid-template-columns: repeat(1, auto);
+}
+
+#showDrink{
+	display: none;
+}
+
+.ingredients-list-text{
+	max-height: 100%;
+	width: 100%;
+	overflow-y: none;
+}
+
+#extrasCategories {
+	grid-template-columns: repeat(1, auto);
+}
+
+#ProgressBarChooseYourOwn{
+	height:10%;
+	background-color: #f0f0f0;
+}
+
+#ProgressBarPreMade{
+	height:10%;
+	background-color: #f0f0f0;
+}
+
+.tablink {
+	margin: 1%;
+	padding: 0%;
+	font-size: 12px;
+	width: 18%;
+	height:100%
+}
+
+.tablinkPM {
+	margin: 1%;
+	padding: 0%;
+	font-size: 12px;
+	width: 23%;
+	height:100%
+}
+
+#preMade-page{
+	padding-top: 2%;
+}
+
 }
