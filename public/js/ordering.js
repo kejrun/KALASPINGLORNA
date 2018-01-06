@@ -331,30 +331,20 @@ var vm = new Vue({
       document.getElementById("smallCup").style.backgroundColor = "white";
       document.getElementById("mediumCup").style.backgroundColor = "white";
       document.getElementById("largeCup").style.backgroundColor = "white";
-      this.type=type;
-      if (type === 's'){
-        document.getElementById("smallCup").style.backgroundColor = "lightblue";
-      }
-      else if (type === 'm'){
-        document.getElementById("mediumCup").style.backgroundColor = "lightblue";
-      }
-      else {
-        document.getElementById("largeCup").style.backgroundColor = "lightblue";
-      }
-    },
-
-      markChosenSizeButtonPreMade: function(type){
       document.getElementById("smallCupPreMade").style.backgroundColor = "white";
       document.getElementById("mediumCupPreMade").style.backgroundColor = "white";
       document.getElementById("largeCupPreMade").style.backgroundColor = "white";
       this.type=type;
       if (type === 's'){
+        document.getElementById("smallCup").style.backgroundColor = "lightblue";
         document.getElementById("smallCupPreMade").style.backgroundColor = "lightblue";
       }
       else if (type === 'm'){
+        document.getElementById("mediumCup").style.backgroundColor = "lightblue";
         document.getElementById("mediumCupPreMade").style.backgroundColor = "lightblue";
       }
       else {
+        document.getElementById("largeCup").style.backgroundColor = "lightblue";
         document.getElementById("largeCupPreMade").style.backgroundColor = "lightblue";
       }
     },
