@@ -77,8 +77,9 @@ var vm = new Vue({
       
     },
     popup: function(){
-      confirm('Are you sure you want to cancel this order?');
-  }
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+}
   }
 });
 

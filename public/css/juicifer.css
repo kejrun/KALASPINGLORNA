@@ -292,6 +292,7 @@ a {
 }
 
 /*all headers*/
+
 .stockHeaders{
 	margin-top: 20px;
 	margin-bottom:20px;
@@ -302,6 +303,7 @@ a {
 	width: 90%;
 	height: 20px;
 	margin-left: 1em;
+    padding-left: 2%;
 }
 
 .stockList{
@@ -512,9 +514,51 @@ a {
 	margin: 10px;
 }
 
+/*popup*/
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    cursor: pointer;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 300px;
+    height: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+  
+}
+
+.yesNoDiv{
+    padding-top: 40%;
+}
+.yesNoButtons{
+    width: 50pt;
+    height: 40pt;
+    cursor:pointer;
+    border-radius: 10px;
+}
+
+
 /*********************THIS IS THE CSS FOR THE ORDERING VIEW*********************/
 /*******************************************************************************/
 /*******************************************************************************/
+
+/********************CHOOSE YOUR OWN********************/
 
 /*Creating a grid containing one grid with the categories in one column, and "My drink" in the other column */
 
@@ -538,6 +582,7 @@ a {
 	justify-self: end;
 	font-size: 18px;
 	background-color: #306d31;
+    margin-top: 0.5em;
 }
 
 #category-list {
@@ -637,63 +682,6 @@ a {
 	padding: 0.8em;
 }
 
-#home-page{
-	display: block;
-}
-
-/* Code for Premade page */
-#sizeButtonsPreMade{
-	display: flex;
-	justify-content: space-evenly;
-}
-
-.sizeButtonPreMade{
-	font-family: 'Encode Sans Semi Condensed';
-	width: 90px;
-	height: 90px;
-	border-style: solid;
-	border-width: 2px;
-	border-radius: 5px;
-}
-
-#mediumCupPreMade{
-	background-color: lightblue;
-}
-
-#preMade-list{
-	display: grid;
-	grid-template-columns: repeat(4, 15em);
-	justify-content: center;
-	grid-gap: 1em;
-	max-height: 500px;
-	width: 100%;
-	overflow-y: scroll;
-}
-
-#addToMyOrderPreMade{
-	background-color: forestgreen;
-	color: white;
-	border-width: 2px;
-	border-radius: 5px;
-	width: 120px;
-	height: 30px;
-	margin-top: 8px;
-}
-
-/* END Code for Premade page */
-
-#ProgressBarPreMade{
-	font-family: 'Encode Sans Semi Condensed';
-	display: none;
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	width: 100%;
-	z-index: 100;
-	margin-top: 10px;
-	background-color: #f0f0f0;
-}
-
 #ProgressBarChooseYourOwn{
 	font-family: 'Encode Sans Semi Condensed';
 	display: none;
@@ -754,6 +742,86 @@ a {
 	font-size: 30px;
 	z-index: 20;
 }
+
+/******************** END CHOOSE YOUR OWN********************/
+
+#home-page{
+	display: block;
+}
+
+/********************PREMADE********************/
+
+/* Code for Premade page */
+#sizeButtonsPreMade{
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.sizeButtonPreMade{
+	font-family: 'Encode Sans Semi Condensed';
+	width: 90px;
+	height: 90px;
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 5px;
+}
+
+#mediumCupPreMade{
+	background-color: lightblue;
+}
+
+#preMade-list{
+	display: grid;
+	grid-template-columns: repeat(4, 15em);
+	justify-content: center;
+	grid-gap: 1em;
+	max-height: 500px;
+	width: 100%;
+	overflow-y: scroll;
+}
+
+#addToMyOrderPreMade{
+	background-color: forestgreen;
+	color: white;
+	border-width: 2px;
+	border-radius: 5px;
+	width: 120px;
+	height: 30px;
+	margin-top: 8px;
+}
+
+#ProgressBarPreMade{
+	font-family: 'Encode Sans Semi Condensed';
+	display: none;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	z-index: 100;
+	margin-top: 10px;
+	background-color: #f0f0f0;
+}
+
+/********************END PREMADE********************/
+
+/********************MY ORDER********************/
+
+#myorderbutton{
+
+}
+
+#addAnotherDrink{
+    
+}
+
+#proceedToCheckout{
+    background-color: forestgreen;
+	color: white;
+	border-width: 2px;
+	border-radius: 5px;
+}
+
+/********************END MY ORDER********************/
 
 /* Style the tab buttons */
 /* Tab for choose chooseYourOwn */
