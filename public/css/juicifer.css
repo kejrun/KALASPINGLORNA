@@ -411,7 +411,7 @@ a {
 }
 
 .style_orders_inQueue{
-    min-height: 140px;
+    min-height: 100px;
     display: grid;
     grid-template-columns: repeat(4, auto);
     margin: 10px;
