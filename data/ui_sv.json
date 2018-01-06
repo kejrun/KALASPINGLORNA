@@ -5,6 +5,7 @@
   "addToOrder" : "Lägg till i min order",
   "placeOrder": "Lägg order",
   "addAnotherDrink": "Lägg till en ny drink",
+  "proceedToCheckout": "Till kassan",
   "resetCurrentDrink" : "Nollställ drink",
   "change" : "Ändra drink",
   "sideorders" : "Tillbehör",
@@ -40,5 +41,7 @@
     "search":"Sök ingrediens..",
     "cancelOrder":"Är du säker på att du vill avbryta?",
     "yes": "Ja",
-    "no": "Nej"
+    "no": "Nej",
+  "chosenDrinks": "Dina valda drinkar:"
+
 }

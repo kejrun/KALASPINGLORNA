@@ -286,6 +286,10 @@ a {
     padding-right: 15px;
 }
 
+.Heades_kitchenSide{
+    width:600px;
+    margin: 0 auto;
+}
 
 /*all headers*/
 
@@ -324,11 +328,14 @@ a {
 	display: none;
 	height: 80%;
 	margin: 0 auto;
+    overflow-y: scroll;
 }
 
 /*to make every order seperate, i.e. this is every unique order that is done*/
 .finishedOrderClass {
     padding: 6px;
+    text-transform: uppercase;
+    
 }
 
 #refillbtnID{
@@ -371,11 +378,18 @@ a {
 	width: 70px;
 }
 
+/* start_page på kitche view*/
 
 #start_page{
 	display: table;
 	margin: 0 auto;
 	height: 820px;
+}
+
+#clock_kitchen{
+    text-align: right;
+    margin: 10px;
+    font-size: 20pt;
 }
 
 #orders {
