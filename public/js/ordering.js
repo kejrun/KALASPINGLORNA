@@ -388,8 +388,11 @@ var vm = new Vue({
    placeOrder: function () {
        console.log("hejhej");
      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-    
-     socket.emit('order', {order: this.myOrder});
+     for(var i=0; i<this.myOrder.length; i+=1){
+     var drink = [];
+     drink.push(this.myOrder[i]);
+     socket.emit('order', {order: drink});
+     }
      this.yourDrinkNumber = 0;
      this.myOrder = [];
      this.totalPrice = 0;
