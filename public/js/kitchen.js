@@ -72,6 +72,7 @@ var vm = new Vue({
     ShowStartpage: function(){
       document.getElementById("finishedOrder").style.display ="none";
       document.getElementById("start_page").style.display = "block";
+        document.getElementById("Hist_Ingred").style.display = "block";
       
     },
     popup: function(){
