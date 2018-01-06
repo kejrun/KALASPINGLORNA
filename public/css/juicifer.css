@@ -287,6 +287,11 @@ a {
     margin: 0 auto;
 }
 
+/*to make every order seperate, i.e. this is every unique order that is done*/
+.finishedOrderClass {
+    padding: 6px;
+}
+
 #refillbtnID{
     position: absolute;
     display: table;
@@ -344,6 +349,7 @@ a {
 
 #OrdersQueue{
 	height: 768px;
+    overflow-y: 
 }
 
 /*Layout för knappar på staff view och kösidan*/
@@ -397,6 +403,11 @@ a {
 	position: relative;
 	display: grid;
 	width: 130px;
+}
+
+.orderIngredInfo{
+    position:relative;
+    display: grid;
 }
 
 /* Code for Ingredients and history buttons on staff view */

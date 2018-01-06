@@ -99,17 +99,17 @@ Data.prototype.makeTransaction = function(order, change_direction){
     k,
     changeUnit; 
     if(change_direction == "remove"){
-        if (order.type == "M"){
+        if (order.type === "m"){
             changeUnit = -60;
-        } else if(order.type == "S"){
+        } else if(order.type === "s"){
             changeUnit = -40;
         } else{
         changeUnit = -80;
         }
     } else
-    {if (order.type == "M"){
+    {if (order.type === "m"){
         changeUnit = +60;
-    } else if(order.type == "S"){
+    } else if(order.type === "s"){
         changeUnit = +40;
     } else{
         changeUnit = +80;
@@ -152,12 +152,13 @@ Data.prototype.makeStockTransaction = function(item, changeUnit){
 Data.prototype.addOrder = function (order) {
     var orderId = this.getOrderNumber();
     this.orders[orderId] = order;
+    console.log(order)
     this.orders[orderId].done = false;
     this.orders[orderId].inMade = false;
     for (var i=0; i< order.order.length; i+=1){
         this.makeTransaction(order.order[i], "remove");
     }
-    return orderId;
+    return orderId, order;
 };
 Data.prototype.getAllOrders = function () {
   return this.orders;
