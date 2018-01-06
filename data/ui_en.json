@@ -5,6 +5,7 @@
   "addToOrder" : "Add to my order",
   "placeOrder": "Place order",
   "addAnotherDrink": "Add another drink",
+  "proceedToCheckout": "Proceed to checkout",
   "resetCurrentDrink" : "Reset Drink",
   "change" : "Change drink",
   "sideorders" : "Side orders",
@@ -37,5 +38,6 @@
   "add" : "Add to Stock (ml)",
   "ingredientHeader" : "Ingredients",
   "totalPrice": "Total price:",
-    "search":"Search for ingredient.."
+  "search":"Search for ingredient..",
+  "chosenDrinks": "Your chosen drinks: "
 }
