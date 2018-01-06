@@ -189,6 +189,27 @@ a {
 	width: 768px;
 }
 
+.language{
+    border: none;
+	margin-top: 5%;
+    color: white;
+    font-size: 12pt;
+	background-color: #777;
+	width: 80px;
+    height: 40px;
+	text-align: center;
+	border-radius: 5px;
+    cursor: pointer;
+}
+
+.language:hover {
+	background-color: #9ea0a3;
+}
+
+#languageStock{
+    margin-left: 45%;
+}
+
 /*Layout och scrollbar for ingredients på ingredientspage, dvs. där man kan se och ändra lagersaldo*/
 
 #ingredients{
@@ -250,6 +271,21 @@ a {
 	display: table;
 	clear: both;
 }
+.MinusPlusButtons {
+    width: 40px;
+    height: 30px;
+    font-size: 16pt;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    background-color: #9ea0a3;
+    cursor:pointer;
+}
+#counterStock{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 
 /*all headers*/
 .stockHeaders{
@@ -267,6 +303,7 @@ a {
 .stockList{
 	margin-top: 20px;
 	position: relative;
+    
 }
 
 /*the single headers*/
@@ -429,10 +466,20 @@ a {
 }
 
 .Hist_Ingred_Button{
-	background-color:#F0E6F0;
-	border: 2px solid black;
+	background-color:#777;
+    color:white;
+	border: none;
 	width: 300px;
 	height: 130px;
+    font-size: 20pt;
+    font-family: 'Encode Sans Semi Condensed';
+    border-radius: 10px;
+    margin: 10px;
+    cursor:pointer;
+}
+
+.Hist_Ingred_Button:hover {
+    background-color: #9ea0a3;
 	font-size: 20pt;
 	font-family: 'Encode Sans Semi Condensed';
 	border-radius: 10px;

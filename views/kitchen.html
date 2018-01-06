@@ -16,7 +16,12 @@
 <body>
   <div class = kitchen_layout>
     <div id="orders">
-      <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+        
+        
+    <!--<button v-on:click="popup()">Test button</button>-->
+
+        
+      <button v-on:click="switchLang()" class="language">{{ uiLabels.language }}</button>
       <div id ="start_page">
         <h1>{{ uiLabels.ordersInQueue }}</h1>
         <h2>{{ uiLabels.smoothie }}</h2>
