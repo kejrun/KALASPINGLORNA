@@ -198,6 +198,7 @@ v-if="!order.done && order.type == 'medium'"
       <img v-bind:src="preparedDrink.image" height="250px">
       <h2>{{preparedDrink.pm_name + " "}}{{preparedDrink["price_" + type]}} :-</h2>
       <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
+
       <button id=addToMyOrderPreMade v-on:click="orderPremade(preparedDrink);openTab('myOrder-page');switchType('m');markChosenSizeButton('m')">{{ uiLabels.addToOrder}}</button>
     </div>
   </div>
@@ -307,28 +308,6 @@ som det ser ut för showDrink
     <button id=proceedToCheckout v-on:click="openTab('checkOut-page')">{{ uiLabels.proceedToCheckout}}</button>
     </div>
 </div>  
-
-<!-- siris version
-<div id="myOrder-page" class="tabcontent">
-  <h3>{{ uiLabels.myOrder }}</h3>
-  <p>These are your chosen drinks:</p>
-    <div id="myOrderedDrinks">
-    <ordered-drinks
-          v-for="(order, key) in myOrder"
-          v-on:order-id="key"
-          :order="order"
-          :ui-labels="uiLabels"
-          :lang="lang"
-          :type="type"
-          :key="key">
-    </ordered-drinks>
-    </div>
-    <div>
-    <button id=addAnotherDrink v-on:click="openTab('home-page')">{{ uiLabels.addAnotherDrink}}</button>
-    <button id=proceedToCheckout v-on:click="openTab('checkOut-page')">{{ uiLabels.proceedToCheckout}}</button>
-    </div>
-</div>
--->
 
 <div id="checkOut-page" class="tabcontent">
   <h3>{{ uiLabels.checkOut }}</h3>

@@ -238,6 +238,9 @@ var vm = new Vue({
   methods: {
     addToDrink: function (item, type) {
       this.chosenIngredients.push(item);
+      console.log("addToDrink used");
+      console.log(item);
+      console.log(this.type);
 
       if (this.chosenIngredients.length > 0){
         document.getElementById("resetCurrentDrink").disabled = false;
@@ -262,6 +265,7 @@ var vm = new Vue({
         this.price += +item.price_l;
       }
     },
+      
 
       removeFromDrink: function (item, type) {
           for (var i=0; i < this.chosenIngredients.length; i++){
@@ -401,32 +405,6 @@ var vm = new Vue({
      this.totalPrice = 0;
    },
 
-    /*placeOrder: function () {
-      var i,
-      //Wrap the order in an object
-      order = {
-        ingredients: this.chosenIngredients,
-        volume: this.volume,
-        type: this.type,
-        price: this.price
-      };
-
-      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      socket.emit('order', {order: order});
-      //set all counters to 0. Notice the use of $refs
-      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
-        this.$refs.ingredient[i].resetCounter();
-      }
-      this.volume = 0;
-      this.price = 0;
-      this.type = '';
-      this.chosenIngredients = [];
-      this.pricesSmall = [];
-      this.pricesMedium = [];
-      this.pricesLarge = [];
-      resetChooseYourOwn();
-    },*/
-
     //this function resets EVERYTHING on the choose your own page
     resetChooseYourOwnPage: function(){
       for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
@@ -495,6 +473,7 @@ var vm = new Vue({
         type: this.type,
         price: this.price
       };
+
       console.log(currentDrink.name);
       this.myOrder.push(currentDrink);
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
