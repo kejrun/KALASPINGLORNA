@@ -384,6 +384,7 @@ var vm = new Vue({
      this.pricesMedium = [];
      this.pricesLarge = [];
      resetChooseYourOwn();
+     closeNav();
 
      this.myOrder.push(currentDrink);
      resetChooseYourOwn();

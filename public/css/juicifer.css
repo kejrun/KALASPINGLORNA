@@ -190,16 +190,16 @@ a {
 }
 
 .language{
-    border: none;
+	border: none;
 	margin-top: 5%;
-    color: white;
-    font-size: 12pt;
+	color: white;
+	font-size: 12pt;
 	background-color: #777;
 	width: 80px;
-    height: 40px;
+	height: 40px;
 	text-align: center;
 	border-radius: 5px;
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .language:hover {
@@ -207,7 +207,7 @@ a {
 }
 
 #languageStock{
-    margin-left: 45%;
+	margin-left: 45%;
 }
 
 /*Layout och scrollbar for ingredients på ingredientspage, dvs. där man kan se och ändra lagersaldo*/
@@ -272,18 +272,18 @@ a {
 	clear: both;
 }
 .MinusPlusButtons {
-    width: 40px;
-    height: 30px;
-    font-size: 16pt;
-    font-weight: bold;
-    border-radius: 5px;
-    border: none;
-    background-color: #9ea0a3;
-    cursor:pointer;
+	width: 40px;
+	height: 30px;
+	font-size: 16pt;
+	font-weight: bold;
+	border-radius: 5px;
+	border: none;
+	background-color: #9ea0a3;
+	cursor:pointer;
 }
 #counterStock{
-    padding-left: 15px;
-    padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 
@@ -303,7 +303,7 @@ a {
 .stockList{
 	margin-top: 20px;
 	position: relative;
-    
+
 }
 
 /*the single headers*/
@@ -467,19 +467,19 @@ a {
 
 .Hist_Ingred_Button{
 	background-color:#777;
-    color:white;
+	color:white;
 	border: none;
 	width: 300px;
 	height: 130px;
-    font-size: 20pt;
-    font-family: 'Encode Sans Semi Condensed';
-    border-radius: 10px;
-    margin: 10px;
-    cursor:pointer;
+	font-size: 20pt;
+	font-family: 'Encode Sans Semi Condensed';
+	border-radius: 10px;
+	margin: 10px;
+	cursor:pointer;
 }
 
 .Hist_Ingred_Button:hover {
-    background-color: #9ea0a3;
+	background-color: #9ea0a3;
 	font-size: 20pt;
 	font-family: 'Encode Sans Semi Condensed';
 	border-radius: 10px;
@@ -814,7 +814,10 @@ a {
 	box-shadow: 1px 1px 1px gray;
 }
 
-/* Media queries optimezed for Iphone 8 (375x667) */
+/***************************** Media queries (375x667) *************************/
+/*******************************************************************************/
+/*******************************************************************************/
+
 @media only screen and (max-width: 375px) {
 
 	body{
@@ -831,19 +834,20 @@ a {
 	}
 
 	.LanguageButton{
-		margin-top: 10%;
+		margin-top: 7%;
 	}
 
 	#LangIMG{
 		width: 10%
 	}
 
+
 	#ingredientsBarText{
 		font-size: 20px;
 	}
 
 	#categories-drink{
-		margin-top: 0;
+		margin-top: 15%;
 		grid-template-columns: repeat(1, auto);
 	}
 
@@ -853,9 +857,29 @@ a {
 
 	#openNavbutton{
 		display: block;
-		margin-top: 15%;
+		position: absolute;
+		margin-top: 30%;
+		margin-left: -3%;
 		z-index: 90;
-		text-orientation: upright;
+	}
+
+	#sidebarbutton{
+		position: fixed;
+		opacity: 0.8;
+		background-color: #dbdbdb;
+		font-family: 'Encode Sans Semi Condensed';
+		width: 300px;
+		height: 40px;
+		border: 1px solid black;
+		border-radius: 5px;
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 2pt;
+		font-size: 20pt;
+		transform: rotate(90deg);
+		transform-origin: left top 0;
+		float: left;
+		box-shadow: 2px 2px 2px 2px gray;
 	}
 
 	#closeNavbtn{
@@ -866,11 +890,23 @@ a {
 	#sideTab{
 		display: none;
 		z-index: 100;
-		position: absolute;
+		position: fixed;
 		left: -375px;
 		width: 100%;
 		-webkit-animation: slide 0.5s forwards;
 		animation: slide 0.5s forwards;
+		overflow-y: scroll;
+		height: 500px;
+		margin-bottom: 15%;
+	}
+
+	#showDrink{
+		height:70%;
+		margin-bottom: 0.5%;
+		box-shadow: none;
+	}
+
+	#addToOrderButton{
 	}
 
 	@-webkit-keyframes slide {
@@ -892,26 +928,26 @@ a {
 	}
 
 	#ProgressBarChooseYourOwn{
-		height:10%;
+		height:12%;
 	}
 
 	#ProgressBarPreMade{
-		height:10%;
+		height:12%;
 	}
 
 	.tablink {
-		margin: 1%;
+		margin: 0.5%;
 		padding: 0%;
 		font-size: 12px;
-		width: 18%;
+		width: 19%;
 		height:100%
 	}
 
 	.tablinkPM {
-		margin: 1%;
+		margin: 0.5%;
 		padding: 0%;
 		font-size: 12px;
-		width: 23%;
+		width: 24%;
 		height:100%
 	}
 
@@ -921,6 +957,10 @@ a {
 
 	#preMade-list{
 		grid-template-columns: repeat(1, 15em);
+	}
+
+	#categories-drink{
+		margin-left: 10%
 	}
 
 }
