@@ -267,8 +267,7 @@ v-if="!order.done && order.type == 'medium'"
 </ingredient>
 </div>
 </div>
-</div>
-      
+</div>  
       
 <!-- 
 som det ser ut för showDrink
@@ -303,8 +302,8 @@ som det ser ut för showDrink
           :key="key">
         </ordered-drinks>
     </div>
-    
     <div>
+    <br><hr>{{ uiLabels.totalPrice }} {{ totalPrice }} kr
     <button id=addAnotherDrink v-on:click="openTab('home-page')">{{ uiLabels.addAnotherDrink}}</button>
     <button id=proceedToCheckout v-on:click="openTab('checkOut-page')">{{ uiLabels.proceedToCheckout}}</button>
     </div>
