@@ -410,17 +410,16 @@ a {
 
 }
 
-<<<<<<< HEAD
 .style_orders_inQueue{
     min-height: 140px;
     display: grid;
     grid-template-columns: repeat(4, auto);
     margin: 10px;
-=======
+}
+
 #OrdersQueue{
 	height: 768px;
-    overflow-y:
->>>>>>> 40118eea047b4a4bffb5ba55e4495a5e2de70709
+
 }
 
 /*Layout för knappar på staff view och kösidan*/
@@ -454,12 +453,9 @@ a {
 	font-family: 'Encode Sans Semi Condensed';
 }
 
-<<<<<<< HEAD
-=======
-.style_orders_inQueue{
-	height: 190px;
-}
->>>>>>> 40118eea047b4a4bffb5ba55e4495a5e2de70709
+
+
+
 
 #style-orderbutton{
 	text-transform: uppercase;
@@ -493,11 +489,7 @@ a {
 	background-color:#F0E6F0;
 	border: 2px solid black;
 	width: 400px;
-<<<<<<< HEAD
 	min-height: 130px;
-=======
-	height: 170px;
->>>>>>> 40118eea047b4a4bffb5ba55e4495a5e2de70709
 	border-radius: 10px;
     
 }
@@ -508,11 +500,7 @@ a {
 	background-color: #eda6a6;
 	border: 2px solid black;
 	width: 400px;
-<<<<<<< HEAD
 	min-height: 130px;
-=======
-	height: 170px;
->>>>>>> 40118eea047b4a4bffb5ba55e4495a5e2de70709
 	border-radius: 10px;
 }
 
@@ -524,7 +512,7 @@ a {
 
 }
 
-.Hist_Ingred_Button{
+.Hist_Ingred_Button {
 	background-color:#777;
 	color:white;
 	border: none;
