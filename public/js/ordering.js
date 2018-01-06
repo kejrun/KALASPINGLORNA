@@ -227,7 +227,8 @@ var vm = new Vue({
     pricesLarge: [],
     yourDrinkNumber: 0,
     volume: 0,
-    price: 0
+    price: 0,
+    totalPrice: 0
   },
   created: function() {
     socket.on("orderNumber",function(orderNumber) {
@@ -359,6 +360,7 @@ var vm = new Vue({
      this.yourDrinkNumber += 1;
      //Wrap the order in an object
      var drinkName = "Your Own Drink #" + this.yourDrinkNumber;
+     this.totalPrice += this.price;
      var currentDrink = {
        name: drinkName,
        ingredients: this.chosenIngredients,
@@ -396,6 +398,7 @@ var vm = new Vue({
      socket.emit('order', {order: this.myOrder});
      this.yourDrinkNumber = 0;
      this.myOrder = [];
+     this.totalPrice = 0;
    },
 
     /*placeOrder: function () {
@@ -481,6 +484,8 @@ var vm = new Vue({
           else{
             this.price = item.price_l;
           }
+        
+      this.totalPrice += this.price;
         
       //Wrap the order in an object
       var currentDrink = {
@@ -632,7 +637,7 @@ Vue.component('ordered-drink', {
 })
 
 Vue.component('ordered-drinks', {
-  props: ['uiLabels', 'order', 'orderId', 'lang', 'name', 'type', 'price'],
+  props: ['uiLabels', 'order', 'orderId', 'lang', 'name', 'type', 'price', 'totalPrice'],
    template: '<div id = "myOrderedDrinks">\
            <ordered-drink\
              :ui-labels="uiLabels"\
@@ -640,6 +645,7 @@ Vue.component('ordered-drinks', {
              :order-id="orderId"\
              :type="type"\
              :price="price"\
+             :totalPrice="totalPrice"\
              :order="order">\
            </ordered-drink>\
           </div>',
