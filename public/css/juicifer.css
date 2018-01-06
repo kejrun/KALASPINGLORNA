@@ -286,6 +286,10 @@ a {
     padding-right: 15px;
 }
 
+.Heades_kitchenSide{
+    width:600px;
+    margin: 0 auto;
+}
 
 /*all headers*/
 .stockHeaders{
@@ -322,11 +326,14 @@ a {
 	display: none;
 	height: 80%;
 	margin: 0 auto;
+    overflow-y: scroll;
 }
 
 /*to make every order seperate, i.e. this is every unique order that is done*/
 .finishedOrderClass {
     padding: 6px;
+    text-transform: uppercase;
+    
 }
 
 #refillbtnID{
@@ -381,7 +388,6 @@ a {
     text-align: right;
     margin: 10px;
     font-size: 20pt;
-    width: 768px;
 }
 
 #orders {
