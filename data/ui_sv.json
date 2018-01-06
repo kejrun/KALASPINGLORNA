@@ -38,10 +38,10 @@
   "add" : "Fyll på lager (ml)",
   "ingredientHeader" : "ingredienser",
   "totalPrice": "Totalt pris:",
-    "search":"Sök ingrediens..",
-    "cancelOrder":"Är du säker på att du vill avbryta?",
-    "yes": "Ja",
-    "no": "Nej",
+  "search":"Sök ingrediens..",
+  "cancelOrder":"Är du säker på att du vill avbryta?",
+  "yes": "Ja",
+  "no": "Nej",
   "chosenDrinks": "Dina valda drinkar:"
 
 }

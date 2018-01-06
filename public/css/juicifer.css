@@ -59,6 +59,16 @@ h5 {
 	font-size: 40pt;
 }
 
+h6{
+   text-align: center;
+    margin: 5px;
+	text-transform: uppercase;
+	letter-spacing: 1pt;
+	position: relative;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
 ::-webkit-scrollbar {
 	-webkit-appearance: none;
 	width: 7px;
@@ -190,16 +200,16 @@ a {
 }
 
 .language{
-    border: none;
+	border: none;
 	margin-top: 5%;
-    color: white;
-    font-size: 12pt;
+	color: white;
+	font-size: 12pt;
 	background-color: #777;
 	width: 80px;
-    height: 40px;
+	height: 40px;
 	text-align: center;
 	border-radius: 5px;
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .language:hover {
@@ -207,7 +217,7 @@ a {
 }
 
 #languageStock{
-    margin-left: 45%;
+	margin-left: 45%;
 }
 
 /*Layout och scrollbar for ingredients på ingredientspage, dvs. där man kan se och ändra lagersaldo*/
@@ -272,18 +282,18 @@ a {
 	clear: both;
 }
 .MinusPlusButtons {
-    width: 40px;
-    height: 30px;
-    font-size: 16pt;
-    font-weight: bold;
-    border-radius: 5px;
-    border: none;
-    background-color: #9ea0a3;
-    cursor:pointer;
+	width: 40px;
+	height: 30px;
+	font-size: 16pt;
+	font-weight: bold;
+	border-radius: 5px;
+	border: none;
+	background-color: #9ea0a3;
+	cursor:pointer;
 }
 #counterStock{
-    padding-left: 15px;
-    padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 .Heades_kitchenSide{
@@ -309,7 +319,7 @@ a {
 .stockList{
 	margin-top: 20px;
 	position: relative;
-    
+
 }
 
 /*the single headers*/
@@ -335,7 +345,7 @@ a {
 .finishedOrderClass {
     padding: 6px;
     text-transform: uppercase;
-    
+
 }
 
 #refillbtnID{
@@ -400,11 +410,17 @@ a {
 
 }
 
+<<<<<<< HEAD
 .style_orders_inQueue{
     min-height: 140px;
     display: grid;
     grid-template-columns: repeat(4, auto);
     margin: 10px;
+=======
+#OrdersQueue{
+	height: 768px;
+    overflow-y:
+>>>>>>> 40118eea047b4a4bffb5ba55e4495a5e2de70709
 }
 
 /*Layout för knappar på staff view och kösidan*/
@@ -438,6 +454,12 @@ a {
 	font-family: 'Encode Sans Semi Condensed';
 }
 
+<<<<<<< HEAD
+=======
+.style_orders_inQueue{
+	height: 190px;
+}
+>>>>>>> 40118eea047b4a4bffb5ba55e4495a5e2de70709
 
 #style-orderbutton{
 	text-transform: uppercase;
@@ -453,6 +475,7 @@ a {
 }
 
 .orderInfo{
+    margin-top:30px;
 	position: relative;
 	display: grid;
 	width: 130px;
@@ -470,7 +493,11 @@ a {
 	background-color:#F0E6F0;
 	border: 2px solid black;
 	width: 400px;
+<<<<<<< HEAD
 	min-height: 130px;
+=======
+	height: 170px;
+>>>>>>> 40118eea047b4a4bffb5ba55e4495a5e2de70709
 	border-radius: 10px;
     
 }
@@ -481,7 +508,11 @@ a {
 	background-color: #eda6a6;
 	border: 2px solid black;
 	width: 400px;
+<<<<<<< HEAD
 	min-height: 130px;
+=======
+	height: 170px;
+>>>>>>> 40118eea047b4a4bffb5ba55e4495a5e2de70709
 	border-radius: 10px;
 }
 
@@ -495,19 +526,19 @@ a {
 
 .Hist_Ingred_Button{
 	background-color:#777;
-    color:white;
+	color:white;
 	border: none;
 	width: 300px;
 	height: 130px;
-    font-size: 20pt;
-    font-family: 'Encode Sans Semi Condensed';
-    border-radius: 10px;
-    margin: 10px;
-    cursor:pointer;
+	font-size: 20pt;
+	font-family: 'Encode Sans Semi Condensed';
+	border-radius: 10px;
+	margin: 10px;
+	cursor:pointer;
 }
 
 .Hist_Ingred_Button:hover {
-    background-color: #9ea0a3;
+	background-color: #9ea0a3;
 	font-size: 20pt;
 	font-family: 'Encode Sans Semi Condensed';
 	border-radius: 10px;
@@ -540,7 +571,7 @@ a {
 /* Toggle this class - hide and show the popup */
 .popup .show {
     visibility: visible;
-  
+
 }
 
 .yesNoDiv{
@@ -575,6 +606,7 @@ a {
 
 #addToMyOrder{
 	grid-area: addToOrderButton;
+	font-family: 'Encode Sans Semi Condensed';
 	width: 100%;
 	height: 60px;
 	border-radius: 7px;
@@ -755,6 +787,8 @@ a {
 #sizeButtonsPreMade{
 	display: flex;
 	justify-content: space-evenly;
+	margin-bottom: 1%;
+	margin-top: 1%;
 }
 
 .sizeButtonPreMade{
@@ -781,13 +815,15 @@ a {
 }
 
 #addToMyOrderPreMade{
+	font-family: 'Encode Sans Semi Condensed';
 	background-color: forestgreen;
 	color: white;
 	border-width: 2px;
 	border-radius: 5px;
 	width: 120px;
-	height: 30px;
+	height: 35px;
 	margin-top: 8px;
+	font-size: 15px;
 }
 
 #ProgressBarPreMade{
@@ -811,7 +847,7 @@ a {
 }
 
 #addAnotherDrink{
-    
+
 }
 
 #proceedToCheckout{
@@ -908,7 +944,10 @@ a {
 	box-shadow: 1px 1px 1px gray;
 }
 
-/* Media queries optimezed for Iphone 8 (375x667) */
+/***************************** Media queries (375x667) *************************/
+/*******************************************************************************/
+/*******************************************************************************/
+
 @media only screen and (max-width: 375px) {
 
 	body{
@@ -925,19 +964,20 @@ a {
 	}
 
 	.LanguageButton{
-		margin-top: 10%;
+		margin-top: 7%;
 	}
 
 	#LangIMG{
 		width: 10%
 	}
 
+
 	#ingredientsBarText{
 		font-size: 20px;
 	}
 
 	#categories-drink{
-		margin-top: 0;
+		margin-top: 15%;
 		grid-template-columns: repeat(1, auto);
 	}
 
@@ -947,9 +987,29 @@ a {
 
 	#openNavbutton{
 		display: block;
-		margin-top: 15%;
+		position: absolute;
+		margin-top: 30%;
+		margin-left: -3%;
 		z-index: 90;
-		text-orientation: upright;
+	}
+
+	#sidebarbutton{
+		position: fixed;
+		opacity: 0.8;
+		background-color: #dbdbdb;
+		font-family: 'Encode Sans Semi Condensed';
+		width: 300px;
+		height: 40px;
+		border: 1px solid black;
+		border-radius: 5px;
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 2pt;
+		font-size: 20pt;
+		transform: rotate(90deg);
+		transform-origin: left top 0;
+		float: left;
+		box-shadow: 2px 2px 2px 2px gray;
 	}
 
 	#closeNavbtn{
@@ -960,11 +1020,23 @@ a {
 	#sideTab{
 		display: none;
 		z-index: 100;
-		position: absolute;
+		position: fixed;
 		left: -375px;
 		width: 100%;
 		-webkit-animation: slide 0.5s forwards;
 		animation: slide 0.5s forwards;
+		overflow-y: scroll;
+		height: 500px;
+		margin-bottom: 15%;
+	}
+
+	#showDrink{
+		height:70%;
+		box-shadow: none;
+	}
+
+	#addToMyOrder{
+	    margin-top: 1%;
 	}
 
 	@-webkit-keyframes slide {
@@ -986,26 +1058,26 @@ a {
 	}
 
 	#ProgressBarChooseYourOwn{
-		height:10%;
+		height:12%;
 	}
 
 	#ProgressBarPreMade{
-		height:10%;
+		height:12%;
 	}
 
 	.tablink {
-		margin: 1%;
+		margin: 0.5%;
 		padding: 0%;
 		font-size: 12px;
-		width: 18%;
+		width: 19%;
 		height:100%
 	}
 
 	.tablinkPM {
-		margin: 1%;
+		margin: 0.5%;
 		padding: 0%;
 		font-size: 12px;
-		width: 23%;
+		width: 24%;
 		height:100%
 	}
 
@@ -1015,6 +1087,10 @@ a {
 
 	#preMade-list{
 		grid-template-columns: repeat(1, 15em);
+	}
+
+	#categories-drink{
+		margin-left: 10%
 	}
 
 }

@@ -207,12 +207,6 @@ tl.to(orange, 1, {transform: "translateY(0px)", ease:Bounce.easeOut})
 return "#" + getRandomInt(1, 1000000);
 }*/
 
-function orderCounter() {
-  var orderCounterValue = this;
-  orderCounterValue += 1;
-  console.log(orderCounterValue);
-  return orderCounterValue;
-}
 
 var vm = new Vue({
   el: '#ordering',
@@ -228,7 +222,8 @@ var vm = new Vue({
     yourDrinkNumber: 0,
     volume: 0,
     price: 0,
-    totalPrice: 0
+    totalPrice: 0,
+    orderCounterValue: 0
   },
   created: function() {
     socket.on("orderNumber",function(orderNumber) {
@@ -265,7 +260,7 @@ var vm = new Vue({
         this.price += +item.price_l;
       }
     },
-      
+
 
       removeFromDrink: function (item, type) {
           for (var i=0; i < this.chosenIngredients.length; i++){
@@ -355,6 +350,7 @@ var vm = new Vue({
      //Wrap the order in an object
      var drinkName = "Your Own Drink #" + this.yourDrinkNumber;
      this.totalPrice += this.price;
+     this.orderCounterValue += 1;
      var currentDrink = {
        name: drinkName,
        ingredients: this.chosenIngredients,
@@ -381,15 +377,17 @@ var vm = new Vue({
      resetChooseYourOwn();
 
      //show the notifybubble
-     orderCounter();
      document.getElementById("notifybubble").style.display = "block";
      document.getElementById("notifybubblePM").style.display = "block";
    },
    placeOrder: function () {
        console.log("hejhej");
      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-    
-     socket.emit('order', {order: this.myOrder});
+     for(var i=0; i<this.myOrder.length; i+=1){
+     var drink = [];
+     drink.push(this.myOrder[i]);
+     socket.emit('order', {order: drink});
+     }
      this.yourDrinkNumber = 0;
      this.myOrder = [];
      this.totalPrice = 0;
@@ -417,7 +415,7 @@ var vm = new Vue({
         }
       }
     },
-      
+
     orderPremade: function(pm) {
       //for (var i = 0; i < pm.pm_ingredients.length; i += 1) {
         this.addPremadeDrink(pm);
@@ -442,7 +440,7 @@ var vm = new Vue({
     },
     addPremadeDrink: function (item) {
       var i;
-        
+
           if (this.type === "s"){
             this.price = item.price_s;
           }
@@ -452,9 +450,10 @@ var vm = new Vue({
           else{
             this.price = item.price_l;
           }
-        
+
       this.totalPrice += this.price;
-        
+      this.orderCounterValue += 1;
+
       //Wrap the order in an object
       var currentDrink = {
         name: item.pm_name,
@@ -478,7 +477,6 @@ var vm = new Vue({
       this.chosenIngredients = [];
 
       //show the notifybubble
-      orderCounter()
       document.getElementById("notifybubble").style.display = "block";
       document.getElementById("notifybubblePM").style.display = "block";
     },
@@ -602,7 +600,26 @@ var vm = new Vue({
 // ------------- For myOrder page --------------
 Vue.component('ordered-drink', {
     props: ['uiLabels', 'order', 'orderId', 'lang', 'type'],
-    template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}<br></div>'
+    template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>\
+    <label>\{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</label>\
+    <br>\
+    <button v-on:click="minusDrink(item)" id="drinkMinusButton" class="drinkMinusButton">-</button>\
+    <label class="counterID">{{ counter }}</label>\
+    <button v-on:click="plusDrink(item)" id="drinkPlusButton" class="drinkPlusButton">+</button>\
+    <br></div>',
+    data: function () {
+        return {
+          counter: 1
+        };
+    },
+    methods: {
+      minusDrink: function () {
+        },
+
+      plusDrink: function () {
+        }
+
+    }
 })
 
 Vue.component('ordered-drinks', {
@@ -618,7 +635,6 @@ Vue.component('ordered-drinks', {
              :order="order">\
            </ordered-drink>\
           </div>',
-      
 
     methods: {
 

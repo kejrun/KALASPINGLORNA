@@ -5,7 +5,7 @@
 Vue.component('order-item', {
   props: ['uiLabels', 'order', 'orderId', 'lang'],
   template: '<div id = style-orderbutton><div class = orderInfo>{{orderId}} <div v-for="o in order.order">{{o["type"]}}\
-    </div></div><div v-for="o in order.order"><div v-for="ing in o.ingredients" class = orderIngredInfo>{{ ing["ingredient_" + lang] }}</div></div></div>'
+    </div></div><div v-for="o in order.order"><h6>{{o["name"]}}</h6><div v-for="ing in o.ingredients" class = orderIngredInfo>{{ ing["ingredient_" + lang] }}</div></div></div>'
 });
 
 Vue.component('order-item-to-prepare', {
