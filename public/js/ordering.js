@@ -605,7 +605,26 @@ var vm = new Vue({
 // ------------- For myOrder page --------------
 Vue.component('ordered-drink', {
     props: ['uiLabels', 'order', 'orderId', 'lang', 'type'],
-    template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}<br></div>'
+    template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>\
+    <label>\{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}\
+    <br>\
+    <button v-on:click="minusDrink(item)" id="drinkMinusButton" class="drinkMinusButton">-</button>\
+    <label class="counterID">{{ counter }}</label>\
+    <button v-on:click="plusDrink(item)" id="drinkPlusButton" class="drinkPlusButton">+</button>\
+    <br></div>',
+    data: function () {
+        return {
+          counter: 1
+        };
+    },
+    methods: {
+      minusDrink: function () {
+        },
+
+      plusDrink: function () {
+        }
+
+    }
 })
 
 Vue.component('ordered-drinks', {
@@ -621,7 +640,6 @@ Vue.component('ordered-drinks', {
              :order="order">\
            </ordered-drink>\
           </div>',
-      
 
     methods: {
 
