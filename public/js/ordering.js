@@ -80,6 +80,16 @@ resetCounter: function () {
 }
 });
 
+function openNav() {
+    document.getElementById("sideTab").style.display = "block";
+    document.getElementById("openNavbutton").style.display = "none";
+}
+
+function closeNav() {
+    document.getElementById("sideTab").style.display = "none";
+    document.getElementById("openNavbutton").style.display = "block";
+}
+
 //ökar progress i ingredientsBar
 function increaseBar() {
       var fullSize = $("#ingredientsBar").width()-6; //magic number 6, adds padding 3px on each side
@@ -356,6 +366,7 @@ var vm = new Vue({
        type: this.type,
        price: this.price
      };
+
            //set all counters to 0. Notice the use of $refs
      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
        this.$refs.ingredient[i].resetCounter();
@@ -381,6 +392,7 @@ var vm = new Vue({
    placeOrder: function () {
        console.log("hejhej");
      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+    
      socket.emit('order', {order: this.myOrder});
      this.yourDrinkNumber = 0;
      this.myOrder = [];

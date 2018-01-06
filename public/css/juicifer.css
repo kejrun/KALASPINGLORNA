@@ -189,23 +189,44 @@ a {
 	width: 768px;
 }
 
+.language{
+    border: none;
+	margin-top: 5%;
+    color: white;
+    font-size: 12pt;
+	background-color: #777;
+	width: 80px;
+    height: 40px;
+	text-align: center;
+	border-radius: 5px;
+    cursor: pointer;
+}
+
+.language:hover {
+	background-color: #9ea0a3;
+}
+
+#languageStock{
+    margin-left: 45%;
+}
+
 /*Layout och scrollbar for ingredients på ingredientspage, dvs. där man kan se och ändra lagersaldo*/
 
 #ingredients{
-    position: absolute;
-    margin: 0 auto;
-    display: table;
-    height: 102.4px;
-    width: 768px;
+	position: absolute;
+	margin: 0 auto;
+	display: table;
+	height: 102.4px;
+	width: 768px;
 
 }
 #ingredients_layout{
 	height: 768px;
 	width: 768px;
-    left: 2%;
-    right: 2%;
-    position: absolute;
-    overflow-y: scroll;
+	left: 2%;
+	right: 2%;
+	position: absolute;
+	overflow-y: scroll;
 }
 
 /*Layout for Stock List rubrik*/
@@ -218,17 +239,17 @@ a {
 }
 
 #searchField{
-    background-image: url('http://mi1glisse.com/static/img/search.png'); /* Add a search icon to input */
-    background-position: right; /* Position the search icon */
-    background-size: 30px 30px;
-    background-repeat: no-repeat; /* Do not repeat the icon image */
-    width: 88%;
-    font-size: 16px; /* Increase font-size */
-    padding: 12px 20px 12px 40px; /* Add some padding */
-    border: 1px solid #ddd; /* Add a grey border */
-    margin-bottom: 12px; /* Add some space below the input */
-    margin-top: 20px;
-    margin-left: 20px;
+	background-image: url('http://mi1glisse.com/static/img/search.png'); /* Add a search icon to input */
+	background-position: right; /* Position the search icon */
+	background-size: 30px 30px;
+	background-repeat: no-repeat; /* Do not repeat the icon image */
+	width: 88%;
+	font-size: 16px; /* Increase font-size */
+	padding: 12px 20px 12px 40px; /* Add some padding */
+	border: 1px solid #ddd; /* Add a grey border */
+	margin-bottom: 12px; /* Add some space below the input */
+	margin-top: 20px;
+	margin-left: 20px;
 }
 
 /*stock list */
@@ -236,7 +257,7 @@ a {
 	border: 1px solid #777;
 	padding: 1em;
 	width:90%;
-    height:20px;
+	height:20px;
 	margin-left: 1em;
 }
 
@@ -250,6 +271,21 @@ a {
 	display: table;
 	clear: both;
 }
+.MinusPlusButtons {
+    width: 40px;
+    height: 30px;
+    font-size: 16pt;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    background-color: #9ea0a3;
+    cursor:pointer;
+}
+#counterStock{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 
 /*all headers*/
 .stockHeaders{
@@ -260,13 +296,14 @@ a {
 	position: relative;
 	font-size: 12pt;
 	width: 90%;
-    height: 20px;
+	height: 20px;
 	margin-left: 1em;
 }
 
 .stockList{
 	margin-top: 20px;
 	position: relative;
+    
 }
 
 /*the single headers*/
@@ -283,17 +320,22 @@ a {
 
 #finishedOrder{
 	display: none;
-    height: 80%;
-    margin: 0 auto;
+	height: 80%;
+	margin: 0 auto;
+}
+
+/*to make every order seperate, i.e. this is every unique order that is done*/
+.finishedOrderClass {
+    padding: 6px;
 }
 
 #refillbtnID{
-    position: absolute;
-    display: table;
-    margin: 0 auto;
-    width: 768px;
-    height: 102.4px;
-    top: 950px;
+	position: absolute;
+	display: table;
+	margin: 0 auto;
+	width: 768px;
+	height: 102.4px;
+	top: 950px;
 }
 
 #refillbtn {
@@ -302,14 +344,14 @@ a {
 	text-transform: uppercase;
 	background-color: #64c47d;
 	padding: 15px 32px;
-    font-size: 20pt;
+	font-size: 20pt;
 	cursor: pointer;
 	width: 500px;
-    height: 90px;
-    margin-left: 134px;
-    top: 10%;
-    position: absolute;
-    border-radius: 15px;
+	height: 90px;
+	margin-left: 134px;
+	top: 10%;
+	position: absolute;
+	border-radius: 15px;
 }
 
 
@@ -329,21 +371,22 @@ a {
 
 
 #start_page{
-    display: table;
-    margin: 0 auto;
-    height: 820px;
+	display: table;
+	margin: 0 auto;
+	height: 820px;
 }
 
 #orders {
 	text-align: center;
 	margin:auto;
 	font-family: 'Encode Sans Semi Condensed';
-    height: 1024px;
+	height: 1024px;
 
 }
 
 #OrdersQueue{
 	height: 768px;
+    overflow-y: 
 }
 
 /*Layout för knappar på staff view och kösidan*/
@@ -356,9 +399,9 @@ a {
 	overflow: hidden;
 	outline:none;
 	position:relative;
-    bottom: 30%;
-    font-size: 13pt;
-    font-family: 'Encode Sans Semi Condensed';
+	bottom: 30%;
+	font-size: 13pt;
+	font-family: 'Encode Sans Semi Condensed';
 
 }
 /*Layout för knappen som ej går att trycka på*/
@@ -371,10 +414,10 @@ a {
 	overflow: hidden;
 	outline:none;
 	opacity: 0.2;
-    font-size: 13pt;
+	font-size: 13pt;
 	position:relative;
 	bottom: 30%;
-    font-family: 'Encode Sans Semi Condensed';
+	font-family: 'Encode Sans Semi Condensed';
 }
 
 .style_orders_inQueue{
@@ -399,6 +442,11 @@ a {
 	width: 130px;
 }
 
+.orderIngredInfo{
+    position:relative;
+    display: grid;
+}
+
 /* Code for Ingredients and history buttons on staff view */
 #Drink_items{
 	text-align: center;
@@ -407,7 +455,7 @@ a {
 	border: 2px solid black;
 	width: 400px;
 	height: 130px;
-    border-radius: 10px;
+	border-radius: 10px;
 }
 
 #inMade_Drink_items{
@@ -417,26 +465,36 @@ a {
 	border: 2px solid black;
 	width: 400px;
 	height: 130px;
-    border-radius: 10px;
+	border-radius: 10px;
 }
 
 #Hist_Ingred{
-    bottom: 20px;
-    height: 204px;
-    display: table;
-    margin: 0 auto;
+	bottom: 20px;
+	height: 204px;
+	display: table;
+	margin: 0 auto;
 
 }
 
 .Hist_Ingred_Button{
-	background-color:#F0E6F0;
-	border: 2px solid black;
+	background-color:#777;
+    color:white;
+	border: none;
 	width: 300px;
 	height: 130px;
     font-size: 20pt;
     font-family: 'Encode Sans Semi Condensed';
     border-radius: 10px;
     margin: 10px;
+    cursor:pointer;
+}
+
+.Hist_Ingred_Button:hover {
+    background-color: #9ea0a3;
+	font-size: 20pt;
+	font-family: 'Encode Sans Semi Condensed';
+	border-radius: 10px;
+	margin: 10px;
 }
 
 /*********************THIS IS THE CSS FOR THE ORDERING VIEW*********************/
@@ -449,29 +507,29 @@ a {
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(2, auto);
-    grid-template-areas: 
-        "categories myDrink"
-        ". addToOrderButton";
+	grid-template-areas:
+	"categories myDrink"
+	". addToOrderButton";
 	grid-gap:1em;
 	margin-top: 4%;
 }
 
 #addToMyOrder{
-    grid-area: addToOrderButton;
-    width: 100%;
-    height: 60px;
-    border-radius: 7px;
-    border-width: 3px;
-    justify-self: end;
-    font-size: 18px;
-    background-color: #306d31;
+	grid-area: addToOrderButton;
+	width: 100%;
+	height: 60px;
+	border-radius: 7px;
+	border-width: 3px;
+	justify-self: end;
+	font-size: 18px;
+	background-color: #306d31;
 }
 
 #category-list {
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(4, auto);
-    grid-area: categories;
+	grid-area: categories;
 	grid-gap: 1em;
 	z-index: 5;
 }
@@ -492,12 +550,31 @@ a {
 	overflow-y: scroll;
 	background-color: #dbdbdb;
 	grid-column-start:2;
-    grid-area: myDrink;
+	grid-area: myDrink;
 	width: 89%;
 	height: 500px;
 	padding: 1em;
 	display: block;
 	box-shadow: 1px 1px 1px 1px gray;
+}
+
+#sideTab{
+	display: block;
+}
+
+#openNavbutton{
+	display: none;
+}
+
+#closeNavbtn{
+	display: none;
+}
+
+#showDrink a {
+	text-decoration: none;
+	font-size: 40px;
+	color: #818181;
+	display: block;
 }
 
 #showDrinkTable{
@@ -552,7 +629,7 @@ a {
 /* Code for Premade page */
 #sizeButtonsPreMade{
 	display: flex;
-    justify-content: space-evenly;
+	justify-content: space-evenly;
 }
 
 .sizeButtonPreMade{
@@ -570,8 +647,8 @@ a {
 
 #preMade-list{
 	display: grid;
-	grid-template-columns: repeat(auto-fit, 15em);
-    justify-content: center;
+	grid-template-columns: repeat(4, 15em);
+	justify-content: center;
 	grid-gap: 1em;
 	max-height: 500px;
 	width: 100%;
@@ -579,13 +656,13 @@ a {
 }
 
 #addToMyOrderPreMade{
-    background-color: forestgreen;
-    color: white;
-    border-width: 2px;
-    border-radius: 5px;
-    width: 120px;
-    height: 30px;
-    margin-top: 8px;
+	background-color: forestgreen;
+	color: white;
+	border-width: 2px;
+	border-radius: 5px;
+	width: 120px;
+	height: 30px;
+	margin-top: 8px;
 }
 
 /* END Code for Premade page */
@@ -599,6 +676,7 @@ a {
 	width: 100%;
 	z-index: 100;
 	margin-top: 10px;
+	background-color: #f0f0f0;
 }
 
 #ProgressBarChooseYourOwn{
@@ -610,6 +688,7 @@ a {
 	width: 100%;
 	z-index: 100;
 	margin-top: 10px;
+	background-color: #f0f0f0;
 }
 
 /*Fixed header*/
@@ -636,7 +715,7 @@ a {
 	height: 42px;
 	background-color: #bbb;
 	border-radius: 8px;
-    top: 50%;
+	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
 }
@@ -749,82 +828,110 @@ a {
 /* Media queries optimezed for Iphone 8 (375x667) */
 @media only screen and (max-width: 375px) {
 
-body{
-	margin-bottom: 10%;
-}
+	body{
+		margin-bottom: 10%;
+	}
 
-#holder{
-	padding: 10% 0 0 0;
-}
+	#holder{
+		padding: 10% 0 0 0;
+	}
 
-.homebutton {
-	width: 50%;
-margin-top: 5%;
-}
+	.homebutton {
+		width: 50%;
+		margin-top: 5%;
+	}
 
-.LanguageButton{
-	margin-top: 10%;
-}
+	.LanguageButton{
+		margin-top: 10%;
+	}
 
-#LangIMG{
-	width: 10%
-}
+	#LangIMG{
+		width: 10%
+	}
 
-#ingredientsBarText{
-	font-size: 20px;
-}
+	#ingredientsBarText{
+		font-size: 20px;
+	}
 
-#categories-drink{
-	margin-top: 15%;
-	grid-template-columns: repeat(1, auto);
-}
+	#categories-drink{
+		margin-top: 0;
+		grid-template-columns: repeat(1, auto);
+	}
 
-#category-list {
-	grid-template-columns: repeat(1, auto);
-}
+	#category-list {
+		grid-template-columns: repeat(1, auto);
+	}
 
-#showDrink{
-	display: none;
-}
+	#openNavbutton{
+		display: block;
+		margin-top: 15%;
+		z-index: 90;
+		text-orientation: upright;
+	}
 
-.ingredients-list-text{
-	max-height: 100%;
-	width: 100%;
-	overflow-y: none;
-}
+	#closeNavbtn{
+		display: block;
+		text-align: right;
+	}
 
-#extrasCategories {
-	grid-template-columns: repeat(1, auto);
-}
+	#sideTab{
+		display: none;
+		z-index: 100;
+		position: absolute;
+		left: -375px;
+		width: 100%;
+		-webkit-animation: slide 0.5s forwards;
+		animation: slide 0.5s forwards;
+	}
 
-#ProgressBarChooseYourOwn{
-	height:10%;
-	background-color: #f0f0f0;
-}
+	@-webkit-keyframes slide {
+		100% { left: 0; }
+	}
 
-#ProgressBarPreMade{
-	height:10%;
-	background-color: #f0f0f0;
-}
+	@keyframes slide {
+		100% { left: 0; }
+	}
 
-.tablink {
-	margin: 1%;
-	padding: 0%;
-	font-size: 12px;
-	width: 18%;
-	height:100%
-}
+	.ingredients-list-text{
+		max-height: 100%;
+		width: 100%;
+		overflow-y: none;
+	}
 
-.tablinkPM {
-	margin: 1%;
-	padding: 0%;
-	font-size: 12px;
-	width: 23%;
-	height:100%
-}
+	#extrasCategories {
+		grid-template-columns: repeat(1, auto);
+	}
 
-#preMade-page{
-	padding-top: 2%;
-}
+	#ProgressBarChooseYourOwn{
+		height:10%;
+	}
+
+	#ProgressBarPreMade{
+		height:10%;
+	}
+
+	.tablink {
+		margin: 1%;
+		padding: 0%;
+		font-size: 12px;
+		width: 18%;
+		height:100%
+	}
+
+	.tablinkPM {
+		margin: 1%;
+		padding: 0%;
+		font-size: 12px;
+		width: 23%;
+		height:100%
+	}
+
+	#preMade-page{
+		padding-top: 4%;
+	}
+
+	#preMade-list{
+		grid-template-columns: repeat(1, 15em);
+	}
 
 }

@@ -16,7 +16,12 @@
 <body>
   <div class = kitchen_layout>
     <div id="orders">
-      <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+        
+        
+    <!--<button v-on:click="popup()">Test button</button>-->
+
+        
+      <button v-on:click="switchLang()" class="language">{{ uiLabels.language }}</button>
       <div id ="start_page">
         <h1>{{ uiLabels.ordersInQueue }}</h1>
         <h2>{{ uiLabels.smoothie }}</h2>
@@ -52,8 +57,7 @@
     <div id = "finishedOrder">
     <button v-on:click="ShowStartpage()" class=backBtn ><img src = http://simpleicon.com/wp-content/uploads/arrow-17.png width = 100% ></button>
     <br>
-    <h1>{{ uiLabels.ordersFinished }}</h1>
-    <h2>{{ uiLabels.smoothie }}</h2>
+        <h1>{{ uiLabels.ordersFinished }}</h1>
       <order-item-done
         v-for="(order, key) in orders"
         v-if="order.done"
@@ -62,7 +66,9 @@
         :lang="lang"
         :type="type"
         :key="key">
+
       </order-item-done>
+ 
     </div>
 
     <div id = Hist_Ingred>

@@ -4,7 +4,7 @@
 
 Vue.component('order-item', {
   props: ['uiLabels', 'order', 'orderId', 'lang'],
-  template: '<div id = style-orderbutton><div class = orderInfo>{{orderId}} <br><br> {{order.type}} </div> <div v-for="o in order.order" class = "orderInfo"><div v-for="ing in o.ingredients">{{ ing["ingredient_"+ lang] }}</div></div></div>'
+  template: '<div id = style-orderbutton><div class = orderInfo>{{orderId}} <div v-for="o in order.order">{{o["type"]}}</div></div><div v-for="o in order.order"><div v-for="ing in o.ingredients" class = orderIngredInfo>{{ ing["ingredient_" + lang] }}</div></div></div>'
 });
 
 Vue.component('order-item-to-prepare', {
@@ -61,6 +61,7 @@ var vm = new Vue({
     ShowHistory: function(){
       document.getElementById("finishedOrder").style.display ="block";
       document.getElementById("start_page").style.display = "none";
+    document.getElementById("Hist_Ingred").style.display = "none";
 
     },
     ShowIngredients: function(){
@@ -71,8 +72,12 @@ var vm = new Vue({
     ShowStartpage: function(){
       document.getElementById("finishedOrder").style.display ="none";
       document.getElementById("start_page").style.display = "block";
+        document.getElementById("Hist_Ingred").style.display = "block";
       
-    }
+    },
+    popup: function(){
+      confirm('Are you sure you want to cancel this order?');
+  }
   }
 });
 
@@ -84,7 +89,7 @@ Vue.component('order-item-to-prepare-in-made', {
             <br>{{uiLabels.cancel}}\
           </button>\
             <button v-on:click="notInMade" id="inMade_Drink_items">\
-          <order-item\
+            <order-item\
             :ui-labels="uiLabels"\
             :lang="lang"\
             :order-id="orderId"\

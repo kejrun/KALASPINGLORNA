@@ -3,9 +3,9 @@ Vue.component('ingredient', {
   template: '<div class="ingredientStock">\
     <div class= "itemColumn">{{item["ingredient_"+ lang]}}</div>\
     <div class= "itemColumn">{{item.stock}}ml</div>\
-    <div class= "itemColumn"><button v-on:click="minusIngredient" id="ingredientsMinusButton" name="ingredientsMinusButton">-</button>\
-  <label>{{ counter }}</label>\
-  <button v-on:click="plusIngredient" id="ingredientsPlusButton" name="ingredientsPlusButton">+</button>\</div>\
+    <div class= "itemColumn"><button v-on:click="minusIngredient" class="MinusPlusButtons" name="ingredientsMinusButton">-</button>\
+  <label id="counterStock">{{ counter }}</label>\
+  <button v-on:click="plusIngredient" class="MinusPlusButtons" name="ingredientsPlusButton">+</button>\</div>\
    </div>',
               
   data: function () {
