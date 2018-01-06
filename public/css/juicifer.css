@@ -309,6 +309,7 @@ a {
     margin-left: 134px;
     top: 10%;
     position: absolute;
+    border-radius: 15px;
 }
 
 
@@ -356,6 +357,8 @@ a {
 	outline:none;
 	position:relative;
     bottom: 30%;
+    font-size: 13pt;
+    font-family: 'Encode Sans Semi Condensed';
 
 }
 /*Layout för knappen som ej går att trycka på*/
@@ -368,8 +371,10 @@ a {
 	overflow: hidden;
 	outline:none;
 	opacity: 0.2;
+    font-size: 13pt;
 	position:relative;
 	bottom: 30%;
+    font-family: 'Encode Sans Semi Condensed';
 }
 
 .style_orders_inQueue{
@@ -402,6 +407,7 @@ a {
 	border: 2px solid black;
 	width: 400px;
 	height: 130px;
+    border-radius: 10px;
 }
 
 #inMade_Drink_items{
@@ -411,6 +417,7 @@ a {
 	border: 2px solid black;
 	width: 400px;
 	height: 130px;
+    border-radius: 10px;
 }
 
 #Hist_Ingred{
@@ -428,6 +435,8 @@ a {
 	height: 130px;
     font-size: 20pt;
     font-family: 'Encode Sans Semi Condensed';
+    border-radius: 10px;
+    margin: 10px;
 }
 
 /*********************THIS IS THE CSS FOR THE ORDERING VIEW*********************/
@@ -658,7 +667,7 @@ a {
 	outline: none;
 	cursor: pointer;
 	padding: 14px 16px;
-	font-size: 18px;
+	font-size: 22px;
 	width: 16%;
 }
 
@@ -674,7 +683,7 @@ a {
 	outline: none;
 	cursor: pointer;
 	padding: 14px 16px;
-	font-size: 18px;
+	font-size: 22px;
 	width: 21%;
 }
 
