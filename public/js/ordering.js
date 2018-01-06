@@ -80,6 +80,16 @@ resetCounter: function () {
 }
 });
 
+function openNav() {
+    document.getElementById("sideTab").style.display = "block";
+    document.getElementById("openNavbutton").style.display = "none";
+}
+
+function closeNav() {
+    document.getElementById("sideTab").style.display = "none";
+    document.getElementById("openNavbutton").style.display = "block";
+}
+
 //ökar progress i ingredientsBar
 function increaseBar() {
       var fullSize = $("#ingredientsBar").width()-6; //magic number 6, adds padding 3px on each side
@@ -132,6 +142,8 @@ function resetChooseYourOwn(){
     resetIngredientsBar();
     resetPlusMinusButtons();
     document.getElementById("addToMyOrder").disabled = true;
+    document.getElementById("addToMyOrder").style.color = "gray";
+    document.getElementById("addToMyOrder").style.backgroundColor = "#306d31";
     document.getElementById("resetCurrentDrink").disabled = true;
 }
 
@@ -195,14 +207,12 @@ tl.to(orange, 1, {transform: "translateY(0px)", ease:Bounce.easeOut})
 return "#" + getRandomInt(1, 1000000);
 }*/
 
-// ------------- For myOrder page --------------
-Vue.component('ordered-drink', {
-    props: ['uiLabels', 'order', 'orderId', 'lang'],
-    template: '<div class = drinkInfo>{{order.type}} {{ order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</div>'
-})
-// --------------------------------------------
-// --------------------------------------------
-
+function orderCounter() {
+  var orderCounterValue = this;
+  orderCounterValue += 1;
+  console.log(orderCounterValue);
+  return orderCounterValue;
+}
 
 var vm = new Vue({
   el: '#ordering',
@@ -210,10 +220,12 @@ var vm = new Vue({
   data: {
     type: "m", //preset on size medium
     chosenIngredients: [],
+    currentDrink: [],
     myOrder: [],
     pricesSmall: [],
     pricesMedium: [],
     pricesLarge: [],
+    yourDrinkNumber: 0,
     volume: 0,
     price: 0
   },
@@ -235,6 +247,8 @@ var vm = new Vue({
 
       if (totalIngredientsCounter == 5){
         document.getElementById("addToMyOrder").disabled = false;
+        document.getElementById("addToMyOrder").style.color = "white";
+        document.getElementById("addToMyOrder").style.backgroundColor = "forestgreen";
       }
       this.pricesSmall.push(item.price_s);
       this.pricesMedium.push(item.price_m);
@@ -262,6 +276,8 @@ var vm = new Vue({
 
       if (!item.extra){
         document.getElementById("addToMyOrder").disabled = true;
+        document.getElementById("addToMyOrder").style.color = "gray";
+        document.getElementById("addToMyOrder").style.backgroundColor = "#306d31";
       }
 
       if (this.chosenIngredients.length == 0){
@@ -325,7 +341,7 @@ var vm = new Vue({
         document.getElementById("largeCup").style.backgroundColor = "lightblue";
       }
     },
-    
+
       markChosenSizeButtonPreMade: function(type){
       document.getElementById("smallCupPreMade").style.backgroundColor = "white";
       document.getElementById("mediumCupPreMade").style.backgroundColor = "white";
@@ -341,19 +357,20 @@ var vm = new Vue({
         document.getElementById("largeCupPreMade").style.backgroundColor = "lightblue";
       }
     },
-      
+
     addToMyOrder: function () {
      var i;
+     this.yourDrinkNumber += 1;
      //Wrap the order in an object
+     var drinkName = "Your Own Drink #" + this.yourDrinkNumber;
      var currentDrink = {
-       name: this.name,
+       name: drinkName,
        ingredients: this.chosenIngredients,
        volume: this.volume,
        type: this.type,
        price: this.price
      };
-     console.log(this.price);
-     console.log(currentDrink)
+
            //set all counters to 0. Notice the use of $refs
      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
        this.$refs.ingredient[i].resetCounter();
@@ -368,47 +385,22 @@ var vm = new Vue({
      resetChooseYourOwn();
 
      this.myOrder.push(currentDrink);
+     //kolla här: behöver vi köra reset här också?? Jenny-Siri
      resetChooseYourOwn();
 
      //show the notifybubble
+     orderCounter();
      document.getElementById("notifybubble").style.display = "block";
      document.getElementById("notifybubblePM").style.display = "block";
    },
    placeOrder: function () {
        console.log("hejhej");
      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+    
      socket.emit('order', {order: this.myOrder});
-     console.log(this.myOrder);
+     this.yourDrinkNumber = 0;
      this.myOrder = [];
    },
-
-    /*placeOrder: function () {
-      var i,
-      //Wrap the order in an object
-      order = {
-        ingredients: this.chosenIngredients,
-        volume: this.volume,
-        type: this.type,
-        price: this.price
-      };
-
-      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      socket.emit('order', {order: order});
-      //set all counters to 0. Notice the use of $refs
-      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
-        this.$refs.ingredient[i].resetCounter();
-      }
-      this.volume = 0;
-      this.price = 0;
-      this.type = '';
-      this.chosenIngredients = [];
-      this.pricesSmall = [];
-      this.pricesMedium = [];
-      this.pricesLarge = [];
-      resetChooseYourOwn();
-    },*/
-
-
 
     //this function resets EVERYTHING on the choose your own page
     resetChooseYourOwnPage: function(){
@@ -456,17 +448,27 @@ var vm = new Vue({
     },
     addPremadeDrink: function (item) {
       var i;
+        
+          if (this.type === "s"){
+            this.price = item.price_s;
+          }
+          else if (this.type === "m") {
+            this.price = item.price_m;
+          }
+          else{
+            this.price = item.price_l;
+          }
+        
       //Wrap the order in an object
       var currentDrink = {
-        name: this.name,
+        name: item.pm_name,
         ingredients: this.getIngredientList(item.pm_ingredients),
         volume: this.volume,
         type: this.type,
         price: this.price
       };
-      console.log(currentDrink);
-      console.log(this.price);
 
+      console.log(currentDrink.name);
       this.myOrder.push(currentDrink);
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       //socket.emit('order', { order: order});
@@ -480,6 +482,7 @@ var vm = new Vue({
       this.chosenIngredients = [];
 
       //show the notifybubble
+      orderCounter()
       document.getElementById("notifybubble").style.display = "block";
       document.getElementById("notifybubblePM").style.display = "block";
     },
@@ -598,32 +601,31 @@ var vm = new Vue({
   }
 
 });
-// ------------------ For MyOrder page --------------------
+
+
+// ------------- For myOrder page --------------
+Vue.component('ordered-drink', {
+    props: ['uiLabels', 'order', 'orderId', 'lang'],
+    template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}<br></div>'
+})
+
 Vue.component('ordered-drinks', {
-  props: ['uiLabels', 'order', 'orderId', 'lang'],
+  props: ['uiLabels', 'order', 'orderId', 'lang', 'name', 'type', 'price'],
    template: '<div id = "myOrderedDrinks">\
            <ordered-drink\
              :ui-labels="uiLabels"\
              :lang="lang"\
              :order-id="orderId"\
+             :type="type"\
+             :price="price"\
              :order="order">\
            </ordered-drink>\
           </div>',
-    methods: {
+      
 
-    //drinkInOrder: function(){
-    //this.$emit('in-order');
-    //}
+    methods: {
 
     }
   });
 
-/*var drinkVue = new Vue({
-  el: '#myOrderedDrinks',
-  mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
-  methods: {
-   /* markInOrder: function (orderid) {
-      socket.emit("drinkInOrder", orderid);
-    }
-  }
-})*/
+//----------------------------------------------

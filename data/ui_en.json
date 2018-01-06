@@ -4,6 +4,8 @@
   "ordersTrending" : "Trending orders",
   "addToOrder" : "Add to my order",
   "placeOrder": "Place order",
+  "addAnotherDrink": "Add another drink",
+  "proceedToCheckout": "Proceed to checkout",
   "resetCurrentDrink" : "Reset Drink",
   "change" : "Change drink",
   "sideorders" : "Side orders",
