@@ -222,7 +222,7 @@ a {
     background-position: right; /* Position the search icon */
     background-size: 30px 30px;
     background-repeat: no-repeat; /* Do not repeat the icon image */
-    width: 50%;
+    width: 88%;
     font-size: 16px; /* Increase font-size */
     padding: 12px 20px 12px 40px; /* Add some padding */
     border: 1px solid #ddd; /* Add a grey border */
@@ -236,6 +236,7 @@ a {
 	border: 1px solid #777;
 	padding: 1em;
 	width:90%;
+    height:20px;
 	margin-left: 1em;
 }
 
@@ -253,13 +254,13 @@ a {
 /*all headers*/
 .stockHeaders{
 	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-bottom:20px;
 	color: black;
 	letter-spacing: 1pt;
 	position: relative;
 	font-size: 12pt;
 	width: 90%;
-	margin-bottom:7%;
+    height: 20px;
 	margin-left: 1em;
 }
 
@@ -292,10 +293,10 @@ a {
     margin: 0 auto;
     width: 768px;
     height: 102.4px;
-    top: 973px;
+    top: 950px;
 }
 
-.refillbtn {
+#refillbtn {
 	font-family: 'Encode Sans Semi Condensed';
 	border: none;
 	text-transform: uppercase;
@@ -303,10 +304,10 @@ a {
 	padding: 15px 32px;
     font-size: 20pt;
 	cursor: pointer;
-	width: 50%;
-    height: 50%;
-	margin-left: 20%;
-    bottom: 2%;
+	width: 500px;
+    height: 90px;
+    margin-left: 134px;
+    top: 10%;
     position: absolute;
 }
 
@@ -417,6 +418,7 @@ a {
     height: 204px;
     display: table;
     margin: 0 auto;
+    
 }
 
 .Hist_Ingred_Button{
@@ -424,6 +426,8 @@ a {
 	border: 2px solid black;
 	width: 300px;
 	height: 130px;
+    font-size: 20pt;
+    font-family: 'Encode Sans Semi Condensed';
 }
 
 /*********************THIS IS THE CSS FOR THE ORDERING VIEW*********************/

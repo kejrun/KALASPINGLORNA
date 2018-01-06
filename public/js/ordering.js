@@ -195,6 +195,21 @@ tl.to(orange, 1, {transform: "translateY(0px)", ease:Bounce.easeOut})
 return "#" + getRandomInt(1, 1000000);
 }*/
 
+function orderCounter() {
+  var orderCounterValue = this;
+  orderCounterValue += 1;
+  console.log(orderCounterValue);
+  return orderCounterValue;
+}
+
+// ------------- For myOrder page --------------
+Vue.component('ordered-drink', {
+    props: ['uiLabels', 'order', 'orderId', 'lang'],
+    template: '<div class = drinkInfo>{{order.type}} {{ order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</div>'
+})
+// --------------------------------------------
+// --------------------------------------------
+
 
 var vm = new Vue({
   el: '#ordering',
@@ -313,7 +328,7 @@ var vm = new Vue({
         document.getElementById("largeCup").style.backgroundColor = "lightblue";
       }
     },
-    
+
       markChosenSizeButtonPreMade: function(type){
       document.getElementById("smallCupPreMade").style.backgroundColor = "white";
       document.getElementById("mediumCupPreMade").style.backgroundColor = "white";
@@ -329,7 +344,7 @@ var vm = new Vue({
         document.getElementById("largeCupPreMade").style.backgroundColor = "lightblue";
       }
     },
-      
+
     addToMyOrder: function () {
      var i;
      //Wrap the order in an object
@@ -358,6 +373,7 @@ var vm = new Vue({
      resetChooseYourOwn();
 
      //show the notifybubble
+     orderCounter();
      document.getElementById("notifybubble").style.display = "block";
      document.getElementById("notifybubblePM").style.display = "block";
    },
@@ -449,7 +465,6 @@ var vm = new Vue({
         type: this.type,
         price: this.price
       };
-      console.log(currentDrink);
 
       this.myOrder.push(currentDrink);
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
@@ -464,6 +479,7 @@ var vm = new Vue({
       this.chosenIngredients = [];
 
       //show the notifybubble
+      orderCounter()
       document.getElementById("notifybubble").style.display = "block";
       document.getElementById("notifybubblePM").style.display = "block";
     },
