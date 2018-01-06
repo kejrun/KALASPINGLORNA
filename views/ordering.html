@@ -44,8 +44,8 @@
         <div style="text-align:center;">
         <button class="LanguageButton" v-on:click="switchLang()"><a>{{ uiLabels.language }}</a></button>
         <br>
-        <img src="/images/Sweden.png" width="3%" height=auto>
-        <img src="/images/United-Kingdom.png" width="3%" height=auto>
+        <img id=LangIMG src="/images/Sweden.png" width="3%" height=auto>
+        <img id=LangIMG src="/images/United-Kingdom.png" width="3%" height=auto>
       </div>
       </div>
     </div>
@@ -189,7 +189,7 @@ v-if="!order.done && order.type == 'medium'"
   <div id="preMade-list">
     <div v-for="preparedDrink in premade">
       <br>
-      <img v-bind:src="preparedDrink.image" height="250px"> 
+      <img v-bind:src="preparedDrink.image" height="250px">
       <h2>{{preparedDrink.pm_name + " "}}{{preparedDrink["price_" + type]}} :-</h2>
       <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
       <button id=addToMyOrderPreMade v-on:click="orderPremade(preparedDrink);openTab('myOrder-page');switchType('m');markChosenSizeButton('m')">{{ uiLabels.addToOrder}}</button>
