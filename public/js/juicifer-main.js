@@ -5,12 +5,9 @@
 
 var socket = io();
 
-
-
-
 Vue.component('order-item-done', {
   props: ['uiLabels', 'order', 'orderId', 'lang'],
-  template: '<div>{{orderId}} {{order.type}}:\
+  template: '<div class = finishedOrderClass >  {{orderId}}\
              <div v-for="o in order.order">\
                 <div v-for="ing in o.ingredients">\
                     {{ ing["ingredient_"+ lang] }}\
