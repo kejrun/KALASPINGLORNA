@@ -73,7 +73,10 @@ var vm = new Vue({
       document.getElementById("finishedOrder").style.display ="none";
       document.getElementById("start_page").style.display = "block";
       
-    }
+    },
+    popup: function(){
+      confirm('Are you sure you want to cancel this order?');
+  }
   }
 });
 
