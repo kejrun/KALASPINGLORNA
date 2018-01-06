@@ -152,7 +152,6 @@ Data.prototype.makeStockTransaction = function(item, changeUnit){
 Data.prototype.addOrder = function (order) {
     var orderId = this.getOrderNumber();
     this.orders[orderId] = order;
-    console.log(order)
     this.orders[orderId].done = false;
     this.orders[orderId].inMade = false;
     for (var i=0; i< order.order.length; i+=1){
