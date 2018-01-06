@@ -57,6 +57,9 @@
           <div id="ingredientsBarProgress"></div>
         </div>
       </div>
+      <div id="openNavbutton">
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;{{ uiLabels.order }}</span>
+      </div>
       <!-- Category-list and ingredient-list created to be able to get a grid layout -->
       <div id= "categories-drink">
         <div id= "category-list">
@@ -133,7 +136,9 @@
   </div>
 </div>
 
+<div id="sideTab">
 <div id="showDrink">
+  <div id=closeNavbtn><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a></div>
   <h1>{{ uiLabels.order }}</h1>
   <table id="showDrinkTable" >
     <tr><th><h4>{{ uiLabels.ingredients }}</h4><hr></th></tr>
@@ -160,7 +165,7 @@
     </div>
   </div>
         <button id="addToMyOrder" v-on:click="addToMyOrder();openTab('myOrder-page');switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button>
-
+</div>
 </div>
 <!--
 <h1>{{ uiLabels.ordersInQueue }}</h1>

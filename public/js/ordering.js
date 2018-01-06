@@ -80,6 +80,16 @@ resetCounter: function () {
 }
 });
 
+function openNav() {
+    document.getElementById("sideTab").style.display = "block";
+    document.getElementById("openNavbutton").style.display = "none";
+}
+
+function closeNav() {
+    document.getElementById("sideTab").style.display = "none";
+    document.getElementById("openNavbutton").style.display = "block";
+}
+
 //ökar progress i ingredientsBar
 function increaseBar() {
       var fullSize = $("#ingredientsBar").width()-6; //magic number 6, adds padding 3px on each side

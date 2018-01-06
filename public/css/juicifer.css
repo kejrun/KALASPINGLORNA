@@ -500,6 +500,25 @@ a {
 	box-shadow: 1px 1px 1px 1px gray;
 }
 
+#sideTab{
+	display: block;
+}
+
+#openNavbutton{
+	display: none;
+}
+
+#closeNavbtn{
+	display: none;
+}
+
+#showDrink a {
+	text-decoration: none;
+	font-size: 40px;
+	color: #818181;
+	display: block;
+}
+
 #showDrinkTable{
 	width:100%;
 }
@@ -777,7 +796,7 @@ a {
 	}
 
 	#categories-drink{
-		margin-top: 15%;
+		margin-top: 0;
 		grid-template-columns: repeat(1, auto);
 	}
 
@@ -785,8 +804,34 @@ a {
 		grid-template-columns: repeat(1, auto);
 	}
 
-	#showDrink{
+	#openNavbutton{
+		display: block;
+		margin-top: 15%;
+		z-index: 90;
+		text-orientation: upright;
+	}
+
+	#closeNavbtn{
+		display: block;
+		text-align: right;
+	}
+
+	#sideTab{
 		display: none;
+		z-index: 100;
+		position: absolute;
+		left: -375px;
+		width: 100%;
+		-webkit-animation: slide 0.5s forwards;
+		animation: slide 0.5s forwards;
+	}
+
+	@-webkit-keyframes slide {
+		100% { left: 0; }
+	}
+
+	@keyframes slide {
+		100% { left: 0; }
 	}
 
 	.ingredients-list-text{
@@ -824,7 +869,11 @@ a {
 	}
 
 	#preMade-page{
-		padding-top: 2%;
+		padding-top: 4%;
+	}
+
+	#preMade-list{
+		grid-template-columns: repeat(1, 15em);
 	}
 
 }
