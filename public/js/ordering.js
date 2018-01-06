@@ -371,7 +371,6 @@ var vm = new Vue({
      this.pricesMedium = [];
      this.pricesLarge = [];
      resetChooseYourOwn();
-     closeNav();
 
      this.myOrder.push(currentDrink);
      //kolla här: behöver vi köra reset här också?? Jenny-Siri
