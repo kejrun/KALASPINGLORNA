@@ -302,8 +302,8 @@ som det ser ut för showDrink
           :key="key">
         </ordered-drinks>
     </div>
-    <div>
     <br><hr>{{ uiLabels.totalPrice }} {{ totalPrice }} kr
+    <div id="myorderbutton">
     <button id=addAnotherDrink v-on:click="openTab('home-page')">{{ uiLabels.addAnotherDrink}}</button>
     <button id=proceedToCheckout v-on:click="openTab('checkOut-page')">{{ uiLabels.proceedToCheckout}}</button>
     </div>
