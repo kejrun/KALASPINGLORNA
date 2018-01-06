@@ -17,8 +17,15 @@
   <div class = kitchen_layout>
     <div id="orders">
         
-        
-    <!--<button v-on:click="popup()">Test button</button>-->
+    <div class="popup" v-on:click="popup()">Cancel test
+    <span class="popuptext" id="myPopup">{{uiLabels.cancelOrder}}
+        <div class="yesNoDiv">
+        <button class="yesNoButtons">{{uiLabels.yes}}</button>
+        <button class="yesNoButtons">{{uiLabels.no}}</button>
+        </div>
+        </span>
+    </div>
+     
 
         
       <button v-on:click="switchLang()" class="language">{{ uiLabels.language }}</button>
