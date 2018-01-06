@@ -53,7 +53,7 @@ function checkTime(i) {
       <div id ="start_page">
         <h1>{{ uiLabels.ordersInQueue }}</h1>
         <h2>{{ uiLabels.smoothie }}</h2>
-        <div id = OrdersQueue>
+        <div class = OrdersQueue>
           <order-item-to-prepare-in-made
           v-for="(order, key) in orders"
           v-if="!order.done && order.inMade"

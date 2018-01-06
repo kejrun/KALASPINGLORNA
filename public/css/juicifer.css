@@ -400,9 +400,11 @@ a {
 
 }
 
-#OrdersQueue{
-	height: 768px;
-    overflow-y: 
+.style_orders_inQueue{
+    min-height: 140px;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    margin: 10px;
 }
 
 /*Layout för knappar på staff view och kösidan*/
@@ -415,8 +417,8 @@ a {
 	overflow: hidden;
 	outline:none;
 	position:relative;
-	bottom: 30%;
 	font-size: 13pt;
+    bottom: 30%;
 	font-family: 'Encode Sans Semi Condensed';
 
 }
@@ -436,9 +438,6 @@ a {
 	font-family: 'Encode Sans Semi Condensed';
 }
 
-.style_orders_inQueue{
-    min-height: 140px;
-}
 
 #style-orderbutton{
 	text-transform: uppercase;
@@ -449,7 +448,8 @@ a {
 	grid-template-columns: repeat(2, auto);
 	grid-gap:0.5em;
 	font-size: 1.3em;
-	position: absolute;
+	position: relative;
+    margin: 5px;
 }
 
 .orderInfo{
@@ -472,7 +472,7 @@ a {
 	width: 400px;
 	min-height: 130px;
 	border-radius: 10px;
-    overflow-y:  visible;
+    
 }
 
 #inMade_Drink_items{
