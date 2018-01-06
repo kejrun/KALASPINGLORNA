@@ -180,9 +180,9 @@ v-if="!order.done && order.type == 'medium'"
 :key="key">
 </order-item>
 </div>-->
-</div>     
-      
-      
+</div>
+
+
 <div id="preMade-page" class="tabcontent">
   <h3>{{ uiLabels.preMade }}</h3>
 
@@ -267,9 +267,9 @@ v-if="!order.done && order.type == 'medium'"
 </ingredient>
 </div>
 </div>
-</div>  
-      
-<!-- 
+</div>
+
+<!--
 som det ser ut för showDrink
 
 <div id="showDrink">
@@ -285,12 +285,12 @@ som det ser ut för showDrink
       <td class="ingredientColumn">{{ item["ingredient_" + lang] }}</td>
       <td class="priceColumn"> {{ item["price_" + type] }} kr</td>
     </tr></table>
---> 
-      
+-->
+
 <div id="myOrder-page" class="tabcontent">
   <h3>{{ uiLabels.myOrder }}</h3>
   <p>These are your chosen drinks:</p>
-    <div id="myOrderedDrinks" v-for = "(order,key) in myOrder" >   
+    <div id="myOrderedDrinks" v-for = "(order,key) in myOrder" >
     <br>
         <ordered-drinks
           type="m"
@@ -307,7 +307,7 @@ som det ser ut för showDrink
     <button id=addAnotherDrink v-on:click="openTab('home-page')">{{ uiLabels.addAnotherDrink}}</button>
     <button id=proceedToCheckout v-on:click="openTab('checkOut-page')">{{ uiLabels.proceedToCheckout}}</button>
     </div>
-</div>  
+</div>
 
 <div id="checkOut-page" class="tabcontent">
   <h3>{{ uiLabels.checkOut }}</h3>
@@ -322,7 +322,7 @@ som det ser ut för showDrink
 </body>
 
 <div id="ProgressBarPreMade">
-  <div id="notifybubblePM">orderCounterValue</div>
+  <div id="notifybubblePM">{{ orderCounterValue }}</div>
   <button class="tablinkPM" v-on:click="openTab('home-page')" id="home-pageBtnPM">{{ uiLabels.home }}</button>
   <button class="tablinkPM" v-on:click="openTab('preMade-page')" id="defaultOpenPM">{{ uiLabels.preMade }}</button>
   <button class="tablinkPM" v-on:click="openTab('myOrder-page')" id="myOrder-pageBtnPM">{{ uiLabels.myOrder }}</button>
@@ -330,7 +330,7 @@ som det ser ut för showDrink
 </div>
 
 <div id="ProgressBarChooseYourOwn">
-  <div id="notifybubble">orderCounterValue</div>
+  <div id="notifybubble">{{ orderCounterValue }}</div>
   <button class="tablink" v-on:click="openTab('home-page')" id="home-pageBtn">{{ uiLabels.home }}</button>
   <button class="tablink" v-on:click="openTab('chooseYourOwn-page');toChooseYourOwn()" id="defaultOpen">{{ uiLabels.ingredients }}</button>
   <button class="tablink" v-on:click="openTab('extras-page');toExtras()" id="extras-pageBtn">{{ uiLabels.extras }}</button>

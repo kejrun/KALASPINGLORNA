@@ -345,7 +345,7 @@ a {
 .finishedOrderClass {
     padding: 6px;
     text-transform: uppercase;
-    
+
 }
 
 #refillbtnID{
@@ -412,7 +412,7 @@ a {
 
 #OrdersQueue{
 	height: 768px;
-    overflow-y: 
+    overflow-y:
 }
 
 /*Layout för knappar på staff view och kösidan*/
@@ -550,7 +550,7 @@ a {
 /* Toggle this class - hide and show the popup */
 .popup .show {
     visibility: visible;
-  
+
 }
 
 .yesNoDiv{
@@ -821,7 +821,7 @@ a {
 }
 
 #addAnotherDrink{
-    
+
 }
 
 #proceedToCheckout{
@@ -1006,11 +1006,11 @@ a {
 
 	#showDrink{
 		height:70%;
-		margin-bottom: 0.5%;
 		box-shadow: none;
 	}
 
-	#addToOrderButton{
+	#addToMyOrder{
+	    margin-top: 1%;
 	}
 
 	@-webkit-keyframes slide {

@@ -2,6 +2,7 @@
 /*global sharedVueStuff, Vue, socket */
 'use strict';
 
+var totalOrderssCounter = 0;
 var totalIngredientsCounter = 0;
 Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
@@ -208,7 +209,6 @@ return "#" + getRandomInt(1, 1000000);
 }*/
 
 function orderCounter() {
-  var orderCounterValue = this;
   orderCounterValue += 1;
   console.log(orderCounterValue);
   return orderCounterValue;
@@ -265,7 +265,7 @@ var vm = new Vue({
         this.price += +item.price_l;
       }
     },
-      
+
 
       removeFromDrink: function (item, type) {
           for (var i=0; i < this.chosenIngredients.length; i++){
@@ -421,7 +421,7 @@ var vm = new Vue({
         }
       }
     },
-      
+
     orderPremade: function(pm) {
       //for (var i = 0; i < pm.pm_ingredients.length; i += 1) {
         this.addPremadeDrink(pm);
@@ -446,7 +446,7 @@ var vm = new Vue({
     },
     addPremadeDrink: function (item) {
       var i;
-        
+
           if (this.type === "s"){
             this.price = item.price_s;
           }
@@ -456,9 +456,9 @@ var vm = new Vue({
           else{
             this.price = item.price_l;
           }
-        
+
       this.totalPrice += this.price;
-        
+
       //Wrap the order in an object
       var currentDrink = {
         name: item.pm_name,
