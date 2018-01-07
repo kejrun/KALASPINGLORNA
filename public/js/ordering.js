@@ -406,7 +406,7 @@ var vm = new Vue({
      var i;
      this.yourDrinkNumber += 1;
      //Wrap the order in an object
-     var drinkName = "Your Own Drink #" + this.yourDrinkNumber;
+     var drinkName = "Drink #" + this.yourDrinkNumber;
      this.totalPrice += this.price;
      this.orderCounterValue += 1;
      var currentDrink = {
