@@ -273,7 +273,7 @@ v-if="!order.done && order.type == 'medium'"
   <h3>{{ uiLabels.myOrder }}</h3>
   <p>These are your chosen drinks:</p>
   <div id="myOrder-text">
-    <div id="myOrderedDrinks" v-for = "(order,key) in myOrder" >
+    <div id="myOrderedDrinks" v-for = "(order,key) in myDrinks" >
     <br>
         <ordered-drinks
           type="m"
