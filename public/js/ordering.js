@@ -675,6 +675,7 @@ Vue.component('added-drinks', {
           var minusButton = document.getElementById("drinkMinusButton");
           if (this.counter > 0){
             this.counter -= 1;
+            vm.totalPrice -= this.order.price;
           }
           if(this.counter == 0){
             minusButton.disabled=true;
@@ -683,6 +684,7 @@ Vue.component('added-drinks', {
 
       plusDrink: function () {
       this.counter += 1;
+      vm.totalPrice += this.order.price;
       var minusButton = document.getElementById("drinkMinusButton");
       minusButton.disabled = false; 
       },
