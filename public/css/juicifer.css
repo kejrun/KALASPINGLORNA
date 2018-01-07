@@ -126,6 +126,7 @@ a {
 	padding: 30px 0;
 	text-align: center;
 	border-radius: 10px;
+	box-shadow: 1px 1px 1px 1px gray;
 }
 
 .homebutton a {
@@ -504,7 +505,7 @@ a {
 	min-height: 130px;
 	border-radius: 10px;
     margin: 0 auto;
-    
+
 }
 
 #inMade_Drink_items{
@@ -609,14 +610,15 @@ a {
 #addToMyOrder{
 	grid-area: addToOrderButton;
 	font-family: 'Encode Sans Semi Condensed';
-	width: 100%;
+	border: none;
+	width: 98%;
 	height: 60px;
-	border-radius: 7px;
-	border-width: 3px;
 	justify-self: end;
-	font-size: 18px;
+	font-size: 20px;
 	background-color: #306d31;
-    margin-top: 0.5em;
+  margin-top: 0.5em;
+	box-shadow: 1px 1px 1px 1px gray;
+	border-radius: 8px;
 }
 
 #category-list {
@@ -709,6 +711,7 @@ a {
 	max-height: 450px;
 	width: 100%;
 	overflow-y: scroll;
+	box-shadow: 0px 4px 2px 0px gray;
 }
 
 .ingredient {
@@ -820,12 +823,13 @@ a {
 	font-family: 'Encode Sans Semi Condensed';
 	background-color: forestgreen;
 	color: white;
-	border-width: 2px;
-	border-radius: 5px;
+	border: none;
 	width: 140px;
 	height: 35px;
 	margin-top: 8px;
 	font-size: 15px;
+	box-shadow: 1px 1px 1px 1px gray;
+	border-radius: 8px;
 }
 
 #ProgressBarPreMade{
@@ -844,19 +848,46 @@ a {
 
 /********************MY ORDER********************/
 
-#myorderbutton{
+#myOrder-text{
+	overflow-y: scroll;
+	height: 400px;
+}
 
+#myorderbutton{
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+	position: fixed;
 }
 
 #addAnotherDrink{
-
+	position: left;
+	display: grid;
+	font-family: 'Encode Sans Semi Condensed';
+	width: 50%;
+	height: 70px;
+	border: none;
+	font-size: 20px;
+	background-color: white;
+	margin-top: 0.5em;
+	box-shadow: 1px 1px 1px 1px gray;
+	border-radius: 8px;
 }
 
 #proceedToCheckout{
-    background-color: forestgreen;
+	margin-left: 35%;
+	position: right;
+	display: grid;
+	font-family: 'Encode Sans Semi Condensed';
+	width: 50%;
+	height: 70px;
+	border: none;
+	font-size: 20px;
 	color: white;
-	border-width: 2px;
-	border-radius: 5px;
+	background-color: forestgreen;
+	margin-top: 0.5em;
+	box-shadow: 1px 1px 1px 1px gray;
+	border-radius: 8px;
 }
 
 /********************END MY ORDER********************/
@@ -876,6 +907,7 @@ a {
 	padding: 14px 16px;
 	font-size: 22px;
 	width: 16%;
+	box-shadow: 1px 1px 1px 1px gray;
 }
 
 /* Tab for choose premade */
@@ -892,6 +924,7 @@ a {
 	padding: 14px 16px;
 	font-size: 22px;
 	width: 21%;
+	box-shadow: 1px 1px 1px 1px gray;
 }
 
 /* Change background color of buttons on hover for both tabs */
@@ -1093,6 +1126,35 @@ a {
 
 	#categories-drink{
 		margin-left: 10%
+	}
+
+	#myOrder-text{
+		overflow-y: scroll;
+		height: 200px;
+	}
+
+	#myorderbutton{
+		display: block;
+		position: fixed;
+	}
+
+	#addAnotherDrink{
+		display: block;
+		position: center;
+		margin-left: 20%;
+		font-family: 'Encode Sans Semi Condensed';
+		height: 50%;
+		font-size: 16px;
+
+	}
+
+	#proceedToCheckout{
+		display: block;
+		position: center;
+		margin: 5%;
+		font-family: 'Encode Sans Semi Condensed';
+		height: 100%;
+		font-size: 16px;
 	}
 
 }

@@ -37,7 +37,7 @@
   <body>
     <div id="home-page" class="tabcontent">
       <div style="text-align:center;">
-        <button class="homebutton" v-on:click="chooseYourOwn()"><a>{{ uiLabels.chooseYourOwn }}</a></button>
+        <button class="homebutton" v-on:click="chooseYourOwn();makeIngredientLists()"><a>{{ uiLabels.chooseYourOwn }}</a></button>
         <button class="homebutton" v-on:click="preMade();resetChooseYourOwnPage();switchType('m');markChosenSizeButton('m')"><a>{{ uiLabels.preMade }}</a></button>
       </div>
       <div id="LanguageDiv">
@@ -272,9 +272,10 @@ v-if="!order.done && order.type == 'medium'"
 <div id="myOrder-page" class="tabcontent">
   <h3>{{ uiLabels.myOrder }}</h3>
   <p>These are your chosen drinks:</p>
-    <div id="myOrderedDrinks" v-for = "(order,key) in myOrder" >
+  <div id="myOrder-text">
+    <div id="myOrderedDrinks" v-for = "(order,key) in myDrinks" >
     <br>
-        <ordered-drinks
+        <added-drinks
           type="m"
           v-on:order-id="key"
           :order="order"
@@ -282,9 +283,10 @@ v-if="!order.done && order.type == 'medium'"
           :lang="lang"
           :type="type"
           :key="key">
-        </ordered-drinks>
+        </added-drinks>
     </div>
-    <br><hr>{{ uiLabels.totalPrice }} {{ totalPrice }} kr
+    </div>
+    <br><hr><h3>{{ uiLabels.totalPrice }} {{ totalPrice }} kr</h3>
     <div id="myorderbutton">
     <button id=addAnotherDrink v-on:click="openTab('home-page')">{{ uiLabels.addAnotherDrink}}</button>
     <button id=proceedToCheckout v-on:click="openTab('checkOut-page')">{{ uiLabels.proceedToCheckout}}</button>
@@ -294,7 +296,19 @@ v-if="!order.done && order.type == 'medium'"
 <div id="checkOut-page" class="tabcontent">
   <h3>{{ uiLabels.checkOut }}</h3>
   <tr><th><h4>{{ uiLabels.ingredients }}</h4><hr></th></tr>
-  <tr><th><h4>{{ uiLabels.ingredients }}</h4><hr></th></tr>
+  <div id="myOrderedDrinks" v-for = "(order,key) in myOrder" >
+    <br>
+        <drinks-in-order
+          type="m"
+          v-on:order-id="key"
+          :order="order"
+          :ui-labels="uiLabels"
+          :lang="lang"
+          :type="type"
+          :key="key">
+        </drinks-in-order>
+    </div>
+
   <button id=placeOrderButton v-on:click="placeOrder()">{{ uiLabels.placeOrder}}</button>
   <p>PAAYY!</p>
 </div>
@@ -320,4 +334,5 @@ v-if="!order.done && order.type == 'medium'"
   <button class="tablink" v-on:click="openTab('checkOut-page')" id="checkOut-pageBtn">{{ uiLabels.checkOut }}</button>
 </div>
 </div>
+
 </html>
