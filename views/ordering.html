@@ -275,7 +275,7 @@ v-if="!order.done && order.type == 'medium'"
   <div id="myOrder-text">
     <div id="myOrderedDrinks" v-for = "(order,key) in myDrinks" >
     <br>
-        <ordered-drinks
+        <added-drinks
           type="m"
           v-on:order-id="key"
           :order="order"
@@ -283,7 +283,7 @@ v-if="!order.done && order.type == 'medium'"
           :lang="lang"
           :type="type"
           :key="key">
-        </ordered-drinks>
+        </added-drinks>
     </div>
     </div>
     <br><hr><h3>{{ uiLabels.totalPrice }} {{ totalPrice }} kr</h3>
@@ -296,7 +296,19 @@ v-if="!order.done && order.type == 'medium'"
 <div id="checkOut-page" class="tabcontent">
   <h3>{{ uiLabels.checkOut }}</h3>
   <tr><th><h4>{{ uiLabels.ingredients }}</h4><hr></th></tr>
-  <tr><th><h4>{{ uiLabels.ingredients }}</h4><hr></th></tr>
+  <div id="myOrderedDrinks" v-for = "(order,key) in myOrder" >
+    <br>
+        <drinks-in-order
+          type="m"
+          v-on:order-id="key"
+          :order="order"
+          :ui-labels="uiLabels"
+          :lang="lang"
+          :type="type"
+          :key="key">
+        </drinks-in-order>
+    </div>
+
   <button id=placeOrderButton v-on:click="placeOrder()">{{ uiLabels.placeOrder}}</button>
   <p>PAAYY!</p>
 </div>
