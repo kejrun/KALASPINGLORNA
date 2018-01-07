@@ -631,41 +631,31 @@ Vue.component('ordered-drink', {
       this.counter += 1;
       var minusButton = document.getElementById("drinkMinusButton");
       minusButton.disabled = false; 
-        },
+      },
      
       addDrinkToOrder: function() {
         vm.myOrder.push(this.order);
         console.log(this.order);
         console.log(vm.myOrder);
-    }
+      },
+
+ /*     removeDrinkFromOrder: function(){
+          for
+          
+          
+      }
+removeFromDrink: function (item, type) {
+          for (var i=0; i < this.chosenIngredients.length; i++){
+              if(this.chosenIngredients[i] == item){
+                this.chosenIngredients.splice(i,1);
+                break;
+              }
+          }*/
+   
 
     }
 })
 
-/*plusIngredient: function(item){
-    this.counter +=1;
-
-    if (this.counter > 0){
-        var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
-        var thisIngredientsId = this.item.ingredient_id;
-        minusButtons[thisIngredientsId-1].disabled = false;
-    }
-
-    if (totalIngredientsCounter >= 0 && totalIngredientsCounter < 5 && !item.extra){
-        totalIngredientsCounter ++;
-        increaseBar();
-
-        if (totalIngredientsCounter == 5){
-            var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
-            for ( var i = 0; i < vm.ingredients.length; i++) {
-                if(!vm.ingredients[i].extra){
-                plusButtons[i].disabled = true;
-                }
-            }
-        }
-    }
-    this.$emit('increment');
-  },*/
 
 Vue.component('ordered-drinks', {
   props: ['uiLabels', 'order', 'orderId', 'lang', 'name', 'type', 'price', 'totalPrice'],
