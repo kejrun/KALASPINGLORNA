@@ -392,7 +392,8 @@ var vm = new Vue({
      socket.emit('order', {order: drink});
      }
      this.yourDrinkNumber = 0;
-     this.myOrder = [];
+     this.myDrinks = [];
+     this.myOrder=[];
      this.totalPrice = 0;
    },
 
@@ -607,7 +608,7 @@ Vue.component('ordered-drink', {
     template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>\
     <label>\{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</label>\
     <br>\
-    <button v-on:click="minusDrink()" id="drinkMinusButton" class="drinkMinusButton">-</button>\
+    <button v-on:click="minusDrink();removeDrinkFromOrder()" id="drinkMinusButton" class="drinkMinusButton">-</button>\
     <label class="counterID">{{ counter }}</label>\
     <button v-on:click="plusDrink();addDrinkToOrder()" id="drinkPlusButton" class="drinkPlusButton">+</button>\
     <br></div>',
@@ -639,12 +640,17 @@ Vue.component('ordered-drink', {
         console.log(vm.myOrder);
       },
 
- /*     removeDrinkFromOrder: function(){
-          for
-          
-          
+      removeDrinkFromOrder: function(){
+          for (var i=0; i<vm.myOrder.length; i++){
+              console.log("looking for" + this.order + "in");
+              console.log(vm.myOrder[i]);
+              if(vm.myOrder[i]==this.order){
+                  vm.myOrder.splice(i,1);
+                  break;
+              }
+          }  
       }
-removeFromDrink: function (item, type) {
+/*removeFromDrink: function (item, type) {
           for (var i=0; i < this.chosenIngredients.length; i++){
               if(this.chosenIngredients[i] == item){
                 this.chosenIngredients.splice(i,1);
