@@ -416,13 +416,12 @@ a {
     display: grid;
     grid-template-columns: repeat(3, auto);
     margin-bottom: 20px;
-    width 600px;
 }
 
 .OrdersQueue{
 	height: 768px;
-    width: 600px;
     margin: 0 auto;
+    overflow-y: scroll;
 
 }
 
@@ -479,10 +478,8 @@ a {
 }
 
 .orderInfo{
-    margin-top:30px;
 	position: relative;
 	display: grid;
-	width: 130px;
 }
 
 .orderIngredInfo{
@@ -818,7 +815,7 @@ a {
 	color: white;
 	border-width: 2px;
 	border-radius: 5px;
-	width: 120px;
+	width: 140px;
 	height: 35px;
 	margin-top: 8px;
 	font-size: 15px;
