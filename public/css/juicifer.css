@@ -323,6 +323,13 @@ a {
 
 }
 
+/*om en ingrediens håller på att ta slut så ändras bakgrundsfärgen*/
+#stocklimited{
+    color:#e00620;
+    font-weight: bold;
+    
+}
+
 /*the single headers*/
 .stockHead{
 	float: left;

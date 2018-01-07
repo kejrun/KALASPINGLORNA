@@ -17,6 +17,7 @@ Vue.component('ingredient', {
      plusIngredient: function(){
         this.$emit('refill');
         this.counter += 1000;
+        console.log(this)
     },
      minusIngredient: function(){
         this.$emit('un-refill');
