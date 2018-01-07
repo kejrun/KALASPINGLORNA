@@ -286,7 +286,7 @@ v-if="!order.done && order.type == 'medium'"
         </added-drinks>
     </div>
     </div>
-    <br><hr><h3>{{ uiLabels.totalPrice }} {{ totalPrice }} kr</h3>
+    <br><hr><p class="h7">{{ uiLabels.totalPrice }} {{ totalPrice }} kr</p>
     <div id="myorderbutton">
     <button id=addAnotherDrink v-on:click="openTab('home-page')">{{ uiLabels.addAnotherDrink}}</button>
     <button id=proceedToCheckout v-on:click="openTab('checkOut-page')">{{ uiLabels.proceedToCheckout}}</button>

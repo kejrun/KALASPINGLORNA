@@ -69,6 +69,16 @@ h6{
     text-decoration: underline;
 }
 
+.h7 {
+	margin: 10px;
+	color: black;
+	text-transform: uppercase;
+	letter-spacing: 2pt;
+	text-align: center;
+	position: relative;
+	font-size: 20pt;
+}
+
 ::-webkit-scrollbar {
 	-webkit-appearance: none;
 	width: 7px;
@@ -996,6 +1006,8 @@ a {
 	.homebutton {
 		width: 50%;
 		margin-top: 5%;
+		padding: 0;
+		height: 60px;
 	}
 
 	.LanguageButton{
@@ -1005,7 +1017,6 @@ a {
 	#LangIMG{
 		width: 10%
 	}
-
 
 	#ingredientsBarText{
 		font-size: 20px;
@@ -1141,20 +1152,24 @@ a {
 	#addAnotherDrink{
 		display: block;
 		position: center;
-		margin-left: 20%;
+		margin-left: 12%;
 		font-family: 'Encode Sans Semi Condensed';
-		height: 50%;
-		font-size: 16px;
+		font-size: 14px;
+		height: 35px;
 
 	}
 
 	#proceedToCheckout{
+		margin-left: 12%;
 		display: block;
 		position: center;
-		margin: 5%;
 		font-family: 'Encode Sans Semi Condensed';
-		height: 100%;
-		font-size: 16px;
+		font-size: 14px;
+		height: 35px;
+	}
+
+	.h7 {
+		font-size: 16pt;
 	}
 
 }
