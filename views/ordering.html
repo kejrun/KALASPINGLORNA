@@ -37,7 +37,7 @@
   <body>
     <div id="home-page" class="tabcontent">
       <div style="text-align:center;">
-        <button class="homebutton" v-on:click="chooseYourOwn()"><a>{{ uiLabels.chooseYourOwn }}</a></button>
+        <button class="homebutton" v-on:click="chooseYourOwn();makeIngredientLists()"><a>{{ uiLabels.chooseYourOwn }}</a></button>
         <button class="homebutton" v-on:click="preMade();resetChooseYourOwnPage();switchType('m');markChosenSizeButton('m')"><a>{{ uiLabels.preMade }}</a></button>
       </div>
       <div id="LanguageDiv">
@@ -269,28 +269,11 @@ v-if="!order.done && order.type == 'medium'"
 </div>
 </div>
 
-<!--
-som det ser ut för showDrink
-
-<div id="showDrink">
-  <h1>{{ uiLabels.order }}</h1>
-  <table id="showDrinkTable" >
-    <tr><th><h4>{{ uiLabels.ingredients }}</h4><hr></th></tr>
-    <tr v-for= "item in chosenIngredients" v-if="!item.extra">
-      <td class="ingredientColumn">{{ item["ingredient_" + lang] }}</td>
-      <td class="priceColumn"> {{ item["price_" + type] }} kr</td>
-    </tr>
-    <tr><th><h4>{{ uiLabels.extras }}</h4><hr></th></tr>
-    <tr v-for= "item in chosenIngredients" v-if="item.extra">
-      <td class="ingredientColumn">{{ item["ingredient_" + lang] }}</td>
-      <td class="priceColumn"> {{ item["price_" + type] }} kr</td>
-    </tr></table>
--->
-
 <div id="myOrder-page" class="tabcontent">
   <h3>{{ uiLabels.myOrder }}</h3>
   <p>These are your chosen drinks:</p>
-    <div id="myOrderedDrinks" v-for = "(order,key) in myOrder" >
+  <div id="myOrder-text">
+    <div id="myOrderedDrinks" v-for = "(order,key) in myDrinks" >
     <br>
         <ordered-drinks
           type="m"
@@ -302,7 +285,8 @@ som det ser ut för showDrink
           :key="key">
         </ordered-drinks>
     </div>
-    <br><hr>{{ uiLabels.totalPrice }} {{ totalPrice }} kr
+    </div>
+    <br><hr><h3>{{ uiLabels.totalPrice }} {{ totalPrice }} kr</h3>
     <div id="myorderbutton">
     <button id=addAnotherDrink v-on:click="openTab('home-page')">{{ uiLabels.addAnotherDrink}}</button>
     <button id=proceedToCheckout v-on:click="openTab('checkOut-page')">{{ uiLabels.proceedToCheckout}}</button>
@@ -338,4 +322,5 @@ som det ser ut för showDrink
   <button class="tablink" v-on:click="openTab('checkOut-page')" id="checkOut-pageBtn">{{ uiLabels.checkOut }}</button>
 </div>
 </div>
+
 </html>

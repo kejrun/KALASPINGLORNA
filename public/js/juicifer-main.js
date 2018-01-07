@@ -5,15 +5,7 @@
 
 var socket = io();
 
-Vue.component('order-item-done', {
-  props: ['uiLabels', 'order', 'orderId', 'lang'],
-  template: '<div class = finishedOrderClass >  {{orderId}}\
-             <div v-for="o in order.order">\
-                <div v-for="ing in o.ingredients">\
-                    {{ ing["ingredient_"+ lang] }}\
-                </div>\
-             </div></div>'
-});
+
 // Stuff that is used both in the ordering system and in the kitchen
 var sharedVueStuff = {
   data: {
