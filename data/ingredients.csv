@@ -28,6 +28,7 @@
 24,blåbär,blueberry,berry,3,5,7,40,60,80,0
 25,hallon,raspberry,berry,3,5,7,40,60,80, 0
 26,jordgubbar,strawberry,berry,3,5,7,40,60,80,0
+
 27,kaffe,coffee,liquid,3,5,7,40,60,80,0
 28,vaniljglass,vanilla ice cream,liquid,3,5,7,40,60,80,0
 29,sodavatten,soda water,liquid,2,4,6,40,60,80,0
@@ -67,3 +68,7 @@
 59,ägg,egg,other,3,5,7,5,10,15,1
 60,keso,cottage cheese,other,1,2,3,5,10,15,1
 
+61,björnbär,blackberry,berry,3,5,7,40,60,80,0
+62,hjortron,cloudberry,berry,3,5,7,40,60,80,0
+63,tranbär,cranberry,berry,3,5,7,40,60,80,0
+64,svarta vinbär,blackcurrant,berry,3,5,7,40,60,80,0

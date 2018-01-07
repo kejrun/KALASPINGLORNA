@@ -13,20 +13,33 @@ Vue.component('ingredient', {
   {{item["ingredient_"+ lang]}} {{ item["price_" + type] }} :- \
   </label>\
   </div>',
-  data: function () {
-    return {
-      counter: 0
-    };
-  },
+    
+  data: 
+    function () {
+        return {
+            counter: 0,
+        };
+    },
+              
   methods: {
 
 plusIngredient: function(item){
+    
     this.counter +=1;
-
     if (this.counter > 0){
+        for (var i = 0; i < vm.ingredientsInCategoryOrder.length; i++){
+            if (this.item.ingredient_sv === vm.ingredientsInCategoryOrder[i]){
+                var newId = i;
+                break;
+            }
+        }
         var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
-        var thisIngredientsId = this.item.ingredient_id;
-        minusButtons[thisIngredientsId-1].disabled = false;
+        minusButtons[newId].disabled = false;
+        
+        //kolla här - försök göra det på ett enklare sätt, nu beror det av att vi skriver ut kategorierna i en viss ordning
+        //var thisIngredientsId = this.item.ingredient_id;
+        //minusButtons[thisIngredientsId-1].disabled = false;
+        //var doc = document.getElementsByName(this.item.ingredient_en).disabled=false;
     }
 
     if (totalIngredientsCounter >= 0 && totalIngredientsCounter < 5 && !item.extra){
@@ -48,9 +61,14 @@ plusIngredient: function(item){
 minusIngredient: function(item){
     this.counter -=1;
     if (this.counter == 0){
-    var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
-    var thisIngredientsId = this.item.ingredient_id;
-    minusButtons[thisIngredientsId-1].disabled = true;
+        for (var i = 0; i < vm.ingredientsInCategoryOrder.length; i++){
+            if (this.item.ingredient_sv === vm.ingredientsInCategoryOrder[i]){
+                var newId = i;
+                break;
+            }
+        }
+        var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
+        minusButtons[newId].disabled = true;
     }
 
     if (totalIngredientsCounter > 0 && totalIngredientsCounter <= 5 && !item.extra){
@@ -67,10 +85,9 @@ minusIngredient: function(item){
     this.$emit('decrement');
 },
 
-//incrementCounter används inte i nuläget, tror jag..
+//koll här: incrementCounter används inte i nuläget, tror jag..
 incrementCounter: function () {
   this.counter += item.vol_m;
-  console.log(item.vol_m)
   this.$emit('increment');
 },
 
@@ -220,6 +237,12 @@ var vm = new Vue({
     pricesSmall: [],
     pricesMedium: [],
     pricesLarge: [],
+    vegetables: [],
+    fruits: [],
+    berries: [],
+    liquids: [],
+    extras: [],
+    ingredientsInCategoryOrder: [],
     yourDrinkNumber: 0,
     volume: 0,
     price: 0,
@@ -232,11 +255,44 @@ var vm = new Vue({
     });
   },
   methods: {
+      
+    makeIngredientLists: function(){
+        for ( var i = 0; i < vm.ingredients.length; i++){
+            if (vm.ingredients[i].category == "vegetable"){
+                vm.vegetables.push(vm.ingredients[i].ingredient_sv);
+            }
+            else if (vm.ingredients[i].category == "fruit"){
+                vm.fruits.push(vm.ingredients[i].ingredient_sv);
+            }
+            else if (vm.ingredients[i].category == "berry"){
+                vm.berries.push(vm.ingredients[i].ingredient_sv);
+            }
+            else if (vm.ingredients[i].category == "liquid"){
+                vm.liquids.push(vm.ingredients[i].ingredient_sv);
+            }
+            else{
+                vm.extras.push(vm.ingredients[i].ingredient_sv);
+            }
+        }
+        for ( var i = 0; i < vm.vegetables.length; i++){
+            vm.ingredientsInCategoryOrder.push(vm.vegetables[i]);
+        }
+        for ( var i = 0; i < vm.fruits.length; i++){
+            vm.ingredientsInCategoryOrder.push(vm.fruits[i]);
+        }
+        for ( var i = 0; i < vm.berries.length; i++){
+            vm.ingredientsInCategoryOrder.push(vm.berries[i]);
+        }
+        for ( var i = 0; i < vm.liquids.length; i++){
+            vm.ingredientsInCategoryOrder.push(vm.liquids[i]);
+        }
+        for ( var i = 0; i < vm.extras.length; i++){
+            vm.ingredientsInCategoryOrder.push(vm.extras[i]);
+        }
+    },
+      
     addToDrink: function (item, type) {
       this.chosenIngredients.push(item);
-      console.log("addToDrink used");
-      console.log(item);
-      console.log(this.type);
 
       if (this.chosenIngredients.length > 0){
         document.getElementById("resetCurrentDrink").disabled = false;
@@ -384,7 +440,6 @@ var vm = new Vue({
      document.getElementById("notifybubblePM").style.display = "block";
    },
    placeOrder: function () {
-       console.log("hejhej");
      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
      for(var i=0; i<this.myOrder.length; i+=1){
      var drink = [];
@@ -467,8 +522,6 @@ var vm = new Vue({
         price: this.price
       };
 
-      console.log(currentDrink.name);
-      this.myDrinks.push(currentDrink);
       this.myOrder.push(currentDrink);
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       //socket.emit('order', { order: order});
