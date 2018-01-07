@@ -13,18 +13,18 @@ Vue.component('ingredient', {
   {{item["ingredient_"+ lang]}} {{ item["price_" + type] }} :- \
   </label>\
   </div>',
-    
-  data: 
+
+  data:
     function () {
         return {
             counter: 0,
         };
     },
-              
+
   methods: {
 
 plusIngredient: function(item){
-    
+
     this.counter +=1;
     if (this.counter > 0){
         for (var i = 0; i < vm.ingredientsInCategoryOrder.length; i++){
@@ -35,7 +35,7 @@ plusIngredient: function(item){
         }
         var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
         minusButtons[newId].disabled = false;
-        
+
         //kolla här - försök göra det på ett enklare sätt, nu beror det av att vi skriver ut kategorierna i en viss ordning
         //var thisIngredientsId = this.item.ingredient_id;
         //minusButtons[thisIngredientsId-1].disabled = false;
@@ -255,7 +255,7 @@ var vm = new Vue({
     });
   },
   methods: {
-      
+
     makeIngredientLists: function(){
         for ( var i = 0; i < vm.ingredients.length; i++){
             if (vm.ingredients[i].category == "vegetable"){
@@ -290,7 +290,7 @@ var vm = new Vue({
             vm.ingredientsInCategoryOrder.push(vm.extras[i]);
         }
     },
-      
+
     addToDrink: function (item, type) {
       this.chosenIngredients.push(item);
 
@@ -400,7 +400,7 @@ var vm = new Vue({
         document.getElementById("largeCupPreMade").style.backgroundColor = "lightblue";
       }
     },
-    
+
 
     addToMyOrder: function () {
      var i;
@@ -670,11 +670,12 @@ Vue.component('added-drinks', {
           counter: 1
         };
     },
-    methods: { 
+    methods: {
       minusDrink: function () {
           var minusButton = document.getElementById("drinkMinusButton");
           if (this.counter > 0){
             this.counter -= 1;
+            vm.totalPrice -= this.order.price;
           }
           if(this.counter == 0){
             minusButton.disabled=true;
@@ -683,10 +684,11 @@ Vue.component('added-drinks', {
 
       plusDrink: function () {
       this.counter += 1;
+      vm.totalPrice += this.order.price;
       var minusButton = document.getElementById("drinkMinusButton");
-      minusButton.disabled = false; 
+      minusButton.disabled = false;
       },
-     
+
       addDrinkToOrder: function() {
         vm.myOrder.push(this.order);
         console.log(this.order);
@@ -701,7 +703,7 @@ Vue.component('added-drinks', {
                   vm.myOrder.splice(i,1);
                   break;
               }
-          }  
+          }
       }
     }
 });

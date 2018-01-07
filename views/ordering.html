@@ -58,13 +58,15 @@
         </div>
       </div>
       <div id="openNavbutton">
-        <button id="sidebarbutton" onclick="openNav()">{{ uiLabels.order }}</button>
+        <button id="sidebarbutton" onclick="openNav()">&#8657;{{ uiLabels.order }}</button>
       </div>
       <!-- Category-list and ingredient-list created to be able to get a grid layout -->
       <div id= "categories-drink">
         <div id= "category-list">
           <div id="vegetable" class = "ingredients-list">
-            <h1>{{ uiLabels.vegetable }}</h1>
+            <input id="toggleVegetable" type="checkbox">
+            <label for="toggleVegetable"><h1>{{ uiLabels.vegetable }}</h1></label></input>
+            <div id="vegetableExpand">
             <div class ="ingredients-list-text">
               <ingredient
               ref="ingredient"
@@ -78,11 +80,14 @@
               :type="type"
               :key="item.ingredient_id">
             </ingredient>
+            </div>
           </div>
         </div>
 
         <div id="fruit" class ="ingredients-list">
-          <h1>{{ uiLabels.fruit }}</h1>
+          <input id="toggleFruit" type="checkbox">
+          <label for="toggleFruit"><h1>{{ uiLabels.fruit }}</h1></label></input>
+          <div id="fruitExpand">
           <div class ="ingredients-list-text">
             <ingredient
             ref="ingredient"
@@ -98,9 +103,12 @@
           </ingredient>
         </div>
       </div>
+      </div>
 
       <div id="berry" class = "ingredients-list">
-        <h1> {{uiLabels.berry}} </h1>
+        <input id="toggleBerry" type="checkbox">
+        <label for="toggleBerry"><h1> {{uiLabels.berry}} </h1></label></input>
+        <div id="berryExpand">
         <div class ="ingredients-list-text">
           <ingredient
           ref = "ingredient"
@@ -116,9 +124,12 @@
         </ingredient>
       </div>
     </div>
+    </div>
 
     <div id="liquid" class = "ingredients-list">
-      <h1> {{uiLabels.liquid}} </h1>
+      <input id="toggleLiquid" type="checkbox">
+      <label for="toggleLiquid"><h1> {{uiLabels.liquid}} </h1></label></input>
+      <div id="liquidExpand">
       <div class ="ingredients-list-text">
         <ingredient
         ref = "ingredient"
@@ -135,11 +146,12 @@
     </div>
   </div>
 </div>
+</div>
 
 <div id="sideTab">
 <div id="showDrink">
   <div id=closeNavbtn><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a></div>
-  <h1>{{ uiLabels.order }}</h1>
+  <h3>{{ uiLabels.order }}</h3>
   <table id="showDrinkTable" >
     <tr><th><h4>{{ uiLabels.ingredients }}</h4><hr></th></tr>
     <tr v-for= "item in chosenIngredients" v-if="!item.extra">
@@ -207,7 +219,9 @@ v-if="!order.done && order.type == 'medium'"
 <div id="extras-page" class="tabcontent">
   <div id="extrasCategories">
     <div class ="extras-list">
-      <h1>{{ uiLabels.nut }}</h1>
+      <input id="toggleNut" type="checkbox">
+      <label for="toggleNut"><h1>{{ uiLabels.nut }}</h1></label></input>
+      <div id="nutExpand">
       <ingredient
       ref="ingredient"
       type="m"
@@ -221,8 +235,11 @@ v-if="!order.done && order.type == 'medium'"
       :key="item.ingredient_id">
     </ingredient>
   </div>
+  </div>
   <div class ="extras-list">
-    <h1>{{ uiLabels.flavour }}</h1>
+    <input id="toggleFlavour" type="checkbox">
+    <label for="toggleFlavour"><h1>{{ uiLabels.flavour }}</h1></label></input>
+    <div id="flavourExpand">
     <ingredient
     ref="ingredient"
     type="m"
@@ -236,8 +253,11 @@ v-if="!order.done && order.type == 'medium'"
     :key="item.ingredient_id">
   </ingredient>
 </div>
+</div>
 <div class ="extras-list">
-  <h1>{{ uiLabels.powder }}</h1>
+  <input id="togglePowder" type="checkbox">
+  <label for="togglePowder"><h1>{{ uiLabels.powder }}</h1></label></input>
+  <div id="powderExpand">
   <ingredient
   ref="ingredient"
   type="m"
@@ -251,8 +271,11 @@ v-if="!order.done && order.type == 'medium'"
   :key="item.ingredient_id">
 </ingredient>
 </div>
+</div>
 <div class ="extras-list">
-  <h1>{{ uiLabels.other }}</h1>
+  <input id="toggleOther" type="checkbox">
+  <label for="toggleOther"><h1>{{ uiLabels.other }}</h1></label></input>
+  <div id="otherExpand">
   <ingredient
   ref="ingredient"
   type="m"
@@ -265,6 +288,7 @@ v-if="!order.done && order.type == 'medium'"
   :type="type"
   :key="item.ingredient_id">
 </ingredient>
+</div>
 </div>
 </div>
 </div>
@@ -286,7 +310,7 @@ v-if="!order.done && order.type == 'medium'"
         </added-drinks>
     </div>
     </div>
-    <br><hr><h3>{{ uiLabels.totalPrice }} {{ totalPrice }} kr</h3>
+    <br><hr><p class="h7">{{ uiLabels.totalPrice }} {{ totalPrice }} kr</p>
     <div id="myorderbutton">
     <button id=addAnotherDrink v-on:click="openTab('home-page')">{{ uiLabels.addAnotherDrink}}</button>
     <button id=proceedToCheckout v-on:click="openTab('checkOut-page')">{{ uiLabels.proceedToCheckout}}</button>
@@ -295,7 +319,7 @@ v-if="!order.done && order.type == 'medium'"
 
 <div id="checkOut-page" class="tabcontent">
   <h3>{{ uiLabels.checkOut }}</h3>
-  <tr><th><h4>{{ uiLabels.ingredients }}</h4><hr></th></tr>
+  <tr><th><h4>{{ uiLabels.myOrder }}</h4><hr></th></tr>
   <div id="myOrderedDrinks" v-for = "(order,key) in myOrder" >
     <br>
         <drinks-in-order
@@ -308,9 +332,8 @@ v-if="!order.done && order.type == 'medium'"
           :key="key">
         </drinks-in-order>
     </div>
-
+  <br><h3>{{uiLabels.totalPrice}} {{ totalPrice}} kr</h3>
   <button id=placeOrderButton v-on:click="placeOrder()">{{ uiLabels.placeOrder}}</button>
-  <p>PAAYY!</p>
 </div>
 
 <div id="extras-page" class="tabcontent">
