@@ -603,8 +603,8 @@ var vm = new Vue({
 
 
 // ------------- For myOrder page --------------
-Vue.component('ordered-drink', {
-    props: ['uiLabels', 'order', 'orderId', 'lang', 'type'],
+Vue.component('added-drinks', {
+    props: ['uiLabels', 'order', 'orderId', 'lang', 'name', 'type', 'price', 'totalPrice'],
     template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>\
     <label>\{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</label>\
     <br>\
@@ -650,32 +650,18 @@ Vue.component('ordered-drink', {
               }
           }  
       }
-/*removeFromDrink: function (item, type) {
-          for (var i=0; i < this.chosenIngredients.length; i++){
-              if(this.chosenIngredients[i] == item){
-                this.chosenIngredients.splice(i,1);
-                break;
-              }
-          }*/
-   
-
     }
-})
+});
 
 
-Vue.component('ordered-drinks', {
+Vue.component('drinks-in-order', {
   props: ['uiLabels', 'order', 'orderId', 'lang', 'name', 'type', 'price', 'totalPrice'],
    template: '<div id = "myOrderedDrinks">\
-           <ordered-drink\
-             :ui-labels="uiLabels"\
-             :lang="lang"\
-             :order-id="orderId"\
-             :type="type"\
-             :price="price"\
-             :totalPrice="totalPrice"\
-             :order="order">\
-           </ordered-drink>\
-          </div>',
+            <h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>\
+            <label>\
+            {{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}\
+            </label>\
+            </div>',
 
     methods: {
 
