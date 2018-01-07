@@ -394,6 +394,7 @@ a {
 	display: table;
 	margin: 0 auto;
 	height: 820px;
+    width: 600px;
 }
 
 #clock_kitchen{
@@ -413,12 +414,14 @@ a {
 .style_orders_inQueue{
     min-height: 100px;
     display: grid;
-    grid-template-columns: repeat(4, auto);
-    margin: 10px;
+    grid-template-columns: repeat(3, auto);
+    margin-bottom: 20px;
 }
 
-#OrdersQueue{
+.OrdersQueue{
 	height: 768px;
+    margin: 0 auto;
+    overflow-y: scroll;
 
 }
 
@@ -435,6 +438,8 @@ a {
 	font-size: 13pt;
     bottom: 30%;
 	font-family: 'Encode Sans Semi Condensed';
+    margin: 0 auto;
+    width: 55px;
 
 }
 /*Layout för knappen som ej går att trycka på*/
@@ -451,6 +456,8 @@ a {
 	position:relative;
 	bottom: 30%;
 	font-family: 'Encode Sans Semi Condensed';
+    margin: 0 auto;
+    width: 55px;
 }
 
 
@@ -467,14 +474,12 @@ a {
 	grid-gap:0.5em;
 	font-size: 1.3em;
 	position: relative;
-    margin: 5px;
+    margin: 5%;
 }
 
 .orderInfo{
-    margin-top:30px;
 	position: relative;
 	display: grid;
-	width: 130px;
 }
 
 .orderIngredInfo{
@@ -491,6 +496,7 @@ a {
 	width: 400px;
 	min-height: 130px;
 	border-radius: 10px;
+    margin: 0 auto;
     
 }
 
@@ -502,6 +508,7 @@ a {
 	width: 400px;
 	min-height: 130px;
 	border-radius: 10px;
+    margin: 0 auto;
 }
 
 #Hist_Ingred{
