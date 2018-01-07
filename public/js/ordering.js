@@ -232,6 +232,7 @@ var vm = new Vue({
     type: "m", //preset on size medium
     chosenIngredients: [],
     currentDrink: [],
+    myDrinks: [],
     myOrder: [],
     pricesSmall: [],
     pricesMedium: [],
@@ -399,6 +400,7 @@ var vm = new Vue({
         document.getElementById("largeCupPreMade").style.backgroundColor = "lightblue";
       }
     },
+    
 
     addToMyOrder: function () {
      var i;
@@ -428,6 +430,7 @@ var vm = new Vue({
      this.pricesLarge = [];
      resetChooseYourOwn();
 
+     this.myDrinks.push(currentDrink);
      this.myOrder.push(currentDrink);
      //kolla här: behöver vi köra reset här också?? Jenny-Siri
      resetChooseYourOwn();
@@ -657,24 +660,55 @@ Vue.component('ordered-drink', {
     template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>\
     <label>\{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</label>\
     <br>\
-    <button v-on:click="minusDrink(item)" id="drinkMinusButton" class="drinkMinusButton">-</button>\
+    <button v-on:click="minusDrink()" id="drinkMinusButton" class="drinkMinusButton">-</button>\
     <label class="counterID">{{ counter }}</label>\
-    <button v-on:click="plusDrink(item)" id="drinkPlusButton" class="drinkPlusButton">+</button>\
+    <button v-on:click="plusDrink();addDrinkToOrder()" id="drinkPlusButton" class="drinkPlusButton">+</button>\
     <br></div>',
     data: function () {
         return {
           counter: 1
         };
     },
-    methods: {
+    methods: { 
       minusDrink: function () {
-        },
+          var minusButton = document.getElementById("drinkMinusButton");
+          if (this.counter > 0){
+            this.counter -= 1;
+          }
+          if(this.counter == 0){
+            minusButton.disabled=true;
+          }
+      },
 
       plusDrink: function () {
-        }
+      this.counter += 1;
+      var minusButton = document.getElementById("drinkMinusButton");
+      minusButton.disabled = false; 
+      },
+     
+      addDrinkToOrder: function() {
+        vm.myOrder.push(this.order);
+        console.log(this.order);
+        console.log(vm.myOrder);
+      },
+
+ /*     removeDrinkFromOrder: function(){
+          for
+          
+          
+      }
+removeFromDrink: function (item, type) {
+          for (var i=0; i < this.chosenIngredients.length; i++){
+              if(this.chosenIngredients[i] == item){
+                this.chosenIngredients.splice(i,1);
+                break;
+              }
+          }*/
+   
 
     }
 })
+
 
 Vue.component('ordered-drinks', {
   props: ['uiLabels', 'order', 'orderId', 'lang', 'name', 'type', 'price', 'totalPrice'],
