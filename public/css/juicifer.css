@@ -337,7 +337,7 @@ a {
 #stocklimited{
     color:#e00620;
     font-weight: bold;
-    
+
 }
 
 /*the single headers*/
@@ -602,6 +602,11 @@ a {
 /*******************************************************************************/
 /*******************************************************************************/
 
+/*Does not show checkboxes that are used in the appversion*/
+input[type="checkbox"]{
+  display: none;
+  visibility: hidden;
+}
 /********************CHOOSE YOUR OWN********************/
 
 /*Creating a grid containing one grid with the categories in one column, and "My drink" in the other column */
@@ -995,6 +1000,7 @@ a {
 
 @media only screen and (max-width: 375px) {
 
+
 	body{
 		margin-bottom: 10%;
 	}
@@ -1034,20 +1040,19 @@ a {
 	#openNavbutton{
 		display: block;
 		position: absolute;
-		margin-top: 30%;
+		margin-top: 20%;
 		margin-left: -3%;
 		z-index: 90;
 	}
 
 	#sidebarbutton{
+		color: white;
 		position: fixed;
-		opacity: 0.8;
-		background-color: #dbdbdb;
+		background-color: #810051;
 		font-family: 'Encode Sans Semi Condensed';
 		width: 300px;
 		height: 40px;
-		border: 1px solid black;
-		border-radius: 5px;
+		border-radius: 8px;
 		text-align: center;
 		text-transform: uppercase;
 		letter-spacing: 2pt;
@@ -1172,4 +1177,24 @@ a {
 		font-size: 16pt;
 	}
 
+	h1{
+		color: white;
+		background-color: #555;
+		width: 100%;
+		padding: 3%;
+		margin: 4% 0% 0% 0%;
+		box-shadow: 2px 2px 2px 2px gray;
+	}
+
+#vegetableExpand, #fruitExpand, #berryExpand, #liquidExpand
+, #nutExpand, #flavourExpand, #powderExpand, #otherExpand {
+	height: 0px;
+	overflow: hidden;
+}
+
+#toggleVegetable:checked ~ #vegetableExpand, #toggleFruit:checked ~ #fruitExpand,
+#toggleBerry:checked ~ #berryExpand, #toggleLiquid:checked ~ #liquidExpand,
+#toggleNut:checked ~ #nutExpand, #toggleFlavour:checked ~ #flavourExpand,
+#togglePowder:checked ~ #powderExpand, #toggleOther:checked ~ #otherExpand {
+  height: 100%;
 }
