@@ -215,6 +215,7 @@ var vm = new Vue({
     type: "m", //preset on size medium
     chosenIngredients: [],
     currentDrink: [],
+    myDrinks: [],
     myOrder: [],
     pricesSmall: [],
     pricesMedium: [],
@@ -343,6 +344,7 @@ var vm = new Vue({
         document.getElementById("largeCupPreMade").style.backgroundColor = "lightblue";
       }
     },
+    
 
     addToMyOrder: function () {
      var i;
@@ -372,6 +374,7 @@ var vm = new Vue({
      this.pricesLarge = [];
      resetChooseYourOwn();
 
+     this.myDrinks.push(currentDrink);
      this.myOrder.push(currentDrink);
      //kolla här: behöver vi köra reset här också?? Jenny-Siri
      resetChooseYourOwn();
@@ -464,6 +467,7 @@ var vm = new Vue({
       };
 
       console.log(currentDrink.name);
+      this.myDrinks.push(currentDrink);
       this.myOrder.push(currentDrink);
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       //socket.emit('order', { order: order});
@@ -603,9 +607,9 @@ Vue.component('ordered-drink', {
     template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>\
     <label>\{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</label>\
     <br>\
-    <button v-on:click="minusDrink(order.item)" id="drinkMinusButton" class="drinkMinusButton">-</button>\
+    <button v-on:click="minusDrink()" id="drinkMinusButton" class="drinkMinusButton">-</button>\
     <label class="counterID">{{ counter }}</label>\
-    <button v-on:click="plusDrink(order.item)" id="drinkPlusButton" class="drinkPlusButton">+</button>\
+    <button v-on:click="plusDrink();addDrinkToOrder()" id="drinkPlusButton" class="drinkPlusButton">+</button>\
     <br></div>',
     data: function () {
         return {
@@ -613,16 +617,55 @@ Vue.component('ordered-drink', {
         };
     },
     methods: { 
-      minusDrink: function (drinkItem) {
-        console.log("minus button");
-        },
+      minusDrink: function () {
+          var minusButton = document.getElementById("drinkMinusButton");
+          if (this.counter > 0){
+            this.counter -= 1;
+          }
+          if(this.counter == 0){
+            minusButton.disabled=true;
+          }
+      },
 
-      plusDrink: function (drinkItem) {
-        console.log("plus button");
-        }
+      plusDrink: function () {
+      this.counter += 1;
+      var minusButton = document.getElementById("drinkMinusButton");
+      minusButton.disabled = false; 
+        },
+     
+      addDrinkToOrder: function() {
+        vm.myOrder.push(this.order);
+        console.log(this.order);
+        console.log(vm.myOrder);
+    }
 
     }
 })
+
+/*plusIngredient: function(item){
+    this.counter +=1;
+
+    if (this.counter > 0){
+        var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
+        var thisIngredientsId = this.item.ingredient_id;
+        minusButtons[thisIngredientsId-1].disabled = false;
+    }
+
+    if (totalIngredientsCounter >= 0 && totalIngredientsCounter < 5 && !item.extra){
+        totalIngredientsCounter ++;
+        increaseBar();
+
+        if (totalIngredientsCounter == 5){
+            var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
+            for ( var i = 0; i < vm.ingredients.length; i++) {
+                if(!vm.ingredients[i].extra){
+                plusButtons[i].disabled = true;
+                }
+            }
+        }
+    }
+    this.$emit('increment');
+  },*/
 
 Vue.component('ordered-drinks', {
   props: ['uiLabels', 'order', 'orderId', 'lang', 'name', 'type', 'price', 'totalPrice'],
