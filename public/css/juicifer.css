@@ -60,13 +60,13 @@ h5 {
 }
 
 h6{
-   text-align: center;
-    margin: 5px;
+	text-align: center;
+	margin: 5px;
 	text-transform: uppercase;
 	letter-spacing: 1pt;
 	position: relative;
-    font-weight: bolder;
-    text-decoration: underline;
+	font-weight: bolder;
+	text-decoration: underline;
 }
 
 .h7 {
@@ -308,8 +308,8 @@ a {
 }
 
 .Heades_kitchenSide{
-    width:600px;
-    margin: 0 auto;
+	width:600px;
+	margin: 0 auto;
 }
 
 /*all headers*/
@@ -324,7 +324,7 @@ a {
 	width: 90%;
 	height: 20px;
 	margin-left: 1em;
-    padding-left: 2%;
+	padding-left: 2%;
 }
 
 .stockList{
@@ -335,8 +335,8 @@ a {
 
 /*om en ingrediens håller på att ta slut så ändras bakgrundsfärgen*/
 #stocklimited{
-    color:#e00620;
-    font-weight: bold;
+	color:#e00620;
+	font-weight: bold;
 
 }
 
@@ -356,13 +356,13 @@ a {
 	display: none;
 	height: 80%;
 	margin: 0 auto;
-    overflow-y: scroll;
+	overflow-y: scroll;
 }
 
 /*to make every order seperate, i.e. this is every unique order that is done*/
 .finishedOrderClass {
-    padding: 6px;
-    text-transform: uppercase;
+	padding: 6px;
+	text-transform: uppercase;
 
 }
 
@@ -412,13 +412,13 @@ a {
 	display: table;
 	margin: 0 auto;
 	height: 820px;
-    width: 600px;
+	width: 600px;
 }
 
 #clock_kitchen{
-    text-align: right;
-    margin: 10px;
-    font-size: 20pt;
+	text-align: right;
+	margin: 10px;
+	font-size: 20pt;
 }
 
 #orders {
@@ -430,16 +430,16 @@ a {
 }
 
 .style_orders_inQueue{
-    min-height: 100px;
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    margin-bottom: 20px;
+	min-height: 100px;
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	margin-bottom: 20px;
 }
 
 .OrdersQueue{
 	height: 768px;
-    margin: 0 auto;
-    overflow-y: scroll;
+	margin: 0 auto;
+	overflow-y: scroll;
 
 }
 
@@ -454,10 +454,10 @@ a {
 	outline:none;
 	position:relative;
 	font-size: 13pt;
-    bottom: 30%;
+	bottom: 30%;
 	font-family: 'Encode Sans Semi Condensed';
-    margin: 0 auto;
-    width: 55px;
+	margin: 0 auto;
+	width: 55px;
 
 }
 /*Layout för knappen som ej går att trycka på*/
@@ -474,8 +474,8 @@ a {
 	position:relative;
 	bottom: 30%;
 	font-family: 'Encode Sans Semi Condensed';
-    margin: 0 auto;
-    width: 55px;
+	margin: 0 auto;
+	width: 55px;
 }
 
 
@@ -492,7 +492,7 @@ a {
 	grid-gap:0.5em;
 	font-size: 1.3em;
 	position: relative;
-    margin: 5%;
+	margin: 5%;
 }
 
 .orderInfo{
@@ -501,8 +501,8 @@ a {
 }
 
 .orderIngredInfo{
-    position:relative;
-    display: grid;
+	position:relative;
+	display: grid;
 }
 
 /* Code for Ingredients and history buttons on staff view */
@@ -514,7 +514,7 @@ a {
 	width: 400px;
 	min-height: 130px;
 	border-radius: 10px;
-    margin: 0 auto;
+	margin: 0 auto;
 
 }
 
@@ -526,7 +526,7 @@ a {
 	width: 400px;
 	min-height: 130px;
 	border-radius: 10px;
-    margin: 0 auto;
+	margin: 0 auto;
 }
 
 #Hist_Ingred{
@@ -559,6 +559,46 @@ a {
 }
 
 
+/*popup*/
+/* Popup container - can be anything you want */
+.popup {
+	position: relative;
+	cursor: pointer;
+}
+
+/* The actual popup */
+.popup .popuptext {
+	visibility: hidden;
+	width: 300px;
+	height: 200px;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 8px 0;
+	position: absolute;
+	z-index: 1;
+	left: 50%;
+	margin-left: -80px;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+	visibility: visible;
+
+}
+
+.yesNoDiv{
+	padding-top: 40%;
+}
+.yesNoButtons{
+	width: 50pt;
+	height: 40pt;
+	cursor:pointer;
+	border-radius: 10px;
+}
+
+
 
 /*********************THIS IS THE CSS FOR THE ORDERING VIEW*********************/
 /*******************************************************************************/
@@ -566,11 +606,12 @@ a {
 
 /*Does not show checkboxes that are used in the appversion*/
 input[type="checkbox"]{
-  display: none;
-  visibility: hidden;
+	display: none;
+	visibility: hidden;
 }
 /********************CHOOSE YOUR OWN********************/
 
+/*pris, ingrediens och plus/minusknappar*/
 .ingColumn{
     float:left;
     width: 38%;
@@ -635,13 +676,29 @@ input[type="checkbox"]{
 	grid-template-columns: repeat(2, auto);
 	grid-template-areas:
 	"categories myDrink"
-	". addToOrderButton";
+	". continueButtons";
 	grid-gap:1em;
 	margin-top: 4%;
 }
 
+#continueButtons{
+    grid-area: continueButtons;
+}
+
+#continue{
+    font-family: 'Encode Sans Semi Condensed';
+	border: none;
+	width: 98%;
+	height: 60px;
+	justify-self: end;
+	font-size: 20px;
+	background-color: #306d31;
+    margin-top: 0.5em;
+	box-shadow: 1px 1px 1px 1px gray;
+	border-radius: 8px;
+}
+
 #addToMyOrder{
-	grid-area: addToOrderButton;
 	font-family: 'Encode Sans Semi Condensed';
 	border: none;
 	width: 98%;
@@ -649,9 +706,20 @@ input[type="checkbox"]{
 	justify-self: end;
 	font-size: 20px;
 	background-color: #306d31;
-  margin-top: 0.5em;
+    margin-top: 0.5em;
 	box-shadow: 1px 1px 1px 1px gray;
 	border-radius: 8px;
+}
+
+#resetCurrentDrink{
+	font-family: 'Encode Sans Semi Condensed';
+	border: none;
+	font-size: 14px;
+	background-color: white;
+	margin-top: 0.5em;
+	margin-left:  0.5em;
+	box-shadow: 1px 1px 1px 1px gray;
+	border-radius: 4px;
 }
 
 #category-list {
@@ -926,6 +994,25 @@ input[type="checkbox"]{
 
 /********************END MY ORDER********************/
 
+/********************checkOut********************/
+#placeOrderButton{
+	grid-column-start:2;
+	margin-left: 35%;
+	position: right;
+	display: grid;
+	font-family: 'Encode Sans Semi Condensed';
+	width: 50%;
+	height: 70px;
+	border: none;
+	font-size: 20px;
+	color: white;
+	background-color: forestgreen;
+	margin-top: 0.5em;
+	box-shadow: 1px 1px 1px 1px gray;
+	border-radius: 8px;
+}
+/********************END checkOut********************/
+
 /* Style the tab buttons */
 /* Tab for choose chooseYourOwn */
 .tablink {
@@ -1096,17 +1183,19 @@ input[type="checkbox"]{
 		-webkit-animation: slide 0.5s forwards;
 		animation: slide 0.5s forwards;
 		overflow-y: scroll;
-		height: 500px;
+		height: 85%;
 		margin-bottom: 15%;
 	}
 
 	#showDrink{
+		padding-top: 0;
+		padding-bottom: 1%;
 		height:70%;
 		box-shadow: none;
 	}
 
 	#addToMyOrder{
-	    margin-top: 1%;
+		margin-top: 0;
 	}
 
 	@-webkit-keyframes slide {
@@ -1165,7 +1254,7 @@ input[type="checkbox"]{
 
 	#myOrder-text{
 		overflow-y: scroll;
-		height: 200px;
+		height: 170px;
 	}
 
 	#myorderbutton{
@@ -1180,10 +1269,18 @@ input[type="checkbox"]{
 		font-family: 'Encode Sans Semi Condensed';
 		font-size: 14px;
 		height: 35px;
-
 	}
 
 	#proceedToCheckout{
+		margin-left: 12%;
+		display: block;
+		position: center;
+		font-family: 'Encode Sans Semi Condensed';
+		font-size: 14px;
+		height: 35px;
+	}
+
+	#placeOrderButton{
 		margin-left: 12%;
 		display: block;
 		position: center;
@@ -1205,15 +1302,23 @@ input[type="checkbox"]{
 		box-shadow: 2px 2px 2px 2px gray;
 	}
 
-#vegetableExpand, #fruitExpand, #berryExpand, #liquidExpand
-, #nutExpand, #flavourExpand, #powderExpand, #otherExpand {
-	height: 0px;
-	overflow: hidden;
-}
+	#vegetableExpand, #fruitExpand, #berryExpand, #liquidExpand
+	, #nutExpand, #flavourExpand, #powderExpand, #otherExpand {
+		height: 0px;
+		overflow: hidden;
+	}
 
-#toggleVegetable:checked ~ #vegetableExpand, #toggleFruit:checked ~ #fruitExpand,
-#toggleBerry:checked ~ #berryExpand, #toggleLiquid:checked ~ #liquidExpand,
-#toggleNut:checked ~ #nutExpand, #toggleFlavour:checked ~ #flavourExpand,
-#togglePowder:checked ~ #powderExpand, #toggleOther:checked ~ #otherExpand {
-  height: 100%;
-}
+	#toggleVegetable:checked ~ #vegetableExpand, #toggleFruit:checked ~ #fruitExpand,
+	#toggleBerry:checked ~ #berryExpand, #toggleLiquid:checked ~ #liquidExpand,
+	#toggleNut:checked ~ #nutExpand, #toggleFlavour:checked ~ #flavourExpand,
+	#togglePowder:checked ~ #powderExpand, #toggleOther:checked ~ #otherExpand {
+		height: 100%;
+	}
+
+	#myOrder-page{
+		padding-top: 25px;
+	}
+
+	#checkOut-page{
+		padding-top: 25px;
+	}

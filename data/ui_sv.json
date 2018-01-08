@@ -2,6 +2,7 @@
   "ordersFinished" : "Färdiga beställningar",
   "ordersInQueue" : "Beställningar att förbereda",
   "ordersTrending" : "Populära beställningar",
+  "continue" : "Fortsätt",
   "addToOrder" : "Lägg till i min order",
   "placeOrder": "Lägg order",
   "addAnotherDrink": "Lägg till ny drink",
@@ -15,9 +16,9 @@
   "cancel": "Avbryt",
   "order" : "Min drink",
   "language" : "English",
-  "smallType" : "Liten",
-  "mediumType" : "Mellan",
-  "largeType" : "Stor",
+  "smallType" : "Liten 200ml",
+  "mediumType" : "Mellan 300ml",
+  "largeType" : "Stor 400ml",
   "home" : "Hem",
   "chooseYourOwn" : "Välj din egen",
   "preMade" : "Färdiga drycker",
@@ -43,5 +44,6 @@
   "yes": "Ja",
   "no": "Nej",
   "chosenDrinks": "Dina valda drinkar:",
-    "limited":"Begränsat lagersaldo"
+  "limited":"Begränsat lagersaldo",
+  "finishedOrder": "Tack för din beställning!"
 }
