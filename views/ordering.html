@@ -90,7 +90,7 @@
           <div id="fruitExpand">
             <div class ="ingredients-list-text">
               <ingredient
-              ref="ingredient"
+              ref = "ingredient"
               type="m"
               v-for="item in ingredients"
               v-if="item.category == 'fruit'"
@@ -179,21 +179,7 @@
     <button id="addToMyOrder" v-on:click="addToMyOrder();openTab('myOrder-page');switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button>
   </div>
 </div>
-<!--
-<h1>{{ uiLabels.ordersInQueue }}</h1>
-<div>
-<order-item
-v-for="(order, key) in orders"
-v-if="!order.done && order.type == 'medium'"
-:order-id="key"
-:order="order"
-:ui-labels="uiLabels"
-:lang="lang"
-:key="key">
-</order-item>
-</div>-->
 </div>
-
 
 <div id="preMade-page" class="tabcontent">
   <h3>{{ uiLabels.preMade }}</h3>
