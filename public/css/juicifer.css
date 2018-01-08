@@ -633,12 +633,12 @@ input[type="checkbox"]{
 /*pris, ingrediens och plus/minusknappar*/
 .ingColumn{
 	float:left;
-	width: 38%;
+	width: 37%;
 }
 
 .costColumn{
 	float:left;
-	width: 14%;
+	width: 15%;
 }
 
 .mpColumn {
@@ -738,7 +738,7 @@ and "My drink" in the other column */
 	width: 100%;
 	grid-template-columns: repeat(4, auto);
 	grid-area: categories;
-	grid-gap: 1em;
+	grid-gap: 0.5em;
 	z-index: 5;
 }
 
@@ -750,7 +750,7 @@ and "My drink" in the other column */
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(4, auto);
-	grid-gap: 1em;
+	grid-gap: 0.5em;
 	z-index: 5;
 }
 
@@ -823,6 +823,7 @@ and "My drink" in the other column */
 .ingredients-list-text{
 	max-height: 473px;
 	width: 100%;
+	min-width: 250px;
 	overflow-y: scroll;
 	box-shadow: 0px 4px 2px 0px gray;
 }
@@ -830,6 +831,7 @@ and "My drink" in the other column */
 .extras-list-text{
 	max-height: 473px;
 	width: 100%;
+	min-width: 250px;
 	overflow-y: scroll;
 	box-shadow: 0px 4px 2px 0px gray;
 }
