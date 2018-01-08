@@ -685,11 +685,13 @@ Vue.component('added-drinks', {
           if(this.counter == 0){
             minusButton.disabled=true;
           }
+          vm.orderCounterValue -= 1;
       },
 
       plusDrink: function () {
       this.counter += 1;
       vm.totalPrice += this.order.price;
+      vm.orderCounterValue += 1;
       var minusButton = document.getElementById("drinkMinusButton");
       minusButton.disabled = false;
       },
