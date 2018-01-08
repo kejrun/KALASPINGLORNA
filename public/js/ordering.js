@@ -48,7 +48,7 @@ plusIngredient: function(item){
 
         if (totalIngredientsCounter == 5){
             var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
-            for ( var i = 0; i < vm.ingredients.length; i++) {
+            for ( var i = 0; i < vm.ingredientsInCategoryOrder.length; i++) {
                 if(!vm.ingredients[i].extra){
                 plusButtons[i].disabled = true;
                 }
@@ -161,6 +161,9 @@ function resetChooseYourOwn(){
     document.getElementById("addToMyOrder").disabled = true;
     document.getElementById("addToMyOrder").style.color = "gray";
     document.getElementById("addToMyOrder").style.backgroundColor = "#306d31";
+    document.getElementById("continue").disabled = true;
+    document.getElementById("continue").style.color = "gray";
+    document.getElementById("continue").style.backgroundColor = "#306d31";
     document.getElementById("resetCurrentDrink").disabled = true;
 }
 
@@ -302,6 +305,9 @@ var vm = new Vue({
         document.getElementById("addToMyOrder").disabled = false;
         document.getElementById("addToMyOrder").style.color = "white";
         document.getElementById("addToMyOrder").style.backgroundColor = "forestgreen";
+        document.getElementById("continue").disabled = false;
+        document.getElementById("continue").style.color = "white";
+        document.getElementById("continue").style.backgroundColor = "forestgreen";
       }
       this.pricesSmall.push(item.price_s);
       this.pricesMedium.push(item.price_m);
@@ -331,6 +337,9 @@ var vm = new Vue({
         document.getElementById("addToMyOrder").disabled = true;
         document.getElementById("addToMyOrder").style.color = "gray";
         document.getElementById("addToMyOrder").style.backgroundColor = "#306d31";
+        document.getElementById("continue").disabled = true;
+        document.getElementById("continue").style.color = "gray";
+        document.getElementById("continue").style.backgroundColor = "#306d31";
       }
 
       if (this.chosenIngredients.length == 0){
@@ -599,6 +608,8 @@ var vm = new Vue({
       document.getElementById("holder").style.display = "none";
       document.getElementById("defaultOpen").style.backgroundColor = "#810051";
       document.getElementById("chooseYourOwn-page").style.display = "block";
+      document.getElementById("addToMyOrder").style.display = "none";
+      document.getElementById("continue").style.display = "block";
       document.getElementById("preMade-page").style.display = "none";
       document.getElementById("home-page").style.display = "none";
       document.getElementById("myOrder-page").style.display = "none";
@@ -638,17 +649,25 @@ var vm = new Vue({
       document.getElementById("checkOut-page").style.display = "none";
       document.getElementById("ProgressBarPreMade").style.display = "none";
       document.getElementById("chooseYourOwn-page").style.display = "block";
+      document.getElementById("addToMyOrder").style.display = "block";
+      document.getElementById("continue").style.display = "none";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
       categoriesDrink = document.getElementById("categories-drink");
       extrasCategories = document.getElementById("extrasCategories");
       categoriesDrink.appendChild(extrasCategories);
       extrasCategories.style.display="grid";
-
     },
 
     toChooseYourOwn: function() {
       document.getElementById("extrasCategories").style.display = "none";
       document.getElementById("category-list").style.display ="grid";
+      document.getElementById("addToMyOrder").style.display = "none";
+      document.getElementById("continue").style.display = "block";
+    },
+      
+    alertFinishedOrder: function(){
+        var thankYouText = this.uiLabels.finishedOrder;
+        alert(thankYouText);
     }
   }
 

@@ -617,9 +617,27 @@ input[type="checkbox"]{
 	grid-template-columns: repeat(2, auto);
 	grid-template-areas:
 	"categories myDrink"
-	". addToOrderButton";
+	". continueButtons";
 	grid-gap:1em;
 	margin-top: 4%;
+}
+
+#continueButtons{
+    grid-area: continueButtons;
+}
+
+#continue{
+	grid-area: continue;
+    font-family: 'Encode Sans Semi Condensed';
+	border: none;
+	width: 98%;
+	height: 60px;
+	justify-self: end;
+	font-size: 20px;
+	background-color: #306d31;
+    margin-top: 0.5em;
+	box-shadow: 1px 1px 1px 1px gray;
+	border-radius: 8px;
 }
 
 #addToMyOrder{
@@ -631,7 +649,7 @@ input[type="checkbox"]{
 	justify-self: end;
 	font-size: 20px;
 	background-color: #306d31;
-	margin-top: 0.5em;
+    margin-top: 0.5em;
 	box-shadow: 1px 1px 1px 1px gray;
 	border-radius: 8px;
 }
