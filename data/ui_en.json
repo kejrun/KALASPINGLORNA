@@ -2,6 +2,7 @@
   "ordersFinished" : "Finished orders",
   "ordersInQueue" : "Order queue",
   "ordersTrending" : "Trending orders",
+  "continue" : "Continue",
   "addToOrder" : "Add to my order",
   "placeOrder": "Place order",
   "addAnotherDrink": "Add another drink",
@@ -15,9 +16,9 @@
   "cancel": "Cancel",
   "order" : "My drink",
   "language" : "Svenska",
-  "smallType" : "Small",
-  "mediumType" : "Medium",
-  "largeType" : "Large",
+  "smallType" : "Small 200ml",
+  "mediumType" : "Medium 300ml",
+  "largeType" : "Large 400ml",
   "home" : "Home",
   "chooseYourOwn" : "Choose Your Own",
   "preMade" : "Premade",
@@ -43,6 +44,11 @@
   "yes": "Yes",
   "no": "No",
   "chosenDrinks": "Your chosen drinks: ",
+<<<<<<< HEAD
     "limited":"Limited stock balance",
     "CancelWant":"Are you sure you want to cancel order:"
+=======
+  "limited":"Limited stock balance",
+  "finishedOrder": "Thank you for your order!"
+>>>>>>> cc12d47ad41795d88f24f9e34e23b81c2d3bf5b9
 }
