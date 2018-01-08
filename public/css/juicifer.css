@@ -215,7 +215,7 @@ a {
 /*******************************************************************************/
 /*******************************************************************************/
 
-/*rätt storlek på kitchen sidan*/
+/*The size for all pages on kitchen*/
 .kitchen_layout{
 	height: 1024px;
 	width: 768px;
@@ -242,7 +242,7 @@ a {
 	margin-left: 45%;
 }
 
-/*Layout och scrollbar for ingredients på ingredientspage, dvs. där man kan se och ändra lagersaldo*/
+/*Layout and scrollbar for ingredients on ingredientspage, i.e. where kitchen can see and change the stock*/
 
 #ingredients{
 	position: absolute;
@@ -360,6 +360,7 @@ a {
 	clear: both;
 }
 
+/*Layout for finished order page*/
 #finishedOrder{
 	display: none;
 	height: 80%;
@@ -410,7 +411,7 @@ a {
 	width: 70px;
 }
 
-/* start_page på kitche view*/
+/*Start page on kitchen view, where all orders appears*/
 #start_page{
 	display: table;
 	margin: 0 auto;
@@ -451,25 +452,24 @@ a {
 	overflow-y: scroll;
 }
 
-/*Layout för knappar på staff view och kösidan*/
-.ArrowImg {
-	background-color: Transparent;
-	border: none;
-	cursor:pointer;
-	font-size: 13pt;
-	bottom: 30%;
-	font-family: 'Encode Sans Semi Condensed';
-	margin: 0 auto;
-	width: 55px;
-}
-
-/*Layout för knappen som ej går att trycka på*/
+/*Layout for the button that each order appears on, and the arrows on the side of each button*/
 .ArrowImg_dis {
 	background-color: Transparent;
 	border: none;
 	cursor:pointer;
 	opacity: 0.2;
 	font-size: 13pt;
+	font-family: 'Encode Sans Semi Condensed';
+	margin: 0 auto;
+	width: 55px;
+}
+
+.ArrowImg {
+	background-color: Transparent;
+	border: none;
+	cursor:pointer;
+	font-size: 13pt;
+	bottom: 30%;
 	font-family: 'Encode Sans Semi Condensed';
 	margin: 0 auto;
 	width: 55px;
@@ -513,7 +513,14 @@ a {
 	margin: 0 auto;
 }
 
-/* Code for Ingredients and history buttons on staff view */
+/*Code for pop-up window when kitchen has pressed on cancel button*/
+
+#cancelDiv{
+	z-index: 2;
+	margin: 0 auto;
+	position: absolute;
+}
+
 .cancelOrNotOrder{
 	display: grid;
 	grid-template-rows: repeat(3, auto);
@@ -531,9 +538,7 @@ a {
 	z-index: 2;
 	margin-left: 20px;
 	font-size: 25pt;
-    padding: 30px;
-    
-    
+    padding: 30px;   
 }
 
 .YesNoButton{
@@ -545,17 +550,11 @@ a {
 	font-size: 25pt;
 	font-family: 'Encode Sans Semi Condensed';
 	border-radius: 5px;
-	
     margin: 20px;
 	cursor:pointer;
 }
 
-#cancelDiv{
-	z-index: 2;
-	margin: 0 auto;
-	position: absolute;
-}
-
+/* Code for Ingredients and history buttons on staff view */
 #Hist_Ingred{
 	height: 150px;
 	display: table;

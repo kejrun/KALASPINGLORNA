@@ -176,10 +176,6 @@ Data.prototype.unmarkWantToCancel = function (orderId){
     this.orders[orderId].wantOrderCancel = false;
 };
 
-
-
-//Samma här med if sats, vi behöver veta om kunden valt S, M, L för att veta om de är
-// +40, +60 eller +80 som ska skickas till makeTransaxtion
 Data.prototype.cancelOrder = function(orderId){
     this.orders[orderId].done = true;
     for (var i=0; i<this.orders[orderId].order.length; i+=1){
