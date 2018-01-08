@@ -43,5 +43,6 @@
   "yes": "Ja",
   "no": "Nej",
   "chosenDrinks": "Dina valda drinkar:",
-    "limited":"Begränsat lagersaldo"
+    "limited":"Begränsat lagersaldo",
+    "CancelWant": "Är du säker att du vill avrbyta order:"
 }

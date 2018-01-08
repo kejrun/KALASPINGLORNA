@@ -409,6 +409,7 @@ a {
 	display: table;
 	margin: 0 auto;
     width: 600px;
+    height: 750px;
 }
 
 #clock_kitchen{
@@ -430,12 +431,14 @@ a {
     display: grid;
     grid-template-columns: repeat(3, auto);
     margin-bottom: 20px;
+    
 }
 
-.OrdersQueue{
-	height: 650px;
+#OrdersQueue{
+	height: 680px;
     margin: 0 auto;
     overflow-y: scroll;
+
 
 }
 
@@ -482,8 +485,10 @@ a {
 	min-height: 130px;
 	border-radius: 10px;
     margin: 0 auto;
+    
 
 }
+
 
 #inMade_Drink_items{
 	background-color: #eda6a6;
@@ -492,11 +497,47 @@ a {
 	min-height: 130px;
 	border-radius: 10px;
     margin: 0 auto;
+
 }
 
 
 /* Code for Ingredients and history buttons on staff view */
+.cancelOrNot{
+    height: 600px;
+    width: 500px;
+    background-color: #d1d1d1;
+    border-radius: 20px;
+    margin: 0 auto;
+    z-index: 2;
+    margin-left: 20px;
+    font-size: 30pt;
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    padding: 30px;
+    
+}
 
+.YesNoButton{
+    background-color:#777;
+	color:white;
+	border: none;
+	width: 160px;
+	height: 80px;
+	font-size: 20pt;
+	font-family: 'Encode Sans Semi Condensed';
+	border-radius: 5px;
+	margin: 0 auto;
+	cursor:pointer;
+    
+  
+}
+
+#cancelDiv{
+    z-index: 2;
+    margin: 0 auto;
+    position: absolute;
+    
+}
 #Hist_Ingred{
 	bottom: 20px;
 	height: 204px;
