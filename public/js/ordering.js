@@ -663,6 +663,11 @@ var vm = new Vue({
       document.getElementById("category-list").style.display ="grid";
       document.getElementById("addToMyOrder").style.display = "none";
       document.getElementById("continue").style.display = "block";
+    },
+      
+    alertFinishedOrder: function(){
+        var thankYouText = this.uiLabels.finishedOrder;
+        alert(thankYouText);
     }
   }
 
@@ -694,11 +699,13 @@ Vue.component('added-drinks', {
           if(this.counter == 0){
             minusButton.disabled=true;
           }
+          vm.orderCounterValue -= 1;
       },
 
       plusDrink: function () {
       this.counter += 1;
       vm.totalPrice += this.order.price;
+      vm.orderCounterValue += 1;
       var minusButton = document.getElementById("drinkMinusButton");
       minusButton.disabled = false;
       },
