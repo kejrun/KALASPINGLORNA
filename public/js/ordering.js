@@ -6,13 +6,14 @@ var totalIngredientsCounter = 0;
 Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
   template: '<div class="ingredient">\
-  <button v-on:click="minusIngredient(item)" id="ingredientsMinusButton" class="ingredientsMinusButton" disabled>-</button>\
+  <div class= "ingColumn">{{item["ingredient_"+ lang]}}</div>\
+    <div class="costColumn">  {{ item["price_" + type] }} :- </div>\
+<div class= "mpColumn">\
+<button v-on:click="minusIngredient(item)" id="ingredientsMinusButton"  class="ingredientsMinusButton" disabled>-</button>\
   <label class="counterID">{{ counter }}</label>\
-  <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" class="ingredientsPlusButton">+</button>\
-  <label>\
-  {{item["ingredient_"+ lang]}} {{ item["price_" + type] }} :- \
-  </label>\
+  <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" class="ingredientsPlusButton">+</button>\</div>\
   </div>',
+    
 
   data:
     function () {
