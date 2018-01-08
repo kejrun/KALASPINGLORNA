@@ -636,6 +636,17 @@ input[type="checkbox"]{
 	border-radius: 8px;
 }
 
+#resetCurrentDrink{
+	font-family: 'Encode Sans Semi Condensed';
+	border: none;
+	font-size: 14px;
+	background-color: white;
+	margin-top: 0.5em;
+	margin-left:  0.5em;
+	box-shadow: 1px 1px 1px 1px gray;
+	border-radius: 4px;
+}
+
 #category-list {
 	display: grid;
 	width: 100%;
