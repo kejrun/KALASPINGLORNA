@@ -44,11 +44,7 @@
   "yes": "Yes",
   "no": "No",
   "chosenDrinks": "Your chosen drinks: ",
-<<<<<<< HEAD
     "limited":"Limited stock balance",
-    "CancelWant":"Are you sure you want to cancel order:"
-=======
-  "limited":"Limited stock balance",
+    "CancelWant":"Are you sure you want to cancel order:",
   "finishedOrder": "Thank you for your order!"
->>>>>>> cc12d47ad41795d88f24f9e34e23b81c2d3bf5b9
 }
