@@ -48,9 +48,15 @@ plusIngredient: function(item){
 
         if (totalIngredientsCounter == 5){
             var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
-            for ( var i = 0; i < vm.ingredientsInCategoryOrder.length; i++) {
+            for (var i = 0; i < vm.ingredients.length; i++){
+                console.log(i);
                 if(!vm.ingredients[i].extra){
-                plusButtons[i].disabled = true;
+                    for ( var j = 0; j < vm.ingredientsInCategoryOrder.length; j++){
+                        if (vm.ingredients[i].ingredient_sv === vm.ingredientsInCategoryOrder[j]){
+                            var newId = j;
+                            plusButtons[newId].disabled = true;
+                        }
+                    }
                 }
             }
         }

@@ -627,7 +627,6 @@ input[type="checkbox"]{
 }
 
 #continue{
-	grid-area: continue;
     font-family: 'Encode Sans Semi Condensed';
 	border: none;
 	width: 98%;
@@ -641,7 +640,6 @@ input[type="checkbox"]{
 }
 
 #addToMyOrder{
-	grid-area: addToOrderButton;
 	font-family: 'Encode Sans Semi Condensed';
 	border: none;
 	width: 98%;
