@@ -232,10 +232,8 @@ a {
 
 }
 #ingredients_layout{
-	height: 768px;
+	height: 670px;
 	width: 768px;
-	left: 2%;
-	right: 2%;
 	position: absolute;
 	overflow-y: scroll;
 }
@@ -361,8 +359,7 @@ a {
 	display: table;
 	margin: 0 auto;
 	width: 768px;
-	height: 102.4px;
-	top: 950px;
+    top: 930px;
 }
 
 #refillbtn {
@@ -401,7 +398,6 @@ a {
 #start_page{
 	display: table;
 	margin: 0 auto;
-	height: 820px;
     width: 600px;
 }
 
@@ -427,7 +423,7 @@ a {
 }
 
 .OrdersQueue{
-	height: 768px;
+	height: 650px;
     margin: 0 auto;
     overflow-y: scroll;
 
@@ -435,51 +431,29 @@ a {
 
 /*Layout för knappar på staff view och kösidan*/
 .ArrowImg {
-	text-align: center;
 	background-color: Transparent;
-	background-repeat:no-repeat;
 	border: none;
 	cursor:pointer;
-	overflow: hidden;
-	outline:none;
-	position:relative;
 	font-size: 13pt;
-    bottom: 30%;
 	font-family: 'Encode Sans Semi Condensed';
     margin: 0 auto;
-    width: 55px;
-
 }
 /*Layout för knappen som ej går att trycka på*/
 .ArrowImg_dis {
-	text-align: center;
 	background-color: Transparent;
-	background-repeat:no-repeat;
 	border: none;
 	cursor:pointer;
-	overflow: hidden;
-	outline:none;
 	opacity: 0.2;
 	font-size: 13pt;
-	position:relative;
-	bottom: 30%;
 	font-family: 'Encode Sans Semi Condensed';
     margin: 0 auto;
-    width: 55px;
 }
-
-
-
-
 
 #style-orderbutton{
 	text-transform: uppercase;
 	display: grid;
 	height: auto;
-	top: 10%;
-	width: 100%;
 	grid-template-columns: repeat(2, auto);
-	grid-gap:0.5em;
 	font-size: 1.3em;
 	position: relative;
     margin: 5%;
@@ -490,15 +464,8 @@ a {
 	display: grid;
 }
 
-.orderIngredInfo{
-    position:relative;
-    display: grid;
-}
 
-/* Code for Ingredients and history buttons on staff view */
 #Drink_items{
-	text-align: center;
-	position: relative;
 	background-color:#F0E6F0;
 	border: 2px solid black;
 	width: 400px;
@@ -509,8 +476,6 @@ a {
 }
 
 #inMade_Drink_items{
-	text-align: center;
-	position: relative;
 	background-color: #eda6a6;
 	border: 2px solid black;
 	width: 400px;
@@ -518,6 +483,9 @@ a {
 	border-radius: 10px;
     margin: 0 auto;
 }
+
+
+/* Code for Ingredients and history buttons on staff view */
 
 #Hist_Ingred{
 	bottom: 20px;
