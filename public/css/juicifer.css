@@ -79,6 +79,18 @@ h6{
 	font-size: 20pt;
 }
 
+.h8 {
+	text-align: left;
+	margin: 1%;
+	margin-top: 70px;
+	color: black;
+	text-transform: uppercase;
+	letter-spacing: 2pt;
+	position: relative;
+	font-size: 40pt;
+	text-shadow: 1px 1px gray;
+}
+
 ::-webkit-scrollbar {
 	-webkit-appearance: none;
 	width: 7px;
@@ -125,7 +137,7 @@ a {
 	text-decoration: none;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	font-size: 12pt;
+	font-size: 18pt;
 }
 
 .homebutton {
@@ -619,7 +631,6 @@ input[type="checkbox"]{
 	"categories myDrink"
 	". continueButtons";
 	grid-gap:1em;
-	margin-top: 4%;
 }
 
 #continueButtons{
@@ -687,6 +698,7 @@ input[type="checkbox"]{
 }
 
 #showDrink{
+	margin-top: -80px;
 	overflow-y: scroll;
 	background-color: #dbdbdb;
 	grid-column-start:2;
@@ -752,7 +764,7 @@ input[type="checkbox"]{
 }
 
 .ingredients-list-text{
-	max-height: 450px;
+	max-height: 473px;
 	width: 100%;
 	overflow-y: scroll;
 	box-shadow: 0px 4px 2px 0px gray;
@@ -1064,12 +1076,16 @@ input[type="checkbox"]{
 		height: 60px;
 	}
 
+	a {
+		font-size: 12pt;
+	}
+
 	.LanguageButton{
 		margin-top: 7%;
 	}
 
 	#LangIMG{
-		width: 10%
+		width: 15%
 	}
 
 	#ingredientsBarText{
@@ -1130,6 +1146,7 @@ input[type="checkbox"]{
 	}
 
 	#showDrink{
+		margin-top: 0;
 		padding-top: 0;
 		padding-bottom: 1%;
 		height:70%;
@@ -1199,6 +1216,10 @@ input[type="checkbox"]{
 		height: 170px;
 	}
 
+	#continue{
+		margin-top: 0;
+	}
+
 	#myorderbutton{
 		display: block;
 		position: fixed;
@@ -1263,4 +1284,12 @@ input[type="checkbox"]{
 
 	#checkOut-page{
 		padding-top: 25px;
+	}
+
+	#labelExtra{
+		display: none !important;
+	}
+
+	#labelIng{
+		display: none !important;
 	}
