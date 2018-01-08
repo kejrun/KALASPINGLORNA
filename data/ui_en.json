@@ -44,6 +44,7 @@
   "yes": "Yes",
   "no": "No",
   "chosenDrinks": "Your chosen drinks: ",
-  "limited":"Limited stock balance",
+    "limited":"Limited stock balance",
+    "CancelWant":"Are you sure you want to cancel order:",
   "finishedOrder": "Thank you for your order!"
 }

@@ -154,6 +154,7 @@ Data.prototype.addOrder = function (order) {
     this.orders[orderId] = order;
     this.orders[orderId].done = false;
     this.orders[orderId].inMade = false;
+    this.orders[orderId].wantOrderCancel = false;
     for (var i=0; i< order.order.length; i+=1){
         this.makeTransaction(order.order[i], "remove");
     }
@@ -165,6 +166,10 @@ Data.prototype.getAllOrders = function () {
 
 Data.prototype.markOrderDone = function (orderId) {
   this.orders[orderId].done = true;
+};
+
+Data.prototype.markWantToCancel = function (orderId){
+    this.orders[orderId].wantOrderCancel = true;
 };
 
 //Samma här med if sats, vi behöver veta om kunden valt S, M, L för att veta om de är
@@ -229,7 +234,12 @@ io.on('connection', function (socket) {
       //emitting to all concected client to were the que is. Wha to happen when an order i cancelled
     io.emit('currentQueue', {orders: data.getAllOrders() });
   });
-
+    
+    socket.on('wantCancel', function(orderId){
+        data.markWantToCancel(orderId);
+        io.emit('currentQueue', {order: data.getAllOrders() });
+    });
+    
     socket.on('cancelOrder', function (orderId){
     
     data.cancelOrder(orderId);

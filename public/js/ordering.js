@@ -6,13 +6,14 @@ var totalIngredientsCounter = 0;
 Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
   template: '<div class="ingredient">\
-  <button v-on:click="minusIngredient(item)" id="ingredientsMinusButton" class="ingredientsMinusButton" disabled>-</button>\
+  <div class= "ingColumn">{{item["ingredient_"+ lang]}}</div>\
+    <div class="costColumn">  {{ item["price_" + type] }} :- </div>\
+<div class= "mpColumn">\
+<button v-on:click="minusIngredient(item)" id="ingredientsMinusButton"  class="ingredientsMinusButton" disabled>-</button>\
   <label class="counterID">{{ counter }}</label>\
-  <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" class="ingredientsPlusButton">+</button>\
-  <label>\
-  {{item["ingredient_"+ lang]}} {{ item["price_" + type] }} :- \
-  </label>\
+  <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" class="ingredientsPlusButton">+</button>\</div>\
   </div>',
+
 
   data:
     function () {
@@ -48,9 +49,15 @@ plusIngredient: function(item){
 
         if (totalIngredientsCounter == 5){
             var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
-            for ( var i = 0; i < vm.ingredientsInCategoryOrder.length; i++) {
+            for (var i = 0; i < vm.ingredients.length; i++){
+                console.log(i);
                 if(!vm.ingredients[i].extra){
-                plusButtons[i].disabled = true;
+                    for ( var j = 0; j < vm.ingredientsInCategoryOrder.length; j++){
+                        if (vm.ingredients[i].ingredient_sv === vm.ingredientsInCategoryOrder[j]){
+                            var newId = j;
+                            plusButtons[newId].disabled = true;
+                        }
+                    }
                 }
             }
         }
