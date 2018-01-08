@@ -617,14 +617,18 @@ input[type="checkbox"]{
 	grid-template-columns: repeat(2, auto);
 	grid-template-areas:
 	"categories myDrink"
-	". addToOrderButton";
+	". continueButtons";
 	grid-gap:1em;
 	margin-top: 4%;
 }
 
+#continueButtons{
+    grid-area: continueButtons;
+}
+
 #continue{
-	grid-area: addToOrderButton;
-	font-family: 'Encode Sans Semi Condensed';
+	grid-area: continue;
+    font-family: 'Encode Sans Semi Condensed';
 	border: none;
 	width: 98%;
 	height: 60px;
