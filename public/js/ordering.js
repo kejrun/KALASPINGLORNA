@@ -649,6 +649,11 @@ var vm = new Vue({
     toChooseYourOwn: function() {
       document.getElementById("extrasCategories").style.display = "none";
       document.getElementById("category-list").style.display ="grid";
+    },
+      
+    alertFinishedOrder: function(){
+        var thankYouText = this.uiLabels.finishedOrder;
+        alert(thankYouText);
     }
   }
 
