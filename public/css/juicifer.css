@@ -622,6 +622,20 @@ input[type="checkbox"]{
 	margin-top: 4%;
 }
 
+#continue{
+	grid-area: addToOrderButton;
+	font-family: 'Encode Sans Semi Condensed';
+	border: none;
+	width: 98%;
+	height: 60px;
+	justify-self: end;
+	font-size: 20px;
+	background-color: #306d31;
+    margin-top: 0.5em;
+	box-shadow: 1px 1px 1px 1px gray;
+	border-radius: 8px;
+}
+
 #addToMyOrder{
 	grid-area: addToOrderButton;
 	font-family: 'Encode Sans Semi Condensed';
@@ -631,7 +645,7 @@ input[type="checkbox"]{
 	justify-self: end;
 	font-size: 20px;
 	background-color: #306d31;
-  margin-top: 0.5em;
+    margin-top: 0.5em;
 	box-shadow: 1px 1px 1px 1px gray;
 	border-radius: 8px;
 }

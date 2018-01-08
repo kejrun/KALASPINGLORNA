@@ -12,7 +12,6 @@
   <script src="js/ordering.js" defer></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js"></script>
-
 </head>
 
 <div id="holder">
@@ -164,7 +163,6 @@
       <td class="priceColumn"> {{ item["price_" + type] }} kr</td>
     </tr></table>
 
-    <div id="showDrinkFooter">
         <br>{{ uiLabels.totalPrice }} {{ price }} kr
         <button id="resetCurrentDrink" v-on:click="resetChooseYourOwnPage();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.resetCurrentDrink }}</button>
         <br>
@@ -174,8 +172,8 @@
           <button id="mediumCup" class="sizeButton" v-on:click="switchType('m'); changeTotalPrice('m');markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
           <button id="largeCup" class="sizeButton" v-on:click="switchType('l'); changeTotalPrice('l');markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
         </div>
-    </div>
   </div>
+        <button id="continue" v-on:click="openTab('extras-page');toExtras()" disabled>{{ uiLabels.continue }}</button>
         <button id="addToMyOrder" v-on:click="addToMyOrder();openTab('myOrder-page');switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button>
 </div>
 </div>
