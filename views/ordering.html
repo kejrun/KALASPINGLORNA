@@ -222,11 +222,47 @@ v-if="!order.done && order.type == 'medium'"
       <input id="toggleNut" type="checkbox">
       <label for="toggleNut"><h1>{{ uiLabels.nut }}</h1></label></input>
       <div id="nutExpand">
+          <ingredient
+          ref="ingredient"
+          type="m"
+          v-for="item in ingredients"
+          v-if="item.category == 'nut'"
+          v-on:increment="addToDrink(item, type)"
+          v-on:decrement="removeFromDrink(item, type)"
+          :item="item"
+          :lang="lang"
+          :type="type"
+          :key="item.ingredient_id">
+          </ingredient>
+      </div>
+    </div>
+  <div class ="extras-list">
+    <input id="toggleFlavour" type="checkbox">
+    <label for="toggleFlavour"><h1>{{ uiLabels.flavour }}</h1></label></input>
+    <div id="flavourExpand">
+        <ingredient
+        ref="ingredient"
+        type="m"
+        v-for="item in ingredients"
+        v-if="item.category == 'flavour'"
+        v-on:increment="addToDrink(item, type)"
+        v-on:decrement="removeFromDrink(item, type)"
+        :item="item"
+        :lang="lang"
+        :type="type"
+        :key="item.ingredient_id">
+        </ingredient>
+    </div>
+  </div>
+  <div class ="extras-list">
+  <input id="togglePowder" type="checkbox">
+  <label for="togglePowder"><h1>{{ uiLabels.powder }}</h1></label></input>
+  <div id="powderExpand">
       <ingredient
       ref="ingredient"
       type="m"
       v-for="item in ingredients"
-      v-if="item.category == 'nut'"
+      v-if="item.category == 'powder'"
       v-on:increment="addToDrink(item, type)"
       v-on:decrement="removeFromDrink(item, type)"
       :item="item"
@@ -235,42 +271,6 @@ v-if="!order.done && order.type == 'medium'"
       :key="item.ingredient_id">
     </ingredient>
   </div>
-  </div>
-  <div class ="extras-list">
-    <input id="toggleFlavour" type="checkbox">
-    <label for="toggleFlavour"><h1>{{ uiLabels.flavour }}</h1></label></input>
-    <div id="flavourExpand">
-    <ingredient
-    ref="ingredient"
-    type="m"
-    v-for="item in ingredients"
-    v-if="item.category == 'flavour'"
-    v-on:increment="addToDrink(item, type)"
-    v-on:decrement="removeFromDrink(item, type)"
-    :item="item"
-    :lang="lang"
-    :type="type"
-    :key="item.ingredient_id">
-  </ingredient>
-</div>
-</div>
-<div class ="extras-list">
-  <input id="togglePowder" type="checkbox">
-  <label for="togglePowder"><h1>{{ uiLabels.powder }}</h1></label></input>
-  <div id="powderExpand">
-  <ingredient
-  ref="ingredient"
-  type="m"
-  v-for="item in ingredients"
-  v-if="item.category == 'powder'"
-  v-on:increment="addToDrink(item, type)"
-  v-on:decrement="removeFromDrink(item, type)"
-  :item="item"
-  :lang="lang"
-  :type="type"
-  :key="item.ingredient_id">
-</ingredient>
-</div>
 </div>
 <div class ="extras-list">
   <input id="toggleOther" type="checkbox">
