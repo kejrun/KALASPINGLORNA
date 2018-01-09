@@ -773,16 +773,15 @@ var vm = new Vue({
 
 });
 
-
 // ------------- For myOrder page --------------
 Vue.component('added-drinks', {
     props: ['uiLabels', 'order', 'orderId', 'lang', 'name', 'type', 'price', 'totalPrice'],
     template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>\
     <label>\{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</label>\
     <br>\
-    <button v-on:click="minusDrink()" id="drinkMinusButton" class="drinkMinusButton">-</button>\
+    <button v-on:click="minusDrink()" id="drinkMinusButton" class="drinkMinusPlusButton">-</button>\
     <label class="counterID">{{ counter }}</label>\
-    <button v-on:click="plusDrink()" id="drinkPlusButton" class="drinkPlusButton">+</button>\
+    <button v-on:click="plusDrink()" id="drinkPlusButton" class="drinkMinusPlusButton">+</button>\
     <br></div>',
     data: function () {
         return {
@@ -796,7 +795,6 @@ Vue.component('added-drinks', {
           vm.totalPrice += this.order.price;
           vm.orderCounterValue += 1;
           vm.myOrder.push(this.order);
-
           document.getElementById("proceedToCheckout").disabled = false;
           document.getElementById("placeOrderButton").disabled = false;
       },
