@@ -310,7 +310,7 @@
 <br><hr><p class="h7">{{ uiLabels.totalPrice }} {{ totalPrice }} kr</p>
 <div id="myorderbutton">
   <button id=addAnotherDrink v-on:click="openTab('home-page')">{{ uiLabels.addAnotherDrink}}</button>
-  <button id=proceedToCheckout v-on:click="openTab('checkOut-page')">{{ uiLabels.proceedToCheckout}}</button>
+  <button id=proceedToCheckout v-on:click="openTab('checkOut-page')" disabled>{{ uiLabels.proceedToCheckout}}</button>
 </div>
 </div>
 
@@ -333,7 +333,7 @@
 </div>
 <br><hr><p class="h7">{{uiLabels.totalPrice}} {{ totalPrice}} kr</p>
 <div id="myorderbutton">
-  <button id=placeOrderButton v-on:click="placeOrder();alertFinishedOrder()">{{ uiLabels.placeOrder}}</button>
+  <button id=placeOrderButton v-on:click="placeOrder();alertFinishedOrder()" disabled>{{ uiLabels.placeOrder}}</button>
 </div>
 </div>
 
