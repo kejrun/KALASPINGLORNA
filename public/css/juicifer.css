@@ -1258,16 +1258,14 @@ and "My drink" in the other column */
 		font-size: 12pt;
 	}
 
-	.LanguageButton{
-		margin-top: 7%;
-	}
-
-	#LangIMG{
-		width: 15%
+	.newLanguage{
+		margin-top: 5%;
 	}
 
 	#ingredientsBarText{
-		font-size: 20px;
+		top: 50%;
+		left: 50%;
+		font-size: 18px;
 	}
 
 	#categories-drink{
@@ -1282,6 +1280,24 @@ and "My drink" in the other column */
 		grid-template-columns: repeat(1, auto);
 	}
 
+	#extrasCategories {
+		grid-template-columns: repeat(1, auto);
+	}
+
+	.ingredients-list-text{
+		width: 100%;
+		min-width: 80%;
+		overflow-y: hidden;
+	}
+
+
+	.extras-list-text{
+		width: 100%;
+		min-width: 70%;
+		overflow-y: hidden;
+	}
+
+
 	#openNavbutton{
 		display: block;
 		position: absolute;
@@ -1295,8 +1311,7 @@ and "My drink" in the other column */
 		position: fixed;
 		background-color: #810051;
 		font-family: 'Encode Sans Semi Condensed';
-		width: 300px;
-		height: 40px;
+		width: 100%;
 		border-radius: 8px;
 		text-align: center;
 		text-transform: uppercase;
@@ -1317,12 +1332,11 @@ and "My drink" in the other column */
 		display: none;
 		z-index: 100;
 		position: absolute;
-		left: -375px;
+		left: -100%;
 		width: 99%;
 		-webkit-animation: slide 0.5s forwards;
 		animation: slide 0.5s forwards;
 		overflow-y: scroll;
-		height: 85%;
 	}
 
 	#showDrink{
@@ -1342,21 +1356,7 @@ and "My drink" in the other column */
 		100% { left: 0; }
 	}
 
-	.ingredients-list-text{
-		max-height: 100%;
-		width: 100%;
-		overflow-y: none;
-	}
-
-	#extrasCategories {
-		grid-template-columns: repeat(1, auto);
-	}
-
-	#ProgressBarChooseYourOwn{
-		height:12%;
-	}
-
-	#ProgressBarPreMade{
+	#ProgressBarChooseYourOwn, #ProgressBarPreMade{
 		height:12%;
 	}
 
@@ -1398,7 +1398,7 @@ and "My drink" in the other column */
 	#continueButtons{
 		position: fixed;
 		display: block;
-		width: 100%
+		width: 100%;
 	}
 
 	#continue{
