@@ -47,6 +47,7 @@ var vm = new Vue({
       socket.emit("cancelOrder", orderid);
     },
     markInMade: function(orderid){
+        
       socket.emit("orderInMade", orderid);
     },
     unmarkInMade: function(orderid){
@@ -58,10 +59,8 @@ var vm = new Vue({
     },
     wantToCancel: function (orderid){
         socket.emit("wantCancel", orderid); 
-        window.location = 'http://localhost:3000/kitchen';
-        
-    },
-                            
+        window.location = 'http://localhost:3000/kitchen'; 
+    },                     
     ShowHistory: function(){
       document.getElementById("finishedOrder").style.display ="block";
       document.getElementById("start_page").style.display = "none";
@@ -104,12 +103,13 @@ Vue.component('order-item-to-prepare-in-made', {
     methods: {
     orderDone: function () {
       this.$emit('done');
+        
     },
     notInMade: function(){
       this.$emit('in-made');
     },
     wantCancel: function () {
-        this.$emit('want-cancel')
+      this.$emit('want-cancel')
     }
   }
 
@@ -117,7 +117,7 @@ Vue.component('order-item-to-prepare-in-made', {
 
 Vue.component('order-cancel', {
     props: ['uiLabels', 'order', 'orderId', 'lang'],
-    template: '<div class = cancelOrNot><div class = cancelOrNotOrder >{{uiLabels.CancelWant}}<div v-for="o in order.order">{{orderId}}, {{o["type"]}}<div v-for="ing in o.ingredients" class = orderIngredInfo>{{ ing["ingredient_" + lang] }}</div></div></div>\
+    template: '<div class = cancelOrNot><div class = cancelOrNotOrder >{{uiLabels.CancelWant}}<div v-for="o in order.order" class = orderIngredCancel>{{orderId}}, {{o["type"]}}<div v-for="ing in o.ingredients" class = orderIngredInfo>{{ ing["ingredient_" + lang] }}</div></div></div>\
     <button v-on:click="cancelOrder" class = YesNoButton>{{uiLabels.yes}}</button>\
     <button v-on:click="undoCancelOrder" class = YesNoButton>{{uiLabels.no}}</button></div>',
     methods: {

@@ -6,8 +6,7 @@ Vue.component('ingredient', {
     <div class= "itemColumn"><button v-on:click="minusIngredient" class="MinusPlusButtons" name="ingredientsMinusButton">-</button>\
   <label id="counterStock">{{ counter }}</label>\
   <button v-on:click="plusIngredient" class="MinusPlusButtons" name="ingredientsPlusButton">+</button>\</div>\
-   </div>',
-              
+   </div>',         
   data: function () {
     return {
       counter: 0
@@ -28,6 +27,17 @@ Vue.component('ingredient', {
     }
     }
 });
+
+Vue.component('ingredient-limited', {
+  props: ['item', 'lang'],
+  template: '<div class="ingredientStock">\
+    <div class= "itemColumn">{{item["ingredient_"+ lang]}}</div>\
+    <div class= "itemColumn">{{item.stock}}ml</div>\
+   </div>',         
+});
+
+
+
 
 
 var vm = new Vue({
