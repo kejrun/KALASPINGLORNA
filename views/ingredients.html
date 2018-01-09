@@ -14,7 +14,10 @@
     <body>
     <div class = kitchen_layout>
     <div id="ingredients">
-    <button v-on:click="switchLang()" class="language" id="languageStock">{{ uiLabels.language }}</button>
+    <div style="text-align:center;">
+        <button class="newLanguage" v-on:click="switchLang('se')"><img id=SweImg src="/images/Sweden.png"></button>
+        <button class="newLanguage" v-on:click="switchLang('en')"><img id=UkImg src="/images/United-Kingdom.png"></button>
+    </div>
     <br>
     <br>
     <button v-on:click="ShowStartpage()" class=backBtn ><img src = http://simpleicon.com/wp-content/uploads/arrow-17.png width = 100% ></button>
