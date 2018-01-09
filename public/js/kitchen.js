@@ -29,15 +29,9 @@ Vue.component('order-item-to-prepare', {
           </button>\
          </div>',
     methods: {
-    //orderDone: function () {
-    //this.$emit('done');
-
     orderInMade: function(){
-    this.$emit('in-made');
+        this.$emit('in-made');
     }
-    //cancelOrder: function () {
-    //this.$emit('cancel');
-
     }
   });
 
@@ -58,11 +52,20 @@ var vm = new Vue({
     unmarkInMade: function(orderid){
       socket.emit("notInMade", orderid);
     },
-
+    undoCancel: function(orderid){
+        socket.emit("undoCancelOrder", orderid);
+        window.location = 'http://localhost:3000/kitchen';
+    },
+    wantToCancel: function (orderid){
+        socket.emit("wantCancel", orderid); 
+        window.location = 'http://localhost:3000/kitchen';
+        
+    },
+                            
     ShowHistory: function(){
       document.getElementById("finishedOrder").style.display ="block";
       document.getElementById("start_page").style.display = "none";
-    document.getElementById("Hist_Ingred").style.display = "none";
+      document.getElementById("Hist_Ingred").style.display = "none";
 
     },
     ShowIngredients: function(){
@@ -73,21 +76,16 @@ var vm = new Vue({
     ShowStartpage: function(){
       document.getElementById("finishedOrder").style.display ="none";
       document.getElementById("start_page").style.display = "block";
-        document.getElementById("Hist_Ingred").style.display = "block";
-      
-    },
-    popup: function(){
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
-}
+      document.getElementById("Hist_Ingred").style.display = "block"; 
+    }
   }
 });
 
 Vue.component('order-item-to-prepare-in-made', {
   props: ['uiLabels', 'order', 'orderId', 'lang'],
   template: '<div class = style_orders_inQueue>\
-           <button v-on:click="cancelOrder" class = ArrowImg>\
-            <img src="https://abcdefghijklmn-pqrstuvwxyz.com/wp-content/themes/o/img/prev.svg" width="30">\
+            <button v-on:click="wantCancel" class = ArrowImg>\
+             <img src="https://abcdefghijklmn-pqrstuvwxyz.com/wp-content/themes/o/img/prev.svg" width="30">\
             <br>{{uiLabels.cancel}}\
           </button>\
             <button v-on:click="notInMade" id="inMade_Drink_items">\
@@ -110,14 +108,46 @@ Vue.component('order-item-to-prepare-in-made', {
     notInMade: function(){
       this.$emit('in-made');
     },
-    cancelOrder: function () {
-      this.$emit('cancel');
+    wantCancel: function () {
+        this.$emit('want-cancel')
     }
   }
 
 });
 
+Vue.component('order-cancel', {
+    props: ['uiLabels', 'order', 'orderId', 'lang'],
+    template: '<div class = cancelOrNot><div class = cancelOrNotOrder >{{uiLabels.CancelWant}}<div v-for="o in order.order">{{orderId}}, {{o["type"]}}<div v-for="ing in o.ingredients" class = orderIngredInfo>{{ ing["ingredient_" + lang] }}</div></div></div>\
+    <button v-on:click="cancelOrder" class = YesNoButton>{{uiLabels.yes}}</button>\
+    <button v-on:click="undoCancelOrder" class = YesNoButton>{{uiLabels.no}}</button></div>',
+    methods: {
+      cancelOrder: function () {
+        this.$emit('cancel')
+    },
+    undoCancelOrder:function(){
+        this.$emit('undo-cancel')
+    }
+    }
+}); 
+
 Vue.component('order-item-done', {
   props: ['uiLabels', 'order', 'orderId', 'lang'],
   template: '<div class = finishedOrderClass > <div v-for="o in order.order">{{orderId}}, {{o["type"]}}</div>\<div v-for="o in order.order"><div v-for="ing in o.ingredients" class = orderIngredInfo>{{ ing["ingredient_" + lang] }}</div></div></div>'
 });
+
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('clock_kitchen').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+};
+
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+};

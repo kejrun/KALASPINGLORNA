@@ -2,7 +2,6 @@
 
 
 body {
-
 	background:  #f0f0f0;
 	font-family: 'Encode Sans Semi Condensed';
 }
@@ -79,6 +78,18 @@ h6{
 	font-size: 20pt;
 }
 
+.h8 {
+	text-align: left;
+	margin: 1%;
+	margin-top: 70px;
+	color: black;
+	text-transform: uppercase;
+	letter-spacing: 2pt;
+	position: relative;
+	font-size: 40pt;
+	text-shadow: 1px 1px gray;
+}
+
 ::-webkit-scrollbar {
 	-webkit-appearance: none;
 	width: 7px;
@@ -125,7 +136,7 @@ a {
 	text-decoration: none;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	font-size: 12pt;
+	font-size: 18pt;
 }
 
 .homebutton {
@@ -204,7 +215,7 @@ a {
 /*******************************************************************************/
 /*******************************************************************************/
 
-/*rätt storlek på kitchen sidan*/
+/*The size for all pages on kitchen*/
 .kitchen_layout{
 	height: 1024px;
 	width: 768px;
@@ -212,7 +223,7 @@ a {
 
 .language{
 	border: none;
-	margin-top: 5%;
+	margin-top: 10px;
 	color: white;
 	font-size: 12pt;
 	background-color: #777;
@@ -231,7 +242,7 @@ a {
 	margin-left: 45%;
 }
 
-/*Layout och scrollbar for ingredients på ingredientspage, dvs. där man kan se och ändra lagersaldo*/
+/*Layout and scrollbar for ingredients on ingredientspage, i.e. where kitchen can see and change the stock*/
 
 #ingredients{
 	position: absolute;
@@ -239,13 +250,11 @@ a {
 	display: table;
 	height: 102.4px;
 	width: 768px;
-
 }
+
 #ingredients_layout{
-	height: 768px;
+	height: 670px;
 	width: 768px;
-	left: 2%;
-	right: 2%;
 	position: absolute;
 	overflow-y: scroll;
 }
@@ -292,6 +301,7 @@ a {
 	display: table;
 	clear: both;
 }
+
 .MinusPlusButtons {
 	width: 40px;
 	height: 30px;
@@ -302,6 +312,7 @@ a {
 	background-color: #9ea0a3;
 	cursor:pointer;
 }
+
 #counterStock{
 	padding-left: 15px;
 	padding-right: 15px;
@@ -313,7 +324,6 @@ a {
 }
 
 /*all headers*/
-
 .stockHeaders{
 	margin-top: 20px;
 	margin-bottom:20px;
@@ -330,14 +340,12 @@ a {
 .stockList{
 	margin-top: 20px;
 	position: relative;
-
 }
 
 /*om en ingrediens håller på att ta slut så ändras bakgrundsfärgen*/
 #stocklimited{
 	color:#e00620;
 	font-weight: bold;
-
 }
 
 /*the single headers*/
@@ -352,6 +360,7 @@ a {
 	clear: both;
 }
 
+/*Layout for finished order page*/
 #finishedOrder{
 	display: none;
 	height: 80%;
@@ -363,7 +372,6 @@ a {
 .finishedOrderClass {
 	padding: 6px;
 	text-transform: uppercase;
-
 }
 
 #refillbtnID{
@@ -371,8 +379,7 @@ a {
 	display: table;
 	margin: 0 auto;
 	width: 768px;
-	height: 102.4px;
-	top: 950px;
+	top: 930px;
 }
 
 #refillbtn {
@@ -391,8 +398,6 @@ a {
 	border-radius: 15px;
 }
 
-
-
 .backBtn {
 	position:absolute;
 	left: 3%;
@@ -406,18 +411,17 @@ a {
 	width: 70px;
 }
 
-/* start_page på kitche view*/
-
+/*Start page on kitchen view, where all orders appears*/
 #start_page{
 	display: table;
 	margin: 0 auto;
-	height: 820px;
+	height: 650px;
 	width: 600px;
 }
 
 #clock_kitchen{
 	text-align: right;
-	margin: 10px;
+	padding: 10px;
 	font-size: 20pt;
 }
 
@@ -425,8 +429,7 @@ a {
 	text-align: center;
 	margin:auto;
 	font-family: 'Encode Sans Semi Condensed';
-	height: 1024px;
-
+	height: 978px;
 }
 
 .style_orders_inQueue{
@@ -436,60 +439,47 @@ a {
 	margin-bottom: 20px;
 }
 
+#OrdersQueue{
+	height: 680px;
+	margin: 0 auto;
+	overflow-y: scroll;
+	margin-bottom: 20px;
+}
+
 .OrdersQueue{
 	height: 768px;
 	margin: 0 auto;
 	overflow-y: scroll;
-
 }
 
-/*Layout för knappar på staff view och kösidan*/
-.ArrowImg {
-	text-align: center;
-	background-color: Transparent;
-	background-repeat:no-repeat;
-	border: none;
-	cursor:pointer;
-	overflow: hidden;
-	outline:none;
-	position:relative;
-	font-size: 13pt;
-	bottom: 30%;
-	font-family: 'Encode Sans Semi Condensed';
-	margin: 0 auto;
-	width: 55px;
-
-}
-/*Layout för knappen som ej går att trycka på*/
+/*Layout for the button that each order appears on, and the arrows on the side of each button*/
 .ArrowImg_dis {
-	text-align: center;
 	background-color: Transparent;
-	background-repeat:no-repeat;
 	border: none;
 	cursor:pointer;
-	overflow: hidden;
-	outline:none;
 	opacity: 0.2;
 	font-size: 13pt;
-	position:relative;
-	bottom: 30%;
 	font-family: 'Encode Sans Semi Condensed';
 	margin: 0 auto;
 	width: 55px;
 }
 
-
-
-
+.ArrowImg {
+	background-color: Transparent;
+	border: none;
+	cursor:pointer;
+	font-size: 13pt;
+	bottom: 30%;
+	font-family: 'Encode Sans Semi Condensed';
+	margin: 0 auto;
+	width: 55px;
+}
 
 #style-orderbutton{
 	text-transform: uppercase;
 	display: grid;
 	height: auto;
-	top: 10%;
-	width: 100%;
 	grid-template-columns: repeat(2, auto);
-	grid-gap:0.5em;
 	font-size: 1.3em;
 	position: relative;
 	margin: 5%;
@@ -505,22 +495,16 @@ a {
 	display: grid;
 }
 
-/* Code for Ingredients and history buttons on staff view */
 #Drink_items{
-	text-align: center;
-	position: relative;
 	background-color:#F0E6F0;
 	border: 2px solid black;
 	width: 400px;
 	min-height: 130px;
 	border-radius: 10px;
 	margin: 0 auto;
-
 }
 
 #inMade_Drink_items{
-	text-align: center;
-	position: relative;
 	background-color: #eda6a6;
 	border: 2px solid black;
 	width: 400px;
@@ -529,12 +513,52 @@ a {
 	margin: 0 auto;
 }
 
+/*Code for pop-up window when kitchen has pressed on cancel button*/
+
+#cancelDiv{
+	z-index: 2;
+	margin: 0 auto;
+	position: absolute;
+}
+
+.cancelOrNotOrder{
+	display: grid;
+	grid-template-rows: repeat(3, auto);
+    padding: 40px;
+    grid-gap: 10px;
+	
+}
+
+.cancelOrNot{
+    height: 600px;
+	width: 500px;
+	background-color: #d1d1d1;
+	border-radius: 20px;
+	margin: 0 auto;
+	z-index: 2;
+	margin-left: 20px;
+	font-size: 25pt;
+    padding: 30px;   
+}
+
+.YesNoButton{
+	background-color:#777;
+	color:white;
+	border: none;
+	width: 180px;
+	height: 100px;
+	font-size: 25pt;
+	font-family: 'Encode Sans Semi Condensed';
+	border-radius: 5px;
+    margin: 20px;
+	cursor:pointer;
+}
+
+/* Code for Ingredients and history buttons on staff view */
 #Hist_Ingred{
-	bottom: 20px;
-	height: 204px;
+	height: 150px;
 	display: table;
 	margin: 0 auto;
-
 }
 
 .Hist_Ingred_Button {
@@ -542,7 +566,7 @@ a {
 	color:white;
 	border: none;
 	width: 300px;
-	height: 130px;
+	height: 120px;
 	font-size: 20pt;
 	font-family: 'Encode Sans Semi Condensed';
 	border-radius: 10px;
@@ -584,19 +608,18 @@ a {
 /* Toggle this class - hide and show the popup */
 .popup .show {
 	visibility: visible;
-
 }
 
 .yesNoDiv{
 	padding-top: 40%;
 }
+
 .yesNoButtons{
 	width: 50pt;
 	height: 40pt;
 	cursor:pointer;
 	border-radius: 10px;
 }
-
 
 /*********************THIS IS THE CSS FOR THE ORDERING VIEW*********************/
 /*******************************************************************************/
@@ -607,9 +630,65 @@ input[type="checkbox"]{
 	display: none;
 	visibility: hidden;
 }
+
+/* Show the home-page as default*/
+#home-page{
+	display: block;
+}
+
 /********************CHOOSE YOUR OWN********************/
 
-/*Creating a grid containing one grid with the categories in one column, and "My drink" in the other column */
+/*pris, ingrediens och plus/minusknappar*/
+.ingColumn{
+	float:left;
+	width: 37%;
+}
+
+.costColumn{
+	float:left;
+	width: 15%;
+}
+
+.mpColumn {
+	float:right;
+	width: 48%;
+	text-align: right;
+	padding: 0;
+}
+
+.ingredient {
+	border: 1px solid #777;
+	padding: 0.8em;
+}
+
+.ingredient:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+#ingredientsPlusButton {
+	width: 40px;
+	height: 30px;
+	font-size: 16pt;
+	border-radius: 5px;
+	box-shadow: 2px gray;
+	background-color: white;
+	cursor:pointer;
+}
+
+#ingredientsMinusButton {
+	width: 40px;
+	height: 30px;
+	font-size: 16pt;
+	border-radius: 5px;
+	box-shadow: 2px gray;
+	background-color: white;
+	cursor:pointer;
+}
+
+/*Creating a grid containing one grid with the categories in one column,
+and "My drink" in the other column */
 
 #categories-drink{
 	display: grid;
@@ -619,22 +698,21 @@ input[type="checkbox"]{
 	"categories myDrink"
 	". continueButtons";
 	grid-gap:1em;
-	margin-top: 4%;
 }
 
 #continueButtons{
-    grid-area: continueButtons;
+	grid-area: continueButtons;
 }
 
 #continue{
-    font-family: 'Encode Sans Semi Condensed';
+	font-family: 'Encode Sans Semi Condensed';
 	border: none;
 	width: 98%;
 	height: 60px;
 	justify-self: end;
 	font-size: 20px;
 	background-color: #306d31;
-    margin-top: 0.5em;
+	margin-top: 0.5em;
 	box-shadow: 1px 1px 1px 1px gray;
 	border-radius: 8px;
 }
@@ -647,7 +725,7 @@ input[type="checkbox"]{
 	justify-self: end;
 	font-size: 20px;
 	background-color: #306d31;
-    margin-top: 0.5em;
+	margin-top: 0.5em;
 	box-shadow: 1px 1px 1px 1px gray;
 	border-radius: 8px;
 }
@@ -668,7 +746,7 @@ input[type="checkbox"]{
 	width: 100%;
 	grid-template-columns: repeat(4, auto);
 	grid-area: categories;
-	grid-gap: 1em;
+	grid-gap: 0.5em;
 	z-index: 5;
 }
 
@@ -680,11 +758,12 @@ input[type="checkbox"]{
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(4, auto);
-	grid-gap: 1em;
+	grid-gap: 0.5em;
 	z-index: 5;
 }
 
 #showDrink{
+	margin-top: -80px;
 	overflow-y: scroll;
 	background-color: #dbdbdb;
 	grid-column-start:2;
@@ -726,11 +805,12 @@ input[type="checkbox"]{
 }
 
 .sizeButton{
+	margin: 1%;
 	font-family: 'Encode Sans Semi Condensed';
 	width: 90px;
 	height: 90px;
-	border-style: solid;
-	border-width: 2px;
+	border: none;
+	box-shadow: 0px 2px 2px 0px gray;
 	border-radius: 5px;
 }
 
@@ -750,15 +830,19 @@ input[type="checkbox"]{
 }
 
 .ingredients-list-text{
-	max-height: 450px;
+	max-height: 473px;
 	width: 100%;
+	min-width: 250px;
 	overflow-y: scroll;
 	box-shadow: 0px 4px 2px 0px gray;
 }
 
-.ingredient {
-	border: 1px solid #777;
-	padding: 0.8em;
+.extras-list-text{
+	max-height: 473px;
+	width: 100%;
+	min-width: 250px;
+	overflow-y: scroll;
+	box-shadow: 0px 4px 2px 0px gray;
 }
 
 #ProgressBarChooseYourOwn{
@@ -824,13 +908,9 @@ input[type="checkbox"]{
 
 /******************** END CHOOSE YOUR OWN********************/
 
-#home-page{
-	display: block;
-}
 
-/********************PREMADE********************/
+/********************PREMADE***********************/
 
-/* Code for Premade page */
 #sizeButtonsPreMade{
 	display: flex;
 	justify-content: space-evenly;
@@ -886,8 +966,6 @@ input[type="checkbox"]{
 	background-color: #f0f0f0;
 }
 
-/********************END PREMADE********************/
-
 /********************MY ORDER********************/
 
 #myOrder-text{
@@ -932,9 +1010,7 @@ input[type="checkbox"]{
 	border-radius: 8px;
 }
 
-/********************END MY ORDER********************/
-
-/********************checkOut********************/
+/********************CHECKOUT********************/
 #placeOrderButton{
 	grid-column-start:2;
 	margin-left: 35%;
@@ -951,8 +1027,8 @@ input[type="checkbox"]{
 	box-shadow: 1px 1px 1px 1px gray;
 	border-radius: 8px;
 }
-/********************END checkOut********************/
 
+/********************TABBUTTONS********************/
 /* Style the tab buttons */
 /* Tab for choose chooseYourOwn */
 .tablink {
@@ -992,6 +1068,7 @@ input[type="checkbox"]{
 .tablink:hover {
 	background-color: #777;
 }
+
 .tablinkPM:hover {
 	background-color: #777;
 }
@@ -1006,14 +1083,7 @@ input[type="checkbox"]{
 	padding: 50px;
 }
 
-/* Style the line between the tabs */
-.styleHR {
-	margin-top: 20px;
-	border-top: 3px;
-	z-index: 0;
-}
-
-/* Notificationbubble */
+/**************** Notificationbubble **************/
 #notifybubble{
 	display: none;
 	position: absolute;
@@ -1062,12 +1132,16 @@ input[type="checkbox"]{
 		height: 60px;
 	}
 
+	a {
+		font-size: 12pt;
+	}
+
 	.LanguageButton{
 		margin-top: 7%;
 	}
 
 	#LangIMG{
-		width: 10%
+		width: 15%
 	}
 
 	#ingredientsBarText{
@@ -1128,6 +1202,7 @@ input[type="checkbox"]{
 	}
 
 	#showDrink{
+		margin-top: 0;
 		padding-top: 0;
 		padding-bottom: 1%;
 		height:70%;
@@ -1197,6 +1272,10 @@ input[type="checkbox"]{
 		height: 170px;
 	}
 
+	#continue{
+		margin-top: 0;
+	}
+
 	#myorderbutton{
 		display: block;
 		position: fixed;
@@ -1261,4 +1340,12 @@ input[type="checkbox"]{
 
 	#checkOut-page{
 		padding-top: 25px;
+	}
+
+	#labelExtra{
+		display: none !important;
+	}
+
+	#labelIng{
+		display: none !important;
 	}

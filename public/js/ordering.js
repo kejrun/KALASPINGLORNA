@@ -6,13 +6,14 @@ var totalIngredientsCounter = 0;
 Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
   template: '<div class="ingredient">\
-  <button v-on:click="minusIngredient(item)" id="ingredientsMinusButton" class="ingredientsMinusButton" disabled>-</button>\
+  <div class= "ingColumn">{{item["ingredient_"+ lang]}}</div>\
+    <div class="costColumn">  {{ item["price_" + type] }} :- </div>\
+<div class= "mpColumn">\
+<button v-on:click="minusIngredient(item)" id="ingredientsMinusButton"  class="ingredientsMinusButton" disabled>-</button>\
   <label class="counterID">{{ counter }}</label>\
-  <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" class="ingredientsPlusButton">+</button>\
-  <label>\
-  {{item["ingredient_"+ lang]}} {{ item["price_" + type] }} :- \
-  </label>\
+  <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" class="ingredientsPlusButton">+</button>\</div>\
   </div>',
+
 
   data:
     function () {
@@ -659,6 +660,8 @@ var vm = new Vue({
       document.getElementById("checkOut-page").style.display = "none";
       document.getElementById("ProgressBarPreMade").style.display = "none";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
+      document.getElementById("labelExtra").style.display = "none";
+      document.getElementById("labelIng").style.display = "block";
     },
 
     preMade: function () {
@@ -695,6 +698,8 @@ var vm = new Vue({
       document.getElementById("addToMyOrder").style.display = "block";
       document.getElementById("continue").style.display = "none";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
+      document.getElementById("labelIng").style.display = "none";
+      document.getElementById("labelExtra").style.display = "block";
       categoriesDrink = document.getElementById("categories-drink");
       extrasCategories = document.getElementById("extrasCategories");
       categoriesDrink.appendChild(extrasCategories);
@@ -706,8 +711,10 @@ var vm = new Vue({
       document.getElementById("category-list").style.display ="grid";
       document.getElementById("addToMyOrder").style.display = "none";
       document.getElementById("continue").style.display = "block";
+      document.getElementById("labelIng").style.display = "block";
+      document.getElementById("labelExtra").style.display = "none";
     },
-      
+
     alertFinishedOrder: function(){
         var thankYouText = this.uiLabels.finishedOrder;
         alert(thankYouText);

@@ -31,7 +31,7 @@
   "vegetable" : "Vegetables",
   "berry" : "Berries",
   "liquid" : "Liquids",
-  "nut" : "Nuts and seeds",
+  "nut" : "Nuts&seeds",
   "flavour" : "Flavours",
   "powder" : "Powders",
   "other" : "Others",
@@ -44,6 +44,7 @@
   "yes": "Yes",
   "no": "No",
   "chosenDrinks": "Your chosen drinks: ",
-  "limited":"Limited stock balance",
+    "limited":"Limited stock balance",
+    "CancelWant":"Are you sure you want to cancel order:",
   "finishedOrder": "Thank you for your order!"
 }
