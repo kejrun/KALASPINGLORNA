@@ -188,27 +188,33 @@ a {
 }
 
 
-/* Set style for change language button and flag, still working on it.... */
-.LanguageButton{
-	border: none;
-	margin-top: 3%;
-	background-color: #810051;
-	width: 80px;
-	text-align: center;
-	border-radius: 5px;
-}
-
-.LanguageButton a{
-	color: white;
-	font-size: 10pt;
-}
-
-.LanguageButton:hover {
-	background-color: #777;
-}
+/* Set style for change language button and flag*/
 
 #LanguageDiv{
 	display: inline;
+}
+
+.newLanguage{
+	height: 40px;
+	width: 102px;
+	margin-top: 3%;
+	border: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+#SweImg{
+	height: 40px;
+	width:50px;
+	padding-right: 1px;
+	float:left;
+}
+
+#UkImg{
+	height: 40px;
+	width:50px;
+	padding-left: 1px;
+	float:right;
 }
 
 /**********************THIS IS THE CSS FOR THE KITCHEN VIEW*********************/
@@ -232,6 +238,8 @@ a {
 	text-align: center;
 	border-radius: 5px;
 	cursor: pointer;
+	box-shadow: 0.3px 0.3px 3px 1px gray;
+	font-family: 'Encode Sans Semi Condensed';
 }
 
 .language:hover {
@@ -363,16 +371,27 @@ a {
 /*Layout for finished order page*/
 #finishedOrder{
 	display: none;
-	height: 80%;
+	height: 900px;
 	margin: 0 auto;
+}
+
+.itemsFinishedCancelled{
+	height: 380px;
 	overflow-y: scroll;
+	width: 400px;
+	margin: 0 auto;
+	margin-bottom: 40px;
+	border-radius: 10px;
+	box-shadow: 1px 1px 7px 3px #aaaaaa;
 }
 
 /*to make every order seperate, i.e. this is every unique order that is done*/
 .finishedOrderClass {
 	padding: 6px;
 	text-transform: uppercase;
+
 }
+
 
 #refillbtnID{
 	position: absolute;
@@ -386,7 +405,7 @@ a {
 	font-family: 'Encode Sans Semi Condensed';
 	border: none;
 	text-transform: uppercase;
-	background-color: #64c47d;
+	background-color: forestgreen;
 	padding: 15px 32px;
 	font-size: 20pt;
 	cursor: pointer;
@@ -415,14 +434,18 @@ a {
 #start_page{
 	display: table;
 	margin: 0 auto;
-	height: 650px;
+	height: 750px;
 	width: 600px;
+	margin-top: 15px;
 }
 
 #clock_kitchen{
 	text-align: right;
 	padding: 10px;
 	font-size: 20pt;
+	background-color: #810051;
+	color: white;
+	box-shadow: 0px 2px 2px 0px gray
 }
 
 #orders {
@@ -440,10 +463,11 @@ a {
 }
 
 #OrdersQueue{
-	height: 680px;
+	height: 650px;
 	margin: 0 auto;
 	overflow-y: scroll;
-	margin-bottom: 20px;
+	margin-bottom: 40px;
+	margin-top: 40px;
 }
 
 .OrdersQueue{
@@ -490,27 +514,24 @@ a {
 	display: grid;
 }
 
-.orderIngredInfo{
-	position:relative;
-	display: grid;
-}
-
 #Drink_items{
-	background-color:#F0E6F0;
+	background-color:#d3d3d3; /*d3e8ce*/
 	border: 2px solid black;
 	width: 400px;
 	min-height: 130px;
 	border-radius: 10px;
 	margin: 0 auto;
+	box-shadow: 0.5px 0.5px 2px 1px gray;
 }
 
 #inMade_Drink_items{
-	background-color: #eda6a6;
+	background-color: #d88272;
 	border: 2px solid black;
 	width: 400px;
 	min-height: 130px;
 	border-radius: 10px;
 	margin: 0 auto;
+	box-shadow: 0.5px 0.5px 2px 1px gray;
 }
 
 /*Code for pop-up window when kitchen has pressed on cancel button*/
@@ -519,26 +540,36 @@ a {
 	z-index: 2;
 	margin: 0 auto;
 	position: absolute;
+	margin-top: 20px;
 }
+
 
 .cancelOrNotOrder{
 	display: grid;
 	grid-template-rows: repeat(3, auto);
-    padding: 40px;
-    grid-gap: 10px;
-
+	padding: 30px;
+	grid-gap: 10px;
 }
 
 .cancelOrNot{
-    height: 600px;
-	width: 500px;
+	height: 600px;
+	width: 540px;
 	background-color: #d1d1d1;
 	border-radius: 20px;
 	margin: 0 auto;
 	z-index: 2;
-	margin-left: 20px;
 	font-size: 25pt;
-    padding: 30px;
+	padding: 30px;
+	box-shadow: 1px 1px 10px 3px grey;
+}
+
+.orderIngredInfo{
+	position:relative;
+	display: grid;
+}
+.orderIngredCancel{
+	height: 300px;
+	overflow-y: scroll;
 }
 
 .YesNoButton{
@@ -550,15 +581,18 @@ a {
 	font-size: 25pt;
 	font-family: 'Encode Sans Semi Condensed';
 	border-radius: 5px;
-    margin: 20px;
+	margin: 20px;
 	cursor:pointer;
+	box-shadow: 0.3px 0.3px 3px 1px #303030;
 }
 
 /* Code for Ingredients and history buttons on staff view */
 #Hist_Ingred{
+	top: 900px;
 	height: 150px;
 	display: table;
 	margin: 0 auto;
+
 }
 
 .Hist_Ingred_Button {
@@ -572,6 +606,7 @@ a {
 	border-radius: 10px;
 	margin: 10px;
 	cursor:pointer;
+	box-shadow: 0.5px 0.5px 4px 1px gray;
 }
 
 .Hist_Ingred_Button:hover {
@@ -606,14 +641,14 @@ input[type="checkbox"]{
 .ingColumn{
 	float:left;
 	width: 40%;
-    text-align: left;
+	text-align: left;
 }
 
 
 .costColumn{
 	float:left;
 	width: 14%;
-    text-align: right;
+	text-align: right;
 }
 
 .mpColumn {
@@ -644,6 +679,14 @@ input[type="checkbox"]{
 	cursor:pointer;
 }
 
+#ingredientsPlusButton:disabled,
+#ingredientsPlusButton[disabled]{
+	border: lightgrey;
+	color: #a9abad;
+	background-color: #d6d7d8;
+}
+
+
 #ingredientsMinusButton {
 	width: 40px;
 	height: 30px;
@@ -656,9 +699,11 @@ input[type="checkbox"]{
 
 #ingredientsMinusButton:disabled,
 #ingredientsMinusButton[disabled]{
-    border: lightgrey;
-    color: lightgrey;
+	border: lightgrey;
+	color: #a9abad;
+	background-color: #d6d7d8;
 }
+
 
 
 
@@ -686,14 +731,21 @@ and "My drink" in the other column */
 	font-family: 'Encode Sans Semi Condensed';
 	border: none;
 	float: right;
-	width: 21.5%;
+	width: 23%;
 	height: 70px;
 	font-size: 20px;
-	background-color: #306d31;
+	background-color: forestgreen;
+	color: white;
 	box-shadow: 1px 1px 1px 1px gray;
 	border-radius: 8px;
-	margin-right: 40px;
+	margin-right: 18px;
 	margin-top: -30px;
+}
+
+#continue:disabled,
+#continue[disabled]{
+	background-color: #306d31;
+	color: gray;
 }
 
 #addToMyOrder{
@@ -701,14 +753,21 @@ and "My drink" in the other column */
 	font-family: 'Encode Sans Semi Condensed';
 	border: none;
 	float: right;
-	width: 21.5%;
+	width: 23%;
 	height: 70px;
 	font-size: 20px;
-	background-color: #306d31;
+	background-color: forestgreen;
+	color: white;
 	box-shadow: 1px 1px 1px 1px gray;
 	border-radius: 8px;
-	margin-right: 40px;
+	margin-right: 18px;
 	margin-top: -30px;
+}
+
+#addToMyOrder:disabled,
+#addToMyOrder[disabled]{
+	background-color: #306d31;
+	color: gray;
 }
 
 #resetCurrentDrink{
@@ -788,7 +847,7 @@ and "My drink" in the other column */
 .sizeButton{
 	margin: 1%;
 	font-family: 'Encode Sans Semi Condensed';
-	width: 90px;
+	width: 100px;
 	height: 90px;
 	border: none;
 	box-shadow: 0px 2px 2px 0px gray;
@@ -858,14 +917,29 @@ and "My drink" in the other column */
 	color: white;
 }
 
+#cancelOrderOnHeader{
+	position: left;
+	display: grid;
+	font-family: 'Encode Sans Semi Condensed';
+	width: 80px;
+	height: 42px;
+	border: none;
+	font-size: 16px;
+	background-color: white;
+	box-shadow: 1px 1px 1px 1px gray;
+	border-radius: 8px;
+	margin-top: 24px;
+	margin-left: 24px;
+}
+
 #ingredientsBar{
-	width: 80%;
+	width: 70%;
 	height: 42px;
 	background-color: #bbb;
 	border-radius: 8px;
-	top: 50%;
+	margin-top: -41px;
 	left: 50%;
-	transform: translate(-50%,-50%);
+	transform: translate(-50%);
 }
 
 #ingredientsBarProgress{
@@ -892,6 +966,10 @@ and "My drink" in the other column */
 
 
 /********************PREMADE***********************/
+#preMade-page{
+	padding-top: 100px;
+	overflow-y: scroll;
+}
 
 #sizeButtonsPreMade{
 	display: flex;
@@ -902,8 +980,8 @@ and "My drink" in the other column */
 
 .sizeButtonPreMade{
 	font-family: 'Encode Sans Semi Condensed';
-	width: 90px;
-	height: 90px;
+	width: 100px;
+	height: 100px;
 	border-style: solid;
 	border-width: 2px;
 	border-radius: 5px;
@@ -949,6 +1027,23 @@ and "My drink" in the other column */
 }
 
 /********************MY ORDER********************/
+#myOrder-page{
+	padding-top: 100px;
+}
+
+#cancelOrder{
+	position: left;
+	display: grid;
+	font-family: 'Encode Sans Semi Condensed';
+	width: 80px;
+	height: 42px;
+	border: none;
+	font-size: 16px;
+	background-color: white;
+	margin-top: 0.5em;
+	box-shadow: 1px 1px 1px 1px gray;
+	border-radius: 8px;
+}
 
 #myOrder-text{
 	overflow-y: scroll;
@@ -992,7 +1087,17 @@ and "My drink" in the other column */
 	border-radius: 8px;
 }
 
+#proceedToCheckout:disabled,
+#proceedToCheckout[disabled]{
+	background-color: #306d31;
+	color: gray;
+}
+
 /********************CHECKOUT********************/
+#checkOut-page{
+	padding-top: 100px;
+}
+
 #placeOrderButton{
 	grid-column-start:2;
 	margin-left: 35%;
@@ -1008,6 +1113,12 @@ and "My drink" in the other column */
 	margin-top: 0.5em;
 	box-shadow: 1px 1px 1px 1px gray;
 	border-radius: 8px;
+}
+
+#placeOrderButton:disabled,
+#placeOrderButton[disabled]{
+	background-color: #306d31;
+	color: gray;
 }
 
 /********************TABBUTTONS********************/
@@ -1271,7 +1382,7 @@ and "My drink" in the other column */
 		display: none;
 		position: center;
 		font-family: 'Encode Sans Semi Condensed';
-		font-size: 14px;
+		font-size: 16px;
 		height: 40px;
 	}
 
@@ -1284,8 +1395,37 @@ and "My drink" in the other column */
 		display: none;
 		position: center;
 		font-family: 'Encode Sans Semi Condensed';
-		font-size: 14px;
+		font-size: 16px;
 		height: 40px;
+	}
+
+	#cancelOrder{
+		position: left;
+		display: grid;
+		font-family: 'Encode Sans Semi Condensed';
+		width: 50px;
+		height: 30px;
+		border: none;
+		font-size: 12px;
+		background-color: white;
+		margin-top: 0.5em;
+		margin-left: 0.5em;
+		box-shadow: 1px 1px 1px 1px gray;
+		border-radius: 8px;
+	}
+
+	#cancelOrderOnHeader{
+		display: none;
+	}
+
+	#ingredientsBar{
+		width: 70%;
+		height: 42px;
+		background-color: #bbb;
+		border-radius: 8px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, 50%);
 	}
 
 	#myorderbutton{
@@ -1298,7 +1438,7 @@ and "My drink" in the other column */
 		position: center;
 		margin-left: 12%;
 		font-family: 'Encode Sans Semi Condensed';
-		font-size: 14px;
+		font-size: 16px;
 		height: 40px;
 	}
 
@@ -1307,7 +1447,7 @@ and "My drink" in the other column */
 		display: block;
 		position: center;
 		font-family: 'Encode Sans Semi Condensed';
-		font-size: 14px;
+		font-size: 16px;
 		height: 40px;
 	}
 
@@ -1316,7 +1456,7 @@ and "My drink" in the other column */
 		display: block;
 		position: center;
 		font-family: 'Encode Sans Semi Condensed';
-		font-size: 14px;
+		font-size: 16px;
 		height: 35px;
 	}
 

@@ -168,11 +168,7 @@ function resetChooseYourOwn(){
     resetIngredientsBar();
     resetPlusMinusButtons();
     document.getElementById("addToMyOrder").disabled = true;
-    document.getElementById("addToMyOrder").style.color = "gray";
-    document.getElementById("addToMyOrder").style.backgroundColor = "#306d31";
     document.getElementById("continue").disabled = true;
-    document.getElementById("continue").style.color = "gray";
-    document.getElementById("continue").style.backgroundColor = "#306d31";
     document.getElementById("resetCurrentDrink").disabled = true;
 }
 
@@ -213,7 +209,7 @@ var leaves = $(".leaves"),
     tl;
 
 tl = new TimelineMax();
-tl.timeScale(0.4).seek(0);
+tl.timeScale(0.4).repeat(Infinity);
 tl.set(orange, {transform: "translateY(-120px)"})
 tl.to(orange, 1, {transform: "translateY(0px)", ease:Bounce.easeOut})
   .to(piece4, 0.3, {rotation:-20, ease:Bounce.easeOut,                transformOrigin:"center bottom"}, "split")
@@ -255,6 +251,7 @@ var vm = new Vue({
     liquids: [],
     extras: [],
     ingredientsInCategoryOrder: [],
+    finishedOrderInfo: [],
     uniqueDrinksInMyOrder: [],
     yourDrinkNumber: 0,
     volume: 0,
@@ -263,9 +260,11 @@ var vm = new Vue({
     orderCounterValue: 0
   },
   created: function() {
-    socket.on("orderNumber",function(orderNumber) {
-      //alert("Your ordernumber is " + orderNumber);
-    });
+
+      console.log("alert" + this.finishedOrderInfo);
+
+    //alert(orderInfo);
+
   },
   methods: {
 
@@ -323,11 +322,7 @@ var vm = new Vue({
 
       if (totalIngredientsCounter == 5){
         document.getElementById("addToMyOrder").disabled = false;
-        document.getElementById("addToMyOrder").style.color = "white";
-        document.getElementById("addToMyOrder").style.backgroundColor = "forestgreen";
         document.getElementById("continue").disabled = false;
-        document.getElementById("continue").style.color = "white";
-        document.getElementById("continue").style.backgroundColor = "forestgreen";
       }
       this.pricesSmall.push(item.price_s);
       this.pricesMedium.push(item.price_m);
@@ -355,11 +350,7 @@ var vm = new Vue({
 
       if (!item.extra){
         document.getElementById("addToMyOrder").disabled = true;
-        document.getElementById("addToMyOrder").style.color = "gray";
-        document.getElementById("addToMyOrder").style.backgroundColor = "#306d31";
         document.getElementById("continue").disabled = true;
-        document.getElementById("continue").style.color = "gray";
-        document.getElementById("continue").style.backgroundColor = "#306d31";
       }
 
       if (this.chosenIngredients.length == 0){
@@ -467,6 +458,9 @@ var vm = new Vue({
       };
       this.uniqueDrinksInMyOrder.push(uniqueDrink);
 
+     document.getElementById("proceedToCheckout").disabled = false;
+     document.getElementById("placeOrderButton").disabled = false;
+
      //show the notifybubble
      document.getElementById("notifybubble").style.display = "block";
      document.getElementById("notifybubblePM").style.display = "block";
@@ -478,10 +472,14 @@ var vm = new Vue({
      drink.push(this.myOrder[i]);
      socket.emit('order', {order: drink});
      }
+
+     //kolla här: flytta dessa rader till funktion som nollställer hela sidan
+     document.getElementById("proceedToCheckout").disabled = true;
+     document.getElementById("placeOrderButton").disabled = true;
      this.yourDrinkNumber = 0;
      this.myDrinks = [];
-     this.myOrder=[];
      this.totalPrice = 0;
+
    },
 
     //this function resets EVERYTHING on the choose your own page
@@ -586,6 +584,9 @@ var vm = new Vue({
       this.price = 0;
       this.type = '';
       this.chosenIngredients = [];
+
+      document.getElementById("proceedToCheckout").disabled = false;
+      document.getElementById("placeOrderButton").disabled = false;
 
       //show the notifybubble
       document.getElementById("notifybubble").style.display = "block";
@@ -717,9 +718,26 @@ var vm = new Vue({
       document.getElementById("labelExtra").style.display = "none";
     },
 
-    alertFinishedOrder: function(){
+    receiveOrderInfo: function(){
         var thankYouText = this.uiLabels.finishedOrder;
-        alert(thankYouText);
+    socket.on("returnOrderInfo", function(orderNumber,order) {
+
+        var finishedDrink = {
+            orderId: orderNumber,
+            drinkName: order.order[0].name,
+            drinkIngredients: order.order[0].ingredients
+        }
+        vm.finishedOrderInfo.push(finishedDrink);
+        if(vm.finishedOrderInfo.length == vm.myOrder.length)
+            {console.log(vm.finishedOrderInfo);}
+
+
+
+    //alert(orderInfo);
+    });
+
+
+
     }
   }
 
@@ -749,6 +767,8 @@ Vue.component('added-drinks', {
           vm.orderCounterValue += 1;
           vm.myOrder.push(this.order);
 
+          document.getElementById("proceedToCheckout").disabled = false;
+          document.getElementById("placeOrderButton").disabled = false;
       },
 
       minusDrink: function () {
@@ -758,12 +778,17 @@ Vue.component('added-drinks', {
             vm.orderCounterValue -= 1;
           }
 
-          for (var i=0; i < vm.myOrder.length; i++){
-            if(vm.myOrder[i]==this.order){
-                vm.myOrder.splice(i,1);
-                break;
+          for (var i=0; i<vm.myOrder.length; i++){
+              if(vm.myOrder[i]==this.order){
+                  vm.myOrder.splice(i,1);
+                  break;
               }
           }
+
+         if (vm.myOrder.length == 0){
+            document.getElementById("proceedToCheckout").disabled = true;
+            document.getElementById("placeOrderButton").disabled = true;
+         }
       },
     }
 });

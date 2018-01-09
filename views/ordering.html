@@ -41,16 +41,14 @@
       </div>
       <div id="LanguageDiv">
         <div style="text-align:center;">
-          <button class="LanguageButton" v-on:click="switchLang()"><a>{{ uiLabels.language }}</a></button>
-          <br>
-          <img id=LangIMG src="/images/Sweden.png" width="3%" height=auto>
-          <img id=LangIMG src="/images/United-Kingdom.png" width="3%" height=auto>
+          <button class="newLanguage" v-on:click="switchLang()"><img id=SweImg src="/images/Sweden.png"><img id=UkImg src="/images/United-Kingdom.png"></button>
         </div>
       </div>
     </div>
 
     <div id="chooseYourOwn-page" class="tabcontent">
       <div id="fixedHeader">
+          <button id="cancelOrderOnHeader">{{ uiLabels.cancel }}</button>
         <div id="ingredientsBar" class="ingredientsBar">
           <div id="ingredientsBarText">Choose 5 ingredients</div>
           <div id="ingredientsBarProgress"></div>
@@ -184,13 +182,13 @@
 </div>
 
 <div id="preMade-page" class="tabcontent">
+    <button id="cancelOrder">{{ uiLabels.cancel }}</button>
   <h3>{{ uiLabels.preMade }}</h3>
-
-  <div id="sizeButtonsPreMade">
-    <button id="smallCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('s'); markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
-    <button id="mediumCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('m'); markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
-    <button id="largeCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('l'); markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
-  </div>
+<div id="sizeButtonsPreMade">
+            <button id="smallCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('s'); markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
+            <button id="mediumCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('m'); markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
+            <button id="largeCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('l'); markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
+      </div>
 
   <div id="preMade-list">
     <div v-for="preparedDrink in premade">
@@ -290,7 +288,8 @@
 </div>
 
 <div id="myOrder-page" class="tabcontent">
-  <h3>{{ uiLabels.myOrder }}</h3>
+        <button id="cancelOrder">{{ uiLabels.cancel }}</button>
+        <h3>{{ uiLabels.myOrder }}</h3>
   <h4>These are your chosen drinks:</h4>
   <hr>
   <div id="myOrder-text">
@@ -310,11 +309,12 @@
 <br><hr><p class="h7">{{ uiLabels.totalPrice }} {{ totalPrice }} kr</p>
 <div id="myorderbutton">
   <button id=addAnotherDrink v-on:click="openTab('home-page')">{{ uiLabels.addAnotherDrink}}</button>
-  <button id=proceedToCheckout v-on:click="openTab('checkOut-page')">{{ uiLabels.proceedToCheckout}}</button>
+  <button id=proceedToCheckout v-on:click="openTab('checkOut-page')" disabled>{{ uiLabels.proceedToCheckout}}</button>
 </div>
 </div>
 
 <div id="checkOut-page" class="tabcontent">
+    <button id="cancelOrder">{{ uiLabels.cancel }}</button>
   <h3>{{ uiLabels.checkOut }}</h3>
   <tr><th><h4>{{ uiLabels.myOrder }}</h4><hr></th></tr>
   <div id="myOrder-text">
@@ -329,11 +329,12 @@
       :type="type"
       :key="key">
     </drinks-in-order>
+        
   </div>
 </div>
 <br><hr><p class="h7">{{uiLabels.totalPrice}} {{ totalPrice}} kr</p>
 <div id="myorderbutton">
-  <button id=placeOrderButton v-on:click="placeOrder();alertFinishedOrder()">{{ uiLabels.placeOrder}}</button>
+  <button id=placeOrderButton v-on:click="placeOrder();receiveOrderInfo()" disabled>{{ uiLabels.placeOrder}}</button>
 </div>
 </div>
 

@@ -19,7 +19,7 @@
       <button v-on:click="switchLang()" class="language">{{ uiLabels.language }}</button>
       <div id ="start_page">
         <h1>{{ uiLabels.ordersInQueue }}</h1>
-              <div id = cancelDiv>
+        <div id = cancelDiv>
         <order-cancel
             v-for="(order, key) in orders"
             v-if="order.wantOrderCancel  && !order.done"
@@ -33,9 +33,7 @@
             :key="key">
         </order-cancel>
         </div>
-      
         <div id = OrdersQueue>
-    
         <order-item-to-prepare-in-made
             v-for="(order, key) in orders"
             v-if="!order.done && order.inMade"
@@ -68,17 +66,26 @@
     <button v-on:click="ShowStartpage()" class=backBtn ><img src = http://simpleicon.com/wp-content/uploads/arrow-17.png width = 100% ></button>
     <br>
     <div class= Heades_kitchenSide> <h1>{{ uiLabels.ordersFinished }}</h1></div>
+        <div class = itemsFinishedCancelled>
       <order-item-done
         v-for="(order, key) in orders"
-        v-if="order.done"
+        v-if="order.done && !order.cancel"
         :order-id="key"
         :order="order" 
         :lang="lang"
         :type="type"
         :key="key">
-
-      </order-item-done>
- 
+            </order-item-done></div>
+       <div class= Heades_kitchenSide> <h1>{{ uiLabels.ordersCancelled }}</h1></div>
+      <div class = itemsFinishedCancelled> <order-item-done
+        v-for="(order, key) in orders"
+        v-if="order.cancel"
+        :order-id="key"
+        :order="order" 
+        :lang="lang"
+        :type="type"
+        :key="key">
+          </order-item-done></div>
     </div>
 
     <div id = Hist_Ingred>

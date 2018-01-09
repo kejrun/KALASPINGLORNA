@@ -69,6 +69,8 @@ Data.prototype.getIngredients = function () {
   });
 };
 
+Data 
+
 Data.prototype.getPremade = function () {
   var d = this.data;
   return d[premadeDataName]
@@ -153,6 +155,7 @@ Data.prototype.addOrder = function (order) {
     var orderId = this.getOrderNumber();
     this.orders[orderId] = order;
     this.orders[orderId].done = false;
+    this.orders[orderId].cancel = false;
     this.orders[orderId].inMade = false;
     this.orders[orderId].wantOrderCancel = false;
     for (var i=0; i< order.order.length; i+=1){
@@ -160,6 +163,7 @@ Data.prototype.addOrder = function (order) {
     }
     return orderId, order;
 };
+
 Data.prototype.getAllOrders = function () {
   return this.orders;
 };
@@ -178,6 +182,7 @@ Data.prototype.unmarkWantToCancel = function (orderId){
 
 Data.prototype.cancelOrder = function(orderId){
     this.orders[orderId].done = true;
+    this.orders[orderId].cancel = true;
     for (var i=0; i<this.orders[orderId].order.length; i+=1){
         this.makeTransaction(this.orders[orderId].order[i], "add");
     }
@@ -200,6 +205,10 @@ Data.prototype.minusIngredientsStock = function(item){
     this.makeStockTransaction(item, -1000)
 };
 
+/*Data.prototype.sendBackOrderInfo = function(order){
+    console.log(key);
+}*/
+
 
 var data = new Data();
 // Load initial ingredients. If you want to add columns, do it in the CSV file.
@@ -219,6 +228,7 @@ io.on('connection', function (socket) {
   // When someone orders something
   socket.on('order', function (order) {
     var orderNumber = data.addOrder(order);
+    socket.emit('returnOrderInfo',data.currentOrderNumber, order);
     socket.emit('orderNumber', orderNumber);
     io.emit('currentQueue', { orders: data.getAllOrders(),
                           ingredients: data.getIngredients(),
@@ -239,12 +249,12 @@ io.on('connection', function (socket) {
     
     socket.on('wantCancel', function(orderId){
         data.markWantToCancel(orderId);
-        io.emit('currentQueue', {order: data.getAllOrders() });
+        io.emit('currentQueue', {orders: data.getAllOrders() });
     });
     
      socket.on('undoCancelOrder', function(orderId){
         data.unmarkWantToCancel(orderId);
-        io.emit('currentQueue', {order: data.getAllOrders() });
+        io.emit('currentQueue', {orders: data.getAllOrders() });
     });
     
     socket.on('cancelOrder', function (orderId){
