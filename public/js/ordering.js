@@ -623,6 +623,8 @@ var vm = new Vue({
         document.getElementById("home-pageBtnPM").style.backgroundColor = "#810051";
         document.getElementById("home-pageBtn").style.backgroundColor = "#810051";
         document.getElementById("holder").style.display = "block";
+        document.getElementById("continue").style.display = "none";
+        document.getElementById("addToMyOrder").style.display = "none";
       };
       if (tabName === "preMade-page") {
         document.getElementById("defaultOpenPM").style.backgroundColor = "#810051";
@@ -740,7 +742,7 @@ Vue.component('added-drinks', {
         };
     },
     methods: {
-              
+
       plusDrink: function () {
           this.counter += 1;
           vm.totalPrice += this.order.price;
@@ -755,7 +757,7 @@ Vue.component('added-drinks', {
             vm.totalPrice -= this.order.price;
             vm.orderCounterValue -= 1;
           }
-        
+
           for (var i=0; i < vm.myOrder.length; i++){
             if(vm.myOrder[i]==this.order){
                 vm.myOrder.splice(i,1);

@@ -175,12 +175,12 @@
         <button id="largeCup" class="sizeButton" v-on:click="switchType('l'); changeTotalPrice('l');markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
       </div>
     </div>
+    </div>
+    </div>
+    </div>
     <div id="continueButtons" class="continueButtons">
       <button id="continue" v-on:click="openTab('extras-page');toExtras()" disabled>{{ uiLabels.continue }}</button>
       <button id="addToMyOrder" v-on:click="addToMyOrder();openTab('myOrder-page');switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button>
-    </div>
-  </div>
-</div>
 </div>
 
 <div id="preMade-page" class="tabcontent">
