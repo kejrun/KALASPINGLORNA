@@ -1129,13 +1129,13 @@ and "My drink" in the other column */
 	margin-top: 85px;
 	z-index:110;
 	display:none;
-	background-color:white;
+	background:  #f0f0f0;
 	position: fixed;
 }
 
 #receivedOrderInfo{
 	position: block;
-	background-color: white;
+	background:  #f0f0f0;
 	margin-left: auto;
 	margin-right: auto;
 	padding: 5%;
@@ -1560,4 +1560,14 @@ and "My drink" in the other column */
 
 	#labelIng{
 		display: none !important;
+	}
+
+	#receivedOrderContainer{
+				margin-top: 0;
+	}
+
+	#receivedOrderInfo{
+		width: 80%;
+		height: 80%;
+		overflow-y: scroll;
 	}
