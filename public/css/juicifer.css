@@ -783,13 +783,14 @@ and "My drink" in the other column */
 }
 
 #extrasCategories {
-	grid-column-start: 1;
+	/*grid-column-start: 1;
 	grid-column-end:2;
 	grid-row-start:1;
-	grid-row-end:2;
+	grid-row-end:2;*/
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(4, auto);
+	grid-area: categories;
 	grid-gap: 0.5em;
 	z-index: 5;
 }
@@ -1158,7 +1159,7 @@ and "My drink" in the other column */
 	margin-top: 0.5em;
 	box-shadow: 1px 1px 1px 1px gray;
 	border-radius: 8px;
-    
+
 }
 
 #placeOrderButton:disabled,
@@ -1287,7 +1288,7 @@ and "My drink" in the other column */
 	}
 
 	#categories-drink{
-		max-height: 80%;
+		height: 400px;
 		overflow: hidden;
 		overflow-y: scroll;
 		margin-top: 15%;
@@ -1308,13 +1309,11 @@ and "My drink" in the other column */
 		overflow-y: hidden;
 	}
 
-
 	.extras-list-text{
 		width: 100%;
-		min-width: 70%;
+		min-width: 80%;
 		overflow-y: hidden;
 	}
-
 
 	#openNavbutton{
 		display: block;
@@ -1400,8 +1399,7 @@ and "My drink" in the other column */
 	}
 
 	#chooseYourOwn-page{
-		height: 500px;
-		padding-right: 5px;
+		height: 100%;
 	}
 
 	#preMade-list{
@@ -1414,6 +1412,8 @@ and "My drink" in the other column */
 	}
 
 	#continueButtons{
+		bottom: 18% !important;
+		bottom: 50px;
 		position: fixed;
 		display: block;
 		width: 100%;
@@ -1514,7 +1514,7 @@ and "My drink" in the other column */
 	h1{
 		color: white;
 		background-color: #555;
-		width: 100%;
+		width: 98%;
 		padding: 3%;
 		margin: 4% 0% 0% 0%;
 		box-shadow: 2px 2px 2px 2px gray;
