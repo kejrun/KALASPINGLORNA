@@ -37,7 +37,7 @@
     <div id="home-page" class="tabcontent">
       <div style="text-align:center;">
         <button class="homebutton" v-on:click="chooseYourOwn();toChooseYourOwn();makeIngredientLists()"><a>{{ uiLabels.chooseYourOwn }}</a></button>
-        <button class="homebutton" v-on:click="preMade();resetChooseYourOwnPage();switchType('m');markChosenSizeButton('m')"><a>{{ uiLabels.preMade }}</a></button>
+        <button class="homebutton" v-on:click="preMade();pmsInStock();resetChooseYourOwnPage();switchType('m');markChosenSizeButton('m')"><a>{{ uiLabels.preMade }}</a></button>
       </div>
       <div id="LanguageDiv">
         <div style="text-align:center;">
@@ -193,12 +193,14 @@
 
   <div id="preMade-list">
     <div v-for="preparedDrink in premade">
-      <br>
-      <img v-bind:src="preparedDrink.image" height="250px">
-      <h2>{{preparedDrink.pm_name + " "}}{{preparedDrink["price_" + type]}} :-</h2>
-      <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
+        <div v-for="pmInStock in preMadesInStock" v-if="pmInStock.id == preparedDrink.pm_id && pmInStock.inStock">
+          <br>
+          <img v-bind:src="preparedDrink.image" height="250px">
+          <h2>{{preparedDrink.pm_name + " "}}{{preparedDrink["price_" + type]}} :-</h2>
+          <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
 
-      <button id=addToMyOrderPreMade v-on:click="orderPremade(preparedDrink);openTab('myOrder-page');switchType('m');markChosenSizeButton('m')">{{ uiLabels.addToOrder}}</button>
+          <button id=addToMyOrderPreMade v-on:click="orderPremade(preparedDrink);openTab('myOrder-page');switchType('m');markChosenSizeButton('m')">{{ uiLabels.addToOrder}}</button>
+        </div>
     </div>
   </div>
 </div>

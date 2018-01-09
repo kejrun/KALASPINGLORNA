@@ -252,6 +252,7 @@ var vm = new Vue({
     ingredientsInCategoryOrder: [],
     finishedOrderInfo: [],
     uniqueDrinksInMyOrder: [],
+    preMadesInStock:[],
     yourDrinkNumber: 0,
     volume: 0,
     price: 0,
@@ -516,7 +517,33 @@ var vm = new Vue({
         }
       }
     },
-
+    
+    ingInStock: function(ingIDs){
+        var inStock=true,tempIngredient;
+        for(var i=0; i <ingIDs.length; i++){
+            tempIngredient = this.getIngredientById(ingIDs[i]);
+            if(tempIngredient.stock < 400){
+                console.log(tempIngredient.stock);
+                return inStock = false;
+            }
+        }
+        return inStock;
+    },
+    
+    pmsInStock:function(){
+        var ingIDs,inStock;
+        for (var i = 0; i < this.premade.length ; i ++) {
+            ingIDs = this.premade[i].pm_ingredients;
+            inStock = this.ingInStock(ingIDs);
+            var pmInStock ={
+                id:this.premade[i].pm_id,
+                inStock: inStock
+            }
+            this.preMadesInStock.push(pmInStock);
+        }
+        console.log(this.preMadesInStock);
+        return this.preMadesInStock;
+    },
     orderPremade: function(pm) {
       //for (var i = 0; i < pm.pm_ingredients.length; i += 1) {
         this.addPremadeDrink(pm);
@@ -535,7 +562,10 @@ var vm = new Vue({
       var ingredientList = [], tempIngredient;
       for (var i = 0; i < idArr.length ; i += 1) {
         tempIngredient = this.getIngredientById(idArr[i]);
-        console.log(tempIngredient.stock);
+        if(tempIngredient.stock >400){
+            console.log(tempIngredient.stock);
+             }  
+        
         ingredientList.push(tempIngredient);
       }
       return ingredientList;
