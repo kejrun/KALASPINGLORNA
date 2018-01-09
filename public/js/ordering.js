@@ -494,6 +494,7 @@ var vm = new Vue({
             this.price = 0;
             this.totalPrice = 0;
             this.orderCounterValue = 0;
+            document.getElementById("receivedOrderContainer").style.display="none";
       },
 
     //this function resets EVERYTHING on the choose your own page
@@ -761,9 +762,6 @@ var vm = new Vue({
             document.getElementById("checkOut-page").style.display="none";
             document.getElementById("ProgressBarPreMade").style.display = "none";
             document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
-        //vm.myOrder = [];
-        //vm.finishedOrderInfo = [];
-        //openTab('home-page');
         
     }.bind(this));
     }

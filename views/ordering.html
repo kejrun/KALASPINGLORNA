@@ -341,13 +341,15 @@
 <div id=receivedOrderContainer>
     <div id=receivedOrderInfo>
     <h1> {{ uiLabels.finishedOrder }}</h1>
+    <br><br>
     <div v-for= "finishedDrink in finishedOrderInfo">
         <finished-order-info
         v-bind:finished-drink="finishedDrink"
         v-bind:ui-labels = "uiLabels">
         </finished-order-info>
     </div>
-    <button id=orderFinished>{{uiLabels.cancel}}</button>
+    <br>
+    <button id=orderFinishedButton v-on:click="resetChooseYourOwnPage();resetAll();openTab('onlyHomePage');switchType('m');markChosenSizeButton('m')">{{uiLabels.cancel}}</button>
     </div>
 </div>
 

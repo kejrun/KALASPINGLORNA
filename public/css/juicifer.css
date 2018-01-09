@@ -1118,6 +1118,7 @@ and "My drink" in the other column */
 #receivedOrderContainer{
     width:100%;
     height:100%;
+    margin-top: 85px;
     z-index:110;
     display:none;
     position:absolute;
@@ -1131,7 +1132,7 @@ and "My drink" in the other column */
     margin-left: auto;
     margin-right: auto;
     padding: 5%;
-    width: 50%;
+    width: 35%;
     z-index: 110;
 }
 
@@ -1141,6 +1142,21 @@ and "My drink" in the other column */
 
 .fDrinkSize{
     text-transform: uppercase;
+}
+
+#orderFinishedButton{
+    position:block;
+	font-family: 'Encode Sans Semi Condensed';
+	width: 50%;
+	height: 70px;
+	border: none;
+	font-size: 20px;
+	color: white;
+	background-color: forestgreen;
+	margin-top: 0.5em;
+	box-shadow: 1px 1px 1px 1px gray;
+	border-radius: 8px;
+    
 }
 
 #placeOrderButton:disabled,
