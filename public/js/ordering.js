@@ -35,11 +35,6 @@ plusIngredient: function(item){
         }
         var minusButtons=document.getElementsByClassName("ingredientsMinusButton");
         minusButtons[newId].disabled = false;
-
-        //kolla här - försök göra det på ett enklare sätt, nu beror det av att vi skriver ut kategorierna i en viss ordning
-        //var thisIngredientsId = this.item.ingredient_id;
-        //minusButtons[thisIngredientsId-1].disabled = false;
-        //var doc = document.getElementsByName(this.item.ingredient_en).disabled=false;
     }
 
     if (totalIngredientsCounter >= 0 && totalIngredientsCounter < 5 && !item.extra){
@@ -90,7 +85,7 @@ minusIngredient: function(item){
     this.$emit('decrement');
 },
 
-//koll här: incrementCounter används inte i nuläget, tror jag..
+//kolla här: incrementCounter används inte i nuläget, tror jag..
 incrementCounter: function () {
   this.counter += item.vol_m;
   this.$emit('increment');
@@ -102,6 +97,7 @@ resetCounter: function () {
 }
 });
 
+//kolla här: funktioner som ligger utanför vue component
 function openNav() {
     document.getElementById("sideTab").style.display = "block";
     document.getElementById("openNavbutton").style.display = "none";
@@ -161,34 +157,6 @@ function textOnBar(newLength, increment){
   }
 }
 
-//to reset the entire choose your own page, call function resetChooseYourOwnPage in Vue component
-//functions for resetting choose your own, resetChooseYourOwn calls the other resetting functions
-function resetChooseYourOwn(){
-    resetIngredientsBar();
-    resetPlusMinusButtons();
-    document.getElementById("addToMyOrder").disabled = true;
-    document.getElementById("continue").disabled = true;
-    document.getElementById("resetCurrentDrink").disabled = true;
-}
-
-function resetIngredientsBar(){
-  totalIngredientsCounter = 0;
-  var curSize = $("#ingredientsBarProgress").width();
-  $("#ingredientsBarProgress").css('width', '-=' + curSize);
-  ingredientsBarText.innerHTML = 'Choose 5 ingredients';
-}
-
-function resetPlusMinusButtons(){
-    var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
-    for ( var i = 0; i < plusButtons.length; i++) {
-        plusButtons[i].disabled = false;
-    }
-    var minusButtons = document.getElementsByClassName("ingredientsMinusButton");
-    for ( var i = 0; i < minusButtons.length; i++) {
-        minusButtons[i].disabled = true;
-    }
-}
-
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -230,7 +198,6 @@ tl.to(orange, 1, {transform: "translateY(0px)", ease:Bounce.easeOut})
 // A better idea would be to let the server decide.
 return "#" + getRandomInt(1, 1000000);
 }*/
-
 
 var vm = new Vue({
   el: '#ordering',
@@ -312,7 +279,6 @@ var vm = new Vue({
       if (this.chosenIngredients.length > 0){
         document.getElementById("resetCurrentDrink").disabled = false;
       }
-
       if (totalIngredientsCounter == 5){
         document.getElementById("addToMyOrder").disabled = false;
         document.getElementById("continue").disabled = false;
@@ -369,6 +335,12 @@ var vm = new Vue({
           }
         }
     },
+      
+      changeSize: function(type){
+          this.changeTotalPrice(type);
+          this.markChosenSizeButton(type);
+          this.switchType(type);
+      },
 
     changeTotalPrice: function (type){
       this.price = 0;
@@ -413,7 +385,6 @@ var vm = new Vue({
       }
     },
 
-
     addToMyOrder: function () {
      this.yourDrinkNumber += 1;
      //Wrap the order in an object
@@ -432,23 +403,10 @@ var vm = new Vue({
      for ( var i = 0; i < this.$refs.ingredient.length; i += 1) {
        this.$refs.ingredient[i].resetCounter();
      }
-     this.volume = 0;
-     this.price = 0;
-     this.type = '';
-     this.chosenIngredients = [];
-     this.pricesSmall = [];
-     this.pricesMedium = [];
-     this.pricesLarge = [];
-     resetChooseYourOwn();
+     this.resetChooseYourOwnPage();
 
      this.myDrinks.push(currentDrink);
      this.myOrder.push(currentDrink);
-
-      var uniqueDrink = {
-          name: drinkName,
-          type: this.type
-      };
-      this.uniqueDrinksInMyOrder.push(uniqueDrink);
 
      document.getElementById("proceedToCheckout").disabled = false;
      document.getElementById("placeOrderButton").disabled = false;
@@ -473,28 +431,6 @@ var vm = new Vue({
      this.totalPrice = 0;
    },
 
-      resetAll: function(){
-
-          //kolla här: oklart vilka variabler som måste nollställas?
-          //lista dem här nedan:
-            this.type = '';
-            this.chosenIngredients = [];
-            this.currentDrink = [];
-            this.myDrinks = [];
-            this.myOrder = [];
-            this.pricesSmall = [];
-            this.pricesMedium = [];
-            this.pricesLarge = [];
-            this.finishedOrderInfo = [];
-            this.uniqueDrinksInMyOrder = [];
-            this.yourDrinkNumber = 0;
-            this.volume = 0;
-            this.price = 0;
-            this.totalPrice = 0;
-            this.orderCounterValue = 0;
-            document.getElementById("receivedOrderContainer").style.display="none";
-      },
-
     //this function resets EVERYTHING on the choose your own page
     resetChooseYourOwnPage: function(){
       for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
@@ -507,8 +443,32 @@ var vm = new Vue({
       this.pricesSmall = [];
       this.pricesMedium = [];
       this.pricesLarge = [];
-      resetChooseYourOwn();
+      this.switchType('m');
+      this.markChosenSizeButton('m');
+      this.resetIngredientsBar();
+      this.resetPlusMinusButtons();
+      document.getElementById("addToMyOrder").disabled = true;
+      document.getElementById("continue").disabled = true;
+      document.getElementById("resetCurrentDrink").disabled = true;
     },
+      
+      resetIngredientsBar: function(){
+        totalIngredientsCounter = 0;
+        var curSize = $("#ingredientsBarProgress").width();
+        $("#ingredientsBarProgress").css('width', '-=' + curSize);
+        ingredientsBarText.innerHTML = 'Choose 5 ingredients';
+      },
+      
+      resetPlusMinusButtons: function(){
+        var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
+        for ( var i = 0; i < plusButtons.length; i++) {
+            plusButtons[i].disabled = false;
+        }
+        var minusButtons = document.getElementsByClassName("ingredientsMinusButton");
+        for ( var i = 0; i < minusButtons.length; i++) {
+            minusButtons[i].disabled = true;
+        }
+      },
 
     getIngredientById: function (id) {
       for (var i =0; i < this.ingredients.length; i += 1) {
@@ -550,6 +510,7 @@ var vm = new Vue({
         // this.addPremadeDrink(this.getIngredientById(pm.pm_ingredients[i]), "medium");
       //}
     },
+      
     getIngredientNameList: function (idArr) {
       var ingredientList = "", tempIngredient;
       for (var i = 0; i < idArr.length ; i += 1) {
@@ -558,6 +519,7 @@ var vm = new Vue({
       }
       return ingredientList;
     },
+      
     getIngredientList: function (idArr) {
       var ingredientList = [], tempIngredient;
       for (var i = 0; i < idArr.length ; i += 1) {
@@ -570,6 +532,7 @@ var vm = new Vue({
       }
       return ingredientList;
     },
+      
     addPremadeDrink: function (item) {
         
 
@@ -596,27 +559,6 @@ var vm = new Vue({
       };
       this.myDrinks.push(currentDrink);
       this.myOrder.push(currentDrink);
-
-
-      //kolla här: pusha object uniqueDrink till uniqueDrinksInMyOrder.. med namn och type
-      var uniqueDrink = {
-          name: item.pm_name,
-          type: this.type
-      };
-      this.uniqueDrinksInMyOrder.push(uniqueDrink);
-
-      /* //kolla här: kod för att bara lägga till vald premade i uniquedrinksinmyorder om den inte redan finns där
-           //tar hänsyn till namn och storlek, men kan inte använda dett i nuläget då samma inte fungerar för
-      var duplication = 0;
-      for (var i = 0; i < this.uniqueDrinksInMyOrder.length; i++){
-          if (currentDrink.name === this.uniqueDrinksInMyOrder[i].name && currentDrink.type === this.uniqueDrinksInMyOrder[i].type){
-              duplication ++;
-          }
-      }
-      if (duplication == 0){
-              this.uniqueDrinksInMyOrder.push(uniqueDrink);
-      }*/
-
 
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       //socket.emit('order', { order: order});
@@ -657,9 +599,7 @@ var vm = new Vue({
       }
 
       // Show the specific tab content
-      if (tabName != "onlyHomePage"){
         document.getElementById(tabName).style.display = "block";
-      }
 
       // Add the specific color to the button used to open the tab content
       if (tabName === "checkOut-page") {
@@ -675,16 +615,6 @@ var vm = new Vue({
         document.getElementById("holder").style.display = "block";
         document.getElementById("continue").style.display = "none";
         document.getElementById("addToMyOrder").style.display = "none";
-      };
-      if (tabName === "onlyHomePage"){
-          document.getElementById("home-page").style.display = "block";
-          document.getElementById("holder").style.display = "block";
-          document.getElementById("continue").style.display = "none";
-          document.getElementById("addToMyOrder").style.display = "none";
-          document.getElementById("ProgressBarPreMade").style.display = "none";
-          document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
-          document.getElementById("notifybubble").style.display = "none";
-          document.getElementById("notifybubblePM").style.display = "none";
       };
       if (tabName === "preMade-page") {
         document.getElementById("defaultOpenPM").style.backgroundColor = "#810051";
@@ -806,7 +736,7 @@ var vm = new Vue({
       
     reloadPage: function(){
       location.reload();
-  }
+    }
   }
 
 });
@@ -843,14 +773,12 @@ Vue.component('added-drinks', {
             vm.totalPrice -= this.order.price;
             vm.orderCounterValue -= 1;
           }
-
           for (var i=0; i<vm.myOrder.length; i++){
               if(vm.myOrder[i]==this.order){
                   vm.myOrder.splice(i,1);
                   break;
               }
           }
-
          if (vm.myOrder.length == 0){
             document.getElementById("proceedToCheckout").disabled = true;
             document.getElementById("placeOrderButton").disabled = true;
@@ -866,11 +794,7 @@ Vue.component('drinks-in-order', {
             <label>\
             {{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}\
             </label>\
-            </div>',
-
-    methods: {
-
-    }
+            </div>'
   });
 
 Vue.component('finished-order-info',{
