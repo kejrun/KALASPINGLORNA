@@ -474,9 +474,9 @@ var vm = new Vue({
      this.myDrinks = [];
      this.totalPrice = 0;
    },
-      
+
       resetAll: function(){
-          
+
           //kolla här: oklart vilka variabler som måste nollställas?
           //lista dem här nedan:
             this.type = '';
@@ -607,7 +607,7 @@ var vm = new Vue({
       document.getElementById("notifybubble").style.display = "block";
       document.getElementById("notifybubblePM").style.display = "block";
     },
-      
+
       openTab: function(tabName) {
           console.log(tabName);
       // Hide all elements with class="tabcontent" by default */
@@ -638,6 +638,8 @@ var vm = new Vue({
         document.getElementById("checkOut-pageBtnPM").style.backgroundColor = "#810051";
         document.getElementById("checkOut-pageBtn").style.backgroundColor = "#810051";
         document.getElementById("receivedOrderContainer").style.display = "none";
+        document.getElementById("continue").style.display = "none";
+        document.getElementById("addToMyOrder").style.display = "none";
       };
       if (tabName === "home-page") {
         document.getElementById("home-pageBtnPM").style.backgroundColor = "#810051";
@@ -662,6 +664,8 @@ var vm = new Vue({
       if (tabName === "myOrder-page") {
         document.getElementById("myOrder-pageBtnPM").style.backgroundColor = "#810051";
         document.getElementById("myOrder-pageBtn").style.backgroundColor = "#810051";
+        document.getElementById("continue").style.display = "none";
+        document.getElementById("addToMyOrder").style.display = "none";
       };
       if (tabName === "chooseYourOwn-page") {
         document.getElementById("defaultOpen").style.backgroundColor = "#810051";
@@ -755,20 +759,19 @@ var vm = new Vue({
                 orderId: orderNumber,
                 drinkName: order.order[0].name,
                 drinkSize: order.order[0].type
-            } 
-            
+            }
+
             this.finishedOrderInfo.push(finishedDrink);
             document.getElementById("receivedOrderContainer").style.display="block";
             document.getElementById("checkOut-page").style.display="none";
             document.getElementById("ProgressBarPreMade").style.display = "none";
             document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
-        
+
     }.bind(this));
     }
   }
 
 });
-
 
 // ------------- For myOrder page --------------
 Vue.component('added-drinks', {
@@ -792,7 +795,6 @@ Vue.component('added-drinks', {
           vm.totalPrice += this.order.price;
           vm.orderCounterValue += 1;
           vm.myOrder.push(this.order);
-
           document.getElementById("proceedToCheckout").disabled = false;
           document.getElementById("placeOrderButton").disabled = false;
       },

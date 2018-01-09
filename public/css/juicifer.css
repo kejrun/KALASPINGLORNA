@@ -235,7 +235,6 @@ a {
 	background-color: #777;
 	width: 80px;
 	height: 40px;
-	text-align: center;
 	border-radius: 5px;
 	cursor: pointer;
 	box-shadow: 0.3px 0.3px 3px 1px gray;
@@ -253,11 +252,11 @@ a {
 /*Layout and scrollbar for ingredients on ingredientspage, i.e. where kitchen can see and change the stock*/
 
 #ingredients{
-	position: absolute;
 	margin: 0 auto;
 	display: table;
-	height: 102.4px;
+	height: 978px;
 	width: 768px;
+	position: absolute;
 }
 
 #ingredients_layout{
@@ -327,7 +326,7 @@ a {
 }
 
 .Heades_kitchenSide{
-	width:600px;
+	width:400px;
 	margin: 0 auto;
 }
 
@@ -376,7 +375,7 @@ a {
 }
 
 .itemsFinishedCancelled{
-	height: 380px;
+	height: 360px;
 	overflow-y: scroll;
 	width: 400px;
 	margin: 0 auto;
@@ -389,16 +388,15 @@ a {
 .finishedOrderClass {
 	padding: 6px;
 	text-transform: uppercase;
-
 }
-
 
 #refillbtnID{
 	position: absolute;
 	display: table;
 	margin: 0 auto;
 	width: 768px;
-	top: 930px;
+	height:100px;
+	top: 890px;
 }
 
 #refillbtn {
@@ -410,10 +408,8 @@ a {
 	font-size: 20pt;
 	cursor: pointer;
 	width: 500px;
-	height: 90px;
+	height: 80px;
 	margin-left: 134px;
-	top: 10%;
-	position: absolute;
 	border-radius: 15px;
 }
 
@@ -434,7 +430,7 @@ a {
 #start_page{
 	display: table;
 	margin: 0 auto;
-	height: 750px;
+	height: 700px;
 	width: 600px;
 	margin-top: 15px;
 }
@@ -463,7 +459,7 @@ a {
 }
 
 #OrdersQueue{
-	height: 650px;
+	height: 620px;
 	margin: 0 auto;
 	overflow-y: scroll;
 	margin-bottom: 40px;
@@ -552,7 +548,7 @@ a {
 }
 
 .cancelOrNot{
-	height: 600px;
+	height: 570px;
 	width: 540px;
 	background-color: #d1d1d1;
 	border-radius: 20px;
@@ -588,11 +584,9 @@ a {
 
 /* Code for Ingredients and history buttons on staff view */
 #Hist_Ingred{
-	top: 900px;
-	height: 150px;
-	display: table;
+	height: 150px;	
 	margin: 0 auto;
-
+	margin-bottom: 30px;
 }
 
 .Hist_Ingred_Button {
@@ -704,9 +698,6 @@ input[type="checkbox"]{
 	background-color: #d6d7d8;
 }
 
-
-
-
 /*Creating a grid containing one grid with the categories in one column,
 and "My drink" in the other column */
 
@@ -791,13 +782,14 @@ and "My drink" in the other column */
 }
 
 #extrasCategories {
-	grid-column-start: 1;
+	/*grid-column-start: 1;
 	grid-column-end:2;
 	grid-row-start:1;
-	grid-row-end:2;
+	grid-row-end:2;*/
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(4, auto);
+	grid-area: categories;
 	grid-gap: 0.5em;
 	z-index: 5;
 }
@@ -1167,7 +1159,7 @@ and "My drink" in the other column */
 	margin-top: 0.5em;
 	box-shadow: 1px 1px 1px 1px gray;
 	border-radius: 8px;
-    
+
 }
 
 
@@ -1297,7 +1289,7 @@ and "My drink" in the other column */
 	}
 
 	#categories-drink{
-		max-height: 80%;
+		height: 400px;
 		overflow: hidden;
 		overflow-y: scroll;
 		margin-top: 15%;
@@ -1318,13 +1310,11 @@ and "My drink" in the other column */
 		overflow-y: hidden;
 	}
 
-
 	.extras-list-text{
 		width: 100%;
-		min-width: 70%;
+		min-width: 80%;
 		overflow-y: hidden;
 	}
-
 
 	#openNavbutton{
 		display: block;
@@ -1410,8 +1400,7 @@ and "My drink" in the other column */
 	}
 
 	#chooseYourOwn-page{
-		height: 500px;
-		padding-right: 5px;
+		height: 100%;
 	}
 
 	#preMade-list{
@@ -1424,6 +1413,8 @@ and "My drink" in the other column */
 	}
 
 	#continueButtons{
+		bottom: 18% !important;
+		bottom: 50px;
 		position: fixed;
 		display: block;
 		width: 100%;
@@ -1524,7 +1515,7 @@ and "My drink" in the other column */
 	h1{
 		color: white;
 		background-color: #555;
-		width: 100%;
+		width: 98%;
 		padding: 3%;
 		margin: 4% 0% 0% 0%;
 		box-shadow: 2px 2px 2px 2px gray;
