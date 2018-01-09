@@ -227,7 +227,7 @@ a {
 	width: 768px;
 }
 
-.language{
+/*.language{
 	border: none;
 	margin-top: 10px;
 	color: white;
@@ -239,15 +239,16 @@ a {
 	cursor: pointer;
 	box-shadow: 0.3px 0.3px 3px 1px gray;
 	font-family: 'Encode Sans Semi Condensed';
-}
+}*/
 
-.language:hover {
+/*.language:hover {
 	background-color: #9ea0a3;
 }
 
 #languageStock{
 	margin-left: 45%;
 }
+*/
 
 /*Layout and scrollbar for ingredients on ingredientspage, i.e. where kitchen can see and change the stock*/
 
@@ -321,6 +322,7 @@ a {
 	cursor:pointer;
 }
 
+
 #counterStock{
 	padding-left: 15px;
 	padding-right: 15px;
@@ -329,6 +331,10 @@ a {
 .Heades_kitchenSide{
 	width:400px;
 	margin: 0 auto;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+	margin-bottom: 5px;
+
 }
 
 /*all headers*/
@@ -341,8 +347,7 @@ a {
 	font-size: 12pt;
 	width: 90%;
 	height: 20px;
-	margin-left: 1em;
-	padding-left: 2%;
+	margin-left: 25px;
 }
 
 .stockList{
@@ -375,14 +380,24 @@ a {
 	margin: 0 auto;
 }
 
-.itemsFinishedCancelled{
-	height: 360px;
+.itemsFinished{
+	height: 450px;
 	overflow-y: scroll;
 	width: 400px;
 	margin: 0 auto;
 	margin-bottom: 40px;
-	border-radius: 10px;
-	box-shadow: 1px 1px 7px 3px #aaaaaa;
+	border-bottom: 1px solid black;
+	/*border: 3px solid #810051;*/
+	/*box-shadow: 1px 1px 7px 3px #aaaaaa;*/
+}
+
+.itemsCancelled{
+	height: 250px;
+	overflow-y: scroll;
+	width: 400px;
+	margin: 0 auto;
+	margin-bottom: 40px;
+	border-bottom: 1px solid black;
 }
 
 /*to make every order seperate, i.e. this is every unique order that is done*/
@@ -393,19 +408,14 @@ a {
 
 #refillbtnID{
 	position: absolute;
-	display: table;
 	margin: 0 auto;
-	width: 768px;
-	height:100px;
 	top: 890px;
 }
 
 #refillbtn {
 	font-family: 'Encode Sans Semi Condensed';
-	border: none;
 	text-transform: uppercase;
 	background-color: forestgreen;
-	padding: 15px 32px;
 	font-size: 20pt;
 	cursor: pointer;
 	width: 500px;
@@ -465,12 +475,6 @@ a {
 	overflow-y: scroll;
 	margin-bottom: 40px;
 	margin-top: 40px;
-}
-
-.OrdersQueue{
-	height: 768px;
-	margin: 0 auto;
-	overflow-y: scroll;
 }
 
 /*Layout for the button that each order appears on, and the arrows on the side of each button*/
@@ -560,6 +564,7 @@ a {
 	box-shadow: 1px 1px 10px 3px grey;
 }
 
+
 .orderIngredInfo{
 	position:relative;
 	display: grid;
@@ -585,7 +590,7 @@ a {
 
 /* Code for Ingredients and history buttons on staff view */
 #Hist_Ingred{
-	height: 150px;	
+	height: 150px;
 	margin: 0 auto;
 	margin-bottom: 30px;
 }
@@ -1087,13 +1092,13 @@ and "My drink" in the other column */
 }
 
 .drinkMinusPlusButton {
-   	width: 40px;
+	width: 40px;
 	height: 30px;
 	font-size: 16pt;
 	border-radius: 5px;
 	box-shadow: 2px gray;
 	background-color: white;
-	cursor:pointer; 
+	cursor:pointer;
 }
 
 /********************CHECKOUT********************/
@@ -1147,19 +1152,19 @@ and "My drink" in the other column */
 }
 
 .centerText{
-    text-align: center;
+	text-align: center;
 }
 
 #orderFinishedButton{
-    position:block;
+	position:block;
 	font-family: 'Encode Sans Semi Condensed';
 	width: 25%;
 	height: 40px;
-    margin-left:auto;
-    margin-right:auto;
+	margin-left:auto;
+	margin-right:auto;
 	border: none;
 	font-size: 18px;
-    color:white;
+	color:white;
 	background-color: #810051;
 	margin-top: 0.5em;
 	box-shadow: 1px 1px 1px 1px gray;
@@ -1525,6 +1530,12 @@ and "My drink" in the other column */
 		margin: 4% 0% 0% 0%;
 		box-shadow: 2px 2px 2px 2px gray;
 	}
+
+	h1:after{
+		content: "   \2228";
+		float: right;
+	}
+
 
 	#vegetableExpand, #fruitExpand, #berryExpand, #liquidExpand
 	, #nutExpand, #flavourExpand, #powderExpand, #otherExpand {
