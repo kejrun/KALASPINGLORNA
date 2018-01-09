@@ -243,6 +243,7 @@ var vm = new Vue({
     liquids: [],
     extras: [],
     ingredientsInCategoryOrder: [],
+    finishedOrderInfo: [],
     yourDrinkNumber: 0,
     volume: 0,
     price: 0,
@@ -250,9 +251,11 @@ var vm = new Vue({
     orderCounterValue: 0
   },
   created: function() {
-    socket.on("orderNumber",function(orderNumber) {
-      //alert("Your ordernumber is " + orderNumber);
-    });
+
+      console.log("alert" + this.finishedOrderInfo);
+    
+    //alert(orderInfo);
+    
   },
   methods: {
 
@@ -448,7 +451,6 @@ var vm = new Vue({
      }
      this.yourDrinkNumber = 0;
      this.myDrinks = [];
-     this.myOrder=[];
      this.totalPrice = 0;
    },
 
@@ -651,9 +653,26 @@ var vm = new Vue({
       document.getElementById("category-list").style.display ="grid";
     },
       
-    alertFinishedOrder: function(){
+    receiveOrderInfo: function(){
         var thankYouText = this.uiLabels.finishedOrder;
-        alert(thankYouText);
+    socket.on("returnOrderInfo", function(orderNumber,order) {
+    
+        var finishedDrink = {
+            orderId: orderNumber,
+            drinkName: order.order[0].name,
+            drinkIngredients: order.order[0].ingredients
+        } 
+        vm.finishedOrderInfo.push(finishedDrink);
+        if(vm.finishedOrderInfo.length == vm.myOrder.length)
+            {console.log(vm.finishedOrderInfo);}
+        
+
+    
+    //alert(orderInfo);
+    });
+
+        
+        
     }
   }
 
@@ -698,14 +717,10 @@ Vue.component('added-drinks', {
 
       addDrinkToOrder: function() {
         vm.myOrder.push(this.order);
-        console.log(this.order);
-        console.log(vm.myOrder);
       },
 
       removeDrinkFromOrder: function(){
           for (var i=0; i<vm.myOrder.length; i++){
-              console.log("looking for" + this.order + "in");
-              console.log(vm.myOrder[i]);
               if(vm.myOrder[i]==this.order){
                   vm.myOrder.splice(i,1);
                   break;

@@ -69,6 +69,8 @@ Data.prototype.getIngredients = function () {
   });
 };
 
+Data 
+
 Data.prototype.getPremade = function () {
   var d = this.data;
   return d[premadeDataName]
@@ -159,6 +161,7 @@ Data.prototype.addOrder = function (order) {
     }
     return orderId, order;
 };
+
 Data.prototype.getAllOrders = function () {
   return this.orders;
 };
@@ -193,6 +196,10 @@ Data.prototype.minusIngredientsStock = function(item){
     this.makeStockTransaction(item, -1000)
 };
 
+/*Data.prototype.sendBackOrderInfo = function(order){
+    console.log(key);
+}*/
+
 
 var data = new Data();
 // Load initial ingredients. If you want to add columns, do it in the CSV file.
@@ -212,6 +219,7 @@ io.on('connection', function (socket) {
   // When someone orders something
   socket.on('order', function (order) {
     var orderNumber = data.addOrder(order);
+    socket.emit('returnOrderInfo',data.currentOrderNumber, order);
     socket.emit('orderNumber', orderNumber);
     io.emit('currentQueue', { orders: data.getAllOrders(),
                           ingredients: data.getIngredients(),
