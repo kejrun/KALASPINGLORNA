@@ -49,7 +49,6 @@ plusIngredient: function(item){
         if (totalIngredientsCounter == 5){
             var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
             for (var i = 0; i < vm.ingredients.length; i++){
-                console.log(i);
                 if(!vm.ingredients[i].extra){
                     for ( var j = 0; j < vm.ingredientsInCategoryOrder.length; j++){
                         if (vm.ingredients[i].ingredient_sv === vm.ingredientsInCategoryOrder[j]){
@@ -154,8 +153,11 @@ function textOnBar(newLength, increment){
   else if (newLength == 4*increment){
     ingredientsBarText.innerHTML = 'Choose 1 ingredient';
   }
-  else{
+  else if (newLength == 5*increment){
     ingredientsBarText.innerHTML = 'Your drink is full, choose extras!';
+  }
+  else{
+    ingredientsBarText.innerHTML = 'Your drink is almost done!';
   }
 }
 
@@ -252,6 +254,7 @@ var vm = new Vue({
     liquids: [],
     extras: [],
     ingredientsInCategoryOrder: [],
+    uniqueDrinksInMyOrder: [],
     yourDrinkNumber: 0,
     volume: 0,
     price: 0,
@@ -266,39 +269,49 @@ var vm = new Vue({
   methods: {
 
     makeIngredientLists: function(){
-        for ( var i = 0; i < vm.ingredients.length; i++){
-            if (vm.ingredients[i].category == "vegetable"){
-                vm.vegetables.push(vm.ingredients[i].ingredient_sv);
+        this.vegetables = [];
+        this.fruits = [];
+        this.berries = [];
+        this.liquids = [];
+        this.extras = [];
+        this.ingredientsInCategoryOrder = [];
+        for ( var i = 0; i < this.ingredients.length; i++){
+            if (this.ingredients[i].category == "vegetable"){
+                this.vegetables.push(this.ingredients[i].ingredient_sv);
             }
-            else if (vm.ingredients[i].category == "fruit"){
-                vm.fruits.push(vm.ingredients[i].ingredient_sv);
+            else if (this.ingredients[i].category == "fruit"){
+                this.fruits.push(this.ingredients[i].ingredient_sv);
             }
-            else if (vm.ingredients[i].category == "berry"){
-                vm.berries.push(vm.ingredients[i].ingredient_sv);
+            else if (this.ingredients[i].category == "berry"){
+                this.berries.push(this.ingredients[i].ingredient_sv);
             }
-            else if (vm.ingredients[i].category == "liquid"){
-                vm.liquids.push(vm.ingredients[i].ingredient_sv);
+            else if (this.ingredients[i].category == "liquid"){
+                this.liquids.push(this.ingredients[i].ingredient_sv);
             }
             else{
-                vm.extras.push(vm.ingredients[i].ingredient_sv);
+                this.extras.push(this.ingredients[i].ingredient_sv);
             }
         }
-        for ( var i = 0; i < vm.vegetables.length; i++){
-            vm.ingredientsInCategoryOrder.push(vm.vegetables[i]);
+        for ( var i = 0; i < this.vegetables.length; i++){
+            this.ingredientsInCategoryOrder.push(this.vegetables[i]);
         }
-        for ( var i = 0; i < vm.fruits.length; i++){
-            vm.ingredientsInCategoryOrder.push(vm.fruits[i]);
+        for ( var i = 0; i < this.fruits.length; i++){
+            this.ingredientsInCategoryOrder.push(this.fruits[i]);
         }
-        for ( var i = 0; i < vm.berries.length; i++){
-            vm.ingredientsInCategoryOrder.push(vm.berries[i]);
+        for ( var i = 0; i < this.berries.length; i++){
+            this.ingredientsInCategoryOrder.push(this.berries[i]);
         }
-        for ( var i = 0; i < vm.liquids.length; i++){
-            vm.ingredientsInCategoryOrder.push(vm.liquids[i]);
+        for ( var i = 0; i < this.liquids.length; i++){
+            this.ingredientsInCategoryOrder.push(this.liquids[i]);
         }
-        for ( var i = 0; i < vm.extras.length; i++){
-            vm.ingredientsInCategoryOrder.push(vm.extras[i]);
+        for ( var i = 0; i < this.extras.length; i++){
+            this.ingredientsInCategoryOrder.push(this.extras[i]);
         }
     },
+      
+      printHej: function (){
+          console.log("hej");
+      },
 
     addToDrink: function (item, type) {
       this.chosenIngredients.push(item);
@@ -418,7 +431,6 @@ var vm = new Vue({
 
 
     addToMyOrder: function () {
-     var i;
      this.yourDrinkNumber += 1;
      //Wrap the order in an object
      var drinkName = "Drink #" + this.yourDrinkNumber;
@@ -433,7 +445,7 @@ var vm = new Vue({
      };
 
            //set all counters to 0. Notice the use of $refs
-     for (i = 0; i < this.$refs.ingredient.length; i += 1) {
+     for ( var i = 0; i < this.$refs.ingredient.length; i += 1) {
        this.$refs.ingredient[i].resetCounter();
      }
      this.volume = 0;
@@ -447,8 +459,12 @@ var vm = new Vue({
 
      this.myDrinks.push(currentDrink);
      this.myOrder.push(currentDrink);
-     //kolla här: behöver vi köra reset här också?? Jenny-Siri
-     resetChooseYourOwn();
+        
+      var uniqueDrink = {
+          name: drinkName,
+          type: this.type
+      }; 
+      this.uniqueDrinksInMyOrder.push(uniqueDrink);
 
      //show the notifybubble
      document.getElementById("notifybubble").style.display = "block";
@@ -513,8 +529,7 @@ var vm = new Vue({
       return ingredientList;
     },
     addPremadeDrink: function (item) {
-      var i;
-
+        
           if (this.type === "s"){
             this.price = item.price_s;
           }
@@ -538,6 +553,28 @@ var vm = new Vue({
       };
       this.myDrinks.push(currentDrink);
       this.myOrder.push(currentDrink);
+
+        
+      //kolla här: pusha object uniqueDrink till uniqueDrinksInMyOrder.. med namn och type
+      var uniqueDrink = {
+          name: item.pm_name,
+          type: this.type
+      };    
+      this.uniqueDrinksInMyOrder.push(uniqueDrink);
+        
+      /* //kolla här: kod för att bara lägga till vald premade i uniquedrinksinmyorder om den inte redan finns där
+           //tar hänsyn till namn och storlek, men kan inte använda dett i nuläget då samma inte fungerar för 
+      var duplication = 0;
+      for (var i = 0; i < this.uniqueDrinksInMyOrder.length; i++){
+          if (currentDrink.name === this.uniqueDrinksInMyOrder[i].name && currentDrink.type === this.uniqueDrinksInMyOrder[i].type){
+              duplication ++;
+          }
+      }
+      if (duplication == 0){
+              this.uniqueDrinksInMyOrder.push(uniqueDrink);
+      }*/ 
+
+        
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       //socket.emit('order', { order: order});
       //set all counters to 0. Notice the use of $refs
@@ -686,9 +723,9 @@ Vue.component('added-drinks', {
     template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>\
     <label>\{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</label>\
     <br>\
-    <button v-on:click="minusDrink();removeDrinkFromOrder()" id="drinkMinusButton" class="drinkMinusButton">-</button>\
+    <button v-on:click="minusDrink()" id="drinkMinusButton" class="drinkMinusButton">-</button>\
     <label class="counterID">{{ counter }}</label>\
-    <button v-on:click="plusDrink();addDrinkToOrder()" id="drinkPlusButton" class="drinkPlusButton">+</button>\
+    <button v-on:click="plusDrink()" id="drinkPlusButton" class="drinkPlusButton">+</button>\
     <br></div>',
     data: function () {
         return {
@@ -696,42 +733,35 @@ Vue.component('added-drinks', {
         };
     },
     methods: {
+              
+      plusDrink: function () {
+          this.counter += 1;
+          vm.totalPrice += this.order.price;
+          vm.orderCounterValue += 1;
+          vm.myOrder.push(this.order);
+    
+          //var minusButton = document.getElementById("drinkMinusButton");
+          //minusButton.disabled = false;
+      },
+          
       minusDrink: function () {
-          var minusButton = document.getElementById("drinkMinusButton");
+          //var minusButton = document.getElementById("drinkMinusButton");
           if (this.counter > 0){
             this.counter -= 1;
             vm.totalPrice -= this.order.price;
           }
           if(this.counter == 0){
-            minusButton.disabled=true;
+            //minusButton.disabled=true;
           }
           vm.orderCounterValue -= 1;
-      },
-
-      plusDrink: function () {
-      this.counter += 1;
-      vm.totalPrice += this.order.price;
-      vm.orderCounterValue += 1;
-      var minusButton = document.getElementById("drinkMinusButton");
-      minusButton.disabled = false;
-      },
-
-      addDrinkToOrder: function() {
-        vm.myOrder.push(this.order);
-        console.log(this.order);
-        console.log(vm.myOrder);
-      },
-
-      removeDrinkFromOrder: function(){
+          
           for (var i=0; i<vm.myOrder.length; i++){
-              console.log("looking for" + this.order + "in");
-              console.log(vm.myOrder[i]);
-              if(vm.myOrder[i]==this.order){
-                  vm.myOrder.splice(i,1);
-                  break;
+            if(vm.myOrder[i]==this.order){
+                vm.myOrder.splice(i,1);
+                break;
               }
           }
-      }
+      },
     }
 });
 
