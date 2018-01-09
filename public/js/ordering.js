@@ -209,7 +209,7 @@ var leaves = $(".leaves"),
     tl;
 
 tl = new TimelineMax();
-tl.timeScale(0.4).seek(0);
+tl.timeScale(0.4).repeat(Infinity);
 tl.set(orange, {transform: "translateY(-120px)"})
 tl.to(orange, 1, {transform: "translateY(0px)", ease:Bounce.easeOut})
   .to(piece4, 0.3, {rotation:-20, ease:Bounce.easeOut,                transformOrigin:"center bottom"}, "split")
