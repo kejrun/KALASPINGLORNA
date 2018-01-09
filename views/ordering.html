@@ -169,9 +169,9 @@
       <br>
       <br>
       <div id="sizeButtons">
-        <button id="smallCup" class="sizeButton" v-on:click="switchType('s'); changeTotalPrice('s');markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
-        <button id="mediumCup" class="sizeButton" v-on:click="switchType('m'); changeTotalPrice('m');markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
-        <button id="largeCup" class="sizeButton" v-on:click="switchType('l'); changeTotalPrice('l');markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
+        <button id="smallCup" class="sizeButton" v-on:click="changeSize('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
+        <button id="mediumCup" class="sizeButton" v-on:click="changeSize('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
+        <button id="largeCup" class="sizeButton" v-on:click="changeSize('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
       </div>
     </div>
   </div>
@@ -179,7 +179,7 @@
 </div>
 <div id="continueButtons" class="continueButtons">
   <button id="continue" v-on:click="openTab('extras-page');toExtras()" disabled>{{ uiLabels.continue }}</button>
-  <button id="addToMyOrder" v-on:click="addToMyOrder();openTab('myOrder-page');switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button>
+  <button id="addToMyOrder" v-on:click="addToMyOrder();openTab('myOrder-page')" disabled>{{ uiLabels.addToOrder }}</button>
 </div>
 
 <div id="preMade-page" class="tabcontent">
@@ -198,6 +198,9 @@
       <h2>{{preparedDrink.pm_name + " "}}{{preparedDrink["price_" + type]}} :-</h2>
       <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
 
+        <!--kolla här: kan inkludera switchType('m');markChosenSizeButton('m') i 
+            funktionen orderPremade(preparedDrink) om den inte används till något annat
+        -->
       <button id=addToMyOrderPreMade v-on:click="orderPremade(preparedDrink);openTab('myOrder-page');switchType('m');markChosenSizeButton('m')">{{ uiLabels.addToOrder}}</button>
     </div>
   </div>
@@ -351,6 +354,7 @@
         <br></div><br>
         </div>
         <div class="centerText">
+            <!--kolla här: siri ska logit() vara med? -->
         <button v-on:click="logIt();reloadPage()" id=orderFinishedButton >OK</button>
         </div>
   </div>

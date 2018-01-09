@@ -333,6 +333,12 @@ var vm = new Vue({
           }
         }
     },
+      
+      changeSize: function(type){
+          this.changeTotalPrice(type);
+          this.markChosenSizeButton(type);
+          this.switchType(type);
+      },
 
     changeTotalPrice: function (type){
       this.price = 0;
@@ -395,18 +401,7 @@ var vm = new Vue({
      for ( var i = 0; i < this.$refs.ingredient.length; i += 1) {
        this.$refs.ingredient[i].resetCounter();
      }
-     this.volume = 0;
-     this.price = 0;
-     this.type = '';
-     this.chosenIngredients = [];
-     this.pricesSmall = [];
-     this.pricesMedium = [];
-     this.pricesLarge = [];
-     this.resetIngredientsBar();
-     this.resetPlusMinusButtons();
-     document.getElementById("addToMyOrder").disabled = true;
-     document.getElementById("continue").disabled = true;
-     document.getElementById("resetCurrentDrink").disabled = true;
+     this.resetChooseYourOwnPage();
 
      this.myDrinks.push(currentDrink);
      this.myOrder.push(currentDrink);
