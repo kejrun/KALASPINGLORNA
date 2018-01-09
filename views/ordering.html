@@ -41,14 +41,15 @@
       </div>
       <div id="LanguageDiv">
         <div style="text-align:center;">
-          <button class="newLanguage" v-on:click="switchLang()"><img id=SweImg src="/images/Sweden.png"><img id=UkImg src="/images/United-Kingdom.png"></button>
+          <button class="newLanguage" v-on:click="switchLang('se')"><img id=SweImg src="/images/Sweden.png"></button>
+          <button class="newLanguage" v-on:click="switchLang('en')"><img id=UkImg src="/images/United-Kingdom.png"></button>
         </div>
       </div>
     </div>
 
     <div id="chooseYourOwn-page" class="tabcontent">
       <div id="fixedHeader">
-          <button id="cancelOrderOnHeader">{{ uiLabels.cancel }}</button>
+          <button id="cancelOrderOnHeader" v-on:click="resetChooseYourOwnPage();resetAll();openTab('onlyHomePage');switchType('m');markChosenSizeButton('m')">{{ uiLabels.cancel }}</button>
         <div id="ingredientsBar" class="ingredientsBar">
           <div id="ingredientsBarText">Choose 5 ingredients</div>
           <div id="ingredientsBarProgress"></div>
@@ -106,7 +107,7 @@
 
       <div id="berry" class = "ingredients-list">
         <input id="toggleBerry" type="checkbox">
-        <label for="toggleBerry"><h1> {{uiLabels.berry}} </h1></label>
+        <label for="toggleBerry"><h1>{{uiLabels.berry}}</h1></label>
         <div id="berryExpand">
           <div class ="ingredients-list-text">
             <ingredient
@@ -127,7 +128,7 @@
 
     <div id="liquid" class = "ingredients-list">
       <input id="toggleLiquid" type="checkbox">
-      <label for="toggleLiquid"><h1> {{uiLabels.liquid}} </h1></label>
+      <label for="toggleLiquid"><h1>{{uiLabels.liquid}}</h1></label>
       <div id="liquidExpand">
         <div class ="ingredients-list-text">
           <ingredient
@@ -182,7 +183,7 @@
 </div>
 
 <div id="preMade-page" class="tabcontent">
-    <button id="cancelOrder">{{ uiLabels.cancel }}</button>
+    <button id="cancelOrder" v-on:click="resetChooseYourOwnPage();resetAll();openTab('onlyHomePage');switchType('m');markChosenSizeButton('m')">{{ uiLabels.cancel }}</button>
   <h3>{{ uiLabels.preMade }}</h3>
 <div id="sizeButtonsPreMade">
             <button id="smallCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('s'); markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
@@ -288,9 +289,9 @@
 </div>
 
 <div id="myOrder-page" class="tabcontent">
-        <button id="cancelOrder">{{ uiLabels.cancel }}</button>
+        <button id="cancelOrder" v-on:click="resetChooseYourOwnPage();resetAll();openTab('onlyHomePage');switchType('m');markChosenSizeButton('m')">{{ uiLabels.cancel }}</button>
         <h3>{{ uiLabels.myOrder }}</h3>
-  <h4>These are your chosen drinks:</h4>
+  <h4>{{ uiLabels.chosenDrinks }}</h4>
   <hr>
   <div id="myOrder-text">
     <div id="myOrderedDrinks" v-for = "(order,key) in myDrinks" >
@@ -314,7 +315,7 @@
 </div>
 
 <div id="checkOut-page" class="tabcontent">
-    <button id="cancelOrder">{{ uiLabels.cancel }}</button>
+    <button id="cancelOrder" v-on:click="resetChooseYourOwnPage();resetAll();openTab('onlyHomePage');switchType('m');markChosenSizeButton('m')">{{ uiLabels.cancel }}</button>
   <h3>{{ uiLabels.checkOut }}</h3>
   <tr><th><h4>{{ uiLabels.myOrder }}</h4><hr></th></tr>
   <div id="myOrder-text">
@@ -328,15 +329,30 @@
       :lang="lang"
       :type="type"
       :key="key">
-    </drinks-in-order>
-        
-  </div>
-</div>
+      </drinks-in-order>
+    </div>
+   </div>
 <br><hr><p class="h7">{{uiLabels.totalPrice}} {{ totalPrice}} kr</p>
+
 <div id="myorderbutton">
   <button id=placeOrderButton v-on:click="placeOrder();receiveOrderInfo()" disabled>{{ uiLabels.placeOrder}}</button>
 </div>
 </div>
+<div id=receivedOrderContainer>
+    <div id=receivedOrderInfo>
+    <h1> {{ uiLabels.finishedOrder }}</h1>
+    <br><br>
+    <div v-for= "finishedDrink in finishedOrderInfo">
+        <finished-order-info
+        v-bind:finished-drink="finishedDrink"
+        v-bind:ui-labels = "uiLabels">
+        </finished-order-info>
+    </div>
+    <br>
+    <button id=orderFinishedButton v-on:click="resetChooseYourOwnPage();resetAll();openTab('onlyHomePage');switchType('m');markChosenSizeButton('m')">{{uiLabels.cancel}}</button>
+    </div>
+</div>
+
 
 </body>
 

@@ -16,7 +16,10 @@
   <div class = kitchen_layout>
     <div id="clock_kitchen"></div>
     <div id="orders">
-      <button v-on:click="switchLang()" class="language">{{ uiLabels.language }}</button>
+        <div style="text-align:center;">
+          <button class="newLanguage" v-on:click="switchLang('se')"><img id=SweImg src="/images/Sweden.png"></button>
+          <button class="newLanguage" v-on:click="switchLang('en')"><img id=UkImg src="/images/United-Kingdom.png"></button>
+        </div>
       <div id ="start_page">
         <h1>{{ uiLabels.ordersInQueue }}</h1>
         <div id = cancelDiv>
