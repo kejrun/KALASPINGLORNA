@@ -1,5 +1,6 @@
 {
   "ordersFinished" : "Färdiga beställningar",
+  "ordersCancelled" : "Avbrutna beställningar",
   "ordersInQueue" : "Beställningar att förbereda",
   "ordersTrending" : "Populära beställningar",
   "continue" : "Fortsätt",
