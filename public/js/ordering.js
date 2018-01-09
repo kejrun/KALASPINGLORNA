@@ -494,6 +494,7 @@ var vm = new Vue({
             this.price = 0;
             this.totalPrice = 0;
             this.orderCounterValue = 0;
+            document.getElementById("receivedOrderContainer").style.display="none";
       },
 
     //this function resets EVERYTHING on the choose your own page
@@ -747,21 +748,20 @@ var vm = new Vue({
     },
 
     receiveOrderInfo: function(){
-        var thankYouText = this.uiLabels.finishedOrder;
-    socket.on("returnOrderInfo", function(orderNumber,order) {
 
-        var finishedDrink = {
-            orderId: orderNumber,
-            drinkName: order.order[0].name,
-            drinkSize: order.order[0].type
-        } 
-        this.finishedOrderInfo.push(finishedDrink);
-        document.getElementById("receivedOrderContainer").style.display="block";
-        document.getElementById("checkOut-page").style.display="none";
+        socket.on("returnOrderInfo", function(orderNumber,order) {
 
-        //vm.myOrder = [];
-        //vm.finishedOrderInfo = [];
-        //openTab('home-page');
+            var finishedDrink = {
+                orderId: orderNumber,
+                drinkName: order.order[0].name,
+                drinkSize: order.order[0].type
+            } 
+            
+            this.finishedOrderInfo.push(finishedDrink);
+            document.getElementById("receivedOrderContainer").style.display="block";
+            document.getElementById("checkOut-page").style.display="none";
+            document.getElementById("ProgressBarPreMade").style.display = "none";
+            document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
         
     }.bind(this));
     }
@@ -775,9 +775,9 @@ Vue.component('added-drinks', {
     template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>\
     <label>\{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</label>\
     <br>\
-    <button v-on:click="minusDrink()" id="drinkMinusButton" class="drinkMinusButton">-</button>\
+    <button v-on:click="minusDrink()" id="drinkMinusButton" class="drinkMinusPlusButton">-</button>\
     <label class="counterID">{{ counter }}</label>\
-    <button v-on:click="plusDrink()" id="drinkPlusButton" class="drinkPlusButton">+</button>\
+    <button v-on:click="plusDrink()" id="drinkPlusButton" class="drinkMinusPlusButton">+</button>\
     <br></div>',
     data: function () {
         return {
@@ -836,7 +836,7 @@ Vue.component('finished-order-info',{
         template:'<div id="finishedDrinkInfo">\
                   <p>{{ finishedDrink.orderId }}</p>\
                   <div id="fdrink"><p>{{ finishedDrink.drinkName}} {{finishedDrink.drinkSize}}</p>\
-                  <\div><br>\
+                  </div><br>\
                   </div>'
 });
 

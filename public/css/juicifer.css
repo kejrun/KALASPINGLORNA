@@ -1090,6 +1090,16 @@ and "My drink" in the other column */
 	color: gray;
 }
 
+.drinkMinusPlusButton {
+   	width: 40px;
+	height: 30px;
+	font-size: 16pt;
+	border-radius: 5px;
+	box-shadow: 2px gray;
+	background-color: white;
+	cursor:pointer; 
+}
+
 /********************CHECKOUT********************/
 #checkOut-page{
 	padding-top: 100px;
@@ -1115,6 +1125,7 @@ and "My drink" in the other column */
 #receivedOrderContainer{
     width:100%;
     height:100%;
+    margin-top: 85px;
     z-index:110;
     display:none;
     position:absolute;
@@ -1127,8 +1138,8 @@ and "My drink" in the other column */
     background-color: white;
     margin-left: auto;
     margin-right: auto;
-    padding:5%;
-    width: 50%;
+    padding: 5%;
+    width: 35%;
     z-index: 110;
 }
 
@@ -1138,6 +1149,21 @@ and "My drink" in the other column */
 
 .fDrinkSize{
     text-transform: uppercase;
+}
+
+#orderFinishedButton{
+    position:block;
+	font-family: 'Encode Sans Semi Condensed';
+	width: 50%;
+	height: 70px;
+	border: none;
+	font-size: 20px;
+	color: white;
+	background-color: forestgreen;
+	margin-top: 0.5em;
+	box-shadow: 1px 1px 1px 1px gray;
+	border-radius: 8px;
+    
 }
 
 #placeOrderButton:disabled,
@@ -1255,16 +1281,14 @@ and "My drink" in the other column */
 		font-size: 12pt;
 	}
 
-	.LanguageButton{
-		margin-top: 7%;
-	}
-
-	#LangIMG{
-		width: 15%
+	.newLanguage{
+		margin-top: 5%;
 	}
 
 	#ingredientsBarText{
-		font-size: 20px;
+		top: 50%;
+		left: 50%;
+		font-size: 18px;
 	}
 
 	#categories-drink{
@@ -1279,6 +1303,24 @@ and "My drink" in the other column */
 		grid-template-columns: repeat(1, auto);
 	}
 
+	#extrasCategories {
+		grid-template-columns: repeat(1, auto);
+	}
+
+	.ingredients-list-text{
+		width: 100%;
+		min-width: 80%;
+		overflow-y: hidden;
+	}
+
+
+	.extras-list-text{
+		width: 100%;
+		min-width: 70%;
+		overflow-y: hidden;
+	}
+
+
 	#openNavbutton{
 		display: block;
 		position: absolute;
@@ -1292,8 +1334,7 @@ and "My drink" in the other column */
 		position: fixed;
 		background-color: #810051;
 		font-family: 'Encode Sans Semi Condensed';
-		width: 300px;
-		height: 40px;
+		width: 100%;
 		border-radius: 8px;
 		text-align: center;
 		text-transform: uppercase;
@@ -1314,12 +1355,11 @@ and "My drink" in the other column */
 		display: none;
 		z-index: 100;
 		position: absolute;
-		left: -375px;
+		left: -100%;
 		width: 99%;
 		-webkit-animation: slide 0.5s forwards;
 		animation: slide 0.5s forwards;
 		overflow-y: scroll;
-		height: 85%;
 	}
 
 	#showDrink{
@@ -1339,21 +1379,7 @@ and "My drink" in the other column */
 		100% { left: 0; }
 	}
 
-	.ingredients-list-text{
-		max-height: 100%;
-		width: 100%;
-		overflow-y: none;
-	}
-
-	#extrasCategories {
-		grid-template-columns: repeat(1, auto);
-	}
-
-	#ProgressBarChooseYourOwn{
-		height:12%;
-	}
-
-	#ProgressBarPreMade{
+	#ProgressBarChooseYourOwn, #ProgressBarPreMade{
 		height:12%;
 	}
 
@@ -1395,7 +1421,7 @@ and "My drink" in the other column */
 	#continueButtons{
 		position: fixed;
 		display: block;
-		width: 100%
+		width: 100%;
 	}
 
 	#continue{

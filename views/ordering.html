@@ -107,7 +107,7 @@
 
       <div id="berry" class = "ingredients-list">
         <input id="toggleBerry" type="checkbox">
-        <label for="toggleBerry"><h1> {{uiLabels.berry}} </h1></label>
+        <label for="toggleBerry"><h1>{{uiLabels.berry}}</h1></label>
         <div id="berryExpand">
           <div class ="ingredients-list-text">
             <ingredient
@@ -128,7 +128,7 @@
 
     <div id="liquid" class = "ingredients-list">
       <input id="toggleLiquid" type="checkbox">
-      <label for="toggleLiquid"><h1> {{uiLabels.liquid}} </h1></label>
+      <label for="toggleLiquid"><h1>{{uiLabels.liquid}}</h1></label>
       <div id="liquidExpand">
         <div class ="ingredients-list-text">
           <ingredient
@@ -341,13 +341,15 @@
 <div id=receivedOrderContainer>
     <div id=receivedOrderInfo>
     <h1> {{ uiLabels.finishedOrder }}</h1>
+    <br><br>
     <div v-for= "finishedDrink in finishedOrderInfo">
         <finished-order-info
         v-bind:finished-drink="finishedDrink"
         v-bind:ui-labels = "uiLabels">
         </finished-order-info>
     </div>
-    <button id=orderFinished>{{uiLabels.cancel}}</button>
+    <br>
+    <button id=orderFinishedButton v-on:click="resetChooseYourOwnPage();resetAll();openTab('onlyHomePage');switchType('m');markChosenSizeButton('m')">{{uiLabels.cancel}}</button>
     </div>
 </div>
 
