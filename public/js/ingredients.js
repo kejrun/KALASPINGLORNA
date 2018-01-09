@@ -1,5 +1,4 @@
-//OBS!! DENNA FIL ANVÄNDS EJ!!
-//Vue.component('ingredient', {
+Vue.component('ingredient', {
   props: ['item', 'lang'],
   template: '<div class="ingredientStock">\
     <div class= "itemColumn">{{item["ingredient_"+ lang]}}</div>\
@@ -29,7 +28,7 @@
     }
 });
 
-//Vue.component('ingredient-limited', {
+Vue.component('ingredient-limited', {
   props: ['item', 'lang'],
   template: '<div class="ingredientStock">\
     <div class= "itemColumn">{{item["ingredient_"+ lang]}}</div>\
@@ -39,9 +38,24 @@
 
 
 
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('clock_kitchen').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+};
 
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+};
 
-//var vm = new Vue({
+var vm = new Vue({
   el: '#ingredients',
   mixins: [sharedVueStuff],
     data: {
@@ -54,15 +68,15 @@
     unaddToRefill: function(item){
         socket.emit("minusIngredient", item.ingredient_id);
     },
-     refreshPage: function(){
-        window.location = 'http://localhost:3000/ingredients';
+   //  refreshPage: function(){
+    //    window.location = 'http://localhost:3000/ingredients';
 
-    },
-    ShowStartpage: function(){
-        window.location = 'http://localhost:3000/kitchen';
-        document.getElementById("finishedOrder").style.display ="none";
+   // },
+   // ShowStartpage: function(){
+   //     window.location = 'http://localhost:3000/kitchen';
+   //     document.getElementById("finishedOrder").style.display ="none";
         
-    },
+  //  },
     filteredIngredients: function () {
         var resultList = [];
         for (var i = 0; i< this.ingredients.length; i+=1) {
@@ -72,5 +86,9 @@
             
         }
         return resultList;
-    },
+    }
+    
+   
+
+
 }});

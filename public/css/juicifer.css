@@ -235,7 +235,6 @@ a {
 	background-color: #777;
 	width: 80px;
 	height: 40px;
-	text-align: center;
 	border-radius: 5px;
 	cursor: pointer;
 	box-shadow: 0.3px 0.3px 3px 1px gray;
@@ -262,7 +261,7 @@ a {
 	position: absolute;
 	margin: 0 auto;
 	display: table;
-	height: 102.4px;
+	height: 70px;
 	width: 768px;
 }
 
@@ -395,15 +394,14 @@ a {
 .finishedOrderClass {
 	padding: 6px;
 	text-transform: uppercase;
-
 }
-
 
 #refillbtnID{
 	position: absolute;
 	display: table;
 	margin: 0 auto;
 	width: 768px;
+	height:100px;
 	top: 890px;
 }
 
@@ -418,8 +416,6 @@ a {
 	width: 500px;
 	height: 80px;
 	margin-left: 134px;
-	top: 10%;
-	position: absolute;
 	border-radius: 15px;
 }
 

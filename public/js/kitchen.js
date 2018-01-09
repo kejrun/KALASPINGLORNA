@@ -62,18 +62,11 @@ var vm = new Vue({
       document.getElementById("finishedOrder").style.display ="block";
       document.getElementById("start_page").style.display = "none";
       document.getElementById("Hist_Ingred").style.display = "none";
-        document.getElementById("stockList_layout").style.display = "none"
-
-    },
-    ShowIngredients: function(){
-        document.getElementById("stockList_layout").style.display = "block"
-        document.getElementById("orders").style.display = "none";
     },
     ShowStartpage: function(){
         document.getElementById("finishedOrder").style.display ="none";
         document.getElementById("start_page").style.display = "block";
         document.getElementById("Hist_Ingred").style.display = "block"; 
-        document.getElementById("stockList_layout").style.display = "none";
     }
   }
 });
@@ -180,49 +173,5 @@ Vue.component('ingredient', {
     }
 });
 
-Vue.component('ingredient-limited', {
-  props: ['item', 'lang'],
-  template: '<div class="ingredientStock">\
-    <div class= "itemColumn">{{item["ingredient_"+ lang]}}</div>\
-    <div class= "itemColumn">{{item.stock}}ml</div>\
-   </div>',         
-});
 
-
-
-var vm = new Vue({
-  el: '#ingredients',
-  mixins: [sharedVueStuff],
-    data: {
-        searchText: ""
-    },
-    methods:{
-    addToRefill: function(item){
-        socket.emit("plusIngredient", item.ingredient_id);
-    },
-    unaddToRefill: function(item){
-        socket.emit("minusIngredient", item.ingredient_id);
-        console.log(item.ingred)
-    },
-    refreshPage: function(){
-        location.reload();
-
-    },
-    ShowStartpage: function(){
-        //location.reload();
-        document.getElementById("orders").style.display = "block";
-        document.getElementById("finishedOrder").style.display ="none";
-        
-    },
-    filteredIngredients: function () {
-        var resultList = [];
-        for (var i = 0; i< this.ingredients.length; i+=1) {
-            if(this.ingredients[i]["ingredient_" +this.lang].substring(0,this.searchText.length) == this.searchText) {
-                resultList.push(this.ingredients[i]);
-            }
-            
-        }
-        return resultList;
-    },
-}});
 
