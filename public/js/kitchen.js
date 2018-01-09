@@ -46,8 +46,7 @@ var vm = new Vue({
     sendCancel: function (orderid) {
       socket.emit("cancelOrder", orderid);
     },
-    markInMade: function(orderid){
-        
+    markInMade: function(orderid){ 
       socket.emit("orderInMade", orderid);
     },
     unmarkInMade: function(orderid){
@@ -55,11 +54,9 @@ var vm = new Vue({
     },
     undoCancel: function(orderid){
         socket.emit("undoCancelOrder", orderid);
-        window.location = 'http://localhost:3000/kitchen';
     },
     wantToCancel: function (orderid){
         socket.emit("wantCancel", orderid); 
-        window.location = 'http://localhost:3000/kitchen'; 
     },                     
     ShowHistory: function(){
       document.getElementById("finishedOrder").style.display ="block";
@@ -102,8 +99,7 @@ Vue.component('order-item-to-prepare-in-made', {
          </div>',
     methods: {
     orderDone: function () {
-      this.$emit('done');
-        
+      this.$emit('done');   
     },
     notInMade: function(){
       this.$emit('in-made');

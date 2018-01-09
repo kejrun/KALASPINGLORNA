@@ -1,5 +1,6 @@
 {
   "ordersFinished" : "Finished orders",
+  "ordersCancelled" : "Cancelled orders",
   "ordersInQueue" : "Order queue",
   "ordersTrending" : "Trending orders",
   "continue" : "Continue",
@@ -44,7 +45,7 @@
   "yes": "Yes",
   "no": "No",
   "chosenDrinks": "Your chosen drinks: ",
-    "limited":"Limited stock balance",
-    "CancelWant":"Are you sure you want to cancel order:",
+  "limited":"Limited stock balance",
+  "CancelWant":"Are you sure you want to cancel order:",
   "finishedOrder": "Thank you for your order!"
 }

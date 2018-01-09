@@ -188,27 +188,33 @@ a {
 }
 
 
-/* Set style for change language button and flag, still working on it.... */
-.LanguageButton{
-	border: none;
-	margin-top: 3%;
-	background-color: #810051;
-	width: 80px;
-	text-align: center;
-	border-radius: 5px;
-}
-
-.LanguageButton a{
-	color: white;
-	font-size: 10pt;
-}
-
-.LanguageButton:hover {
-	background-color: #777;
-}
+/* Set style for change language button and flag*/
 
 #LanguageDiv{
 	display: inline;
+}
+
+.newLanguage{
+    height: 40px;
+    width: 102px;
+    margin-top: 3%;
+    border: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#SweImg{
+    height: 40px;
+    width:50px;
+    padding-right: 1px;
+    float:left;
+}
+
+#UkImg{
+    height: 40px;
+    width:50px;
+    padding-left: 1px; 
+    float:right;
 }
 
 /**********************THIS IS THE CSS FOR THE KITCHEN VIEW*********************/
@@ -365,16 +371,27 @@ a {
 /*Layout for finished order page*/
 #finishedOrder{
 	display: none;
-	height: 80%;
+	height: 900px;
 	margin: 0 auto;
-	overflow-y: scroll;
+}
+
+.itemsFinishedCancelled{
+    height: 380px;
+    overflow-y: scroll;
+    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+	border-radius: 10px;
+    box-shadow: 1px 1px 7px 3px #aaaaaa;
 }
 
 /*to make every order seperate, i.e. this is every unique order that is done*/
 .finishedOrderClass {
 	padding: 6px;
 	text-transform: uppercase;
+
 }
+
 
 #refillbtnID{
 	position: absolute;
@@ -388,7 +405,7 @@ a {
 	font-family: 'Encode Sans Semi Condensed';
 	border: none;
 	text-transform: uppercase;
-	background-color: #64c47d;
+	background-color: forestgreen;
 	padding: 15px 32px;
 	font-size: 20pt;
 	cursor: pointer;
@@ -417,7 +434,7 @@ a {
 #start_page{
 	display: table;
 	margin: 0 auto;
-	height: 650px;
+	height: 750px;
 	width: 600px;
     margin-top: 15px;
 }
@@ -446,7 +463,7 @@ a {
 }
 
 #OrdersQueue{
-	height: 640px;
+	height: 650px;
 	margin: 0 auto;
 	overflow-y: scroll;
 	margin-bottom: 40px;
@@ -543,7 +560,7 @@ a {
 	z-index: 2;
 	font-size: 25pt;
     padding: 30px; 
-    box-shadow: 1px 1px 10px 3px gray;
+    box-shadow: 1px 1px 10px 3px grey;
 }
 
 .orderIngredInfo{
@@ -571,10 +588,11 @@ a {
 
 /* Code for Ingredients and history buttons on staff view */
 #Hist_Ingred{
+    top: 900px;
 	height: 150px;
 	display: table;
 	margin: 0 auto;
-    top: 880px;
+    
 }
 
 .Hist_Ingred_Button {
@@ -661,6 +679,14 @@ input[type="checkbox"]{
 	cursor:pointer;
 }
 
+#ingredientsPlusButton:disabled,
+#ingredientsPlusButton[disabled]{
+    border: lightgrey;
+    color: #a9abad;
+    background-color: #d6d7d8;
+}
+
+
 #ingredientsMinusButton {
 	width: 40px;
 	height: 30px;
@@ -674,8 +700,10 @@ input[type="checkbox"]{
 #ingredientsMinusButton:disabled,
 #ingredientsMinusButton[disabled]{
     border: lightgrey;
-    color: lightgrey;
+    color: #a9abad;
+    background-color: #d6d7d8;
 }
+
 
    
 
@@ -813,7 +841,7 @@ and "My drink" in the other column */
 .sizeButton{
 	margin: 1%;
 	font-family: 'Encode Sans Semi Condensed';
-	width: 90px;
+	width: 100px;
 	height: 90px;
 	border: none;
 	box-shadow: 0px 2px 2px 0px gray;
@@ -935,8 +963,8 @@ and "My drink" in the other column */
 
 .sizeButtonPreMade{
 	font-family: 'Encode Sans Semi Condensed';
-	width: 90px;
-	height: 90px;
+	width: 100px;
+	height: 100px;
 	border-style: solid;
 	border-width: 2px;
 	border-radius: 5px;
