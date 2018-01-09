@@ -417,7 +417,7 @@ a {
 #start_page{
 	display: table;
 	margin: 0 auto;
-	height: 650px;
+	height: 750px;
 	width: 600px;
     margin-top: 15px;
 }
@@ -446,7 +446,7 @@ a {
 }
 
 #OrdersQueue{
-	height: 640px;
+	height: 650px;
 	margin: 0 auto;
 	overflow-y: scroll;
 	margin-bottom: 40px;
@@ -571,10 +571,11 @@ a {
 
 /* Code for Ingredients and history buttons on staff view */
 #Hist_Ingred{
+    top: 900px;
 	height: 150px;
 	display: table;
 	margin: 0 auto;
-    top: 880px;
+    
 }
 
 .Hist_Ingred_Button {

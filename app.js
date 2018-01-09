@@ -153,6 +153,7 @@ Data.prototype.addOrder = function (order) {
     var orderId = this.getOrderNumber();
     this.orders[orderId] = order;
     this.orders[orderId].done = false;
+    this.orders[orderId].cancel = false;
     this.orders[orderId].inMade = false;
     this.orders[orderId].wantOrderCancel = false;
     for (var i=0; i< order.order.length; i+=1){
@@ -178,6 +179,7 @@ Data.prototype.unmarkWantToCancel = function (orderId){
 
 Data.prototype.cancelOrder = function(orderId){
     this.orders[orderId].done = true;
+    this.orders[orderId].cancel = true;
     for (var i=0; i<this.orders[orderId].order.length; i+=1){
         this.makeTransaction(this.orders[orderId].order[i], "add");
     }

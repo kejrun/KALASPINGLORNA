@@ -68,15 +68,23 @@
     <div class= Heades_kitchenSide> <h1>{{ uiLabels.ordersFinished }}</h1></div>
       <order-item-done
         v-for="(order, key) in orders"
-        v-if="order.done"
+        v-if="order.done && !order.cancel"
         :order-id="key"
         :order="order" 
         :lang="lang"
         :type="type"
         :key="key">
-
       </order-item-done>
- 
+       <div class= Heades_kitchenSide> <h1>{{ uiLabels.ordersCancelled }}</h1></div>
+      <order-item-done
+        v-for="(order, key) in orders"
+        v-if="order.cancel"
+        :order-id="key"
+        :order="order" 
+        :lang="lang"
+        :type="type"
+        :key="key">
+      </order-item-done>
     </div>
 
     <div id = Hist_Ingred>

@@ -46,8 +46,7 @@ var vm = new Vue({
     sendCancel: function (orderid) {
       socket.emit("cancelOrder", orderid);
     },
-    markInMade: function(orderid){
-        
+    markInMade: function(orderid){ 
       socket.emit("orderInMade", orderid);
     },
     unmarkInMade: function(orderid){
@@ -102,8 +101,7 @@ Vue.component('order-item-to-prepare-in-made', {
          </div>',
     methods: {
     orderDone: function () {
-      this.$emit('done');
-        
+      this.$emit('done');   
     },
     notInMade: function(){
       this.$emit('in-made');
@@ -121,7 +119,7 @@ Vue.component('order-cancel', {
     <button v-on:click="cancelOrder" class = YesNoButton>{{uiLabels.yes}}</button>\
     <button v-on:click="undoCancelOrder" class = YesNoButton>{{uiLabels.no}}</button></div>',
     methods: {
-      cancelOrder: function () {
+    cancelOrder: function () {
         this.$emit('cancel')
     },
     undoCancelOrder:function(){
