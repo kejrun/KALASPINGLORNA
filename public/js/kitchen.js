@@ -52,8 +52,11 @@ var vm = new Vue({
     unmarkInMade: function(orderid){
       socket.emit("notInMade", orderid);
     },
+    undoCancel: function(orderid){
+        socket.emit("undoCancelOrder", orderid);
+        window.location = 'http://localhost:3000/kitchen';
+    },
     wantToCancel: function (orderid){
-        console.log("send to Cancel")
         socket.emit("wantCancel", orderid); 
         window.location = 'http://localhost:3000/kitchen';
         
@@ -74,11 +77,7 @@ var vm = new Vue({
       document.getElementById("finishedOrder").style.display ="none";
       document.getElementById("start_page").style.display = "block";
       document.getElementById("Hist_Ingred").style.display = "block"; 
-    },
-    popup: function(){
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
-}
+    }
   }
 });
 
@@ -111,7 +110,6 @@ Vue.component('order-item-to-prepare-in-made', {
     },
     wantCancel: function () {
         this.$emit('want-cancel')
-        console.log('do you want to cancel??')
     }
   }
 
@@ -119,14 +117,17 @@ Vue.component('order-item-to-prepare-in-made', {
 
 Vue.component('order-cancel', {
     props: ['uiLabels', 'order', 'orderId', 'lang'],
-    template: '<div class = cancelOrNot >{{uiLabels.CancelWant}}<div v-for="o in order.order">{{orderId}}</div>\
-                <button v-on:click="cancelOrder" class = YesNoButton>{{uiLabels.yes}}</button></div>',
+    template: '<div class = cancelOrNot><div class = cancelOrNotOrder >{{uiLabels.CancelWant}}<div v-for="o in order.order">{{orderId}}, {{o["type"]}}<div v-for="ing in o.ingredients" class = orderIngredInfo>{{ ing["ingredient_" + lang] }}</div></div></div>\
+    <button v-on:click="cancelOrder" class = YesNoButton>{{uiLabels.yes}}</button>\
+    <button v-on:click="undoCancelOrder" class = YesNoButton>{{uiLabels.no}}</button></div>',
     methods: {
       cancelOrder: function () {
         this.$emit('cancel')
-        console.log('want to cancel??')
     },
-}
+    undoCancelOrder:function(){
+        this.$emit('undo-cancel')
+    }
+    }
 }); 
 
 Vue.component('order-item-done', {

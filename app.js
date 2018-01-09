@@ -172,8 +172,10 @@ Data.prototype.markWantToCancel = function (orderId){
     this.orders[orderId].wantOrderCancel = true;
 };
 
-//Samma här med if sats, vi behöver veta om kunden valt S, M, L för att veta om de är
-// +40, +60 eller +80 som ska skickas till makeTransaxtion
+Data.prototype.unmarkWantToCancel = function (orderId){
+    this.orders[orderId].wantOrderCancel = false;
+};
+
 Data.prototype.cancelOrder = function(orderId){
     this.orders[orderId].done = true;
     for (var i=0; i<this.orders[orderId].order.length; i+=1){
@@ -237,6 +239,11 @@ io.on('connection', function (socket) {
     
     socket.on('wantCancel', function(orderId){
         data.markWantToCancel(orderId);
+        io.emit('currentQueue', {order: data.getAllOrders() });
+    });
+    
+     socket.on('undoCancelOrder', function(orderId){
+        data.unmarkWantToCancel(orderId);
         io.emit('currentQueue', {order: data.getAllOrders() });
     });
     
