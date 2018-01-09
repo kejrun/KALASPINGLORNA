@@ -1021,6 +1021,34 @@ and "My drink" in the other column */
 	border-radius: 8px;
 }
 
+#receivedOrderContainer{
+    width:100%;
+    height:100%;
+    z-index:110;
+    display:none;
+    position:absolute;
+    background-color:white;
+    border: solid;
+}
+
+#receivedOrderInfo{
+    position: block;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    padding:5%;
+    width: 50%;
+    z-index: 110;
+}
+
+#fDrink p{
+    display: inline;
+}
+
+.fDrinkSize{
+    text-transform: uppercase;
+}
+
 /********************TABBUTTONS********************/
 /* Style the tab buttons */
 /* Tab for choose chooseYourOwn */

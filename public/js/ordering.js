@@ -265,7 +265,6 @@ var vm = new Vue({
   },
   created: function() {
 
-      console.log("alert" + this.finishedOrderInfo);
     
     //alert(orderInfo);
     
@@ -620,6 +619,7 @@ var vm = new Vue({
       if (tabName === "checkOut-page") {
         document.getElementById("checkOut-pageBtnPM").style.backgroundColor = "#810051";
         document.getElementById("checkOut-pageBtn").style.backgroundColor = "#810051";
+        document.getElementById("receivedOrderContainer").style.display = "none";
       };
       if (tabName === "home-page") {
         document.getElementById("home-pageBtnPM").style.backgroundColor = "#810051";
@@ -724,16 +724,17 @@ var vm = new Vue({
         var finishedDrink = {
             orderId: orderNumber,
             drinkName: order.order[0].name,
-            drinkIngredients: order.order[0].ingredients
+            drinkSize: order.order[0].type
         } 
-        vm.finishedOrderInfo.push(finishedDrink);
-        if(vm.finishedOrderInfo.length == vm.myOrder.length)
-            {console.log(vm.finishedOrderInfo);}
-        
+        this.finishedOrderInfo.push(finishedDrink);
+        document.getElementById("receivedOrderContainer").style.display="block";
+        document.getElementById("checkOut-page").style.display="none";
 
-    
-    //alert(orderInfo);
-    });
+        //vm.myOrder = [];
+        //vm.finishedOrderInfo = [];
+        //openTab('home-page');
+        
+    }.bind(this));
 
         
         
@@ -798,5 +799,14 @@ Vue.component('drinks-in-order', {
 
     }
   });
+
+Vue.component('finished-order-info',{
+    props:['uiLabels','finishedDrink'],
+        template:'<div id="finishedDrinkInfo">\
+                  <p>{{ finishedDrink.orderId }}</p>\
+                  <div id="fdrink"><p>{{ finishedDrink.drinkName}} {{finishedDrink.drinkSize}}</p>\
+                  <\div><br>\
+                  </div>'
+});
 
 //----------------------------------------------
