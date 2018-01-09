@@ -40,11 +40,11 @@ var sharedVueStuff = {
     }.bind(this));
   },
   methods: {
-    switchLang: function () {
-      if (this.lang === "en") {
-        this.lang = "sv";
-      } else {
+    switchLang: function (lang) {
+      if (lang === "en") {
         this.lang = "en";
+      } else {
+        this.lang = "sv";
       }
       socket.emit('switchLang', this.lang);
     },
