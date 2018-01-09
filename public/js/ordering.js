@@ -747,18 +747,20 @@ var vm = new Vue({
     },
 
     receiveOrderInfo: function(){
-        var thankYouText = this.uiLabels.finishedOrder;
-    socket.on("returnOrderInfo", function(orderNumber,order) {
 
-        var finishedDrink = {
-            orderId: orderNumber,
-            drinkName: order.order[0].name,
-            drinkSize: order.order[0].type
-        } 
-        this.finishedOrderInfo.push(finishedDrink);
-        document.getElementById("receivedOrderContainer").style.display="block";
-        document.getElementById("checkOut-page").style.display="none";
+        socket.on("returnOrderInfo", function(orderNumber,order) {
 
+            var finishedDrink = {
+                orderId: orderNumber,
+                drinkName: order.order[0].name,
+                drinkSize: order.order[0].type
+            } 
+            
+            this.finishedOrderInfo.push(finishedDrink);
+            document.getElementById("receivedOrderContainer").style.display="block";
+            document.getElementById("checkOut-page").style.display="none";
+            document.getElementById("ProgressBarPreMade").style.display = "none";
+            document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
         //vm.myOrder = [];
         //vm.finishedOrderInfo = [];
         //openTab('home-page');
@@ -838,7 +840,7 @@ Vue.component('finished-order-info',{
         template:'<div id="finishedDrinkInfo">\
                   <p>{{ finishedDrink.orderId }}</p>\
                   <div id="fdrink"><p>{{ finishedDrink.drinkName}} {{finishedDrink.drinkSize}}</p>\
-                  <\div><br>\
+                  </div><br>\
                   </div>'
 });
 
