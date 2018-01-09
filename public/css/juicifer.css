@@ -769,11 +769,12 @@ and "My drink" in the other column */
 }
 
 .sizeButton{
+	margin: 1%;
 	font-family: 'Encode Sans Semi Condensed';
 	width: 90px;
 	height: 90px;
-	border-style: solid;
-	border-width: 2px;
+	border: none;
+	box-shadow: 0px 2px 2px 0px gray;
 	border-radius: 5px;
 }
 
