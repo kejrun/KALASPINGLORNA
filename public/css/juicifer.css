@@ -704,10 +704,17 @@ and "My drink" in the other column */
 	height: 60px;
 	justify-self: end;
 	font-size: 20px;
-	background-color: #306d31;
+    color: white;
+	background-color: forestgreen;
 	margin-top: 0.5em;
 	box-shadow: 1px 1px 1px 1px gray;
 	border-radius: 8px;
+}
+
+#continue:disabled,
+#continue[disabled]{
+    background-color: #306d31;
+    color: gray;
 }
 
 #addToMyOrder{
@@ -717,10 +724,17 @@ and "My drink" in the other column */
 	height: 60px;
 	justify-self: end;
 	font-size: 20px;
-	background-color: #306d31;
+    color: white;
+	background-color: forestgreen;
 	margin-top: 0.5em;
 	box-shadow: 1px 1px 1px 1px gray;
 	border-radius: 8px;
+}
+
+#addToMyOrder:disabled,
+#addToMyOrder[disabled]{
+    background-color: #306d31;
+    color: gray;
 }
 
 #resetCurrentDrink{
@@ -1004,6 +1018,12 @@ and "My drink" in the other column */
 	border-radius: 8px;
 }
 
+#proceedToCheckout:disabled,
+#proceedToCheckout[disabled]{
+    background-color: #306d31;
+    color: gray;
+}
+
 /********************CHECKOUT********************/
 #placeOrderButton{
 	grid-column-start:2;
@@ -1020,6 +1040,12 @@ and "My drink" in the other column */
 	margin-top: 0.5em;
 	box-shadow: 1px 1px 1px 1px gray;
 	border-radius: 8px;
+}
+
+#placeOrderButton:disabled,
+#placeOrderButton[disabled]{
+    background-color: #306d31;
+    color: gray;
 }
 
 /********************TABBUTTONS********************/
