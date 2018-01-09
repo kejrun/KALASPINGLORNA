@@ -83,7 +83,7 @@ var vm = new Vue({
     filteredIngredients: function () {
         var resultList = [];
         for (var i = 0; i< this.ingredients.length; i+=1) {
-            if(this.ingredients[i]["ingredient_" +this.lang].substring(0,this.searchText.length) == this.searchText) {
+            if(this.ingredients[i]["ingredient_" +this.lang].substring(0,this.searchText.length) == this.searchText.toLowerCase()) {
                 resultList.push(this.ingredients[i]);
             }
         }
