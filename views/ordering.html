@@ -56,7 +56,7 @@
         </div>
       </div>
       <div id="openNavbutton">
-        <button id="sidebarbutton" onclick="openNav()">&#8657;{{ uiLabels.order }}</button>
+        <button id="sidebarbutton" onclick="openNav()">&#8743; {{ uiLabels.order }}</button>
       </div>
       <div id=labelIng> <p class="h8">{{ uiLabels.ingredients }}</p></div>
       <div id=labelExtra> <p class="h8">{{ uiLabels.extras }}</p></div>
@@ -341,16 +341,19 @@
 </div>
 <div id=receivedOrderContainer>
     <div id=receivedOrderInfo>
-    <h1> {{ uiLabels.finishedOrder }}</h1>
-    <br><br>
-    <div v-for= "finishedDrink in finishedOrderInfo">
-        <finished-order-info
-        v-bind:finished-drink="finishedDrink"
-        v-bind:ui-labels = "uiLabels">
-        </finished-order-info>
-    </div>
-    <br>
-    <button id=orderFinishedButton v-on:click="resetChooseYourOwnPage();resetAll();openTab('onlyHomePage');switchType('m');markChosenSizeButton('m')">{{uiLabels.cancel}}</button>
+        <h1> {{ uiLabels.finishedOrder }}</h1>
+        <br><br><br>
+        <div id="theInfo" class="centerText">
+        <div v-for= "finishedDrink in finishedOrderInfo">
+            <finished-order-info
+            v-bind:finished-drink="finishedDrink"
+            v-bind:ui-labels = "uiLabels">
+            </finished-order-info>
+        <br></div><br>
+        </div>
+        <div class="centerText">
+        <button v-on:click="logIt();resetChooseYourOwnPage();resetAll();openTab('onlyHomePage');switchType('m');markChosenSizeButton('m');reloadPage()" id=orderFinishedButton >Ok!</button>
+        </div>
     </div>
 </div>
 
