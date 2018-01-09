@@ -309,7 +309,7 @@ var vm = new Vue({
             this.ingredientsInCategoryOrder.push(this.extras[i]);
         }
     },
-      
+
       printHej: function (){
           console.log("hej");
       },
@@ -460,11 +460,11 @@ var vm = new Vue({
 
      this.myDrinks.push(currentDrink);
      this.myOrder.push(currentDrink);
-        
+
       var uniqueDrink = {
           name: drinkName,
           type: this.type
-      }; 
+      };
       this.uniqueDrinksInMyOrder.push(uniqueDrink);
 
      //show the notifybubble
@@ -530,7 +530,7 @@ var vm = new Vue({
       return ingredientList;
     },
     addPremadeDrink: function (item) {
-        
+
           if (this.type === "s"){
             this.price = item.price_s;
           }
@@ -555,16 +555,16 @@ var vm = new Vue({
       this.myDrinks.push(currentDrink);
       this.myOrder.push(currentDrink);
 
-        
+
       //kolla här: pusha object uniqueDrink till uniqueDrinksInMyOrder.. med namn och type
       var uniqueDrink = {
           name: item.pm_name,
           type: this.type
-      };    
+      };
       this.uniqueDrinksInMyOrder.push(uniqueDrink);
-        
+
       /* //kolla här: kod för att bara lägga till vald premade i uniquedrinksinmyorder om den inte redan finns där
-           //tar hänsyn till namn och storlek, men kan inte använda dett i nuläget då samma inte fungerar för 
+           //tar hänsyn till namn och storlek, men kan inte använda dett i nuläget då samma inte fungerar för
       var duplication = 0;
       for (var i = 0; i < this.uniqueDrinksInMyOrder.length; i++){
           if (currentDrink.name === this.uniqueDrinksInMyOrder[i].name && currentDrink.type === this.uniqueDrinksInMyOrder[i].type){
@@ -573,13 +573,13 @@ var vm = new Vue({
       }
       if (duplication == 0){
               this.uniqueDrinksInMyOrder.push(uniqueDrink);
-      }*/ 
+      }*/
 
-        
+
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       //socket.emit('order', { order: order});
       //set all counters to 0. Notice the use of $refs
-      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
+      for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
         this.$refs.ingredient[i].resetCounter();
       }
       this.volume = 0;
@@ -740,17 +740,17 @@ Vue.component('added-drinks', {
         };
     },
     methods: {
-              
+
       plusDrink: function () {
           this.counter += 1;
           vm.totalPrice += this.order.price;
           vm.orderCounterValue += 1;
           vm.myOrder.push(this.order);
-    
+
           //var minusButton = document.getElementById("drinkMinusButton");
           //minusButton.disabled = false;
       },
-          
+
       minusDrink: function () {
           //var minusButton = document.getElementById("drinkMinusButton");
           if (this.counter > 0){
@@ -761,7 +761,7 @@ Vue.component('added-drinks', {
             //minusButton.disabled=true;
           }
           vm.orderCounterValue -= 1;
-          
+
           for (var i=0; i<vm.myOrder.length; i++){
             if(vm.myOrder[i]==this.order){
                 vm.myOrder.splice(i,1);
