@@ -580,44 +580,6 @@ a {
 }
 
 
-/*popup*/
-/* Popup container - can be anything you want */
-.popup {
-	position: relative;
-	cursor: pointer;
-}
-
-/* The actual popup */
-.popup .popuptext {
-	visibility: hidden;
-	width: 300px;
-	height: 200px;
-	background-color: #555;
-	color: #fff;
-	text-align: center;
-	border-radius: 6px;
-	padding: 8px 0;
-	position: absolute;
-	z-index: 1;
-	left: 50%;
-	margin-left: -80px;
-}
-
-/* Toggle this class - hide and show the popup */
-.popup .show {
-	visibility: visible;
-
-}
-
-.yesNoDiv{
-	padding-top: 40%;
-}
-.yesNoButtons{
-	width: 50pt;
-	height: 40pt;
-	cursor:pointer;
-	border-radius: 10px;
-}
 
 
 
@@ -839,8 +801,8 @@ input[type="checkbox"]{
 
 /*.ingredient {
 	border: 1px solid #777;
-	padding: 0.8em;*/
-}
+	padding: 0.8em;
+}*/
 
 #ProgressBarChooseYourOwn{
 	font-family: 'Encode Sans Semi Condensed';
