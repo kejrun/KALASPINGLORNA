@@ -190,9 +190,9 @@
             <button id="mediumCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('m'); markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
             <button id="largeCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('l'); markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
       </div>
-
+    
   <div id="preMade-list">
-    <div v-for="preparedDrink in premade" >
+    <div v-for="preparedDrink in premade">
       <br>
       <img v-bind:src="preparedDrink.image" height="250px">
       <h2>{{preparedDrink.pm_name + " "}}{{preparedDrink["price_" + type]}} :-</h2>
@@ -202,6 +202,7 @@
     </div>
   </div>
 </div>
+ 
 
 <div id="extras-page" class="tabcontent">
   <div id="extrasCategories">
