@@ -14,43 +14,35 @@
     <body>
     <div class = kitchen_layout>
     <div id="ingredients">
-
     <button v-on:click="switchLang()" class="language" id="languageStock">{{ uiLabels.language }}</button>
     <br>
     <br>
     <button v-on:click="ShowStartpage()" class=backBtn ><img src = http://simpleicon.com/wp-content/uploads/arrow-17.png width = 100% ></button>
     <br>
     <div id= Heades_kitchenSide><h1>{{ uiLabels.stockList }}</h1></div>
-        
-         
     <input 
-               id="searchField"
-               ref="ingredient"
-               type="text"
-               :lang="lang"
-               :placeholder="uiLabels.search"
-               v-model="searchText">
-
+        id="searchField"
+        ref="ingredient"
+        type="text"
+        :lang="lang"
+        :placeholder="uiLabels.search"
+        v-model="searchText">
     <div id = "ingredients_layout">
     <div class ="stockHeaders">
         <div class ="stockHead">{{ uiLabels.limited }}</div>
         <div class ="stockHead">{{ uiLabels.stock }}</div>
-        <div class ="stockHead">{{ uiLabels.add }}</div>
         </div>
-
     <div class = "stockList" id = "stocklimited">
-    <ingredient
+    <ingredient-limited
       ref="ingredient"
       type="medium"
       v-for="item in filteredIngredients()"
       v-if="item.stock < 2000 "
-      v-on:refill="addToRefill(item)"
-      v-on:un-refill="unaddToRefill(item)"
       :item="item"
       :lang="lang"
       :key="item.ingredient_id">
-    </ingredient>
-        </div>
+    </ingredient-limited>
+    </div>
         
     <div class ="stockHeaders">
         <div class ="stockHead">{{ uiLabels.fruit }}</div>
