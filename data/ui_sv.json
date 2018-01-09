@@ -45,9 +45,7 @@
   "cancelOrder":"Är du säker på att du vill avbryta?",
   "yes": "Ja",
   "no": "Nej",
-  "chosenDrinks": "Dina valda drinkar:",
-    "limited":"Begränsat lagersaldo",
-    "CancelWant": "Är du säker att du vill avrbyta order:",
+  "limited":"Begränsat lagersaldo",
+  "CancelWant": "Är du säker att du vill avrbyta order:",
   "finishedOrder": "Tack för din beställning!"
-
 }

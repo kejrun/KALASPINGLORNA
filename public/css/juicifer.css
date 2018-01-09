@@ -228,25 +228,25 @@ a {
 }
 
 /*.language{
-	border: none;
-	margin-top: 10px;
-	color: white;
-	font-size: 12pt;
-	background-color: #777;
-	width: 80px;
-	height: 40px;
-	border-radius: 5px;
-	cursor: pointer;
-	box-shadow: 0.3px 0.3px 3px 1px gray;
-	font-family: 'Encode Sans Semi Condensed';
+border: none;
+margin-top: 10px;
+color: white;
+font-size: 12pt;
+background-color: #777;
+width: 80px;
+height: 40px;
+border-radius: 5px;
+cursor: pointer;
+box-shadow: 0.3px 0.3px 3px 1px gray;
+font-family: 'Encode Sans Semi Condensed';
 }*/
 
 /*.language:hover {
-	background-color: #9ea0a3;
+background-color: #9ea0a3;
 }
 
 #languageStock{
-	margin-left: 45%;
+margin-left: 45%;
 }
 */
 
@@ -316,7 +316,7 @@ a {
 	font-size: 16pt;
 	font-weight: bold;
 	border-radius: 5px;
-    box-shadow: black;
+	box-shadow: black;
 	border: none;
 	background-color: #9ea0a3;
 	cursor:pointer;
@@ -1123,28 +1123,32 @@ and "My drink" in the other column */
 	border-radius: 8px;
 }
 
+/************FINISHED ORDERS IN ORDERING****************/
+
 #receivedOrderContainer{
 	width:100%;
-	height:110%;
+	height:100%;
 	margin-top: 85px;
 	z-index:110;
 	display:none;
-	background-color:white;
+	background:  #f0f0f0;
 	position: fixed;
 }
 
 #receivedOrderInfo{
 	position: block;
-	background-color: white;
-	margin-left: auto;
-	margin-right: auto;
+	background:  #f0f0f0;
+	margin:auto;
 	padding: 5%;
 	width: 35%;
+	height:auto;
+	max-height: 450px;
 	z-index: 110;
 }
 
-.fDrinkSize{
-	text-transform: uppercase;
+#theInfo{
+	max-height: 450px;
+	overflow-y: scroll;
 }
 
 .centerText{
@@ -1560,4 +1564,18 @@ and "My drink" in the other column */
 
 	#labelIng{
 		display: none !important;
+	}
+
+	#receivedOrderContainer{
+		margin-top: 0;
+	}
+
+	#receivedOrderInfo{
+		padding-top: 10%;
+		width: 80%;
+		height: 70%;
+	}
+
+	#theInfo{
+		max-height: 80%;
 	}
