@@ -11,15 +11,16 @@
   <script src="js/juicifer-main.js" defer></script>
   <script src="js/ingredients.js" defer></script>
 </head>
-    <body>
-    <div class = kitchen_layout>
+  <body onload="startTime()">
+  <div class = kitchen_layout>
+    <div id="clock_kitchen"></div>
     <div id="ingredients">
-    <button v-on:click="switchLang()" class="language" id="languageStock">{{ uiLabels.language }}</button>
-    <br>
-    <br>
-    <button v-on:click="ShowStartpage()" class=backBtn ><img src = http://simpleicon.com/wp-content/uploads/arrow-17.png width = 100% ></button>
-    <br>
-    <div id= Heades_kitchenSide><h1>{{ uiLabels.stockList }}</h1></div>
+    <div style="text-align:center;">
+        <button class="newLanguage" v-on:click="switchLang('se')"><img id=SweImg src="/images/Sweden.png"></button>
+        <button class="newLanguage" v-on:click="switchLang('en')"><img id=UkImg src="/images/United-Kingdom.png"></button>
+    </div>
+	<a href="kitchen"><button class=backBtn><img src = http://simpleicon.com/wp-content/uploads/arrow-17.png width = 100% ></button></a>
+    <div class= Heades_kitchenSide><h1>{{ uiLabels.stockList }}</h1></div>
     <input 
         id="searchField"
         ref="ingredient"
@@ -184,13 +185,11 @@
       :key="item.ingredient_id">
         </ingredient>
     </div>
-
-         <div class ="stockHeaders">
+        <div class ="stockHeaders">
         <div class ="stockHead">{{ uiLabels.other }}</div>
         <div class ="stockHead">{{ uiLabels.stock }}</div>
         <div class ="stockHead">{{ uiLabels.add }}</div>
         </div>
-        
     <div class = "stockList">
       <ingredient
         ref = "ingredient"
@@ -205,12 +204,8 @@
         </ingredient>
     </div>
 </div>
-
-
-
-
 <div id = refillbtnID>
-<button v-on:click="refreshPage()" id=refillbtn>{{ uiLabels.refill }}</button>
+<a href="ingredients"><button id=refillbtn>{{ uiLabels.refill }}</button></a>
 </div>
 </div>
 </div>
