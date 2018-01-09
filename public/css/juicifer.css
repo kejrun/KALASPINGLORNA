@@ -189,26 +189,32 @@ a {
 
 
 /* Set style for change language button and flag, still working on it.... */
-.LanguageButton{
-	border: none;
-	margin-top: 3%;
-	background-color: #810051;
-	width: 80px;
-	text-align: center;
-	border-radius: 5px;
-}
-
-.LanguageButton a{
-	color: white;
-	font-size: 10pt;
-}
-
-.LanguageButton:hover {
-	background-color: #777;
-}
 
 #LanguageDiv{
 	display: inline;
+}
+
+.newLanguage{
+    height: 40px;
+    width: 102px;
+    margin-top: 3%;
+    border: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#SweImg{
+    height: 40px;
+    width:50px;
+    padding-right: 1px;
+    float:left;
+}
+
+#UkImg{
+    height: 40px;
+    width:50px;
+    padding-left: 1px; 
+    float:right;
 }
 
 /**********************THIS IS THE CSS FOR THE KITCHEN VIEW*********************/
@@ -673,6 +679,14 @@ input[type="checkbox"]{
 	cursor:pointer;
 }
 
+#ingredientsPlusButton:disabled,
+#ingredientsPlusButton[disabled]{
+    border: lightgrey;
+    color: #a9abad;
+    background-color: #d6d7d8;
+}
+
+
 #ingredientsMinusButton {
 	width: 40px;
 	height: 30px;
@@ -686,8 +700,10 @@ input[type="checkbox"]{
 #ingredientsMinusButton:disabled,
 #ingredientsMinusButton[disabled]{
     border: lightgrey;
-    color: lightgrey;
+    color: #a9abad;
+    background-color: #d6d7d8;
 }
+
 
    
 
