@@ -6,13 +6,14 @@ var totalIngredientsCounter = 0;
 Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
   template: '<div class="ingredient">\
-  <button v-on:click="minusIngredient(item)" id="ingredientsMinusButton" class="ingredientsMinusButton" disabled>-</button>\
+  <div class= "ingColumn">{{item["ingredient_"+ lang]}}</div>\
+    <div class="costColumn">  {{ item["price_" + type] }} :- </div>\
+<div class= "mpColumn">\
+<button v-on:click="minusIngredient(item)" id="ingredientsMinusButton"  class="ingredientsMinusButton" disabled>-</button>\
   <label class="counterID">{{ counter }}</label>\
-  <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" class="ingredientsPlusButton">+</button>\
-  <label>\
-  {{item["ingredient_"+ lang]}} {{ item["price_" + type] }} :- \
-  </label>\
+  <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" class="ingredientsPlusButton">+</button>\</div>\
   </div>',
+
 
   data:
     function () {
@@ -48,9 +49,14 @@ plusIngredient: function(item){
 
         if (totalIngredientsCounter == 5){
             var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
-            for ( var i = 0; i < vm.ingredients.length; i++) {
+            for (var i = 0; i < vm.ingredients.length; i++){
                 if(!vm.ingredients[i].extra){
-                plusButtons[i].disabled = true;
+                    for ( var j = 0; j < vm.ingredientsInCategoryOrder.length; j++){
+                        if (vm.ingredients[i].ingredient_sv === vm.ingredientsInCategoryOrder[j]){
+                            var newId = j;
+                            plusButtons[newId].disabled = true;
+                        }
+                    }
                 }
             }
         }
@@ -148,8 +154,11 @@ function textOnBar(newLength, increment){
   else if (newLength == 4*increment){
     ingredientsBarText.innerHTML = 'Choose 1 ingredient';
   }
-  else{
+  else if (newLength == 5*increment){
     ingredientsBarText.innerHTML = 'Your drink is full, choose extras!';
+  }
+  else{
+    ingredientsBarText.innerHTML = 'Your drink is almost done!';
   }
 }
 
@@ -161,6 +170,9 @@ function resetChooseYourOwn(){
     document.getElementById("addToMyOrder").disabled = true;
     document.getElementById("addToMyOrder").style.color = "gray";
     document.getElementById("addToMyOrder").style.backgroundColor = "#306d31";
+    document.getElementById("continue").disabled = true;
+    document.getElementById("continue").style.color = "gray";
+    document.getElementById("continue").style.backgroundColor = "#306d31";
     document.getElementById("resetCurrentDrink").disabled = true;
 }
 
@@ -244,6 +256,7 @@ var vm = new Vue({
     extras: [],
     ingredientsInCategoryOrder: [],
     finishedOrderInfo: [],
+    uniqueDrinksInMyOrder: [],
     yourDrinkNumber: 0,
     volume: 0,
     price: 0,
@@ -260,39 +273,49 @@ var vm = new Vue({
   methods: {
 
     makeIngredientLists: function(){
-        for ( var i = 0; i < vm.ingredients.length; i++){
-            if (vm.ingredients[i].category == "vegetable"){
-                vm.vegetables.push(vm.ingredients[i].ingredient_sv);
+        this.vegetables = [];
+        this.fruits = [];
+        this.berries = [];
+        this.liquids = [];
+        this.extras = [];
+        this.ingredientsInCategoryOrder = [];
+        for ( var i = 0; i < this.ingredients.length; i++){
+            if (this.ingredients[i].category == "vegetable"){
+                this.vegetables.push(this.ingredients[i].ingredient_sv);
             }
-            else if (vm.ingredients[i].category == "fruit"){
-                vm.fruits.push(vm.ingredients[i].ingredient_sv);
+            else if (this.ingredients[i].category == "fruit"){
+                this.fruits.push(this.ingredients[i].ingredient_sv);
             }
-            else if (vm.ingredients[i].category == "berry"){
-                vm.berries.push(vm.ingredients[i].ingredient_sv);
+            else if (this.ingredients[i].category == "berry"){
+                this.berries.push(this.ingredients[i].ingredient_sv);
             }
-            else if (vm.ingredients[i].category == "liquid"){
-                vm.liquids.push(vm.ingredients[i].ingredient_sv);
+            else if (this.ingredients[i].category == "liquid"){
+                this.liquids.push(this.ingredients[i].ingredient_sv);
             }
             else{
-                vm.extras.push(vm.ingredients[i].ingredient_sv);
+                this.extras.push(this.ingredients[i].ingredient_sv);
             }
         }
-        for ( var i = 0; i < vm.vegetables.length; i++){
-            vm.ingredientsInCategoryOrder.push(vm.vegetables[i]);
+        for ( var i = 0; i < this.vegetables.length; i++){
+            this.ingredientsInCategoryOrder.push(this.vegetables[i]);
         }
-        for ( var i = 0; i < vm.fruits.length; i++){
-            vm.ingredientsInCategoryOrder.push(vm.fruits[i]);
+        for ( var i = 0; i < this.fruits.length; i++){
+            this.ingredientsInCategoryOrder.push(this.fruits[i]);
         }
-        for ( var i = 0; i < vm.berries.length; i++){
-            vm.ingredientsInCategoryOrder.push(vm.berries[i]);
+        for ( var i = 0; i < this.berries.length; i++){
+            this.ingredientsInCategoryOrder.push(this.berries[i]);
         }
-        for ( var i = 0; i < vm.liquids.length; i++){
-            vm.ingredientsInCategoryOrder.push(vm.liquids[i]);
+        for ( var i = 0; i < this.liquids.length; i++){
+            this.ingredientsInCategoryOrder.push(this.liquids[i]);
         }
-        for ( var i = 0; i < vm.extras.length; i++){
-            vm.ingredientsInCategoryOrder.push(vm.extras[i]);
+        for ( var i = 0; i < this.extras.length; i++){
+            this.ingredientsInCategoryOrder.push(this.extras[i]);
         }
     },
+
+      printHej: function (){
+          console.log("hej");
+      },
 
     addToDrink: function (item, type) {
       this.chosenIngredients.push(item);
@@ -305,6 +328,9 @@ var vm = new Vue({
         document.getElementById("addToMyOrder").disabled = false;
         document.getElementById("addToMyOrder").style.color = "white";
         document.getElementById("addToMyOrder").style.backgroundColor = "forestgreen";
+        document.getElementById("continue").disabled = false;
+        document.getElementById("continue").style.color = "white";
+        document.getElementById("continue").style.backgroundColor = "forestgreen";
       }
       this.pricesSmall.push(item.price_s);
       this.pricesMedium.push(item.price_m);
@@ -334,6 +360,9 @@ var vm = new Vue({
         document.getElementById("addToMyOrder").disabled = true;
         document.getElementById("addToMyOrder").style.color = "gray";
         document.getElementById("addToMyOrder").style.backgroundColor = "#306d31";
+        document.getElementById("continue").disabled = true;
+        document.getElementById("continue").style.color = "gray";
+        document.getElementById("continue").style.backgroundColor = "#306d31";
       }
 
       if (this.chosenIngredients.length == 0){
@@ -406,7 +435,6 @@ var vm = new Vue({
 
 
     addToMyOrder: function () {
-     var i;
      this.yourDrinkNumber += 1;
      //Wrap the order in an object
      var drinkName = "Drink #" + this.yourDrinkNumber;
@@ -421,7 +449,7 @@ var vm = new Vue({
      };
 
            //set all counters to 0. Notice the use of $refs
-     for (i = 0; i < this.$refs.ingredient.length; i += 1) {
+     for ( var i = 0; i < this.$refs.ingredient.length; i += 1) {
        this.$refs.ingredient[i].resetCounter();
      }
      this.volume = 0;
@@ -435,8 +463,12 @@ var vm = new Vue({
 
      this.myDrinks.push(currentDrink);
      this.myOrder.push(currentDrink);
-     //kolla här: behöver vi köra reset här också?? Jenny-Siri
-     resetChooseYourOwn();
+
+      var uniqueDrink = {
+          name: drinkName,
+          type: this.type
+      };
+      this.uniqueDrinksInMyOrder.push(uniqueDrink);
 
      //show the notifybubble
      document.getElementById("notifybubble").style.display = "block";
@@ -500,7 +532,6 @@ var vm = new Vue({
       return ingredientList;
     },
     addPremadeDrink: function (item) {
-      var i;
 
           if (this.type === "s"){
             this.price = item.price_s;
@@ -525,10 +556,32 @@ var vm = new Vue({
       };
       this.myDrinks.push(currentDrink);
       this.myOrder.push(currentDrink);
+
+
+      //kolla här: pusha object uniqueDrink till uniqueDrinksInMyOrder.. med namn och type
+      var uniqueDrink = {
+          name: item.pm_name,
+          type: this.type
+      };
+      this.uniqueDrinksInMyOrder.push(uniqueDrink);
+
+      /* //kolla här: kod för att bara lägga till vald premade i uniquedrinksinmyorder om den inte redan finns där
+           //tar hänsyn till namn och storlek, men kan inte använda dett i nuläget då samma inte fungerar för
+      var duplication = 0;
+      for (var i = 0; i < this.uniqueDrinksInMyOrder.length; i++){
+          if (currentDrink.name === this.uniqueDrinksInMyOrder[i].name && currentDrink.type === this.uniqueDrinksInMyOrder[i].type){
+              duplication ++;
+          }
+      }
+      if (duplication == 0){
+              this.uniqueDrinksInMyOrder.push(uniqueDrink);
+      }*/
+
+
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       //socket.emit('order', { order: order});
       //set all counters to 0. Notice the use of $refs
-      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
+      for (var i = 0; i < this.$refs.ingredient.length; i += 1) {
         this.$refs.ingredient[i].resetCounter();
       }
       this.volume = 0;
@@ -601,12 +654,17 @@ var vm = new Vue({
       document.getElementById("holder").style.display = "none";
       document.getElementById("defaultOpen").style.backgroundColor = "#810051";
       document.getElementById("chooseYourOwn-page").style.display = "block";
+      document.getElementById("extras-page").style.display = "none";
+      document.getElementById("addToMyOrder").style.display = "none";
+      document.getElementById("continue").style.display = "block";
       document.getElementById("preMade-page").style.display = "none";
       document.getElementById("home-page").style.display = "none";
       document.getElementById("myOrder-page").style.display = "none";
       document.getElementById("checkOut-page").style.display = "none";
       document.getElementById("ProgressBarPreMade").style.display = "none";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
+      document.getElementById("labelExtra").style.display = "none";
+      document.getElementById("labelIng").style.display = "block";
     },
 
     preMade: function () {
@@ -632,7 +690,6 @@ var vm = new Vue({
 
     toExtras: function(){
       var extrasCategories,categoriesDrink;
-      document.getElementById("defaultOpenPM").style.backgroundColor = "red";
       document.getElementById("category-list").style.display ="none";
       document.getElementById("preMade-page").style.display = "none";
       document.getElementById("home-page").style.display = "none";
@@ -640,19 +697,26 @@ var vm = new Vue({
       document.getElementById("checkOut-page").style.display = "none";
       document.getElementById("ProgressBarPreMade").style.display = "none";
       document.getElementById("chooseYourOwn-page").style.display = "block";
+      document.getElementById("addToMyOrder").style.display = "block";
+      document.getElementById("continue").style.display = "none";
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
+      document.getElementById("labelIng").style.display = "none";
+      document.getElementById("labelExtra").style.display = "block";
       categoriesDrink = document.getElementById("categories-drink");
       extrasCategories = document.getElementById("extrasCategories");
       categoriesDrink.appendChild(extrasCategories);
       extrasCategories.style.display="grid";
-
     },
 
     toChooseYourOwn: function() {
       document.getElementById("extrasCategories").style.display = "none";
       document.getElementById("category-list").style.display ="grid";
+      document.getElementById("addToMyOrder").style.display = "none";
+      document.getElementById("continue").style.display = "block";
+      document.getElementById("labelIng").style.display = "block";
+      document.getElementById("labelExtra").style.display = "none";
     },
-      
+
     receiveOrderInfo: function(){
         var thankYouText = this.uiLabels.finishedOrder;
     socket.on("returnOrderInfo", function(orderNumber,order) {
@@ -685,9 +749,9 @@ Vue.component('added-drinks', {
     template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>\
     <label>\{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</label>\
     <br>\
-    <button v-on:click="minusDrink();removeDrinkFromOrder()" id="drinkMinusButton" class="drinkMinusButton">-</button>\
+    <button v-on:click="minusDrink()" id="drinkMinusButton" class="drinkMinusButton">-</button>\
     <label class="counterID">{{ counter }}</label>\
-    <button v-on:click="plusDrink();addDrinkToOrder()" id="drinkPlusButton" class="drinkPlusButton">+</button>\
+    <button v-on:click="plusDrink()" id="drinkPlusButton" class="drinkPlusButton">+</button>\
     <br></div>',
     data: function () {
         return {
@@ -695,41 +759,31 @@ Vue.component('added-drinks', {
         };
     },
     methods: {
+              
+      plusDrink: function () {
+          this.counter += 1;
+          vm.totalPrice += this.order.price;
+          vm.orderCounterValue += 1;
+          vm.myOrder.push(this.order);
+
+      },
+
       minusDrink: function () {
-          var minusButton = document.getElementById("drinkMinusButton");
           if (this.counter > 0){
             this.counter -= 1;
             vm.totalPrice -= this.order.price;
+            vm.orderCounterValue -= 1;
           }
-          if(this.counter == 0){
-            minusButton.disabled=true;
-          }
-          vm.orderCounterValue -= 1;
-      },
-
-      plusDrink: function () {
-      this.counter += 1;
-      vm.totalPrice += this.order.price;
-      vm.orderCounterValue += 1;
-      var minusButton = document.getElementById("drinkMinusButton");
-      minusButton.disabled = false;
-      },
-
-      addDrinkToOrder: function() {
-        vm.myOrder.push(this.order);
-      },
-
-      removeDrinkFromOrder: function(){
+          
           for (var i=0; i<vm.myOrder.length; i++){
               if(vm.myOrder[i]==this.order){
                   vm.myOrder.splice(i,1);
                   break;
               }
           }
-      }
+      },
     }
 });
-
 
 Vue.component('drinks-in-order', {
   props: ['uiLabels', 'order', 'orderId', 'lang', 'name', 'type', 'price', 'totalPrice'],

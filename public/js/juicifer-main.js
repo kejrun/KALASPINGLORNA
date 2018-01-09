@@ -6,7 +6,7 @@
 var socket = io();
 
 
-// Stuff that is used both in the ordering system and in the kitchen
+// Stuff that is used both in the ordering system, ingredients page and in the kitchen
 var sharedVueStuff = {
   data: {
     orders: {},

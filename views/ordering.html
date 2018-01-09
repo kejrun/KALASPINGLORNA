@@ -12,7 +12,6 @@
   <script src="js/ordering.js" defer></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js"></script>
-
 </head>
 
 <div id="holder">
@@ -37,7 +36,7 @@
   <body>
     <div id="home-page" class="tabcontent">
       <div style="text-align:center;">
-        <button class="homebutton" v-on:click="chooseYourOwn();makeIngredientLists()"><a>{{ uiLabels.chooseYourOwn }}</a></button>
+        <button class="homebutton" v-on:click="chooseYourOwn();toChooseYourOwn();makeIngredientLists()"><a>{{ uiLabels.chooseYourOwn }}</a></button>
         <button class="homebutton" v-on:click="preMade();resetChooseYourOwnPage();switchType('m');markChosenSizeButton('m')"><a>{{ uiLabels.preMade }}</a></button>
       </div>
       <div id="LanguageDiv">
@@ -60,6 +59,8 @@
       <div id="openNavbutton">
         <button id="sidebarbutton" onclick="openNav()">&#8657;{{ uiLabels.order }}</button>
       </div>
+      <div id=labelIng> <p class="h8">{{ uiLabels.ingredients }}</p></div>
+      <div id=labelExtra> <p class="h8">{{ uiLabels.extras }}</p></div>
       <!-- Category-list and ingredient-list created to be able to get a grid layout -->
       <div id= "categories-drink">
         <div id= "category-list">
@@ -72,7 +73,7 @@
                 ref="ingredient"
                 type="m"
                 v-for="item in ingredients"
-                v-if="item.category == 'vegetable'"
+                v-if="item.category == 'vegetable' && item.stock > 400 "
                 v-on:increment="addToDrink(item, type)"
                 v-on:decrement="removeFromDrink(item, type)"
                 :item="item"
@@ -93,7 +94,7 @@
               ref = "ingredient"
               type="m"
               v-for="item in ingredients"
-              v-if="item.category == 'fruit'"
+              v-if="item.category == 'fruit' && item.stock > 400 "
               v-on:increment="addToDrink(item, type)"
               v-on:decrement="removeFromDrink(item, type)"
               :item="item"
@@ -114,7 +115,7 @@
             ref = "ingredient"
             type="m"
             v-for = "item in ingredients"
-            v-if = "item.category == 'berry'"
+            v-if = "item.category == 'berry' && item.stock > 400 "
             v-on:increment="addToDrink(item, type)"
             v-on:decrement="removeFromDrink(item, type)"
             :item="item"
@@ -135,7 +136,7 @@
           ref = "ingredient"
           type="m"
           v-for = "item in ingredients"
-          v-if = "item.category == 'liquid'"
+          v-if = "item.category == 'liquid' && item.stock > 400 "
           v-on:increment="addToDrink(item, type)"
           v-on:decrement="removeFromDrink(item, type)"
           :item="item"
@@ -164,19 +165,20 @@
         <td class="priceColumn"> {{ item["price_" + type] }} kr</td>
       </tr></table>
 
-      <div id="showDrinkFooter">
-        <br>{{ uiLabels.totalPrice }} {{ price }} kr
-        <button id="resetCurrentDrink" v-on:click="resetChooseYourOwnPage();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.resetCurrentDrink }}</button>
-        <br>
-        <br>
-        <div id="sizeButtons">
-          <button id="smallCup" class="sizeButton" v-on:click="switchType('s'); changeTotalPrice('s');markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
-          <button id="mediumCup" class="sizeButton" v-on:click="switchType('m'); changeTotalPrice('m');markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
-          <button id="largeCup" class="sizeButton" v-on:click="switchType('l'); changeTotalPrice('l');markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
-        </div>
+      <br>{{ uiLabels.totalPrice }} {{ price }} kr
+      <button id="resetCurrentDrink" v-on:click="resetChooseYourOwnPage();switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.resetCurrentDrink }}</button>
+      <br>
+      <br>
+      <div id="sizeButtons">
+        <button id="smallCup" class="sizeButton" v-on:click="switchType('s'); changeTotalPrice('s');markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
+        <button id="mediumCup" class="sizeButton" v-on:click="switchType('m'); changeTotalPrice('m');markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
+        <button id="largeCup" class="sizeButton" v-on:click="switchType('l'); changeTotalPrice('l');markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
       </div>
     </div>
-    <button id="addToMyOrder" v-on:click="addToMyOrder();openTab('myOrder-page');switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button>
+    <div id="continueButtons" class="continueButtons">
+      <button id="continue" v-on:click="openTab('extras-page');toExtras()" disabled>{{ uiLabels.continue }}</button>
+      <button id="addToMyOrder" v-on:click="addToMyOrder();openTab('myOrder-page');switchType('m');markChosenSizeButton('m')" disabled>{{ uiLabels.addToOrder }}</button>
+    </div>
   </div>
 </div>
 </div>
@@ -208,11 +210,12 @@
       <input id="toggleNut" type="checkbox">
       <label for="toggleNut"><h1>{{ uiLabels.nut }}</h1></label>
       <div id="nutExpand">
+        <div class ="extras-list-text">
         <ingredient
         ref="ingredient"
         type="m"
         v-for="item in ingredients"
-        v-if="item.category == 'nut'"
+        v-if="item.category == 'nut' && item.stock > 400 "
         v-on:increment="addToDrink(item, type)"
         v-on:decrement="removeFromDrink(item, type)"
         :item="item"
@@ -220,17 +223,19 @@
         :type="type"
         :key="item.ingredient_id">
       </ingredient>
+      </div>
     </div>
   </div>
   <div class ="extras-list">
     <input id="toggleFlavour" type="checkbox">
     <label for="toggleFlavour"><h1>{{ uiLabels.flavour }}</h1></label>
     <div id="flavourExpand">
+      <div class ="extras-list-text">
       <ingredient
       ref="ingredient"
       type="m"
       v-for="item in ingredients"
-      v-if="item.category == 'flavour'"
+      v-if="item.category == 'flavour' && item.stock > 400 "
       v-on:increment="addToDrink(item, type)"
       v-on:decrement="removeFromDrink(item, type)"
       :item="item"
@@ -238,17 +243,19 @@
       :type="type"
       :key="item.ingredient_id">
     </ingredient>
+    </div>
   </div>
 </div>
 <div class ="extras-list">
   <input id="togglePowder" type="checkbox">
   <label for="togglePowder"><h1>{{ uiLabels.powder }}</h1></label>
   <div id="powderExpand">
+    <div class ="extras-list-text">
     <ingredient
     ref="ingredient"
     type="m"
     v-for="item in ingredients"
-    v-if="item.category == 'powder'"
+    v-if="item.category == 'powder' && item.stock > 400 "
     v-on:increment="addToDrink(item, type)"
     v-on:decrement="removeFromDrink(item, type)"
     :item="item"
@@ -256,17 +263,19 @@
     :type="type"
     :key="item.ingredient_id">
   </ingredient>
+  </div>
 </div>
 </div>
 <div class ="extras-list">
   <input id="toggleOther" type="checkbox">
   <label for="toggleOther"><h1>{{ uiLabels.other }}</h1></label>
   <div id="otherExpand">
+    <div class ="extras-list-text">
     <ingredient
     ref="ingredient"
     type="m"
     v-for="item in ingredients"
-    v-if="item.category == 'other'"
+    v-if="item.category == 'other' && item.stock > 400 "
     v-on:increment="addToDrink(item, type)"
     v-on:decrement="removeFromDrink(item, type)"
     :item="item"
@@ -274,6 +283,7 @@
     :type="type"
     :key="item.ingredient_id">
   </ingredient>
+  </div>
 </div>
 </div>
 </div>
