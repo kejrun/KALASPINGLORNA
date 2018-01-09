@@ -730,7 +730,7 @@ Vue.component('added-drinks', {
     template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>\
     <label>\{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</label>\
     <br>\
-    <button v-on:click="minusDrink()" id="drinkMinusButton" class="drinkMinusButton">-</button>\
+    <button v-on:click="minusDrink(order.name)" id="drinkMinusButton" class="drinkMinusButton">-</button>\
     <label class="counterID">{{ counter }}</label>\
     <button v-on:click="plusDrink()" id="drinkPlusButton" class="drinkPlusButton">+</button>\
     <br></div>',
@@ -741,14 +741,40 @@ Vue.component('added-drinks', {
     },
     methods: {
               
-      plusDrink: function () {
+      plusDrink: function (item) {
           this.counter += 1;
           vm.totalPrice += this.order.price;
           vm.orderCounterValue += 1;
           vm.myOrder.push(this.order);
     
-          //var minusButton = document.getElementById("drinkMinusButton");
-          //minusButton.disabled = false;
+          var minusButton = document.getElementById("drinkMinusButton");
+          console.log(item);
+    
+    //minusButton.disabled = false;
+    
+    
+    
+    
+    /*
+    
+                var plusButtons = document.getElementsByClassName("ingredientsPlusButton");
+            for (var i = 0; i < vm.ingredients.length; i++){
+                if(!vm.ingredients[i].extra){
+                    for ( var j = 0; j < vm.ingredientsInCategoryOrder.length; j++){
+                        if (vm.ingredients[i].ingredient_sv === vm.ingredientsInCategoryOrder[j]){
+                            var newId = j;
+                            plusButtons[newId].disabled = true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    */
+    
+    
+    
+    
       },
           
       minusDrink: function () {
