@@ -291,7 +291,7 @@
 <div id="myOrder-page" class="tabcontent">
         <button id="cancelOrder" v-on:click="resetChooseYourOwnPage();resetAll();openTab('onlyHomePage');switchType('m');markChosenSizeButton('m')">{{ uiLabels.cancel }}</button>
         <h3>{{ uiLabels.myOrder }}</h3>
-  <h4>These are your chosen drinks:</h4>
+  <h4>{{ uiLabels.chosenDrinks }}</h4>
   <hr>
   <div id="myOrder-text">
     <div id="myOrderedDrinks" v-for = "(order,key) in myDrinks" >
