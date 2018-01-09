@@ -251,6 +251,7 @@ var vm = new Vue({
     liquids: [],
     extras: [],
     ingredientsInCategoryOrder: [],
+    finishedOrderInfo: [],
     uniqueDrinksInMyOrder: [],
     yourDrinkNumber: 0,
     volume: 0,
@@ -259,9 +260,11 @@ var vm = new Vue({
     orderCounterValue: 0
   },
   created: function() {
-    socket.on("orderNumber",function(orderNumber) {
-      //alert("Your ordernumber is " + orderNumber);
-    });
+
+      console.log("alert" + this.finishedOrderInfo);
+    
+    //alert(orderInfo);
+    
   },
   methods: {
 
@@ -475,7 +478,6 @@ var vm = new Vue({
      document.getElementById("placeOrderButton").disabled = true;
      this.yourDrinkNumber = 0;
      this.myDrinks = [];
-     this.myOrder=[];
      this.totalPrice = 0;
        
    },
@@ -714,9 +716,26 @@ var vm = new Vue({
       document.getElementById("labelExtra").style.display = "none";
     },
 
-    alertFinishedOrder: function(){
+    receiveOrderInfo: function(){
         var thankYouText = this.uiLabels.finishedOrder;
-        alert(thankYouText);
+    socket.on("returnOrderInfo", function(orderNumber,order) {
+    
+        var finishedDrink = {
+            orderId: orderNumber,
+            drinkName: order.order[0].name,
+            drinkIngredients: order.order[0].ingredients
+        } 
+        vm.finishedOrderInfo.push(finishedDrink);
+        if(vm.finishedOrderInfo.length == vm.myOrder.length)
+            {console.log(vm.finishedOrderInfo);}
+        
+
+    
+    //alert(orderInfo);
+    });
+
+        
+        
     }
   }
 
@@ -756,11 +775,11 @@ Vue.component('added-drinks', {
             vm.totalPrice -= this.order.price;
             vm.orderCounterValue -= 1;
           }
-        
-          for (var i=0; i < vm.myOrder.length; i++){
-            if(vm.myOrder[i]==this.order){
-                vm.myOrder.splice(i,1);
-                break;
+          
+          for (var i=0; i<vm.myOrder.length; i++){
+              if(vm.myOrder[i]==this.order){
+                  vm.myOrder.splice(i,1);
+                  break;
               }
           }
           
