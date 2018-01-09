@@ -251,18 +251,12 @@ a {
 
 /*Layout and scrollbar for ingredients on ingredientspage, i.e. where kitchen can see and change the stock*/
 
-#stockList_layout{
-    display:none;
-    height: 900px;
-    width: 768px;
-    
-}
 #ingredients{
-	position: absolute;
 	margin: 0 auto;
 	display: table;
-	height: 70px;
+	height: 978px;
 	width: 768px;
+	position: absolute;
 }
 
 #ingredients_layout{
@@ -331,7 +325,7 @@ a {
 	padding-right: 15px;
 }
 
-#Heades_kitchenSide{
+.Heades_kitchenSide{
 	width:400px;
 	margin: 0 auto;
 }
@@ -554,7 +548,7 @@ a {
 }
 
 .cancelOrNot{
-	height: 600px;
+	height: 570px;
 	width: 540px;
 	background-color: #d1d1d1;
 	border-radius: 20px;

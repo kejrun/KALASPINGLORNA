@@ -38,7 +38,6 @@ Vue.component('ingredient-limited', {
    </div>',         
 });
 
-<<<<<<< HEAD
 
 
 function startTime() {
@@ -58,8 +57,6 @@ function checkTime(i) {
     return i;
 };
 
-=======
->>>>>>> 5a4d899c6777d78553293482d4a4912fb380997f
 var vm = new Vue({
   el: '#ingredients',
   mixins: [sharedVueStuff],
