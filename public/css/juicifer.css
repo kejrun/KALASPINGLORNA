@@ -316,6 +316,7 @@ a {
 	font-size: 16pt;
 	font-weight: bold;
 	border-radius: 5px;
+    box-shadow: black;
 	border: none;
 	background-color: #9ea0a3;
 	cursor:pointer;
