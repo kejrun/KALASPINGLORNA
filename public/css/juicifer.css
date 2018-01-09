@@ -328,8 +328,19 @@ a {
 .Heades_kitchenSide{
 	width:400px;
 	margin: 0 auto;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+	margin-bottom: 5px;
+
 }
 
+.Heades_kitchenSide_finished_cancelled{
+	width:400px;
+	margin: 0 auto;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+	margin-bottom: 5px;
+}
 /*all headers*/
 .stockHeaders{
 	margin-top: 20px;
@@ -374,14 +385,24 @@ a {
 	margin: 0 auto;
 }
 
-.itemsFinishedCancelled{
-	height: 360px;
+.itemsFinished{
+	height: 450px;
 	overflow-y: scroll;
 	width: 400px;
 	margin: 0 auto;
 	margin-bottom: 40px;
-	border-radius: 10px;
-	box-shadow: 1px 1px 7px 3px #aaaaaa;
+	border-bottom: 1px solid black;
+	/*border: 3px solid #810051;*/
+	/*box-shadow: 1px 1px 7px 3px #aaaaaa;*/
+}
+
+.itemsCancelled{
+	height: 250px;
+	overflow-y: scroll;
+	width: 400px;
+	margin: 0 auto;
+	margin-bottom: 40px;
+	border-bottom: 1px solid black;
 }
 
 /*to make every order seperate, i.e. this is every unique order that is done*/
