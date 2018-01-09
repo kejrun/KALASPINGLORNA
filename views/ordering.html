@@ -329,15 +329,28 @@
       :lang="lang"
       :type="type"
       :key="key">
-    </drinks-in-order>
-        
-  </div>
-</div>
+      </drinks-in-order>
+    </div>
+   </div>
 <br><hr><p class="h7">{{uiLabels.totalPrice}} {{ totalPrice}} kr</p>
+
 <div id="myorderbutton">
   <button id=placeOrderButton v-on:click="placeOrder();receiveOrderInfo()" disabled>{{ uiLabels.placeOrder}}</button>
 </div>
 </div>
+<div id=receivedOrderContainer>
+    <div id=receivedOrderInfo>
+    <h1> {{ uiLabels.finishedOrder }}</h1>
+    <div v-for= "finishedDrink in finishedOrderInfo">
+        <finished-order-info
+        v-bind:finished-drink="finishedDrink"
+        v-bind:ui-labels = "uiLabels">
+        </finished-order-info>
+    </div>
+    <button id=orderFinished>{{uiLabels.cancel}}</button>
+    </div>
+</div>
+
 
 </body>
 
