@@ -249,12 +249,12 @@ io.on('connection', function (socket) {
     
     socket.on('wantCancel', function(orderId){
         data.markWantToCancel(orderId);
-        io.emit('currentQueue', {order: data.getAllOrders() });
+        io.emit('currentQueue', {orders: data.getAllOrders() });
     });
     
      socket.on('undoCancelOrder', function(orderId){
         data.unmarkWantToCancel(orderId);
-        io.emit('currentQueue', {order: data.getAllOrders() });
+        io.emit('currentQueue', {orders: data.getAllOrders() });
     });
     
     socket.on('cancelOrder', function (orderId){

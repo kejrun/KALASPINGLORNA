@@ -54,11 +54,9 @@ var vm = new Vue({
     },
     undoCancel: function(orderid){
         socket.emit("undoCancelOrder", orderid);
-        window.location = 'http://localhost:3000/kitchen';
     },
     wantToCancel: function (orderid){
         socket.emit("wantCancel", orderid); 
-        window.location = 'http://localhost:3000/kitchen'; 
     },                     
     ShowHistory: function(){
       document.getElementById("finishedOrder").style.display ="block";
@@ -119,7 +117,7 @@ Vue.component('order-cancel', {
     <button v-on:click="cancelOrder" class = YesNoButton>{{uiLabels.yes}}</button>\
     <button v-on:click="undoCancelOrder" class = YesNoButton>{{uiLabels.no}}</button></div>',
     methods: {
-    cancelOrder: function () {
+      cancelOrder: function () {
         this.$emit('cancel')
     },
     undoCancelOrder:function(){

@@ -365,16 +365,27 @@ a {
 /*Layout for finished order page*/
 #finishedOrder{
 	display: none;
-	height: 80%;
+	height: 900px;
 	margin: 0 auto;
-	overflow-y: scroll;
+}
+
+.itemsFinishedCancelled{
+    height: 380px;
+    overflow-y: scroll;
+    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+	border-radius: 10px;
+    box-shadow: 1px 1px 7px 3px #aaaaaa;
 }
 
 /*to make every order seperate, i.e. this is every unique order that is done*/
 .finishedOrderClass {
 	padding: 6px;
 	text-transform: uppercase;
+
 }
+
 
 #refillbtnID{
 	position: absolute;
@@ -388,7 +399,7 @@ a {
 	font-family: 'Encode Sans Semi Condensed';
 	border: none;
 	text-transform: uppercase;
-	background-color: #64c47d;
+	background-color: forestgreen;
 	padding: 15px 32px;
 	font-size: 20pt;
 	cursor: pointer;
@@ -543,7 +554,7 @@ a {
 	z-index: 2;
 	font-size: 25pt;
     padding: 30px; 
-    box-shadow: 1px 1px 10px 3px gray;
+    box-shadow: 1px 1px 10px 3px grey;
 }
 
 .orderIngredInfo{
