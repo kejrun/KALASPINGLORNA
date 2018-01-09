@@ -236,7 +236,7 @@ var vm = new Vue({
   el: '#ordering',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
   data: {
-    type: "m", //preset on size medium
+    type: "m",
     chosenIngredients: [],
     currentDrink: [],
     myDrinks: [],
@@ -338,7 +338,6 @@ var vm = new Vue({
       }
     },
 
-
       removeFromDrink: function (item, type) {
           for (var i=0; i < this.chosenIngredients.length; i++){
               if(this.chosenIngredients[i] == item){
@@ -435,7 +434,7 @@ var vm = new Vue({
        price: this.price
      };
 
-           //set all counters to 0. Notice the use of $refs
+     //set all counters to 0. Notice the use of $refs
      for ( var i = 0; i < this.$refs.ingredient.length; i += 1) {
        this.$refs.ingredient[i].resetCounter();
      }
@@ -478,8 +477,28 @@ var vm = new Vue({
      this.yourDrinkNumber = 0;
      this.myDrinks = [];
      this.totalPrice = 0;
-
    },
+      
+      resetAll: function(){
+          
+          //kolla här: oklart vilka variabler som måste nollställas?
+          //lista dem här nedan:
+            this.type = '';
+            this.chosenIngredients = [];
+            this.currentDrink = [];
+            this.myDrinks = [];
+            this.myOrder = [];
+            this.pricesSmall = [];
+            this.pricesMedium = [];
+            this.pricesLarge = [];
+            this.finishedOrderInfo = [];
+            this.uniqueDrinksInMyOrder = [];
+            this.yourDrinkNumber = 0;
+            this.volume = 0;
+            this.price = 0;
+            this.totalPrice = 0;
+            this.orderCounterValue = 0;
+      },
 
     //this function resets EVERYTHING on the choose your own page
     resetChooseYourOwnPage: function(){
@@ -591,8 +610,9 @@ var vm = new Vue({
       document.getElementById("notifybubble").style.display = "block";
       document.getElementById("notifybubblePM").style.display = "block";
     },
-
-    openTab: function(tabName) {
+      
+      openTab: function(tabName) {
+          console.log(tabName);
       // Hide all elements with class="tabcontent" by default */
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
@@ -612,7 +632,9 @@ var vm = new Vue({
       }
 
       // Show the specific tab content
-      document.getElementById(tabName).style.display = "block";
+      if (tabName != "onlyHomePage"){
+        document.getElementById(tabName).style.display = "block";
+      }
 
       // Add the specific color to the button used to open the tab content
       if (tabName === "checkOut-page") {
@@ -625,6 +647,16 @@ var vm = new Vue({
         document.getElementById("holder").style.display = "block";
         document.getElementById("continue").style.display = "none";
         document.getElementById("addToMyOrder").style.display = "none";
+      };
+      if (tabName === "onlyHomePage"){
+          document.getElementById("home-page").style.display = "block";
+          document.getElementById("holder").style.display = "block";
+          document.getElementById("continue").style.display = "none";
+          document.getElementById("addToMyOrder").style.display = "none";
+          document.getElementById("ProgressBarPreMade").style.display = "none";
+          document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
+          document.getElementById("notifybubble").style.display = "none";
+          document.getElementById("notifybubblePM").style.display = "none";
       };
       if (tabName === "preMade-page") {
         document.getElementById("defaultOpenPM").style.backgroundColor = "#810051";

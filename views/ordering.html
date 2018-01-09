@@ -48,7 +48,7 @@
 
     <div id="chooseYourOwn-page" class="tabcontent">
       <div id="fixedHeader">
-          <button id="cancelOrderOnHeader">{{ uiLabels.cancel }}</button>
+          <button id="cancelOrderOnHeader" v-on:click="resetChooseYourOwnPage();resetAll();openTab('onlyHomePage');switchType('m');markChosenSizeButton('m')">{{ uiLabels.cancel }}</button>
         <div id="ingredientsBar" class="ingredientsBar">
           <div id="ingredientsBarText">Choose 5 ingredients</div>
           <div id="ingredientsBarProgress"></div>
@@ -182,7 +182,7 @@
 </div>
 
 <div id="preMade-page" class="tabcontent">
-    <button id="cancelOrder">{{ uiLabels.cancel }}</button>
+    <button id="cancelOrder" v-on:click="resetChooseYourOwnPage();resetAll();openTab('onlyHomePage');switchType('m');markChosenSizeButton('m')">{{ uiLabels.cancel }}</button>
   <h3>{{ uiLabels.preMade }}</h3>
 <div id="sizeButtonsPreMade">
             <button id="smallCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('s'); markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
@@ -288,7 +288,7 @@
 </div>
 
 <div id="myOrder-page" class="tabcontent">
-        <button id="cancelOrder">{{ uiLabels.cancel }}</button>
+        <button id="cancelOrder" v-on:click="resetChooseYourOwnPage();resetAll();openTab('onlyHomePage');switchType('m');markChosenSizeButton('m')">{{ uiLabels.cancel }}</button>
         <h3>{{ uiLabels.myOrder }}</h3>
   <h4>These are your chosen drinks:</h4>
   <hr>
@@ -314,7 +314,7 @@
 </div>
 
 <div id="checkOut-page" class="tabcontent">
-    <button id="cancelOrder">{{ uiLabels.cancel }}</button>
+    <button id="cancelOrder" v-on:click="resetChooseYourOwnPage();resetAll();openTab('onlyHomePage');switchType('m');markChosenSizeButton('m')">{{ uiLabels.cancel }}</button>
   <h3>{{ uiLabels.checkOut }}</h3>
   <tr><th><h4>{{ uiLabels.myOrder }}</h4><hr></th></tr>
   <div id="myOrder-text">
