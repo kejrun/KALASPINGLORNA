@@ -192,7 +192,7 @@
       </div>
 
   <div id="preMade-list">
-    <div v-for="preparedDrink in premade">
+    <div v-for="preparedDrink in premade" >
       <br>
       <img v-bind:src="preparedDrink.image" height="250px">
       <h2>{{preparedDrink.pm_name + " "}}{{preparedDrink["price_" + type]}} :-</h2>

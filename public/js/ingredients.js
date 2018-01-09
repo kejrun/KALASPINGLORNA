@@ -3,7 +3,7 @@ Vue.component('ingredient', {
   template: '<div class="ingredientStock">\
     <div class= "itemColumn">{{item["ingredient_"+ lang]}}</div>\
     <div class= "itemColumn">{{item.stock}}ml</div>\
-    <div class= "itemColumn"><button v-on:click="minusIngredient" class="MinusPlusButtons" name="ingredientsMinusButton">-</button>\
+    <div class= "itemColumn"><button v-on:click="minusIngredient(item)" class="MinusPlusButtons" name="ingredientsMinusButton">-</button>\
   <label id="counterStock">{{ counter }}</label>\
   <button v-on:click="plusIngredient" class="MinusPlusButtons" name="ingredientsPlusButton">+</button>\</div>\
    </div>',         
@@ -18,9 +18,11 @@ Vue.component('ingredient', {
         this.counter += 1000;
         console.log(this)
     },
-     minusIngredient: function(){
+     minusIngredient: function(item){
+         if (item.stock>=1000){
         this.$emit('un-refill');
         this.counter -= 1000;
+     }
      },
     resetCounter: function () {
       this.counter = 0;
@@ -36,6 +38,7 @@ Vue.component('ingredient-limited', {
    </div>',         
 });
 
+<<<<<<< HEAD
 
 
 function startTime() {
@@ -55,6 +58,8 @@ function checkTime(i) {
     return i;
 };
 
+=======
+>>>>>>> 5a4d899c6777d78553293482d4a4912fb380997f
 var vm = new Vue({
   el: '#ingredients',
   mixins: [sharedVueStuff],
@@ -77,18 +82,15 @@ var vm = new Vue({
    //     document.getElementById("finishedOrder").style.display ="none";
         
   //  },
+
     filteredIngredients: function () {
         var resultList = [];
         for (var i = 0; i< this.ingredients.length; i+=1) {
             if(this.ingredients[i]["ingredient_" +this.lang].substring(0,this.searchText.length) == this.searchText) {
                 resultList.push(this.ingredients[i]);
             }
-            
         }
         return resultList;
+
     }
-    
-   
-
-
 }});

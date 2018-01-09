@@ -769,7 +769,6 @@ var vm = new Vue({
 
 });
 
-
 // ------------- For myOrder page --------------
 Vue.component('added-drinks', {
     props: ['uiLabels', 'order', 'orderId', 'lang', 'name', 'type', 'price', 'totalPrice'],
@@ -792,7 +791,6 @@ Vue.component('added-drinks', {
           vm.totalPrice += this.order.price;
           vm.orderCounterValue += 1;
           vm.myOrder.push(this.order);
-
           document.getElementById("proceedToCheckout").disabled = false;
           document.getElementById("placeOrderButton").disabled = false;
       },
