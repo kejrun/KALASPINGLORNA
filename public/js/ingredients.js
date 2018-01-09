@@ -1,4 +1,5 @@
-Vue.component('ingredient', {
+//OBS!! DENNA FIL ANVÄNDS EJ!!
+//Vue.component('ingredient', {
   props: ['item', 'lang'],
   template: '<div class="ingredientStock">\
     <div class= "itemColumn">{{item["ingredient_"+ lang]}}</div>\
@@ -28,7 +29,7 @@ Vue.component('ingredient', {
     }
 });
 
-Vue.component('ingredient-limited', {
+//Vue.component('ingredient-limited', {
   props: ['item', 'lang'],
   template: '<div class="ingredientStock">\
     <div class= "itemColumn">{{item["ingredient_"+ lang]}}</div>\
@@ -40,7 +41,7 @@ Vue.component('ingredient-limited', {
 
 
 
-var vm = new Vue({
+//var vm = new Vue({
   el: '#ingredients',
   mixins: [sharedVueStuff],
     data: {
@@ -72,8 +73,4 @@ var vm = new Vue({
         }
         return resultList;
     },
-    
-   
-
-
 }});
