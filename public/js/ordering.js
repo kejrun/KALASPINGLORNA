@@ -538,11 +538,13 @@ var vm = new Vue({
       var ingredientList = [], tempIngredient;
       for (var i = 0; i < idArr.length ; i += 1) {
         tempIngredient = this.getIngredientById(idArr[i]);
+        console.log(tempIngredient.stock);
         ingredientList.push(tempIngredient);
       }
       return ingredientList;
     },
     addPremadeDrink: function (item) {
+        
 
           if (this.type === "s"){
             this.price = item.price_s;
