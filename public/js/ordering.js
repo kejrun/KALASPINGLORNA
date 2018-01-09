@@ -14,7 +14,6 @@ Vue.component('ingredient', {
   <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" class="ingredientsPlusButton">+</button>\</div>\
   </div>',
 
-
   data:
     function () {
         return {
@@ -728,14 +727,8 @@ var vm = new Vue({
         vm.finishedOrderInfo.push(finishedDrink);
         if(vm.finishedOrderInfo.length == vm.myOrder.length)
             {console.log(vm.finishedOrderInfo);}
-        
-
-    
     //alert(orderInfo);
-    });
-
-        
-        
+    });        
     }
   }
 
