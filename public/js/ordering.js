@@ -7,9 +7,9 @@ Vue.component('ingredient', {
   props: ['item', 'type', 'lang'],
   template: '<div class="ingredient">\
   <div class= "ingColumn">{{item["ingredient_"+ lang]}}</div>\
-    <div class="costColumn">  {{ item["price_" + type] }} :- </div>\
-<div class= "mpColumn">\
-<button v-on:click="minusIngredient(item)" id="ingredientsMinusButton"  class="ingredientsMinusButton" disabled>-</button>\
+  <div class="costColumn">  {{ item["price_" + type] }} :- </div>\
+  <div class= "mpColumn">\
+  <button v-on:click="minusIngredient(item)" id="ingredientsMinusButton"  class="ingredientsMinusButton" disabled>-</button>\
   <label class="counterID">{{ counter }}</label>\
   <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" class="ingredientsPlusButton">+</button>\</div>\
   </div>',
@@ -261,6 +261,7 @@ var vm = new Vue({
   created: function() {
 
   },
+    
   methods: {
 
     makeIngredientLists: function(){
@@ -303,10 +304,6 @@ var vm = new Vue({
             this.ingredientsInCategoryOrder.push(this.extras[i]);
         }
     },
-
-      printHej: function (){
-          console.log("hej");
-      },
 
     addToDrink: function (item, type) {
       this.chosenIngredients.push(item);
@@ -611,7 +608,6 @@ var vm = new Vue({
     },
 
       openTab: function(tabName) {
-          console.log(tabName);
       // Hide all elements with class="tabcontent" by default */
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
