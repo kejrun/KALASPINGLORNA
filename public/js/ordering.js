@@ -14,7 +14,6 @@ Vue.component('ingredient', {
   <button v-on:click="plusIngredient(item)" id="ingredientsPlusButton" class="ingredientsPlusButton">+</button>\</div>\
   </div>',
 
-
   data:
     function () {
         return {
@@ -237,7 +236,7 @@ var vm = new Vue({
   el: '#ordering',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
   data: {
-    type: "m", //preset on size medium
+    type: "m",
     chosenIngredients: [],
     currentDrink: [],
     myDrinks: [],
@@ -261,10 +260,6 @@ var vm = new Vue({
   },
   created: function() {
 
-      console.log("alert" + this.finishedOrderInfo);
-    
-    //alert(orderInfo);
-    
   },
   methods: {
 
@@ -338,7 +333,6 @@ var vm = new Vue({
         this.price += +item.price_l;
       }
     },
-
 
       removeFromDrink: function (item, type) {
           for (var i=0; i < this.chosenIngredients.length; i++){
@@ -436,7 +430,7 @@ var vm = new Vue({
        price: this.price
      };
 
-           //set all counters to 0. Notice the use of $refs
+     //set all counters to 0. Notice the use of $refs
      for ( var i = 0; i < this.$refs.ingredient.length; i += 1) {
        this.$refs.ingredient[i].resetCounter();
      }
@@ -457,10 +451,10 @@ var vm = new Vue({
           type: this.type
       };
       this.uniqueDrinksInMyOrder.push(uniqueDrink);
-    
+
      document.getElementById("proceedToCheckout").disabled = false;
      document.getElementById("placeOrderButton").disabled = false;
-        
+
      //show the notifybubble
      document.getElementById("notifybubble").style.display = "block";
      document.getElementById("notifybubblePM").style.display = "block";
@@ -473,14 +467,35 @@ var vm = new Vue({
      socket.emit('order', {order: drink});
      }
 
-     //kolla här: flytta dessa rader till funktion som nollställer hela sidan  
+     //kolla här: flytta dessa rader till funktion som nollställer hela sidan
      document.getElementById("proceedToCheckout").disabled = true;
      document.getElementById("placeOrderButton").disabled = true;
      this.yourDrinkNumber = 0;
      this.myDrinks = [];
      this.totalPrice = 0;
-       
    },
+      
+      resetAll: function(){
+          
+          //kolla här: oklart vilka variabler som måste nollställas?
+          //lista dem här nedan:
+            this.type = '';
+            this.chosenIngredients = [];
+            this.currentDrink = [];
+            this.myDrinks = [];
+            this.myOrder = [];
+            this.pricesSmall = [];
+            this.pricesMedium = [];
+            this.pricesLarge = [];
+            this.finishedOrderInfo = [];
+            this.uniqueDrinksInMyOrder = [];
+            this.yourDrinkNumber = 0;
+            this.volume = 0;
+            this.price = 0;
+            this.totalPrice = 0;
+            this.orderCounterValue = 0;
+            document.getElementById("receivedOrderContainer").style.display="none";
+      },
 
     //this function resets EVERYTHING on the choose your own page
     resetChooseYourOwnPage: function(){
@@ -584,16 +599,17 @@ var vm = new Vue({
       this.price = 0;
       this.type = '';
       this.chosenIngredients = [];
-        
+
       document.getElementById("proceedToCheckout").disabled = false;
       document.getElementById("placeOrderButton").disabled = false;
-        
+
       //show the notifybubble
       document.getElementById("notifybubble").style.display = "block";
       document.getElementById("notifybubblePM").style.display = "block";
     },
-
-    openTab: function(tabName) {
+      
+      openTab: function(tabName) {
+          console.log(tabName);
       // Hide all elements with class="tabcontent" by default */
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
@@ -613,17 +629,32 @@ var vm = new Vue({
       }
 
       // Show the specific tab content
-      document.getElementById(tabName).style.display = "block";
+      if (tabName != "onlyHomePage"){
+        document.getElementById(tabName).style.display = "block";
+      }
 
       // Add the specific color to the button used to open the tab content
       if (tabName === "checkOut-page") {
         document.getElementById("checkOut-pageBtnPM").style.backgroundColor = "#810051";
         document.getElementById("checkOut-pageBtn").style.backgroundColor = "#810051";
+        document.getElementById("receivedOrderContainer").style.display = "none";
       };
       if (tabName === "home-page") {
         document.getElementById("home-pageBtnPM").style.backgroundColor = "#810051";
         document.getElementById("home-pageBtn").style.backgroundColor = "#810051";
         document.getElementById("holder").style.display = "block";
+        document.getElementById("continue").style.display = "none";
+        document.getElementById("addToMyOrder").style.display = "none";
+      };
+      if (tabName === "onlyHomePage"){
+          document.getElementById("home-page").style.display = "block";
+          document.getElementById("holder").style.display = "block";
+          document.getElementById("continue").style.display = "none";
+          document.getElementById("addToMyOrder").style.display = "none";
+          document.getElementById("ProgressBarPreMade").style.display = "none";
+          document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
+          document.getElementById("notifybubble").style.display = "none";
+          document.getElementById("notifybubblePM").style.display = "none";
       };
       if (tabName === "preMade-page") {
         document.getElementById("defaultOpenPM").style.backgroundColor = "#810051";
@@ -717,25 +748,22 @@ var vm = new Vue({
     },
 
     receiveOrderInfo: function(){
-        var thankYouText = this.uiLabels.finishedOrder;
-    socket.on("returnOrderInfo", function(orderNumber,order) {
-    
-        var finishedDrink = {
-            orderId: orderNumber,
-            drinkName: order.order[0].name,
-            drinkIngredients: order.order[0].ingredients
-        } 
-        vm.finishedOrderInfo.push(finishedDrink);
-        if(vm.finishedOrderInfo.length == vm.myOrder.length)
-            {console.log(vm.finishedOrderInfo);}
-        
 
-    
-    //alert(orderInfo);
-    });
+        socket.on("returnOrderInfo", function(orderNumber,order) {
 
+            var finishedDrink = {
+                orderId: orderNumber,
+                drinkName: order.order[0].name,
+                drinkSize: order.order[0].type
+            } 
+            
+            this.finishedOrderInfo.push(finishedDrink);
+            document.getElementById("receivedOrderContainer").style.display="block";
+            document.getElementById("checkOut-page").style.display="none";
+            document.getElementById("ProgressBarPreMade").style.display = "none";
+            document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
         
-        
+    }.bind(this));
     }
   }
 
@@ -758,13 +786,13 @@ Vue.component('added-drinks', {
         };
     },
     methods: {
-              
+
       plusDrink: function () {
           this.counter += 1;
           vm.totalPrice += this.order.price;
           vm.orderCounterValue += 1;
           vm.myOrder.push(this.order);
-    
+
           document.getElementById("proceedToCheckout").disabled = false;
           document.getElementById("placeOrderButton").disabled = false;
       },
@@ -775,14 +803,14 @@ Vue.component('added-drinks', {
             vm.totalPrice -= this.order.price;
             vm.orderCounterValue -= 1;
           }
-          
+
           for (var i=0; i<vm.myOrder.length; i++){
               if(vm.myOrder[i]==this.order){
                   vm.myOrder.splice(i,1);
                   break;
               }
           }
-          
+
          if (vm.myOrder.length == 0){
             document.getElementById("proceedToCheckout").disabled = true;
             document.getElementById("placeOrderButton").disabled = true;
@@ -804,5 +832,14 @@ Vue.component('drinks-in-order', {
 
     }
   });
+
+Vue.component('finished-order-info',{
+    props:['uiLabels','finishedDrink'],
+        template:'<div id="finishedDrinkInfo">\
+                  <p>{{ finishedDrink.orderId }}</p>\
+                  <div id="fdrink"><p>{{ finishedDrink.drinkName}} {{finishedDrink.drinkSize}}</p>\
+                  </div><br>\
+                  </div>'
+});
 
 //----------------------------------------------
