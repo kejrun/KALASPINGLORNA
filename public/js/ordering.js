@@ -836,8 +836,7 @@ Vue.component('drinks-in-order', {
 Vue.component('finished-order-info',{
     props:['uiLabels','finishedDrink'],
         template:'<div id="finishedDrinkInfo">\
-                  <p>{{ finishedDrink.orderId }}</p>\
-                  <div id="fdrink"><p>{{ finishedDrink.drinkName}} {{finishedDrink.drinkSize}}</p>\
+                  <div id="fdrink"><p>{{ finishedDrink.orderId }}: {{ finishedDrink.drinkName}} {{finishedDrink.drinkSize}}</p>\
                   </div><br>\
                   </div>'
 });
