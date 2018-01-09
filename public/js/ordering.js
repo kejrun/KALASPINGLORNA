@@ -762,13 +762,23 @@ var vm = new Vue({
             }
 
             this.finishedOrderInfo.push(finishedDrink);
+        
             document.getElementById("receivedOrderContainer").style.display="block";
             document.getElementById("checkOut-page").style.display="none";
             document.getElementById("ProgressBarPreMade").style.display = "none";
             document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
 
     }.bind(this));
-    }
+    },
+      
+    logIt: function(){
+        //console.log(this.myOrder);
+        //console.log(this.finishedOrderInfo);
+    },
+      
+    reloadPage: function(){
+      location.reload();
+  }
   }
 
 });
@@ -838,7 +848,7 @@ Vue.component('drinks-in-order', {
 Vue.component('finished-order-info',{
     props:['uiLabels','finishedDrink'],
         template:'<div id="finishedDrinkInfo">\
-                  <div id="fdrink"><p>{{ finishedDrink.orderId }}: {{ finishedDrink.drinkName}} {{finishedDrink.drinkSize}}</p>\
+                  <div id="fdrink"><p>{{ finishedDrink.orderId }}: {{ finishedDrink.drinkName}}, {{finishedDrink.drinkSize}}</p>\
                   </div><br>\
                   </div>'
 });
