@@ -615,6 +615,7 @@ var vm = new Vue({
       document.getElementById("holder").style.display = "none";
       document.getElementById("defaultOpen").style.backgroundColor = "#810051";
       document.getElementById("chooseYourOwn-page").style.display = "block";
+      document.getElementById("extras-page").style.display = "none";
       document.getElementById("addToMyOrder").style.display = "none";
       document.getElementById("continue").style.display = "block";
       document.getElementById("preMade-page").style.display = "none";
@@ -650,7 +651,6 @@ var vm = new Vue({
 
     toExtras: function(){
       var extrasCategories,categoriesDrink;
-      document.getElementById("defaultOpenPM").style.backgroundColor = "red";
       document.getElementById("category-list").style.display ="none";
       document.getElementById("preMade-page").style.display = "none";
       document.getElementById("home-page").style.display = "none";
