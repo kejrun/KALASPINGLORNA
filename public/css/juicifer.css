@@ -654,6 +654,14 @@ input[type="checkbox"]{
 	cursor:pointer;
 }
 
+#ingredientsMinusButton:disabled,
+#ingredientsMinusButton[disabled]{
+    border: lightgrey;
+    color: lightgrey;
+}
+
+   
+
 /*Creating a grid containing one grid with the categories in one column,
 and "My drink" in the other column */
 

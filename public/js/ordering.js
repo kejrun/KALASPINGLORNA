@@ -740,29 +740,23 @@ Vue.component('added-drinks', {
         };
     },
     methods: {
-
+              
       plusDrink: function () {
           this.counter += 1;
           vm.totalPrice += this.order.price;
           vm.orderCounterValue += 1;
           vm.myOrder.push(this.order);
 
-          //var minusButton = document.getElementById("drinkMinusButton");
-          //minusButton.disabled = false;
       },
 
       minusDrink: function () {
-          //var minusButton = document.getElementById("drinkMinusButton");
           if (this.counter > 0){
             this.counter -= 1;
             vm.totalPrice -= this.order.price;
+            vm.orderCounterValue -= 1;
           }
-          if(this.counter == 0){
-            //minusButton.disabled=true;
-          }
-          vm.orderCounterValue -= 1;
-
-          for (var i=0; i<vm.myOrder.length; i++){
+        
+          for (var i=0; i < vm.myOrder.length; i++){
             if(vm.myOrder[i]==this.order){
                 vm.myOrder.splice(i,1);
                 break;
@@ -771,7 +765,6 @@ Vue.component('added-drinks', {
       },
     }
 });
-
 
 Vue.component('drinks-in-order', {
   props: ['uiLabels', 'order', 'orderId', 'lang', 'name', 'type', 'price', 'totalPrice'],
