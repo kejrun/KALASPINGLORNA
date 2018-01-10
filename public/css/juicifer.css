@@ -329,7 +329,7 @@ margin-left: 45%;
 }
 
 .sizeHeadKitchen{
-	height: 90px;
+	height: 80px;
 }
 .Heades_kitchenSide{
 	width:400px;
@@ -472,11 +472,11 @@ margin-left: 45%;
 }
 
 #OrdersQueue{
-	height: 560px;
+	height: 600px;
 	margin: 0 auto;
 	overflow-y: scroll;
-	margin-bottom: 40px;
-	margin-top: 40px;
+	margin-bottom: 30px;
+	margin-top: 10px;
 }
 
 /*Layout for the button that each order appears on, and the arrows on the side of each button*/
@@ -591,7 +591,10 @@ margin-left: 45%;
 #Hist_Ingred{
 	height: 150px;
 	margin: 0 auto;
-	margin-bottom: 30px;
+	width: 768px;
+	top: 850px;
+	position:absolute;
+	
 }
 
 .Hist_Ingred_Button {
