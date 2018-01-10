@@ -3,6 +3,8 @@ This is an ordering system for a Juiciebar made by Karin Svensson, Julia Gardhol
 
 The skeleton code is made by our teacher Mikael Laaksoharju and is available at (https://github.com/laaksoharju/juicifer-skeleton).
 
+2017
+
 ## Try it out!
 
 1. Install [Node JS](https://nodejs.org)
@@ -12,4 +14,4 @@ The skeleton code is made by our teacher Mikael Laaksoharju and is available at 
 5. Type `node app.js` to start the server
 6. Use a web browser to check the ordering system at `localhost:3000`
 7. Use a web browser to check the kitchen view at `localhost:3000/kitchen`
-7. Use another device to check the mobile version at `<your IP address>:3000` (for this you may need to adjust your computer's firewall to allow connections to Node)
+8. Use another device to check the mobile version at `<your IP address>:3000` (for this you may need to adjust your computer's firewall to allow connections to Node)

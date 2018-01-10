@@ -139,34 +139,3 @@ function checkTime(i) {
   if (i < 10) {i = "0" + i};
   return i;
 };
-
-//Stocklist page
-Vue.component('ingredient', {
-  props: ['item', 'lang'],
-  template: '<div class="ingredientStock">\
-  <div class= "itemColumn">{{item["ingredient_"+ lang]}}</div>\
-  <div class= "itemColumn">{{item.stock}}ml</div>\
-  <div class= "itemColumn"><button v-on:click="minusIngredient" class="MinusPlusButtons" name="ingredientsMinusButton">-</button>\
-  <label id="counterStock">{{ counter }}</label>\
-  <button v-on:click="plusIngredient" class="MinusPlusButtons" name="ingredientsPlusButton">+</button>\</div>\
-  </div>',
-  data: function () {
-    return {
-      counter: 0
-    };
-  },
-  methods: {
-    plusIngredient: function(){
-      this.$emit('refill');
-      this.counter += 1000;
-      console.log(this)
-    },
-    minusIngredient: function(){
-      this.$emit('un-refill');
-      this.counter -= 1000;
-    },
-    resetCounter: function () {
-      this.counter = 0;
-    }
-  }
-});
