@@ -289,16 +289,13 @@
   <h4>{{ uiLabels.chosenDrinks }}</h4>
   <hr>
   <div id="myOrder-text">
-    <div id="myOrderedDrinks" v-for = "(order,key) in myDrinks" >
+    <div id="myOrderedDrinks" v-for = "order in myDrinks" >
       <br>
       <added-drinks
       type="m"
-      v-on:order-id="key"
       :order="order"
-      :ui-labels="uiLabels"
       :lang="lang"
-      :type="type"
-      :key="key">
+      :type="type">
     </added-drinks>
   </div>
 </div>
@@ -314,16 +311,13 @@
   <h3>{{ uiLabels.checkOut }}</h3>
   <tr><th><h4>{{ uiLabels.myOrder }}</h4><hr></th></tr>
   <div id="myOrder-text">
-    <div id="myOrderedDrinks" v-for = "(order,key) in myOrder" >
+    <div id="myOrderedDrinks" v-for = "order in myOrder" >
       <br>
       <drinks-in-order
       type="m"
-      v-on:order-id="key"
       :order="order"
-      :ui-labels="uiLabels"
       :lang="lang"
-      :type="type"
-      :key="key">
+      :type="type">
     </drinks-in-order>
   </div>
 </div>
