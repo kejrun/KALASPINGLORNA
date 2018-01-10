@@ -35,15 +35,12 @@
 <div id="ordering">
   <body>
     <div id="home-page" class="tabcontent">
-      <div style="text-align:center;">
         <button class="homebutton" v-on:click="chooseYourOwn();toChooseYourOwn();makeIngredientLists()"><a>{{ uiLabels.chooseYourOwn }}</a></button>
         <button class="homebutton" v-on:click="preMade();pmsInStock();resetChooseYourOwnPage()"><a>{{ uiLabels.preMade }}</a></button>
-      </div>
+      <br>
       <div id="LanguageDiv">
-        <div style="text-align:center;">
           <button class="newLanguage" v-on:click="switchLang('se')"><img id=SweImg src="/images/Sweden.png"></button>
           <button class="newLanguage" v-on:click="switchLang('en')"><img id=UkImg src="/images/United-Kingdom.png"></button>
-        </div>
       </div>
     </div>
 
@@ -192,14 +189,14 @@
   </div>
 
   <div id="preMade-list">
-    <div v-for="preparedDrink in premade">
-      <div v-for="pmInStock in preMadesInStock" v-if="pmInStock.id == preparedDrink.pm_id && pmInStock.inStock">
-        <br>
-        <img v-bind:src="preparedDrink.image" height="250px">
-        <h2>{{preparedDrink.pm_name + " "}}{{preparedDrink["price_" + type]}} :-</h2>
-        <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
-        <button id=addToMyOrderPreMade v-on:click="orderPremade(preparedDrink);openTab('myOrder-page');switchType('m');markChosenSizeButton('m')">{{ uiLabels.addToOrder}}</button>
-      </div>
+    <div v-for="pmInStock in preMadesInStock" v-if="pmInStock.inStock">
+        <div v-for="preparedDrink in premade" v-if="pmInStock.id == preparedDrink.pm_id">
+          <br>
+          <img v-bind:src="preparedDrink.image" height="250px">
+          <h2>{{preparedDrink.pm_name + " "}}{{preparedDrink["price_" + type]}} :-</h2>
+          <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
+          <button id=addToMyOrderPreMade v-on:click="orderPremade(preparedDrink);openTab('myOrder-page');switchType('m');markChosenSizeButton('m')">{{ uiLabels.addToOrder}}</button>
+        </div>
     </div>
   </div>
 </div>
@@ -357,7 +354,6 @@
     </div>
   </div>
 </div>
-
 
 </body>
 

@@ -108,27 +108,26 @@ function closeNav() {
     document.getElementById("openNavbutton").style.display = "block";
 }
 
-//ökar progress i ingredientsBar
+
+//kolla här: magic number, kanske går att hämta padding från css-filen
+var curSize = 0;
 function increaseBar() {
       var fullSize = $("#ingredientsBar").width()-6; //magic number 6, adds padding 3px on each side
-      var curSize = $("#ingredientsBarProgress").width();
       var increment = Math.round(fullSize/5);
       if(curSize < fullSize) {
         $("#ingredientsBarProgress").css('width', '+=' + increment);
-        var newLength = curSize+increment;
-        textOnBar(newLength, increment);
+        curSize += increment;
+        textOnBar(curSize, increment);
     }
 }
 
-//minskar progress i ingredientsBar
 function decreaseBar() {
   var fullSize = $("#ingredientsBar").width()-6; //magic number 6, adds padding 3px on each side
-  var curSize = $("#ingredientsBarProgress").width();
   var increment = Math.round(fullSize/5);
   if(curSize > 0) {
     $("#ingredientsBarProgress").css('width', '-=' + increment);
-    var newLength = curSize-increment;
-    textOnBar(newLength, increment);
+    curSize -= increment;
+    textOnBar(curSize, increment);
   }
 }
 
@@ -454,8 +453,8 @@ var vm = new Vue({
       
       resetIngredientsBar: function(){
         totalIngredientsCounter = 0;
-        var curSize = $("#ingredientsBarProgress").width();
         $("#ingredientsBarProgress").css('width', '-=' + curSize);
+        curSize = 0;
         ingredientsBarText.innerHTML = 'Choose 5 ingredients';
       },
       
@@ -490,13 +489,14 @@ var vm = new Vue({
         return inStock;
     },
     
+    
     pmsInStock:function(){
         var ingIDs,inStock;
         for (var i = 0; i < this.premade.length ; i ++) {
             ingIDs = this.premade[i].pm_ingredients;
             inStock = this.ingInStock(ingIDs);
             var pmInStock ={
-                id:this.premade[i].pm_id,
+                id: this.premade[i].pm_id,
                 inStock: inStock
             }
             this.preMadesInStock.push(pmInStock);
@@ -729,7 +729,8 @@ var vm = new Vue({
     }.bind(this));
     },
       
-    logIt: function(){
+    logIt: function(pm){
+
         //console.log(this.myOrder);
         //console.log(this.finishedOrderInfo);
     },
