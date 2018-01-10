@@ -5,7 +5,6 @@
 
 var socket = io();
 
-
 // Stuff that is used both in the ordering system, ingredients page and in the kitchen
 var sharedVueStuff = {
   data: {
@@ -27,7 +26,7 @@ var sharedVueStuff = {
     socket.on('switchLang', function (data) {
       this.uiLabels = data;
     }.bind(this));
-      
+
     socket.on('switchSize', function (data) {
       this.type = data;
     }.bind(this));

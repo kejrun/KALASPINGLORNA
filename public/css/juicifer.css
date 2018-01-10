@@ -87,7 +87,6 @@ h6{
 	letter-spacing: 2pt;
 	position: relative;
 	font-size: 40pt;
-	text-shadow: 1px 1px gray;
 }
 
 ::-webkit-scrollbar {
@@ -191,9 +190,7 @@ a {
 	transform: translateY(0px);
 }
 
-
 /* Set style for change language button and flag*/
-
 #LanguageDiv{
 	display: inline;
 	margin: 0 auto !important;
@@ -259,15 +256,15 @@ a {
 
 /*Searchfield for the stocklist*/
 #searchField{
-	background-image: url('http://mi1glisse.com/static/img/search.png'); 
-	background-position: right; 
+	background-image: url('http://mi1glisse.com/static/img/search.png');
+	background-position: right;
 	background-size: 30px 30px;
-	background-repeat: no-repeat; 
+	background-repeat: no-repeat;
 	width: 88%;
-	font-size: 16px; 
-	padding: 12px 20px 12px 40px; 
-	border: 1px solid #ddd; 
-	margin-bottom: 12px; 
+	font-size: 16px;
+	padding: 12px 20px 12px 40px;
+	border: 1px solid #ddd;
+	margin-bottom: 12px;
 	margin-top: 20px;
 	margin-left: 20px;
 }
@@ -312,6 +309,7 @@ a {
 .sizeHeadKitchen{
 	height: 80px;
 }
+
 .Heades_kitchenSide{
 	width:400px;
 	margin: 0 auto;
@@ -370,8 +368,6 @@ a {
 	margin: 0 auto;
 	margin-bottom: 40px;
 	border-bottom: 1px solid black;
-	/*border: 3px solid #810051;*/
-	/*box-shadow: 1px 1px 7px 3px #aaaaaa;*/
 }
 
 .itemsCancelled{
@@ -405,7 +401,7 @@ a {
 	height: 80px;
 	margin-left: 134px;
 	border-radius: 15px;
-    color: white;
+	color: white;
 }
 
 /*Back button*/
@@ -501,7 +497,7 @@ a {
 }
 
 #Drink_items{
-	background-color:#d3d3d3; /*d3e8ce*/
+	background-color:#d3d3d3;
 	border: 2px solid black;
 	width: 400px;
 	min-height: 130px;
@@ -764,10 +760,6 @@ and "My drink" in the other column */
 }
 
 #extrasCategories {
-	/*grid-column-start: 1;
-	grid-column-end:2;
-	grid-row-start:1;
-	grid-row-end:2;*/
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(4, auto);

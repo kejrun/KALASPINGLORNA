@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Juicifer Craft Beverages </title>
+  <title>Juicifer by KALASPINGLORNA </title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/juicifer.css">
   <script src="/vue/vue.js" defer></script>
@@ -35,12 +35,12 @@
 <div id="ordering">
   <body>
     <div id="home-page" class="tabcontent">
-        <button class="homebutton" v-on:click="chooseYourOwn();toChooseYourOwn();makeIngredientLists()"><a>{{ uiLabels.chooseYourOwn }}</a></button>
-        <button class="homebutton" v-on:click="preMade();pmsInStock();resetChooseYourOwnPage()"><a>{{ uiLabels.preMade }}</a></button>
+      <button class="homebutton" v-on:click="chooseYourOwn();toChooseYourOwn();makeIngredientLists()"><a>{{ uiLabels.chooseYourOwn }}</a></button>
+      <button class="homebutton" v-on:click="preMade();pmsInStock();resetChooseYourOwnPage()"><a>{{ uiLabels.preMade }}</a></button>
       <br>
       <div id="LanguageDiv">
-          <button class="newLanguage" v-on:click="switchLang('se')"><img id=SweImg src="/images/Sweden.png"></button>
-          <button class="newLanguage" v-on:click="switchLang('en')"><img id=UkImg src="/images/United-Kingdom.png"></button>
+        <button class="newLanguage" v-on:click="switchLang('se')"><img id=SweImg src="/images/Sweden.png"></button>
+        <button class="newLanguage" v-on:click="switchLang('en')"><img id=UkImg src="/images/United-Kingdom.png"></button>
       </div>
     </div>
 
@@ -57,7 +57,6 @@
       </div>
       <div id=labelIng> <p class="h8">{{ uiLabels.ingredients }}</p></div>
       <div id=labelExtra> <p class="h8">{{ uiLabels.extras }}</p></div>
-      <!-- Category-list and ingredient-list created to be able to get a grid layout -->
       <div id= "chooseYourOwnGrid">
         <div id= "category-list">
           <div id="vegetable" class = "ingredients-list">
@@ -160,7 +159,6 @@
         <td class="ingredientColumn">{{ item["ingredient_" + lang] }}</td>
         <td class="priceColumn"> {{ item["price_" + type] }} kr</td>
       </tr></table>
-
       <br>{{ uiLabels.totalPrice }} {{ price }} kr
       <button id="resetCurrentDrink" v-on:click="resetChooseYourOwnPage()" disabled>{{ uiLabels.resetCurrentDrink }}</button>
       <br>
@@ -177,28 +175,6 @@
 <div id="continueButtons" class="continueButtons">
   <button id="continue" v-on:click="openTab('extras-page');toExtras()" disabled>{{ uiLabels.continue }}</button>
   <button id="addToMyOrder" v-on:click="addToMyOrder();openTab('myOrder-page')" disabled>{{ uiLabels.addToOrder }}</button>
-</div>
-
-<div id="preMade-page" class="tabcontent">
-  <button id="cancelOrder" v-on:click="reloadPage()">{{ uiLabels.cancel }}</button>
-  <h3>{{ uiLabels.preMade }}</h3>
-  <div id="sizeButtonsPreMade">
-    <button id="smallCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('s'); markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
-    <button id="mediumCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('m'); markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
-    <button id="largeCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('l'); markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
-  </div>
-
-  <div id="preMade-list">
-    <div v-for="pmInStock in preMadesInStock" v-if="pmInStock.inStock">
-        <div v-for="preparedDrink in premade" v-if="pmInStock.id == preparedDrink.pm_id">
-          <br>
-          <img v-bind:src="preparedDrink.image" height="250px">
-          <h2>{{preparedDrink.pm_name + " "}}{{preparedDrink["price_" + type]}} :-</h2>
-          <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
-          <button id=addToMyOrderPreMade v-on:click="orderPremade(preparedDrink);openTab('myOrder-page');switchType('m');markChosenSizeButton('m')">{{ uiLabels.addToOrder}}</button>
-        </div>
-    </div>
-  </div>
 </div>
 
 <div id="extras-page" class="tabcontent">
@@ -286,6 +262,27 @@
 </div>
 </div>
 
+<div id="preMade-page" class="tabcontent">
+  <button id="cancelOrder" v-on:click="reloadPage()">{{ uiLabels.cancel }}</button>
+  <h3>{{ uiLabels.preMade }}</h3>
+  <div id="sizeButtonsPreMade">
+    <button id="smallCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('s'); markChosenSizeButton('s')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=40px height=40px><br>{{ uiLabels.smallType }}</button>
+    <button id="mediumCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('m'); markChosenSizeButton('m')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=55px height=55px><br>{{ uiLabels.mediumType }}</button>
+    <button id="largeCupPreMade" class="sizeButtonPreMade" v-on:click="switchType('l'); markChosenSizeButton('l')"><img src="https://cdn3.iconfinder.com/data/icons/food-vector-line-6/128/297-256.png" width=70px height=70px><br>{{ uiLabels.largeType }}</button>
+  </div>
+  <div id="preMade-list">
+    <div v-for="pmInStock in preMadesInStock" v-if="pmInStock.inStock">
+      <div v-for="preparedDrink in premade" v-if="pmInStock.id == preparedDrink.pm_id">
+        <br>
+        <img v-bind:src="preparedDrink.image" height="250px">
+        <h2>{{preparedDrink.pm_name + " "}}{{preparedDrink["price_" + type]}} :-</h2>
+        <p>{{ getIngredientNameList(preparedDrink.pm_ingredients) }}</p>
+        <button id=addToMyOrderPreMade v-on:click="addPremadeDrink(preparedDrink);openTab('myOrder-page');switchType('m');markChosenSizeButton('m')">{{ uiLabels.addToOrder}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="myOrder-page" class="tabcontent">
   <button id="cancelOrder" v-on:click="reloadPage()">{{ uiLabels.cancel }}</button>
   <h3>{{ uiLabels.myOrder }}</h3>
@@ -349,8 +346,7 @@
       <br></div><br>
     </div>
     <div class="centerText">
-      <!--kolla här: siri ska logit() vara med? -->
-      <button v-on:click="logIt();reloadPage()" id=orderFinishedButton >OK</button>
+      <button v-on:click="reloadPage()" id=orderFinishedButton >OK</button>
     </div>
   </div>
 </div>

@@ -16,89 +16,86 @@
   <div class = kitchen_layout>
     <div id="clock_kitchen"></div>
     <div id="orders">
-
-        <!--<div id="LanguageDiv">-->
-
           <button class="newLanguage" v-on:click="switchLang('se')"><img id=SweImg src="/images/Sweden.png"></button>
           <button class="newLanguage" v-on:click="switchLang('en')"><img id=UkImg src="/images/United-Kingdom.png"></button>
       <div id ="start_page">
-		  <div class = sizeHeadKitchen><div class= Heades_kitchenSide><h1>{{ uiLabels.ordersInQueue }}</h1></div></div>
+        <div class = sizeHeadKitchen><div class= Heades_kitchenSide><h1>{{ uiLabels.ordersInQueue }}</h1></div></div>
         <div id = cancelDiv>
-        <order-cancel
-            v-for="(order, key) in orders"
-            v-if="order.wantOrderCancel  && !order.done"
-            v-on:undo-cancel="undoCancel(key)"
-            v-on:cancel= "sendCancel(key)"
-            :order-id="key"
-            :order="order"
-            :ui-labels="uiLabels"
-            :lang="lang"
-            :type="type"
-            :key="key">
+          <order-cancel
+          v-for="(order, key) in orders"
+          v-if="order.wantOrderCancel  && !order.done"
+          v-on:undo-cancel="undoCancel(key)"
+          v-on:cancel= "sendCancel(key)"
+          :order-id="key"
+          :order="order"
+          :ui-labels="uiLabels"
+          :lang="lang"
+          :type="type"
+          :key="key">
         </order-cancel>
-        </div>
-        <div id = OrdersQueue>
-        <order-item-to-prepare-in-made
-            v-for="(order, key) in orders"
-            v-if="!order.done && order.inMade"
-            v-on:done="markDone(key)"
-            v-on:want-cancel= "wantToCancel(key)"
-            v-on:in-made="unmarkInMade(key)"
-            :order-id="key"
-            :order="order"
-            :ui-labels="uiLabels"
-            :lang="lang"
-            :type="type"
-            :key="key">
-        </order-item-to-prepare-in-made>
-        <order-item-to-prepare
-            v-for="(order, key) in orders"
-            v-if="!order.done && !order.inMade"
-            v-on:done="markDone(key)"
-            v-on:cancel= "sendCancel(key)"
-            v-on:in-made="markInMade(key)"
-            :order-id="key"
-            :order="order"
-            :ui-labels="uiLabels"
-            :lang="lang"
-            :key="key">
-      </order-item-to-prepare>
       </div>
-    </div>
-
-    <div id = "finishedOrder">
-    <button v-on:click="ShowStartpage()" class=backBtn ><img src = http://simpleicon.com/wp-content/uploads/arrow-17.png width = 100% ></button>
-    <br>
-    <div class= Heades_kitchenSide> <h1>{{ uiLabels.ordersFinished }}</h1></div>
-      <div class = itemsFinished>
-      <order-item-done
+      <div id = OrdersQueue>
+        <order-item-to-prepare-in-made
         v-for="(order, key) in orders"
-        v-if="order.done && !order.cancel"
+        v-if="!order.done && order.inMade"
+        v-on:done="markDone(key)"
+        v-on:want-cancel= "wantToCancel(key)"
+        v-on:in-made="unmarkInMade(key)"
         :order-id="key"
         :order="order"
+        :ui-labels="uiLabels"
         :lang="lang"
         :type="type"
         :key="key">
-       </order-item-done>
-		</div>
-       <div class= Heades_kitchenSide> <h1>{{ uiLabels.ordersCancelled }}</h1></div>
-      <div class = itemsCancelled>
-		<order-item-done
-        v-for="(order, key) in orders"
-        v-if="order.cancel"
-        :order-id="key"
-        :order="order"
-        :lang="lang"
-        :type="type"
-        :key="key">
-        </order-item-done></div>
-    </div>
+      </order-item-to-prepare-in-made>
+      <order-item-to-prepare
+      v-for="(order, key) in orders"
+      v-if="!order.done && !order.inMade"
+      v-on:done="markDone(key)"
+      v-on:cancel= "sendCancel(key)"
+      v-on:in-made="markInMade(key)"
+      :order-id="key"
+      :order="order"
+      :ui-labels="uiLabels"
+      :lang="lang"
+      :key="key">
+    </order-item-to-prepare>
+  </div>
+</div>
 
-    <div id = Hist_Ingred>
-    <button v-on:click="ShowHistory()" class ="Hist_Ingred_Button">{{ uiLabels.ordersFinished }}</button>
-   	<a href="ingredients"><button class ="Hist_Ingred_Button">{{ uiLabels.stockList}}</button></a>
-    </div>
-    </div>
+<div id = "finishedOrder">
+  <button v-on:click="ShowStartpage()" class=backBtn ><img src = http://simpleicon.com/wp-content/uploads/arrow-17.png width = 100% ></button>
+  <br>
+  <div class= Heades_kitchenSide> <h1>{{ uiLabels.ordersFinished }}</h1></div>
+  <div class = itemsFinished>
+    <order-item-done
+    v-for="(order, key) in orders"
+    v-if="order.done && !order.cancel"
+    :order-id="key"
+    :order="order"
+    :lang="lang"
+    :type="type"
+    :key="key">
+  </order-item-done>
+</div>
+<div class= Heades_kitchenSide> <h1>{{ uiLabels.ordersCancelled }}</h1></div>
+<div class = itemsCancelled>
+  <order-item-done
+  v-for="(order, key) in orders"
+  v-if="order.cancel"
+  :order-id="key"
+  :order="order"
+  :lang="lang"
+  :type="type"
+  :key="key">
+</order-item-done></div>
+</div>
+
+<div id = Hist_Ingred>
+  <button v-on:click="ShowHistory()" class ="Hist_Ingred_Button">{{ uiLabels.ordersFinished }}</button>
+  <a href="ingredients"><button class ="Hist_Ingred_Button">{{ uiLabels.stockList}}</button></a>
+</div>
+</div>
 </div>
 
 </body>
