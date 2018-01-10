@@ -332,6 +332,9 @@ margin-left: 45%;
 	padding-right: 15px;
 }
 
+.sizeHeadKitchen{
+	height: 90px;
+}
 .Heades_kitchenSide{
 	width:400px;
 	margin: 0 auto;
@@ -444,7 +447,7 @@ margin-left: 45%;
 #start_page{
 	display: table;
 	margin: 0 auto;
-	height: 700px;
+	height: 660px;
 	width: 600px;
 	margin-top: 15px;
 }
@@ -473,7 +476,7 @@ margin-left: 45%;
 }
 
 #OrdersQueue{
-	height: 620px;
+	height: 560px;
 	margin: 0 auto;
 	overflow-y: scroll;
 	margin-bottom: 40px;
