@@ -16,12 +16,12 @@
   <div class = kitchen_layout>
     <div id="clock_kitchen"></div>
     <div id="orders">
-        <div style="text-align:center;">
+        <div id="LanguageDiv">
           <button class="newLanguage" v-on:click="switchLang('se')"><img id=SweImg src="/images/Sweden.png"></button>
           <button class="newLanguage" v-on:click="switchLang('en')"><img id=UkImg src="/images/United-Kingdom.png"></button>
         </div>
       <div id ="start_page">
-		  <div class= Heades_kitchenSide><h1>{{ uiLabels.ordersInQueue }}</h1></div>
+		  <div class = sizeHeadKitchen><div class= Heades_kitchenSide><h1>{{ uiLabels.ordersInQueue }}</h1></div></div>
         <div id = cancelDiv>
         <order-cancel
             v-for="(order, key) in orders"
@@ -74,19 +74,19 @@
         v-for="(order, key) in orders"
         v-if="order.done && !order.cancel"
         :order-id="key"
-        :order="order" 
+        :order="order"
         :lang="lang"
         :type="type"
         :key="key">
        </order-item-done>
 		</div>
        <div class= Heades_kitchenSide> <h1>{{ uiLabels.ordersCancelled }}</h1></div>
-      <div class = itemsCancelled> 
+      <div class = itemsCancelled>
 		<order-item-done
         v-for="(order, key) in orders"
         v-if="order.cancel"
         :order-id="key"
-        :order="order" 
+        :order="order"
         :lang="lang"
         :type="type"
         :key="key">
@@ -95,7 +95,7 @@
 
     <div id = Hist_Ingred>
     <button v-on:click="ShowHistory()" class ="Hist_Ingred_Button">{{ uiLabels.ordersFinished }}</button>
-   	<a href="ingredients"><button class ="Hist_Ingred_Button">{{ uiLabels.stockList}}</button></a> 
+   	<a href="ingredients"><button class ="Hist_Ingred_Button">{{ uiLabels.stockList}}</button></a>
     </div>
     </div>
 </div>
