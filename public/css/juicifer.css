@@ -679,9 +679,9 @@ input[type="checkbox"]{
 	background-color: #d6d7d8;
 }
 
-/*Creating a grid containing one grid with the categories in one column,
+/*Creating a 2 column grid containing one grid with the categories in one column,
 and "My drink" in the other column */
-#categories-drink{
+#chooseYourOwnGrid{
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(2, auto);
@@ -1322,7 +1322,7 @@ and "My drink" in the other column */
 		font-size: 18px;
 	}
 
-	#categories-drink{
+	#chooseYourOwnGrid{
 		height: 400px;
 		overflow: hidden;
 		overflow-y: scroll;

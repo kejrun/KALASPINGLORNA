@@ -694,7 +694,7 @@ var vm = new Vue({
       document.getElementById("ProgressBarChooseYourOwn").style.display = "block";
       document.getElementById("labelIng").style.display = "none";
       document.getElementById("labelExtra").style.display = "block";
-      categoriesDrink = document.getElementById("categories-drink");
+      categoriesDrink = document.getElementById("chooseYourOwnGrid");
       extrasCategories = document.getElementById("extrasCategories");
       categoriesDrink.appendChild(extrasCategories);
       extrasCategories.style.display="grid";
