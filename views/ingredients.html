@@ -11,11 +11,11 @@
   <script src="js/juicifer-main.js" defer></script>
   <script src="js/ingredients.js" defer></script>
 </head>
-<body onload="startTime()">
+  <body onload="startTime()">
   <div class = kitchen_layout>
     <div id="clock_kitchen"></div>
     <div id="ingredients">
-    <div id="LanguageDiv">
+    <div style="text-align:center;">
         <button class="newLanguage" v-on:click="switchLang('se')"><img id=SweImg src="/images/Sweden.png"></button>
         <button class="newLanguage" v-on:click="switchLang('en')"><img id=UkImg src="/images/United-Kingdom.png"></button>
     </div>
@@ -196,13 +196,16 @@
       	:key="item.ingredient_id">
      </ingredient>
     </div>
-	</div>
-
+		</div>
 	<div id = refillbtnID>
 	<a href="ingredients"><button id=refillbtn>{{ uiLabels.refill }}</button></a>
 	</div>
 
-	</div>
-</div>
+	
+	  </div>
+	  </div>
+
+
 </body>
+
 </html>
