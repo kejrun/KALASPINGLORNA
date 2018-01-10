@@ -307,7 +307,7 @@ a {
 }
 
 .sizeHeadKitchen{
-	height: 90px;
+	height: 80px;
 }
 
 .Heades_kitchenSide{
@@ -407,7 +407,7 @@ a {
 /*Back button*/
 .backBtn {
 	position:absolute;
-	left: 3%;
+	left: 10px;
 	transition: .5s ease;
 	background-color: Transparent;
 	background-repeat:no-repeat;
@@ -451,11 +451,11 @@ a {
 }
 
 #OrdersQueue{
-	height: 560px;
+	height: 600px;
 	margin: 0 auto;
 	overflow-y: scroll;
-	margin-bottom: 40px;
-	margin-top: 40px;
+	margin-bottom: 30px;
+	margin-top: 10px;
 }
 
 /*Layout for the button that each order appears on, and the arrows on the side of each button*/
@@ -521,7 +521,6 @@ a {
 	z-index: 2;
 	margin: 0 auto;
 	position: absolute;
-	margin-top: 20px;
 }
 
 .cancelOrNotOrder{
@@ -570,7 +569,10 @@ a {
 #Hist_Ingred{
 	height: 150px;
 	margin: 0 auto;
-	margin-bottom: 30px;
+	width: 768px;
+	top: 850px;
+	position:absolute;
+	
 }
 
 .Hist_Ingred_Button {
@@ -1251,7 +1253,9 @@ and "My drink" in the other column */
 	}
 
 	.newLanguage{
+		margin: 0 auto;
 		margin-top: 5%;
+		
 	}
 
 	#cancelOrderOnHeader{
