@@ -601,7 +601,7 @@ tl.to(orange, 1, {transform: "translateY(0px)", ease:Bounce.easeOut})
           document.getElementById("extras-pageBtn").style.backgroundColor = "#810051";
         };
       },
-
+//Functions called from Homepage buttons
       chooseYourOwn: function () {
         var i, tabcontent, tablinks;
         tablinks = document.getElementsByClassName("tablink");
@@ -649,6 +649,7 @@ tl.to(orange, 1, {transform: "translateY(0px)", ease:Bounce.easeOut})
         document.getElementById("ProgressBarChooseYourOwn").style.display = "none";
       },
 
+//Switch between ingredients grid and extras grid
       toExtras: function(){
         var extrasCategories,categoriesDrink;
         document.getElementById("category-list").style.display ="none";
