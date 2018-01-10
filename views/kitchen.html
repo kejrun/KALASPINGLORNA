@@ -21,7 +21,7 @@
           <button class="newLanguage" v-on:click="switchLang('en')"><img id=UkImg src="/images/United-Kingdom.png"></button>
         </div>
       <div id ="start_page">
-		  <div class= Heades_kitchenSide><h1>{{ uiLabels.ordersInQueue }}</h1></div>
+		  <div class = sizeHeadKitchen><div class= Heades_kitchenSide><h1>{{ uiLabels.ordersInQueue }}</h1></div></div>
         <div id = cancelDiv>
         <order-cancel
             v-for="(order, key) in orders"
