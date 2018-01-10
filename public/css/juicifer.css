@@ -411,7 +411,7 @@ a {
 /*Back button*/
 .backBtn {
 	position:absolute;
-	left: 3%;
+	left: 10px;
 	transition: .5s ease;
 	background-color: Transparent;
 	background-repeat:no-repeat;
