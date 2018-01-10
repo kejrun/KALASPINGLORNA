@@ -682,7 +682,7 @@ tl.to(orange, 1, {transform: "translateY(0px)", ease:Bounce.easeOut})
 
   // ------------- For myOrder page --------------
   Vue.component('added-drinks', {
-    props: ['uiLabels', 'order', 'orderId', 'lang', 'name', 'type', 'price', 'totalPrice'],
+    props: ['order', 'lang', 'name', 'type', 'price'],
     template: '<div class = drinkInfo><h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>\
     <label>\{{order.ingredients.map(item=>item["ingredient_"+ lang]).join(" ")}}</label>\
     <br>\
@@ -727,7 +727,7 @@ tl.to(orange, 1, {transform: "translateY(0px)", ease:Bounce.easeOut})
   });
 
   Vue.component('drinks-in-order', {
-    props: ['uiLabels', 'order', 'orderId', 'lang', 'name', 'type', 'price', 'totalPrice'],
+    props: ['order', 'lang', 'name', 'type', 'price'],
     template: '<div id = "myOrderedDrinks">\
     <h2>{{order.name + " "}}{{order.price}} kr, {{order.type}}</h2>\
     <label>\
