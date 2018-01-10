@@ -490,13 +490,14 @@ var vm = new Vue({
         return inStock;
     },
     
+    
     pmsInStock:function(){
         var ingIDs,inStock;
         for (var i = 0; i < this.premade.length ; i ++) {
             ingIDs = this.premade[i].pm_ingredients;
             inStock = this.ingInStock(ingIDs);
             var pmInStock ={
-                id:this.premade[i].pm_id,
+                id: this.premade[i].pm_id,
                 inStock: inStock
             }
             this.preMadesInStock.push(pmInStock);
@@ -729,7 +730,8 @@ var vm = new Vue({
     }.bind(this));
     },
       
-    logIt: function(){
+    logIt: function(pm){
+
         //console.log(this.myOrder);
         //console.log(this.finishedOrderInfo);
     },
