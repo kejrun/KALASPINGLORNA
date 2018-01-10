@@ -232,31 +232,7 @@ a {
 	width: 768px;
 }
 
-/*.language{
-border: none;
-margin-top: 10px;
-color: white;
-font-size: 12pt;
-background-color: #777;
-width: 80px;
-height: 40px;
-border-radius: 5px;
-cursor: pointer;
-box-shadow: 0.3px 0.3px 3px 1px gray;
-font-family: 'Encode Sans Semi Condensed';
-}*/
-
-/*.language:hover {
-background-color: #9ea0a3;
-}
-
-#languageStock{
-margin-left: 45%;
-}
-*/
-
 /*Layout and scrollbar for ingredients on ingredientspage, i.e. where kitchen can see and change the stock*/
-
 #ingredients{
 	margin: 0 auto;
 	display: table;
@@ -281,21 +257,22 @@ margin-left: 45%;
 	right: 10%;
 }
 
+/*Searchfield for the stocklist*/
 #searchField{
-	background-image: url('http://mi1glisse.com/static/img/search.png'); /* Add a search icon to input */
-	background-position: right; /* Position the search icon */
+	background-image: url('http://mi1glisse.com/static/img/search.png'); 
+	background-position: right; 
 	background-size: 30px 30px;
-	background-repeat: no-repeat; /* Do not repeat the icon image */
+	background-repeat: no-repeat; 
 	width: 88%;
-	font-size: 16px; /* Increase font-size */
-	padding: 12px 20px 12px 40px; /* Add some padding */
-	border: 1px solid #ddd; /* Add a grey border */
-	margin-bottom: 12px; /* Add some space below the input */
+	font-size: 16px; 
+	padding: 12px 20px 12px 40px; 
+	border: 1px solid #ddd; 
+	margin-bottom: 12px; 
 	margin-top: 20px;
 	margin-left: 20px;
 }
 
-/*stock list */
+/*stock list with ingredient, stock and refill option*/
 .ingredientStock {
 	border: 1px solid #777;
 	padding: 1em;
@@ -343,7 +320,7 @@ margin-left: 45%;
 	margin-bottom: 5px;
 }
 
-/*all headers*/
+/*All headers for the stock list*/
 .stockHeaders{
 	margin-top: 20px;
 	margin-bottom:20px;
@@ -361,13 +338,13 @@ margin-left: 45%;
 	position: relative;
 }
 
-/*om en ingrediens håller på att ta slut så ändras bakgrundsfärgen*/
+/*If an ingredient is running out the text color change*/
 #stocklimited{
 	color:#e00620;
 	font-weight: bold;
 }
 
-/*the single headers*/
+/*The separate headers in stock list*/
 .stockHead{
 	float: left;
 	width: 33.33%;
@@ -412,6 +389,7 @@ margin-left: 45%;
 	text-transform: uppercase;
 }
 
+/*The update button*/
 #refillbtnID{
 	position: absolute;
 	margin: 0 auto;
@@ -420,7 +398,6 @@ margin-left: 45%;
 
 #refillbtn {
 	font-family: 'Encode Sans Semi Condensed';
-	text-transform: uppercase;
 	background-color: forestgreen;
 	font-size: 20pt;
 	cursor: pointer;
@@ -428,8 +405,10 @@ margin-left: 45%;
 	height: 80px;
 	margin-left: 134px;
 	border-radius: 15px;
+    color: white;
 }
 
+/*Back button*/
 .backBtn {
 	position:absolute;
 	left: 3%;
@@ -635,7 +614,7 @@ input[type="checkbox"]{
 
 /********************CHOOSE YOUR OWN********************/
 
-/*pris, ingrediens och plus/minusknappar*/
+/*For the categories: price, ingredients and plus/minus buttons*/
 .ingColumn{
 	float:left;
 	width: 40%;
@@ -682,7 +661,6 @@ input[type="checkbox"]{
 	color: #a9abad;
 	background-color: #d6d7d8;
 }
-
 
 #ingredientsMinusButton {
 	width: 40px;
