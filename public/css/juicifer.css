@@ -103,8 +103,11 @@ h6{
 /**********************THIS IS THE CSS FOR THE HOMEPAGE*************************/
 /*******************************************************************************/
 /*******************************************************************************/
+
+/* Show the home-page as default*/
 #home-page{
-	padding: 3%;
+	display: block;
+	text-align: center;
 }
 
 /* Animation on homepage*/
@@ -193,6 +196,7 @@ a {
 
 #LanguageDiv{
 	display: inline;
+	margin: 0 auto !important;
 }
 
 .newLanguage{
@@ -305,6 +309,9 @@ a {
 	padding-right: 15px;
 }
 
+.sizeHeadKitchen{
+	height: 90px;
+}
 .Heades_kitchenSide{
 	width:400px;
 	margin: 0 auto;
@@ -419,7 +426,7 @@ a {
 #start_page{
 	display: table;
 	margin: 0 auto;
-	height: 700px;
+	height: 660px;
 	width: 600px;
 	margin-top: 15px;
 }
@@ -448,7 +455,7 @@ a {
 }
 
 #OrdersQueue{
-	height: 620px;
+	height: 560px;
 	margin: 0 auto;
 	overflow-y: scroll;
 	margin-bottom: 40px;
@@ -603,11 +610,6 @@ a {
 input[type="checkbox"]{
 	display: none;
 	visibility: hidden;
-}
-
-/* Show the home-page as default*/
-#home-page{
-	display: block;
 }
 
 /********************CHOOSE YOUR OWN********************/
