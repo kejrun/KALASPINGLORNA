@@ -542,7 +542,6 @@ margin-left: 45%;
 	z-index: 2;
 	margin: 0 auto;
 	position: absolute;
-	margin-top: 20px;
 }
 
 .cancelOrNotOrder{
@@ -1285,7 +1284,9 @@ and "My drink" in the other column */
 	}
 
 	.newLanguage{
+		margin: 0 auto;
 		margin-top: 5%;
+		
 	}
 
 	#cancelOrderOnHeader{
