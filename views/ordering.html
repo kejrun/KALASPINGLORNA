@@ -35,15 +35,12 @@
 <div id="ordering">
   <body>
     <div id="home-page" class="tabcontent">
-      <div style="text-align:center;">
         <button class="homebutton" v-on:click="chooseYourOwn();toChooseYourOwn();makeIngredientLists()"><a>{{ uiLabels.chooseYourOwn }}</a></button>
         <button class="homebutton" v-on:click="preMade();pmsInStock();resetChooseYourOwnPage()"><a>{{ uiLabels.preMade }}</a></button>
-      </div>
+      <br>
       <div id="LanguageDiv">
-        <div style="text-align:center;">
           <button class="newLanguage" v-on:click="switchLang('se')"><img id=SweImg src="/images/Sweden.png"></button>
           <button class="newLanguage" v-on:click="switchLang('en')"><img id=UkImg src="/images/United-Kingdom.png"></button>
-        </div>
       </div>
     </div>
 

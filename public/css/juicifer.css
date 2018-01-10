@@ -103,8 +103,11 @@ h6{
 /**********************THIS IS THE CSS FOR THE HOMEPAGE*************************/
 /*******************************************************************************/
 /*******************************************************************************/
+
+/* Show the home-page as default*/
 #home-page{
-	padding: 3%;
+	display: block;
+	text-align: center;
 }
 
 /* Animation on homepage*/
@@ -193,6 +196,7 @@ a {
 
 #LanguageDiv{
 	display: inline;
+	margin: 0 auto !important;
 }
 
 .newLanguage{
@@ -624,11 +628,6 @@ margin-left: 45%;
 input[type="checkbox"]{
 	display: none;
 	visibility: hidden;
-}
-
-/* Show the home-page as default*/
-#home-page{
-	display: block;
 }
 
 /********************CHOOSE YOUR OWN********************/
